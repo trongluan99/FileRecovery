@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="rating">Califíquenos</string>
+    <string name="share">Compartir a amigos</string>
+    <string name="policy">Política de privacidad</string>
+    <string name="feedback">Realimentación</string>
+    <string name="scan">Escanear</string>
+
+    <string name="scan_tip">La aplicación le ayuda a recuperar fotos eliminadas.\\nLa aplicación mostrará todas las imágenes (eliminadas y no eliminadas). Solo sigue buscando y encontrarás fotos que estás buscando.\\nPor favor, sea paciente y espere hasta que escanea todas las carpetas y archivos.</string>
+    <string name="how_to_work">¿Cómo funciona?</string>
+    <string name="restore">Restaurar</string>
+    <string name="view_restored_photos">Ver fotos restauradas</string>
+    <string name="setting">Configuración</string>
+    <string name="scan_wait">Por favor espere mientras escanea archivos...</string>
+    <string name="not_found">No se encontraron fotos.</string>
+    <string name="restore_now">Restaurar ahora</string>
+    <string name="photo_recovery">Recuperación de fotos</string>
+
+    <string name="language_setting">Idioma</string>
+    <string name="more_app" translatable="false">Más aplicaciones</string>
+    <string name="analyzing">Analizando ...</string>
+    <string name="video_recovery">Recuperación de vídeo</string>
+    <string name="audio_recovery">Recuperación de Audio</string>
+    <string name="restore_file">Restaurar archivo</string>
+    <string name="restoring_video">Restaurando video ...</string>
+    <string name="open_file">Abre el archivo</string>
+    <string name="share_file">Comparte el archivo</string>
+
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_title_spash">17sp</dimen>
+    <dimen name="size_detail_spash">10sp</dimen>
+    <dimen name="size_toolbar">15sp</dimen>
+
+    <dimen name="sub_big_spacing">20dp</dimen>
+    <dimen name="alternate_margin">5dp</dimen>
+    <dimen name="medium_text">16sp</dimen>
+    <dimen name="alternate_padding">5dp</dimen>
+    <dimen name="sub_medium_text">14sp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="size_150">150dp</dimen>
+    <dimen name="gallery_spacing">5dp</dimen>
+
+    <dimen name="img_mark_bg_size_height">90.0dip</dimen>
+    <dimen name="img_mark_size">70dip</dimen>
+    <dimen name="ts_20">17sp</dimen>
+    <dimen name="duplicate_space_medium">10dp</dimen>
+
+</resources>

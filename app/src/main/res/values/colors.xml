@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#068abf</color>
+    <color name="colorPrimaryDark">#1d4389</color>
+    <color name="colorAccent">#068abf</color>
+
+    <color name="text_red">#eb6156</color>
+
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_grey_500">#9E9E9E</color>
+    <color name="white">#ffffff</color>
+    <color name="color_242424">#242424</color>
+
+    <color name="text_color">#ff666666</color>
+    <color name="text_gray">#7d7d7d</color>
+    <color name="teal_200">#80cbc4</color> <!-- Use with black text -->
+</resources>

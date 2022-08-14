@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="rating">Оцените нас</string>
+    <string name="share">Отправить друзьям</string>
+    <string name="policy">Конфиденциальности</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="scan">сканирование</string>
+
+    <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\\nПриложение покажет все изображения (удалены и не удалены). Просто продолжайте искать, и вы найдете фотографии, которые вы ищете.\\nПожалуйста, будьте терпеливы и подождите, пока он сканирует все папки и файлы.</string>
+    <string name="how_to_work">Как это работает?</string>
+    <string name="restore">Восстановление</string>
+    <string name="view_restored_photos">Просмотр восстановленных фотографий</string>
+    <string name="setting">настройки</string>
+    <string name="scan_wait">Подождите, пока сканирование файлов...</string>
+    <string name="not_found">Фотографии не найдены</string>
+    <string name="restore_now">Восстановить сейчас</string>
+    <string name="photo_recovery">Восстановление фотографий</string>
+
+    <string name="language_setting">язык</string>
+    <string name="more_app" translatable="false">Больше приложений</string>
+    <string name="analyzing">Анализ ...</string>
+    <string name="video_recovery">Видео Восстановление</string>
+    <string name="audio_recovery">Аудио Восстановление</string>
+    <string name="restore_file">Восстановить файл</string>
+    <string name="restoring_video">Восстановление видео ...</string>
+    <string name="open_file">Открыть файл</string>
+    <string name="share_file">Поделиться файл</string>
+
+
+</resources>

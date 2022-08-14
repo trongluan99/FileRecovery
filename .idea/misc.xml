@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Lam Viec/LUBUTEAM/File recovery/File recovery/app/src/main/res/layout/activity_main.xml" value="0.1953125" />
+        <entry key="..\:/Users/ADMIN/Desktop/File recovery/app/src/main/res/layout/activity_main.xml" value="0.34923076923076923" />
+        <entry key="..\:/Users/ADMIN/Desktop/File recovery/app/src/main/res/layout/bar_home_app.xml" value="0.3546875" />
+        <entry key="..\:/Users/ADMIN/Desktop/File recovery/app/src/main/res/layout/test.xml" value="0.3546875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

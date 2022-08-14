@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="rating">قيمنا</string>
+    <string name="share">حصة للأصدقاء</string>
+    <string name="policy">سياسة الخصوصية</string>
+    <string name="feedback">ردود الفعل</string>
+    <string name="scan">تفحص</string>
+
+    <string name="scan_tip">التطبيق تساعدك علي استعاده الصور المحذوفة.\\nالتطبيق سوف تظهر جميع الصور (حذف وغير محذوفة). فقط استمر في البحث وسوف تجد الصور التي تبحث عنها.\\nيرجى التحلي بالصبر والانتظار حتى يقوم بمسح جميع المجلدات والملفات.</string>
+    <string name="how_to_work">كيف يعمل ؟</string>
+    <string name="restore">استعاده</string>
+    <string name="view_restored_photos">عرض الصور المستعادة</string>
+    <string name="setting">اعدادات</string>
+    <string name="scan_wait">يرجى الانتظار أثناء فحص الملفات ...</string>
+    <string name="not_found">لا توجد صور</string>
+    <string name="restore_now">استعاده الآن</string>
+    <string name="photo_recovery">استعاده الصور</string>
+
+    <string name="language_setting">لغة</string>
+    <string name="more_app" translatable="false">المزيد من التطبيق</string>
+    <string name="analyzing">تحليل ...</string>
+    <string name="video_recovery">استعادة الفيديو المحذوف</string>
+    <string name="audio_recovery">استعادة الصوت</string>
+    <string name="restore_file">استعاده الملف</string>
+    <string name="restoring_video">استعادة الفيديو ...</string>
+    <string name="open_file">افتح الملف</string>
+    <string name="share_file">شارك الملف</string>
+
+
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="rating">Avalie-nos</string>
+    <string name="share">Compartilhar para amigos</string>
+    <string name="policy">Política de privacidade</string>
+    <string name="feedback">Comentários</string>
+    <string name="scan">Scan</string>
+
+    <string name="scan_tip">O aplicativo ajuda você a recuperar fotos excluídas.\\nO aplicativo mostrará todas as imagens (excluídas e não excluídas). Basta continuar procurando e você vai encontrar fotos que você está procurando.\\nPor favor, seja paciente e aguarde até que ele verifica todas as pastas e arquivos.</string>
+    <string name="how_to_work">Como funciona?</string>
+    <string name="restore">Restaurar</string>
+    <string name="view_restored_photos">Ver fotos restauradas</string>
+    <string name="setting">Configurações</string>
+    <string name="scan_wait">Por favor aguarde enquanto escaneia os arquivos...</string>
+    <string name="not_found">Nenhuma foto encontrada</string>
+    <string name="restore_now">Restaurar agora</string>
+    <string name="photo_recovery">Recuperação de fotos</string>
+
+    <string name="language_setting">Idioma</string>
+    <string name="more_app" translatable="false">Mais apps</string>
+    <string name="analyzing">Analisando...</string>
+    <string name="video_recovery">Recuperação de vídeo</string>
+    <string name="audio_recovery">Recuperação de Áudio</string>
+    <string name="restore_file">Arquivo de restauração</string>
+    <string name="restoring_video">Restaurando vídeo ...</string>
+    <string name="open_file">Abrir arquivo</string>
+    <string name="share_file">Compartilhar arquivo</string>
+
+
+</resources>

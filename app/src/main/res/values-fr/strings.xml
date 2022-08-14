@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="rating">Évaluez-nous</string>
+    <string name="share">Partager avec des amis</string>
+    <string name="policy">Politique de confidentialité</string>
+    <string name="feedback">Retour d\'information</string>
+    <string name="scan">Balayage</string>
+
+    <string name="scan_tip">L’application vous aide à récupérer des photos supprimées.\\nL’application affichera toutes les images (supprimées et non supprimées). Il suffit de continuer à regarder et vous trouverez des photos que vous recherchez.\\nS’il vous plaît être patient et attendre jusqu’à ce qu’il scanne tous les dossiers et fichiers.</string>
+    <string name="how_to_work">Comment ça marche?</string>
+    <string name="restore">Restaurer</string>
+    <string name="view_restored_photos">Voir les photos restaurées</string>
+    <string name="setting">Paramètres</string>
+    <string name="scan_wait">Veuillez patienter pendant l\\\'analyse des fichiers...</string>
+    <string name="not_found">Aucune photo trouvée</string>
+    <string name="restore_now">Restaurer maintenant</string>
+    <string name="photo_recovery">Récupération de photos</string>
+
+    <string name="language_setting">La langue</string>
+    <string name="more_app" translatable="false">Plus d\'application</string>
+    <string name="analyzing">en cours d\'analyse</string>
+    <string name="video_recovery">Récupération vidéo supprimée</string>
+    <string name="audio_recovery">Récupération Audio</string>
+    <string name="restore_file">Restaurer le fichier</string>
+    <string name="restoring_video">Restauration de la vidéo ...</string>
+    <string name="open_file">Ouvrez le fichier</string>
+    <string name="share_file">Partagez le fichier</string>
+
+
+</resources>

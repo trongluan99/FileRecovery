@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -13,41 +14,40 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.os.EnvironmentCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.ads.control.AdmobHelp;
 import com.ads.control.Rate;
-import com.ads.control.funtion.UtilsApp;
-import com.airbnb.lottie.LottieAnimationView;
+import com.lubuteam.sellsource.filerecovery.BuildConfig;
 import com.lubuteam.sellsource.filerecovery.R;
+import com.lubuteam.sellsource.filerecovery.databinding.ActivityMainBinding;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryaudio.Model.AlbumAudio;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryaudio.Model.AudioModel;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.Model.AlbumPhoto;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.Model.AlbumVideo;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.Model.VideoModel;
 import com.lubuteam.sellsource.filerecovery.utilts.Utils;
-import com.google.android.material.navigation.NavigationView;
-import com.romainpiel.shimmer.Shimmer;
 import com.skyfishjy.library.RippleBackground;
 
 import org.apache.commons.io.IOUtils;
@@ -63,83 +63,26 @@ import java.util.concurrent.Callable;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private DrawerLayout mDrawerLayout;
-    Toolbar toolbar;
-    Shimmer shimmer;
-    ImageButton btnScan;
-    TextView tvNumber;
-    LottieAnimationView ivSearch;
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
     public static ArrayList<AlbumPhoto> mAlbumPhoto = new ArrayList<>();
     ScanAsyncTask mScanAsyncTask;
-    RippleBackground rippleBackground;
-    private ArrayList<String> arrPermission;
-    CardView cvImage, cvAudio, cvVideo, cvSetting;
+
+    private PhotoRestoredAdapter photoRestoredAdapter;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        intDrawer();
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
+        setContentView(binding.getRoot());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#66000000"));
+        }
         intView();
-        intData();
         intEvent();
-
-    }
-
-    public void intDrawer() {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.app_name));
-
-        setSupportActionBar(toolbar);
-
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        int id = menuItem.getItemId();
-                        switch (id) {
-//                            case R.id.nav_view_restored_photos:
-//                                Intent intent = new Intent(getApplicationContext(), ViewAudioActivity.class);
-//                                startActivity(intent);
-//                                break;
-                            case R.id.nav_policy:
-                                UtilsApp.OpenBrower(MainActivity.this, getString(R.string.link_policy));
-
-                                break;
-                            case R.id.nav_share:
-                                UtilsApp.shareApp(MainActivity.this);
-
-                                break;
-
-                            case R.id.nav_send:
-                                UtilsApp.SendFeedBack(MainActivity.this, getString(R.string.Title_email), getString(R.string.email_feedback));
-
-                                break;
-                            default:
-                                break;
-                        }
-
-
-                        mDrawerLayout.closeDrawers();
-
-
-                        return true;
-                    }
-                });
-        AdmobHelp.getInstance().loadBanner(this);
-
 
     }
 
@@ -147,36 +90,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             MediaStore.MediaColumns.MIME_TYPE};
 
     public void intView() {
-        btnScan = (ImageButton) findViewById(R.id.btnScan);
-        tvNumber = (TextView) findViewById(R.id.tvNumber);
-        ivSearch = (LottieAnimationView) findViewById(R.id.ivSearch);
-        rippleBackground = (RippleBackground) findViewById(R.id.im_scan_bg);
 
-        cvImage = (CardView) findViewById(R.id.cvImage);
-        cvAudio = (CardView) findViewById(R.id.cvAudio);
-        cvVideo = (CardView) findViewById(R.id.cvVideo);
-        cvSetting = (CardView) findViewById(R.id.cvSetting);
     }
 
-    public void intData() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            intDataImage();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void intDataImage() {
+        String data = getString(R.string.see_all);
+        SpannableString span = new SpannableString(data);
+        ClickableSpan ClickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(true);
+                ds.setColor(Color.parseColor("#EA1763"));
+            }
+        };
+        span.setSpan(
+                ClickableSpan,
+                0,
+                span.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        binding.tvSeeAll.setText(span);
+        binding.tvSeeAll.setMovementMethod(LinkMovementMethod.getInstance());
+
+        File fileDirectory = new File(Utils.getPathSave(this, getString(R.string.restore_folder_path_photo)));
+        if (!fileDirectory.exists()) {
+            fileDirectory.mkdirs();
+        }
+        File[] lstFilePhoto = fileDirectory.listFiles() != null ? fileDirectory.listFiles() : new File[0];
+        binding.tvNumberImage.setText(lstFilePhoto.length + "");
+
+        photoRestoredAdapter = new PhotoRestoredAdapter(lstFilePhoto, file -> {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            Uri photoURI = FileProvider.getUriForFile(this,
+                    BuildConfig.APPLICATION_ID + ".provider",
+                    file);
+            intent.setDataAndType(photoURI, "image/*");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(intent, getString(R.string.view_using)));
+        });
+        binding.rcvPhoto.setAdapter(photoRestoredAdapter);
     }
 
     public void intEvent() {
-        cvImage.setOnClickListener(this);
-        cvAudio.setOnClickListener(this);
-        cvVideo.setOnClickListener(this);
-        cvSetting.setOnClickListener(this);
+        binding.ivImageClick.setOnClickListener(this);
+        binding.ivAudioClick.setOnClickListener(this);
+        binding.ivVideoClick.setOnClickListener(this);
+        binding.ivHisClick.setOnClickListener(this);
+//        cvSetting.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.cvSetting:
-                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivity(intent);
+//            case R.id.cvSetting:
+//                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+//                startActivity(intent);
+//                break;
+            case R.id.iv_his_click:
                 break;
-
-            case R.id.cvImage:
+            case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
                         scanType(0);
@@ -187,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 break;
-            case R.id.cvAudio:
+            case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
                         scanType(2);
@@ -197,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
                 break;
-            case R.id.cvVideo:
+            case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
                         scanType(1);
@@ -252,10 +241,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mAlbumAudio.clear();
             mAlbumPhoto.clear();
             mAlbumVideo.clear();
-            tvNumber.setVisibility(View.VISIBLE);
-            tvNumber.setText(getString(R.string.analyzing));
-            ivSearch.playAnimation();
-            rippleBackground.startRippleAnimation();
             mScanAsyncTask = new ScanAsyncTask(Type);
             mScanAsyncTask.execute();
 
@@ -282,11 +267,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            rippleBackground.stopRippleAnimation();
-            ivSearch.pauseAnimation();
-            ivSearch.setProgress(0);
-            tvNumber.setText("");
-            tvNumber.setVisibility(View.INVISIBLE);
             if (typeScan == 0) {
                 if (mAlbumPhoto.size() == 0) {
                     Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
@@ -322,7 +302,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            tvNumber.setText("Files: " + String.valueOf(values[0]));
         }
 
         @Override

@@ -47,6 +47,14 @@
     <string name="open_file">Open File</string>
     <string name="share_file">Share File</string>
     <string name="restoring_number_format_audio" translatable="false">Restored ... %d files</string>
+    <string name="feature">Feature</string>
+    <string name="image">Image</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="recovery_file">Recovery file</string>
+    <string name="photo_restored">Photo has been restored</string>
+    <string name="see_all">See all</string>
+    <string name="view_using">View using</string>
 
 
 </resources>

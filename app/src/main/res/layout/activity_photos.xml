@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/textsizetoolbar"
-        android:background="@color/colorPrimary"/>
+        app:titleTextAppearance="@style/textsizetoolbar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gv_folder"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
         android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:scrollbarThumbVertical="@drawable/ic_scrollbar"/>
+        android:scrollbarThumbVertical="@drawable/ic_scrollbar"
+        android:scrollbars="vertical" />
+
     <Button
-        android:fontFamily="@font/roboto_regular"
-        android:layout_gravity="center"
-        android:paddingEnd="30dip"
-        android:paddingStart="30dip"
-        android:background="@drawable/bg_btn"
-        android:text="@string/restore_now"
         android:id="@+id/btnRestore"
-        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="5dip"
         android:layout_marginBottom="5dip"
-        android:textColor="@color/white"/>
+        android:background="@drawable/bg_btn"
+        android:clickable="true"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingStart="30dip"
+        android:paddingEnd="30dip"
+        android:text="@string/restore_now"
+        android:textColor="@color/white" />
+
     <View
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#EE000000"/>
+        android:layout_marginTop="5dp"
+        android:background="#EE000000" />
+
     <include
         android:id="@+id/lrAds"
+        layout="@layout/layout_banner_control"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/layout_banner_control">
-    </include>
+        android:layout_height="wrap_content"></include>
 
 
 </LinearLayout>

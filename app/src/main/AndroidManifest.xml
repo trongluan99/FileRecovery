@@ -17,9 +17,10 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="false"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.NoFileActiviy"></activity>
+        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.NoFileActiviy"/>
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.SettingActivity" />
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.MainActivity" />
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.HelpActivity" />

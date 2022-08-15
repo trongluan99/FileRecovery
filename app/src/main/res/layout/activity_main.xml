@@ -20,30 +20,183 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_more"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_more_horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingVertical="@dimen/_20sdp"
         android:overScrollMode="never"
+        android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintBottom_toTopOf="@+id/banner_ads"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_free"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#F0F0F0"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.veeyaar.supergradienttextview.GradientTextView
+                        android:id="@+id/tv_free"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
+                        app:endColor="#0DDF60"
+                        app:isVertical="true"
+                        app:startColor="#4FF6F6" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:text="@string/free"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_used"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#F0F0F0"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:layout_constraintEnd_toStartOf="@+id/card_free"
+                app:layout_constraintTop_toTopOf="@+id/card_free">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.veeyaar.supergradienttextview.GradientTextView
+                        android:id="@+id/tv_used"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
+                        app:endColor="#EF2834"
+                        app:isVertical="true"
+                        app:startColor="#F955C1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:text="@string/used"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_memory"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#F0F0F0"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:layout_constraintEnd_toStartOf="@+id/card_used"
+                app:layout_constraintTop_toTopOf="@+id/card_free">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.veeyaar.supergradienttextview.GradientTextView
+                        android:id="@+id/tv_memory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
+                        app:endColor="#A641F5"
+                        app:isVertical="true"
+                        app:startColor="#EF4CAE" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/_1sdp"
+                        android:text="@string/memory"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_number_function"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/circle_number"
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/card_free" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -245,6 +398,7 @@
                         android:id="@+id/iv_his_click"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackground"
                         app:riv_corner_radius="@dimen/_15sdp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -343,4 +497,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctr_scan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/search" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

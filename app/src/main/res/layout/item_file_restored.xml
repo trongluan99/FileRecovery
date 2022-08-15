@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_item_audio"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#1A000000"
+        app:riv_border_width="0.5dp"
+        app:riv_corner_radius="@dimen/_20sdp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_audio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_audio_item"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/tv_file_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_file_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:ellipsize="middle"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginHorizontal="@dimen/_3sdp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/iv_audio"
+        tools:text="@string/app_name" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_mask"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_view_mask"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/_20sdp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

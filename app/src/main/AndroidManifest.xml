@@ -25,6 +25,7 @@
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.MainActivity" />
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.HelpActivity" />
         <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.RestoreResultActivity" />
+        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.HistoryActivity" />
 
         <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.AlbumPhotoActivity" />
         <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.AlbumVideoActivity" />

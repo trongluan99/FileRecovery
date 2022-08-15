@@ -15,17 +15,24 @@
         <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_audio.xml" value="0.2515" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_history.xml" value="0.2515" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_image.xml" value="0.2515" />
+        <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_item_audio.xml" value="0.2515" />
+        <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_type_history_selected.xml" value="0.2515" />
+        <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_type_history_unselect.xml" value="0.2515" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_video.xml" value="0.2515" />
+        <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_view_mask.xml" value="0.2515" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/bg_xxx.xml" value="0.2515" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/btn_help.xml" value="0.2625" />
         <entry key="..\:/file-recovery/app/src/main/res/drawable/circle_number.xml" value="0.2515" />
+        <entry key="..\:/file-recovery/app/src/main/res/layout/actiivity_history.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/activity_album.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/activity_help.xml" value="0.3546875" />
+        <entry key="..\:/file-recovery/app/src/main/res/layout/activity_history.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/activity_photos.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/activity_splash.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/bar_home_app.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/home_layout.xml" value="0.3546875" />
+        <entry key="..\:/file-recovery/app/src/main/res/layout/item_file_restored.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/item_photo_restored.xml" value="0.3546875" />
         <entry key="..\:/file-recovery/app/src/main/res/layout/test.xml" value="0.3546875" />
       </map>

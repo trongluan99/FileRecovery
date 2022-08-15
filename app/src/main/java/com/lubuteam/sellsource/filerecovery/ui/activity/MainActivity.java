@@ -33,6 +33,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.core.os.EnvironmentCompat;
 
+import com.ads.control.AdmobHelp;
 import com.ads.control.Rate;
 import com.lubuteam.sellsource.filerecovery.BuildConfig;
 import com.lubuteam.sellsource.filerecovery.R;
@@ -47,6 +48,8 @@ import com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.adapter.Ph
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.Model.AlbumVideo;
 import com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.lubuteam.sellsource.filerecovery.utilts.FileUtil;
+import com.lubuteam.sellsource.filerecovery.utilts.TotalMemoryStorageTask;
 import com.lubuteam.sellsource.filerecovery.utilts.Utils;
 import com.skyfishjy.library.RippleBackground;
 
@@ -86,11 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    String[] projection = {MediaStore.MediaColumns.DATA,
-            MediaStore.MediaColumns.MIME_TYPE};
-
     public void intView() {
-
+        AdmobHelp.getInstance().loadBanner(this);
     }
 
     @Override
@@ -98,9 +98,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         try {
             intDataImage();
+            initMemoryData();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void initMemoryData() {
+        new TotalMemoryStorageTask((useMemory, totalMemory) -> {
+            binding.tvMemory.setText(FileUtil.longToSizeText(totalMemory));
+            binding.tvUsed.setText(FileUtil.longToSizeText(useMemory));
+            binding.tvFree.setText(FileUtil.longToSizeText(totalMemory - useMemory));
+        }).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
     }
 
     public void intDataImage() {
@@ -109,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ClickableSpan ClickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
             }
 
             @Override
@@ -153,17 +163,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.ivAudioClick.setOnClickListener(this);
         binding.ivVideoClick.setOnClickListener(this);
         binding.ivHisClick.setOnClickListener(this);
-//        cvSetting.setOnClickListener(this);
+        binding.ivMore.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-//            case R.id.cvSetting:
-//                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.iv_more:
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
             case R.id.iv_his_click:
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
                 break;
             case R.id.iv_image_click:
                 try {
@@ -243,7 +254,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mAlbumVideo.clear();
             mScanAsyncTask = new ScanAsyncTask(Type);
             mScanAsyncTask.execute();
-
         }
     }
 
@@ -262,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         protected void onPreExecute() {
             super.onPreExecute();
             number = 0;
+            binding.ctrScan.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -295,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
             }
-
+            binding.ctrScan.setVisibility(View.GONE);
 
         }
 

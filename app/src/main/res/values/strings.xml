@@ -55,6 +55,13 @@
     <string name="photo_restored">Photo has been restored</string>
     <string name="see_all">See all</string>
     <string name="view_using">View using</string>
+    <string name="all_file">All File</string>
+    <string name="request_delete_all">Do you want delete all %s ?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="memory">Memory</string>
+    <string name="used">Used</string>
+    <string name="free">Free</string>
 
 
 </resources>

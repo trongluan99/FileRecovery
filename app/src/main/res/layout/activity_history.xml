@@ -2,14 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:background="@drawable/bg_toolbar_history"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctr_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_60sdp"
-        android:background="@drawable/bg_toolbar_history"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -49,76 +55,84 @@
             app:layout_constraintStart_toEndOf="@+id/iv_back" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_image"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:background="@drawable/bg_type_history_selected"
-        android:fontFamily="@font/roboto_regular"
-        android:gravity="center"
-        android:text="@string/image"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_audio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_audio"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:background="@drawable/bg_type_history_unselect"
-        android:fontFamily="@font/roboto_regular"
-        android:gravity="center"
-        android:text="@string/audio"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_video"
-        app:layout_constraintStart_toEndOf="@+id/tv_image"
-        app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/tv_image" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_video"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:background="@drawable/bg_type_history_unselect"
-        android:fontFamily="@font/roboto_regular"
-        android:gravity="center"
-        android:text="@string/video"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_audio"
-        app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/tv_image" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_data"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:overScrollMode="never"
-        android:paddingHorizontal="@dimen/_10sdp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:background="@color/white"
+        android:paddingTop="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_image"
-        app:spanCount="3"
-        tools:listitem="@layout/item_file_restored" />
+        app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/view_empty"
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_120sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/empty" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_image"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:background="@drawable/bg_type_history_selected"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@string/image"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_audio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_audio"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/bg_type_history_unselect"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@string/audio"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_video"
+            app:layout_constraintStart_toEndOf="@+id/tv_image"
+            app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar"
+            app:layout_constraintTop_toTopOf="@+id/tv_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_video"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/bg_type_history_unselect"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="@string/video"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_audio"
+            app:layout_constraintTop_toBottomOf="@+id/ctr_toolbar"
+            app:layout_constraintTop_toTopOf="@+id/tv_image" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_data"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/_10sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_image"
+            app:spanCount="3"
+            tools:listitem="@layout/item_file_restored" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/view_empty"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/empty" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

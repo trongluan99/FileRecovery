@@ -25,7 +25,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <com.lubuteam.sellsource.filerecovery.model.SquareImageView
+                <com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView
                     android:scaleType="centerInside"
                     android:src="@drawable/audio"
                     android:layout_width="50dip"

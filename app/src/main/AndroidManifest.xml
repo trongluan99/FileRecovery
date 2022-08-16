@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.lubuteam.sellsource.filerecovery">
+    package="com.jm.filerecovery.videorecovery.photorecovery">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,29 +13,29 @@
         tools:ignore="ScopedStorage" />
 
     <application
-        android:name="com.lubuteam.sellsource.filerecovery.ui.App"
+        android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.App"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="false"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.NoFileActiviy"/>
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.SettingActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.MainActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.HelpActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.RestoreResultActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.ui.activity.HistoryActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.NoFileActiviy"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SettingActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.HelpActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.HistoryActivity" />
 
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.AlbumPhotoActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.AlbumVideoActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryaudio.AlbumAudioActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity" />
 
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryphoto.PhotosActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryaudio.AudioActivity" />
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.VideoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity" />
 
-        <activity android:name="com.lubuteam.sellsource.filerecovery.model.modul.recoveryvideo.FileInfoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -46,7 +46,7 @@
             android:required="false" />
 
         <activity
-            android:name="com.lubuteam.sellsource.filerecovery.ui.activity.SplashActivity"
+            android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity"
             android:theme="@style/Theme_AppCompat_Light_NoActionBar_FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

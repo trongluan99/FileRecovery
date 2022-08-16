@@ -19,12 +19,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.lubuteam.sellsource.filerecovery.model.SquareImageView
+            <com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView
                 android:id="@+id/ivImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"/>
-            <com.lubuteam.sellsource.filerecovery.model.SquareImageView
+            <com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:src="@drawable/ic_play"

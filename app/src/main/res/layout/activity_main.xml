@@ -61,7 +61,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:progressBackgroundColor="#F0F0F0"
-                app:progressStrokeWidth="@dimen/_15sdp"
+                app:progressStrokeWidth="@dimen/_16sdp"
                 app:textColor="@android:color/transparent"
                 app:textSize="@dimen/_15sdp" />
 
@@ -96,8 +96,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/_1sdp"
-                android:text="@string/used"
                 android:singleLine="true"
+                android:text="@string/used"
                 android:textSize="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_percent"
                 app:layout_constraintStart_toStartOf="@+id/tv_percent"
@@ -105,14 +105,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_free"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
+                app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_used"
                 app:layout_constraintTop_toTopOf="@+id/circular_progress">
 
                 <LinearLayout
@@ -152,13 +154,15 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_used"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_free"
+                app:layout_constraintStart_toEndOf="@+id/card_memory"
                 app:layout_constraintTop_toTopOf="@+id/card_free">
 
                 <LinearLayout
@@ -198,13 +202,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_memory"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_used"
+                app:layout_constraintStart_toEndOf="@+id/circular_progress"
                 app:layout_constraintTop_toTopOf="@+id/card_free">
 
                 <LinearLayout

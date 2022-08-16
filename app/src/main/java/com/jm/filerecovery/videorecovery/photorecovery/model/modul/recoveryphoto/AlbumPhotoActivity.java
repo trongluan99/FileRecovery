@@ -21,6 +21,7 @@ import com.ads.control.AdmobHelp;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.AlbumsPhotoAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 
@@ -67,7 +68,7 @@ public class AlbumPhotoActivity extends AppCompatActivity implements AlbumsPhoto
     }
 
     public void intData() {
-        adapter = new AlbumsPhotoAdapter(AlbumPhotoActivity.this, MainActivity.mAlbumPhoto, AlbumPhotoActivity.this);
+        adapter = new AlbumsPhotoAdapter(AlbumPhotoActivity.this, ScanActivity.mAlbumPhoto, AlbumPhotoActivity.this);
         recyclerView.setAdapter(adapter);
     }
 

@@ -27,6 +27,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResult
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.task.RecoverPhotosAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
@@ -76,8 +77,8 @@ public class PhotosActivity extends AppCompatActivity {
 
     public void intData() {
         int_position = getIntent().getIntExtra("value", 0);
-        if (MainActivity.mAlbumPhoto != null && MainActivity.mAlbumPhoto.size() > int_position)
-            mList.addAll((ArrayList<PhotoModel>) MainActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
+        if (ScanActivity.mAlbumPhoto != null && ScanActivity.mAlbumPhoto.size() > int_position)
+            mList.addAll((ArrayList<PhotoModel>) ScanActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
         adapter = new PhotoAdapter(this, mList);
         recyclerView.setAdapter(adapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {

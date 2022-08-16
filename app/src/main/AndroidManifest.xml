@@ -26,6 +26,7 @@
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.HelpActivity" />
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity" />
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.HistoryActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity" />
 
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity" />
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity" />

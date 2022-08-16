@@ -63,6 +63,7 @@
     <string name="used">Used</string>
     <string name="free">Free</string>
     <string name="delete_success">Delete successfully</string>
+    <string name="files">"Files: %d"</string>
 
 
 </resources>

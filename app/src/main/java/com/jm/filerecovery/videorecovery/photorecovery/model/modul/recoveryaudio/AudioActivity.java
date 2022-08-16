@@ -27,6 +27,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResult
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.AudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
@@ -79,8 +80,8 @@ public class AudioActivity extends AppCompatActivity {
 
     public void intData() {
         int_position = getIntent().getIntExtra("value", 0);
-        if (MainActivity.mAlbumAudio != null && MainActivity.mAlbumAudio.size() > int_position)
-            mList.addAll((ArrayList<AudioModel>) MainActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
+        if (ScanActivity.mAlbumAudio != null && ScanActivity.mAlbumAudio.size() > int_position)
+            mList.addAll((ArrayList<AudioModel>) ScanActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
         adapter = new AudioAdapter(this, mList);
         recyclerView.setAdapter(adapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {

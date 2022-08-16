@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -137,6 +138,7 @@ public class HistoryActivity extends AppCompatActivity {
                                 exception.printStackTrace();
                             }
                         }
+                        Toast.makeText(HistoryActivity.this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
                         setTypeDisplay(type);
                         dialog.dismiss();
                     })

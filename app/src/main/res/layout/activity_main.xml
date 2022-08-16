@@ -45,17 +45,75 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_10sdp">
 
+            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+                android:id="@+id/circular_progress"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_110sdp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:direction="clockwise"
+                app:dotColor="@color/color_white"
+                app:dotWidth="@dimen/_9sdp"
+                app:drawDot="true"
+                app:gradientEndColor="#EF4CAE"
+                app:gradientType="linear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:progressBackgroundColor="#F0F0F0"
+                app:progressStrokeWidth="@dimen/_15sdp"
+                app:textColor="@android:color/transparent"
+                app:textSize="@dimen/_15sdp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:src="@drawable/bg_chart"
+                app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
+                app:layout_constraintEnd_toEndOf="@+id/circular_progress"
+                app:layout_constraintStart_toStartOf="@+id/circular_progress"
+                app:layout_constraintTop_toTopOf="@+id/circular_progress" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_percent"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
+                app:layout_constraintEnd_toEndOf="@+id/circular_progress"
+                app:layout_constraintStart_toStartOf="@+id/circular_progress"
+                app:layout_constraintTop_toTopOf="@+id/circular_progress"
+                tools:text="55%" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_1sdp"
+                android:text="@string/used"
+                android:singleLine="true"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_percent"
+                app:layout_constraintStart_toStartOf="@+id/tv_percent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_percent" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_free"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
-                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@+id/circular_progress">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,7 +157,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
-                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintEnd_toStartOf="@+id/card_free"
                 app:layout_constraintTop_toTopOf="@+id/card_free">
 
@@ -145,7 +203,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
-                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintEnd_toStartOf="@+id/card_used"
                 app:layout_constraintTop_toTopOf="@+id/card_free">
 
@@ -196,7 +254,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_free" />
+                app:layout_constraintTop_toBottomOf="@+id/circular_progress" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -498,22 +556,4 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ctr_scan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#66000000"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/search" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

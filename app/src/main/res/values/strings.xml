@@ -62,6 +62,7 @@
     <string name="memory">Memory</string>
     <string name="used">Used</string>
     <string name="free">Free</string>
+    <string name="delete_success">Delete successfully</string>
 
 
 </resources>

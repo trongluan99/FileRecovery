@@ -48,6 +48,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.AlbumVideo;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.ScanDialog;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtil;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTask;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
     public static ArrayList<AlbumPhoto> mAlbumPhoto = new ArrayList<>();
+    private ScanDialog scanDialog;
     ScanAsyncTask mScanAsyncTask;
 
     private PhotoRestoredAdapter photoRestoredAdapter;
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void intView() {
         AdmobHelp.getInstance().loadBanner(this);
+        scanDialog = new ScanDialog();
     }
 
     @Override
@@ -109,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             binding.tvMemory.setText(FileUtil.longToSizeText(totalMemory));
             binding.tvUsed.setText(FileUtil.longToSizeText(useMemory));
             binding.tvFree.setText(FileUtil.longToSizeText(totalMemory - useMemory));
+            int progress = (int) (100.0f * useMemory / totalMemory);
+            binding.circularProgress.setProgress(progress, 100L);
+            binding.tvPercent.setText(progress + "%");
         }).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
@@ -272,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         protected void onPreExecute() {
             super.onPreExecute();
             number = 0;
-            binding.ctrScan.setVisibility(View.VISIBLE);
+            scanDialog.show(getSupportFragmentManager(), ScanDialog.class.getName());
         }
 
         @Override
@@ -306,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
             }
-            binding.ctrScan.setVisibility(View.GONE);
+            scanDialog.dismiss();
 
         }
 
@@ -637,24 +643,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-    }
-
-    private void showNotFoundDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage(getString(R.string.not_found_audio));
-
-        String positiveText = getString(android.R.string.ok);
-        builder.setPositiveButton(positiveText,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        // display dialog
-        dialog.show();
     }
 
     public String[] getExternalStorageDirectories() {

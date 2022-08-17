@@ -45,5 +45,5 @@
     <string name="free">Trống</string>
     <string name="delete_success">Xóa thành công</string>
     <string name="files">"Files : %d"</string>
-
+    <string name="allow_watch_ads">XEM QUẢNG CÁO</string>
 </resources>

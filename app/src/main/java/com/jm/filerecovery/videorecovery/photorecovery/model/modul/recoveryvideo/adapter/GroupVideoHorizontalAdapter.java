@@ -55,11 +55,11 @@ public class GroupVideoHorizontalAdapter extends RecyclerView.Adapter<GroupVideo
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_foldersize.setText(al_menu.get(position).getListPhoto().size()+" Videos");
         ArrayList<VideoEntity> singleSectionItems = al_menu.get(position).getListPhoto();
-        FileVideoGridAdapter itemListDataAdapter = new FileVideoGridAdapter(context, singleSectionItems,position);
+        FileVideoGridAdapter fileVideoGridAdapter = new FileVideoGridAdapter(context, singleSectionItems,position);
 
         holder.recycler_view_list.setHasFixedSize(true);
         holder.recycler_view_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        holder.recycler_view_list.setAdapter(itemListDataAdapter);
+        holder.recycler_view_list.setAdapter(fileVideoGridAdapter);
 
 
 

@@ -33,13 +33,13 @@ public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioH
     }
 
     RecyclerView recyclerView;
-    GroupAudioHorizontalAdapter adapter;
+    GroupAudioHorizontalAdapter groupAudioHorizontalAdapter;
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_album);
+        setContentView(R.layout.activity_group_horizontal);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -67,8 +67,8 @@ public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioH
     }
 
     public void intData() {
-        adapter = new GroupAudioHorizontalAdapter(AlbumAudioActivity.this, ScanFilesActivity.mAlbumAudio, AlbumAudioActivity.this);
-        recyclerView.setAdapter(adapter);
+        groupAudioHorizontalAdapter = new GroupAudioHorizontalAdapter(AlbumAudioActivity.this, ScanFilesActivity.mAlbumAudio, AlbumAudioActivity.this);
+        recyclerView.setAdapter(groupAudioHorizontalAdapter);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

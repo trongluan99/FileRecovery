@@ -16,7 +16,8 @@ import androidx.core.content.FileProvider;
 
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityHistoryBinding;
+import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityFileRecoveredBinding;
+import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityFileRecoveredBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FileRestoredAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -24,14 +25,14 @@ import java.io.File;
 
 public class FileRecoveredActivity extends AppCompatActivity {
 
-    private ActivityHistoryBinding binding;
+    private ActivityFileRecoveredBinding binding;
     private FileRestoredAdapter fileRestoredAdapter;
     private int type = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityHistoryBinding.inflate(LayoutInflater.from(this));
+        binding = ActivityFileRecoveredBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
         ConstraintLayout ctrToolbar = findViewById(R.id.ctr_toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {

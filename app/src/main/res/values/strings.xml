@@ -64,6 +64,9 @@
     <string name="free">Free</string>
     <string name="delete_success">Delete successfully</string>
     <string name="files">"Files: %d"</string>
+    <string name="skip">SKIP</string>
+    <string name="allow_watch_ads">WATCH ADS</string>
+    <string name="watch_ads_confirm_ring">Free download music for offline listening! \n Just watch a short promotional video and you can download music for free.</string>
 
 
 </resources>

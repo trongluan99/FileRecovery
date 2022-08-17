@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.math.BigDecimal;
 
-public final class FileUtil {
+public final class FileUtils {
 
     // By default, Android doesn't provide support for JSON
     public static final String MIME_TYPE_JSON = "application/json";

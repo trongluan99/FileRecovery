@@ -58,9 +58,9 @@ public class GroupPhotoHorizontalAdapter extends RecyclerView.Adapter<GroupPhoto
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         ArrayList<PhotoEntity> singleSectionItems = al_menu.get(position).getListPhoto();
-        FilePhotoGridAdapter itemListDataAdapter = new FilePhotoGridAdapter(context, singleSectionItems, position);
+        FilePhotoGridAdapter filePhotoGridAdapter = new FilePhotoGridAdapter(context, singleSectionItems, position);
         holder.recycler_view_list.setHasFixedSize(true);
-        holder.recycler_view_list.setAdapter(itemListDataAdapter);
+        holder.recycler_view_list.setAdapter(filePhotoGridAdapter);
 
         if (!TextUtils.isEmpty(al_menu.get(position).getStr_folder())) {
             String title = FilenameUtils.getBaseName(al_menu.get(position).getStr_folder());

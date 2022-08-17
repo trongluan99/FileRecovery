@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="@dimen/_24sdp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="lottie_gift.json"
+        app:lottie_loop="true"/>
+
+    <TextView
+        android:id="@+id/first_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:gravity="center"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:text="@string/watch_ads_confirm_ring"
+        android:textColor="@color/colorTextPopup"
+        android:textSize="@dimen/_18sdp"
+        android:lineSpacingExtra="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/_24sdp">
+
+        <Button
+            android:id="@+id/btn_yes"
+            style="@style/style_button_rate_yes_watch_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:text="@string/allow_watch_ads" />
+
+        <Button
+            android:id="@+id/btn_no"
+            style="@style/style_button_rate_skip_watch_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/skip" />
+    </LinearLayout>
+</LinearLayout>

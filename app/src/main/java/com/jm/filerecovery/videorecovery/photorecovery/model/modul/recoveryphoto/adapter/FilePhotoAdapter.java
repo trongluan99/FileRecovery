@@ -24,11 +24,11 @@ import java.util.ArrayList;
 
 public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyViewHolder>{
     Context context;
-    ArrayList<PhotoEntity> listPhoto = new ArrayList<>();
+    ArrayList<PhotoEntity> photoEntities = new ArrayList<>();
     BitmapDrawable placeholder;
     public FilePhotoAdapter(Context context, ArrayList<PhotoEntity> mList) {
         this.context = context;
-        this.listPhoto = mList;
+        this.photoEntities = mList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView  tvDate;
@@ -51,10 +51,10 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final PhotoEntity imageData = listPhoto.get(position);
-        holder.tvDate.setText(DateFormat.getDateInstance().format(imageData.getLastModified()));
-        holder.tvSize.setText(Utils.formatSize(imageData.getSizePhoto()));
-        if(imageData.getIsCheck()){
+        final PhotoEntity photoEntity = photoEntities.get(position);
+        holder.tvDate.setText(DateFormat.getDateInstance().format(photoEntity.getLastModified()));
+        holder.tvSize.setText(Utils.formatSize(photoEntity.getSizePhoto()));
+        if(photoEntity.getIsCheck()){
             holder.ivChecked.setVisibility(View.VISIBLE);
         }else{
             holder.ivChecked.setVisibility(View.GONE);
@@ -62,7 +62,7 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
 
         try {
             Glide.with(context)
-                    .load("file://" + imageData.getPathPhoto())
+                    .load("file://" + photoEntity.getPathPhoto())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .priority(Priority.HIGH)
                     .centerCrop()
@@ -76,12 +76,12 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(imageData.getIsCheck()){
+                if(photoEntity.getIsCheck()){
                     holder.ivChecked.setVisibility(View.GONE);
-                    imageData.setIsCheck(false);
+                    photoEntity.setIsCheck(false);
                 }else {
                     holder.ivChecked.setVisibility(View.VISIBLE);
-                    imageData.setIsCheck(true);
+                    photoEntity.setIsCheck(true);
                 }
             }
         });
@@ -90,14 +90,14 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
     }
     @Override
     public int getItemCount() {
-        return listPhoto.size();
+        return photoEntities.size();
     }
     public ArrayList<PhotoEntity> getSelectedItem() {
         ArrayList<PhotoEntity> arrayList = new ArrayList();
-        if (this.listPhoto != null) {
-            for (int i = 0; i < this.listPhoto.size(); i++) {
-                if ((this.listPhoto.get(i)).getIsCheck()) {
-                    arrayList.add(this.listPhoto.get(i));
+        if (this.photoEntities != null) {
+            for (int i = 0; i < this.photoEntities.size(); i++) {
+                if ((this.photoEntities.get(i)).getIsCheck()) {
+                    arrayList.add(this.photoEntities.get(i));
                 }
             }
         }
@@ -105,10 +105,10 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
     }
 
     public void setAllImagesUnseleted() {
-        if (this.listPhoto != null) {
-            for (int i = 0; i < this.listPhoto.size(); i++) {
-                if ((this.listPhoto.get(i)).getIsCheck()) {
-                    (this.listPhoto.get(i)).setIsCheck(false);
+        if (this.photoEntities != null) {
+            for (int i = 0; i < this.photoEntities.size(); i++) {
+                if ((this.photoEntities.get(i)).getIsCheck()) {
+                    (this.photoEntities.get(i)).setIsCheck(false);
                 }
             }
         }

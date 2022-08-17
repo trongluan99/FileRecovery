@@ -25,7 +25,7 @@ public class RecoverAudioAsyncTask extends AsyncTask<String, Integer, String> {
     private final String TAG = getClass().getName();
     private ArrayList<AudioEntity> listPhoto;
     private Context mContext;
-    private RestoringDialog progressDialog;
+    private RestoringDialog restoringDialog;
     private OnRestoreListener onRestoreListener;
     TextView tvNumber;
     int count = 0;
@@ -38,9 +38,9 @@ public class RecoverAudioAsyncTask extends AsyncTask<String, Integer, String> {
 
     protected void onPreExecute() {
         super.onPreExecute();
-        this.progressDialog = new RestoringDialog(this.mContext);
-        this.progressDialog.setCancelable(false);
-        this.progressDialog.show();
+        this.restoringDialog = new RestoringDialog(this.mContext);
+        this.restoringDialog.setCancelable(false);
+        this.restoringDialog.show();
     }
 
     protected String doInBackground(String... strAr) {
@@ -117,9 +117,9 @@ public class RecoverAudioAsyncTask extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String str) {
         super.onPostExecute(str);
         try {
-            if (this.progressDialog != null&&progressDialog.isShowing()) {
-                this.progressDialog.dismiss();
-                this.progressDialog = null;
+            if (this.restoringDialog != null&& restoringDialog.isShowing()) {
+                this.restoringDialog.dismiss();
+                this.restoringDialog = null;
             }
         }catch (Exception e){
 
@@ -132,7 +132,7 @@ public class RecoverAudioAsyncTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        tvNumber = (TextView)progressDialog.findViewById(R.id.tvNumber);
+        tvNumber = (TextView) restoringDialog.findViewById(R.id.tvNumber);
         tvNumber.setText(String.format(mContext.getString(R.string.restoring_number_format_audio), values[0]));
 
     }

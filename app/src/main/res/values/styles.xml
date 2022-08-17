@@ -103,4 +103,18 @@
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:drawableRight">@drawable/ic_arrow</item>
     </style>
+
+    <style name="style_button_rate_skip_watch_ads">
+        <item name="android:paddingStart">@dimen/_40sdp</item>
+        <item name="android:paddingEnd">@dimen/_40sdp</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="style_button_rate_yes_watch_ads">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_btn_rate_yes_watch_ads</item>
+        <item name="android:paddingStart">@dimen/_40sdp</item>
+        <item name="android:paddingEnd">@dimen/_40sdp</item>
+        <item name="android:textSize">16dp</item>
+    </style>
 </resources>

@@ -38,7 +38,7 @@ import java.util.ArrayList;
 public class VideoActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    FileVideoAdapter adapter;
+    FileVideoAdapter fileVideoAdapter;
     Button btnRestore;
     ArrayList<VideoEntity> mList = new ArrayList<VideoEntity>();
     RecoverVideoAsyncTask mRecoverVideoAsyncTask;
@@ -47,7 +47,7 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photos);
+        setContentView(R.layout.activity_grid_view_files);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -80,24 +80,24 @@ public class VideoActivity extends AppCompatActivity {
         int_position = getIntent().getIntExtra("value", 0);
         if (ScanFilesActivity.mAlbumVideo != null && ScanFilesActivity.mAlbumVideo.size() > int_position)
             mList.addAll((ArrayList<VideoEntity>) ScanFilesActivity.mAlbumVideo.get(int_position).getListPhoto().clone());
-        adapter = new FileVideoAdapter(this, mList);
-        recyclerView.setAdapter(adapter);
+        fileVideoAdapter = new FileVideoAdapter(this, mList);
+        recyclerView.setAdapter(fileVideoAdapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<VideoEntity> tempList = adapter.getSelectedItem();
+                final ArrayList<VideoEntity> tempList = fileVideoAdapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, adapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
+                    mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, fileVideoAdapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
                             intent.putExtra("value", tempList.size());
                             intent.putExtra("type", 1);
                             startActivity(intent);
-                            adapter.setAllImagesUnseleted();
-                            adapter.notifyDataSetChanged();
+                            fileVideoAdapter.setAllImagesUnseleted();
+                            fileVideoAdapter.notifyDataSetChanged();
                         }
                     });
                     mRecoverVideoAsyncTask.execute();

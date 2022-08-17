@@ -5,6 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/test" />
+    <include layout="@layout/layout_home" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

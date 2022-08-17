@@ -32,13 +32,13 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
     }
 
     RecyclerView recyclerView;
-    GroupPhotoHorizontalAdapter adapter;
+    GroupPhotoHorizontalAdapter groupPhotoHorizontalAdapter;
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_album);
+        setContentView(R.layout.activity_group_horizontal);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -66,8 +66,8 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
     }
 
     public void intData() {
-        adapter = new GroupPhotoHorizontalAdapter(AlbumPhotoActivity.this, ScanFilesActivity.mAlbumPhoto, AlbumPhotoActivity.this);
-        recyclerView.setAdapter(adapter);
+        groupPhotoHorizontalAdapter = new GroupPhotoHorizontalAdapter(AlbumPhotoActivity.this, ScanFilesActivity.mAlbumPhoto, AlbumPhotoActivity.this);
+        recyclerView.setAdapter(groupPhotoHorizontalAdapter);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

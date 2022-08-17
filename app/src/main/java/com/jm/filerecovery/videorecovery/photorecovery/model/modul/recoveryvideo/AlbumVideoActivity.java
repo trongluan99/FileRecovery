@@ -33,13 +33,13 @@ public class AlbumVideoActivity extends AppCompatActivity implements GroupVideoH
     }
 
     RecyclerView recyclerView;
-    GroupVideoHorizontalAdapter adapter;
+    GroupVideoHorizontalAdapter groupVideoHorizontalAdapter;
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_album);
+        setContentView(R.layout.activity_group_horizontal);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -67,8 +67,8 @@ public class AlbumVideoActivity extends AppCompatActivity implements GroupVideoH
     }
 
     public void intData() {
-        adapter = new GroupVideoHorizontalAdapter(AlbumVideoActivity.this, ScanFilesActivity.mAlbumVideo, AlbumVideoActivity.this);
-        recyclerView.setAdapter(adapter);
+        groupVideoHorizontalAdapter = new GroupVideoHorizontalAdapter(AlbumVideoActivity.this, ScanFilesActivity.mAlbumVideo, AlbumVideoActivity.this);
+        recyclerView.setAdapter(groupVideoHorizontalAdapter);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

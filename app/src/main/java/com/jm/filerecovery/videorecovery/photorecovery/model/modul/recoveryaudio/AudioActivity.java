@@ -40,7 +40,7 @@ import java.util.ArrayList;
 public class AudioActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    FileAudioAdapter adapter;
+    FileAudioAdapter fileAudioAdapter;
     Button btnRestore;
     ArrayList<AudioEntity> mList = new ArrayList<AudioEntity>();
     RecoverAudioAsyncTask mRecoverPhotosAsyncTask;
@@ -49,7 +49,7 @@ public class AudioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photos);
+        setContentView(R.layout.activity_grid_view_files);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -81,24 +81,24 @@ public class AudioActivity extends AppCompatActivity {
         int_position = getIntent().getIntExtra("value", 0);
         if (ScanFilesActivity.mAlbumAudio != null && ScanFilesActivity.mAlbumAudio.size() > int_position)
             mList.addAll((ArrayList<AudioEntity>) ScanFilesActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
-        adapter = new FileAudioAdapter(this, mList);
-        recyclerView.setAdapter(adapter);
+        fileAudioAdapter = new FileAudioAdapter(this, mList);
+        recyclerView.setAdapter(fileAudioAdapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<AudioEntity> tempList = adapter.getSelectedItem();
+                final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, adapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
+                    mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
                             intent.putExtra("value", tempList.size());
                             intent.putExtra("type", 2);
                             startActivity(intent);
-                            adapter.setAllImagesUnseleted();
-                            adapter.notifyDataSetChanged();
+                            fileAudioAdapter.setAllImagesUnseleted();
+                            fileAudioAdapter.notifyDataSetChanged();
                         }
                     });
                     mRecoverPhotosAsyncTask.execute();

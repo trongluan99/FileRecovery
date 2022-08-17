@@ -58,11 +58,11 @@ public class GroupAudioHorizontalAdapter extends RecyclerView.Adapter<GroupAudio
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_foldersize.setText(al_menu.get(position).getListPhoto().size()+" Audio");
         ArrayList<AudioEntity> singleSectionItems = al_menu.get(position).getListPhoto();
-        FileAudioGridAdapter itemListDataAdapter = new FileAudioGridAdapter(context, singleSectionItems,position);
+        FileAudioGridAdapter fileAudioGridAdapter = new FileAudioGridAdapter(context, singleSectionItems,position);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, 1);
         holder.recycler_view_list.setLayoutManager(mLayoutManager);
         holder.recycler_view_list.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(context,10), true));
-        holder.recycler_view_list.setAdapter(itemListDataAdapter);
+        holder.recycler_view_list.setAdapter(fileAudioGridAdapter);
 
 
 

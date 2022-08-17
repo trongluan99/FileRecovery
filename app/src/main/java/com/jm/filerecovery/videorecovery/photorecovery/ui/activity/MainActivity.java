@@ -33,7 +33,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtil;
+import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTaskUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initMemoryData() {
         new TotalMemoryStorageTaskUtils((useMemory, totalMemory) -> {
-            binding.tvMemory.setText(FileUtil.longToSizeText(totalMemory));
-            binding.tvUsed.setText(FileUtil.longToSizeText(useMemory));
-            binding.tvFree.setText(FileUtil.longToSizeText(totalMemory - useMemory));
+            binding.tvMemory.setText(FileUtils.longToSizeText(totalMemory));
+            binding.tvUsed.setText(FileUtils.longToSizeText(useMemory));
+            binding.tvFree.setText(FileUtils.longToSizeText(totalMemory - useMemory));
             int progress = (int) (100.0f * useMemory / totalMemory);
             binding.circularProgress.setProgress(progress, 100L);
             binding.tvPercent.setText(progress + "%");

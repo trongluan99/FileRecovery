@@ -19,7 +19,8 @@ import androidx.core.os.EnvironmentCompat;
 
 import com.ads.control.AdmobHelp;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanBinding;
+import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
+import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AlbumAudio;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
@@ -48,7 +49,7 @@ public class ScanFilesActivity extends AppCompatActivity {
     public static ArrayList<AlbumPhoto> mAlbumPhoto = new ArrayList<>();
     private ScanAsyncTask mScanAsyncTask;
 
-    private ActivityScanBinding binding;
+    private ActivityScanningBinding binding;
 
     public static void start(Context context, int type) {
         Intent intent = new Intent(context, ScanFilesActivity.class);
@@ -59,7 +60,7 @@ public class ScanFilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityScanBinding.inflate(LayoutInflater.from(this));
+        binding = ActivityScanningBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
 
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
@@ -288,9 +289,9 @@ public class ScanFilesActivity extends AppCompatActivity {
             }
 
             if (listPhoto.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_photo)))) {
-                AlbumPhoto obj_model = new AlbumPhoto();
-                obj_model.setStr_folder(temp);
-                obj_model.setLastModified(new File(temp).lastModified());
+                AlbumPhoto albumPhoto = new AlbumPhoto();
+                albumPhoto.setStr_folder(temp);
+                albumPhoto.setLastModified(new File(temp).lastModified());
                 Collections.sort(listPhoto, new Comparator<PhotoEntity>() {
                     @Override
                     public int compare(PhotoEntity lhs, PhotoEntity rhs) {
@@ -298,8 +299,8 @@ public class ScanFilesActivity extends AppCompatActivity {
                         return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                     }
                 });
-                obj_model.setListPhoto((ArrayList<PhotoEntity>) listPhoto.clone());
-                mAlbumPhoto.add(obj_model);
+                albumPhoto.setListPhoto((ArrayList<PhotoEntity>) listPhoto.clone());
+                mAlbumPhoto.add(albumPhoto);
             }
             listPhoto.clear();
 
@@ -358,9 +359,9 @@ public class ScanFilesActivity extends AppCompatActivity {
                 }
 
                 if (listVideo.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_video)))) {
-                    AlbumVideo obj_model = new AlbumVideo();
-                    obj_model.setStr_folder(temp);
-                    obj_model.setLastModified(new File(temp).lastModified());
+                    AlbumVideo albumVideo = new AlbumVideo();
+                    albumVideo.setStr_folder(temp);
+                    albumVideo.setLastModified(new File(temp).lastModified());
                     Collections.sort(listVideo, new Comparator<VideoEntity>() {
                         @Override
                         public int compare(VideoEntity lhs, VideoEntity rhs) {
@@ -368,8 +369,8 @@ public class ScanFilesActivity extends AppCompatActivity {
                             return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                         }
                     });
-                    obj_model.setListPhoto((ArrayList<VideoEntity>) listVideo.clone());
-                    mAlbumVideo.add(obj_model);
+                    albumVideo.setListPhoto((ArrayList<VideoEntity>) listVideo.clone());
+                    mAlbumVideo.add(albumVideo);
                 }
                 listVideo.clear();
             }
@@ -427,9 +428,9 @@ public class ScanFilesActivity extends AppCompatActivity {
             }
 
             if (listAudio.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_audio)))) {
-                AlbumAudio obj_model = new AlbumAudio();
-                obj_model.setStr_folder(temp);
-                obj_model.setLastModified(new File(temp).lastModified());
+                AlbumAudio albumAudio = new AlbumAudio();
+                albumAudio.setStr_folder(temp);
+                albumAudio.setLastModified(new File(temp).lastModified());
                 Collections.sort(listAudio, new Comparator<AudioEntity>() {
                     @Override
                     public int compare(AudioEntity lhs, AudioEntity rhs) {
@@ -437,8 +438,8 @@ public class ScanFilesActivity extends AppCompatActivity {
                         return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                     }
                 });
-                obj_model.setListPhoto((ArrayList<AudioEntity>) listAudio.clone());
-                mAlbumAudio.add(obj_model);
+                albumAudio.setListPhoto((ArrayList<AudioEntity>) listAudio.clone());
+                mAlbumAudio.add(albumAudio);
             }
             listAudio.clear();
 

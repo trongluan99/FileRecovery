@@ -45,7 +45,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     Button btnOpen,btnShare,btnRestore;
     TextView tvDate,tvSize,tvType;
     ImageView ivVideo;
-    VideoEntity mVideoEntity;
+    VideoEntity videoEntity;
     Toolbar toolbar;
     RecoverOneVideosAsyncTask mRecoverOneVideosAsyncTask;
     SharedPreferences sharedPreferences;
@@ -84,13 +84,13 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     }
     public void intData(){
         Intent i = getIntent();
-        mVideoEntity = (VideoEntity)i.getSerializableExtra("ojectVideo");
-        tvDate.setText(DateFormat.getDateInstance().format(mVideoEntity.getLastModified())+"  "+ mVideoEntity.getTimeDuration());
-        tvSize.setText(Utils.formatSize(mVideoEntity.getSizePhoto()));
-        tvType.setText(mVideoEntity.getTypeFile());
+        videoEntity = (VideoEntity)i.getSerializableExtra("ojectVideo");
+        tvDate.setText(DateFormat.getDateInstance().format(videoEntity.getLastModified())+"  "+ videoEntity.getTimeDuration());
+        tvSize.setText(Utils.formatSize(videoEntity.getSizePhoto()));
+        tvType.setText(videoEntity.getTypeFile());
 
         Glide.with(this)
-                .load("file://" + mVideoEntity.getPathPhoto())
+                .load("file://" + videoEntity.getPathPhoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .centerCrop()
@@ -112,14 +112,14 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
 
         switch (view.getId()){
             case R.id.btnOpen:
-                openFile(mVideoEntity.getPathPhoto());
+                openFile(videoEntity.getPathPhoto());
                 break;
             case R.id.btnShare:
-                shareVideo(mVideoEntity.getPathPhoto());
+                shareVideo(videoEntity.getPathPhoto());
                 break;
             case R.id.btnRestore:
               //  showDalogConfirmRestore();
-                mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
+                mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, videoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
                     @Override
                     public void onComplete() {
                         Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
@@ -132,7 +132,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                 mRecoverOneVideosAsyncTask.execute();
                 break;
             case R.id.ivVideo:
-                openFile(mVideoEntity.getPathPhoto());
+                openFile(videoEntity.getPathPhoto());
                 break;
                 default:
                     break;
@@ -256,7 +256,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
             if (editor.commit()) {
                 editor.apply();
                 if (f) {
-                    mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
+                    mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, videoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);

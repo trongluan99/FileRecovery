@@ -26,11 +26,11 @@ import java.util.ArrayList;
 
 public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyViewHolder>{
     Context context;
-    ArrayList<AudioEntity> listPhoto = new ArrayList<>();
+    ArrayList<AudioEntity> audioEntities = new ArrayList<>();
     BitmapDrawable placeholder;
     public FileAudioAdapter(Context context, ArrayList<AudioEntity> mList) {
         this.context = context;
-        this.listPhoto = mList;
+        this.audioEntities = mList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         protected AppCompatCheckBox ivChecked;
@@ -54,23 +54,23 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final AudioEntity imageData = listPhoto.get(position);
-        holder.tvDate.setText(DateFormat.getDateInstance().format(imageData.getLastModified()));
-        holder.tvSize.setText(Utils.formatSize(imageData.getSizePhoto()));
-        holder.tvTitle.setText(Utils.getFileTitle(imageData.getPathPhoto()));
-        holder.ivChecked.setChecked(imageData.getIsCheck());
+        final AudioEntity audioEntity = audioEntities.get(position);
+        holder.tvDate.setText(DateFormat.getDateInstance().format(audioEntity.getLastModified()));
+        holder.tvSize.setText(Utils.formatSize(audioEntity.getSizePhoto()));
+        holder.tvTitle.setText(Utils.getFileTitle(audioEntity.getPathPhoto()));
+        holder.ivChecked.setChecked(audioEntity.getIsCheck());
 
 
 
         holder.ivChecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(imageData.getIsCheck()){
+                if(audioEntity.getIsCheck()){
                     holder.ivChecked.setChecked(false);
-                    imageData.setIsCheck(false);
+                    audioEntity.setIsCheck(false);
                 }else {
                     holder.ivChecked.setChecked(true);
-                    imageData.setIsCheck(true);
+                    audioEntity.setIsCheck(true);
                 }
             }
         });
@@ -78,7 +78,7 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
             @Override
             public void onClick(View view) {
                 try {
-                    openFile(new File(imageData.getPathPhoto()));
+                    openFile(new File(audioEntity.getPathPhoto()));
                 }catch (Exception e){
 
                 }
@@ -89,14 +89,14 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
     }
     @Override
     public int getItemCount() {
-        return listPhoto.size();
+        return audioEntities.size();
     }
     public ArrayList<AudioEntity> getSelectedItem() {
         ArrayList<AudioEntity> arrayList = new ArrayList();
-        if (this.listPhoto != null) {
-            for (int i = 0; i < this.listPhoto.size(); i++) {
-                if ((this.listPhoto.get(i)).getIsCheck()) {
-                    arrayList.add(this.listPhoto.get(i));
+        if (this.audioEntities != null) {
+            for (int i = 0; i < this.audioEntities.size(); i++) {
+                if ((this.audioEntities.get(i)).getIsCheck()) {
+                    arrayList.add(this.audioEntities.get(i));
                 }
             }
         }
@@ -104,10 +104,10 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
     }
 
     public void setAllImagesUnseleted() {
-        if (this.listPhoto != null) {
-            for (int i = 0; i < this.listPhoto.size(); i++) {
-                if ((this.listPhoto.get(i)).getIsCheck()) {
-                    (this.listPhoto.get(i)).setIsCheck(false);
+        if (this.audioEntities != null) {
+            for (int i = 0; i < this.audioEntities.size(); i++) {
+                if ((this.audioEntities.get(i)).getIsCheck()) {
+                    (this.audioEntities.get(i)).setIsCheck(false);
                 }
             }
         }

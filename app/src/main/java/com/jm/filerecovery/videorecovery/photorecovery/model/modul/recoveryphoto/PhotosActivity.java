@@ -36,7 +36,7 @@ import java.util.ArrayList;
 public class PhotosActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    FilePhotoAdapter adapter;
+    FilePhotoAdapter filePhotoAdapter;
     Button btnRestore;
     ArrayList<PhotoEntity> mList = new ArrayList<PhotoEntity>();
     RecoverPhotosAsyncTask mRecoverPhotosAsyncTask;
@@ -45,7 +45,7 @@ public class PhotosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_photos);
+        setContentView(R.layout.activity_grid_view_files);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -78,24 +78,24 @@ public class PhotosActivity extends AppCompatActivity {
         int_position = getIntent().getIntExtra("value", 0);
         if (ScanFilesActivity.mAlbumPhoto != null && ScanFilesActivity.mAlbumPhoto.size() > int_position)
             mList.addAll((ArrayList<PhotoEntity>) ScanFilesActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
-        adapter = new FilePhotoAdapter(this, mList);
-        recyclerView.setAdapter(adapter);
+        filePhotoAdapter = new FilePhotoAdapter(this, mList);
+        recyclerView.setAdapter(filePhotoAdapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<PhotoEntity> tempList = adapter.getSelectedItem();
+                final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, adapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
+                    mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
                             intent.putExtra("value", tempList.size());
                             intent.putExtra("type", 0);
                             startActivity(intent);
-                            adapter.setAllImagesUnseleted();
-                            adapter.notifyDataSetChanged();
+                            filePhotoAdapter.setAllImagesUnseleted();
+                            filePhotoAdapter.notifyDataSetChanged();
                         }
                     });
                     mRecoverPhotosAsyncTask.execute();

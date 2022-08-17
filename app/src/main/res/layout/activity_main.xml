@@ -23,7 +23,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/app_name"
         android:textColor="#000"
-        android:textSize="@dimen/_17sdp"
+        android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +31,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_more"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="@dimen/_5sdp"
-        android:src="@drawable/ic_more_horizontal"
+        android:padding="@dimen/_8sdp"
+        android:src="@drawable/ic_settings_48"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_title" />
@@ -90,7 +90,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
                 app:layout_constraintEnd_toEndOf="@+id/circular_progress"
@@ -115,8 +115,8 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_free"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
@@ -130,6 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="@dimen/_12sdp"
                     android:orientation="vertical">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
@@ -139,6 +140,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center"
+                        android:padding="@dimen/_2sdp"
                         android:paddingHorizontal="@dimen/_1sdp"
                         android:singleLine="true"
                         android:text=""
@@ -164,20 +166,21 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_used"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_height="wrap_content"
                 android:elevation="0dp"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_free"
                 app:layout_constraintStart_toEndOf="@+id/card_memory"
-                app:layout_constraintTop_toTopOf="@+id/card_free">
+                app:layout_constraintTop_toTopOf="@+id/card_free"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="@dimen/_12sdp"
                     android:orientation="vertical">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
@@ -187,6 +190,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center"
+                        android:padding="@dimen/_2sdp"
                         android:paddingHorizontal="@dimen/_1sdp"
                         android:singleLine="true"
                         android:text=""
@@ -212,7 +216,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_memory"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
@@ -221,12 +225,14 @@
                 app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_used"
                 app:layout_constraintStart_toEndOf="@+id/circular_progress"
-                app:layout_constraintTop_toTopOf="@+id/card_free">
+                app:layout_constraintTop_toTopOf="@+id/card_free"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="@dimen/_12sdp"
                     android:orientation="vertical">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
@@ -236,6 +242,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center"
+                        android:padding="@dimen/_2sdp"
                         android:paddingHorizontal="@dimen/_1sdp"
                         android:singleLine="true"
                         android:text=""
@@ -267,23 +274,26 @@
                 android:background="@drawable/circle_number"
                 android:gravity="center"
                 android:text="4"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circular_progress" />
+                app:layout_constraintTop_toBottomOf="@+id/circular_progress"
+               />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_function"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/feature"
                 android:textColor="#000"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_number_function"
-                app:layout_constraintStart_toEndOf="@+id/tv_number_function"
-                app:layout_constraintTop_toTopOf="@+id/tv_number_function" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circular_progress" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/ctr_image"
@@ -294,8 +304,8 @@
                 app:cardCornerRadius="@dimen/_22sdp"
                 app:layout_constraintDimensionRatio="W,1:1"
                 app:layout_constraintEnd_toStartOf="@+id/ctr_video"
-                app:layout_constraintStart_toStartOf="@+id/tv_number_function"
-                app:layout_constraintTop_toBottomOf="@+id/tv_number_function">
+                app:layout_constraintStart_toStartOf="@+id/tv_function"
+                app:layout_constraintTop_toBottomOf="@+id/tv_function">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -322,7 +332,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.4" />
+                        app:layout_constraintWidth_percent="0.55" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_image"
@@ -332,7 +342,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/image"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_13sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -378,7 +388,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.4" />
+                        app:layout_constraintWidth_percent="0.55" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_video"
@@ -388,7 +398,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/video"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_13sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -433,7 +443,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.4" />
+                        app:layout_constraintWidth_percent="0.55" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_audio"
@@ -443,7 +453,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/audio"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_13sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -488,7 +498,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.4" />
+                        app:layout_constraintWidth_percent="0.55" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_his"
@@ -498,7 +508,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/recovery_file"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_13sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -521,22 +531,24 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ctr_audio" />
+                app:layout_constraintTop_toBottomOf="@+id/ctr_audio"
+                android:visibility="gone"/>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/photo_restored"
                 android:textColor="#000"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_number_image"
                 app:layout_constraintEnd_toStartOf="@+id/tv_see_all"
-                app:layout_constraintStart_toEndOf="@+id/tv_number_image"
-                app:layout_constraintTop_toTopOf="@+id/tv_number_image" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctr_audio" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_see_all"
@@ -545,9 +557,10 @@
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:text="@string/see_all"
                 android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_number_image"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_number_image" />
+                app:layout_constraintTop_toTopOf="@+id/tv_title_image" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_photo"
@@ -558,7 +571,7 @@
                 android:orientation="horizontal"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_number_image"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_image"
                 app:spanCount="1"
                 tools:listitem="@layout/item_photo_restored" />
 

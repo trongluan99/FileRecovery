@@ -9,8 +9,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -25,7 +31,7 @@ public class HelpActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
-
+    ActivityResultLauncher<Intent> mGetPermission;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,17 @@ public class HelpActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#66000000"));
         }
+        mGetPermission = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    if (Environment.isExternalStorageManager()) {
+                        startActivity(new Intent(HelpActivity.this, MainActivity.class));
+                        finish();
+                    }
+                }
+            }
+        });
     }
 
     public void onStartClick(View view) {
@@ -93,15 +110,18 @@ public class HelpActivity extends AppCompatActivity {
                     Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
                     intent.addCategory("android.intent.category.DEFAULT");
                     intent.setData(Uri.parse(String.format("package:%s", getApplicationContext().getPackageName())));
-                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
+                    mGetPermission.launch(intent);
+//                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
                 } catch (Exception e) {
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
+                    mGetPermission.launch(intent);
+//                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
                 }
             }
         } else {
             askPermissionStorage(callable);
         }
     }
+
 }

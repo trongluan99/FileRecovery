@@ -75,12 +75,12 @@ public final class FileUtil {
             return size + " Bytes";
         }
         if (d1 < 1024.0) {
-            return new BigDecimal(d1).setScale(2, 4).toString() + " KB";
+            return new BigDecimal(d1).setScale(1, 4).toString() + " KB";
         }
         if (d2 < 1024.0) {
-            return new BigDecimal(d2).setScale(2, 4).toString() + " MB";
+            return new BigDecimal(d2).setScale(1, 4).toString() + " MB";
         } else {
-            return new BigDecimal(d3).setScale(2, 4).toString() + " GB";
+            return new BigDecimal(d3).setScale(1, 4).toString() + " GB";
         }
     }
 }

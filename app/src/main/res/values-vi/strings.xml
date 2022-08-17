@@ -1,5 +1,5 @@
 <resources>
-
+    <string name="app_name">Khôi Phục Ảnh &amp; Video</string>
     <string name="rating">Xếp hạng</string>
     <string name="share">Chia sẻ với bạn bè</string>
     <string name="policy">CHÍNH SÁCH BẢO MẬT</string>
@@ -27,5 +27,23 @@
     <string name="open_file">Mở File</string>
     <string name="share_file">Chia sẻ File</string>
 
+    <string name="restoring_number_format_audio" translatable="false">Đang khôi phục ... %d files</string>
+    <string name="feature">Tính năng</string>
+    <string name="image">Ảnh</string>
+    <string name="video">Video</string>
+    <string name="audio">Âm thanh</string>
+    <string name="recovery_file">Tệp Đã Khôi Phục</string>
+    <string name="photo_restored">Ảnh đã được khôi phục</string>
+    <string name="see_all">Xem tất cả</string>
+    <string name="view_using">View using</string>
+    <string name="all_file">Tất Cả Tệp Tin</string>
+    <string name="request_delete_all">Bạn có muốn xóa tất cả %s ?</string>
+    <string name="cancel">Hủy</string>
+    <string name="ok">Ok</string>
+    <string name="memory">Bộ nhớ</string>
+    <string name="used">Đã dùng</string>
+    <string name="free">Trống</string>
+    <string name="delete_success">Xóa thành công</string>
+    <string name="files">"Files : %d"</string>
 
 </resources>

@@ -15,9 +15,9 @@
     <string name="scan_tip">The App help you recover deleted photos.\nThe App will show all the images(Deleted and Not Deleted). Just Keep looking and you will find photos you are looking for.\nPlease be patient and wait until it scans all folders and files.</string>
     <string name="how_to_work">How it works?</string>
     <string name="restore">Restore</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
+    <string name="restore_folder_path_photo" translatable="false">Restored_Photos</string>
+    <string name="restore_folder_path_video" translatable="false">Restored_Videos</string>
+    <string name="restore_folder_path_audio" translatable="false">Restored_Audios</string>
     <string name="view_restored_photos">View Restored Photos</string>
     <string name="setting">Settings</string>
     <string name="scan_wait">Please wait while scanning files...</string>
@@ -51,7 +51,7 @@
     <string name="image">Image</string>
     <string name="video">Video</string>
     <string name="audio">Audio</string>
-    <string name="recovery_file">Recovery file</string>
+    <string name="recovery_file">File Restored</string>
     <string name="photo_restored">Photo has been restored</string>
     <string name="see_all">See all</string>
     <string name="view_using">View using</string>

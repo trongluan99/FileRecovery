@@ -12,8 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
@@ -22,14 +21,14 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
-public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder> {
+public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdapter.SingleItemRowHolder> {
 
-    private ArrayList<PhotoModel> itemsList;
+    private ArrayList<PhotoEntity> itemsList;
     private Context mContext;
     int size;
     int postion;
 
-    public SectionListDataAdapter(Context context, ArrayList<PhotoModel> itemsList, int mPostion) {
+    public FilePhotoGridAdapter(Context context, ArrayList<PhotoEntity> itemsList, int mPostion) {
         this.itemsList = itemsList;
         this.mContext = context;
         postion = mPostion;
@@ -51,7 +50,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
 
-        PhotoModel singleItem = itemsList.get(i);
+        PhotoEntity singleItem = itemsList.get(i);
 
         try {
             Glide.with(mContext)

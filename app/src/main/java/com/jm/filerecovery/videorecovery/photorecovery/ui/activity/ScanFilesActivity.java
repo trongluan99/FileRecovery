@@ -22,14 +22,13 @@ import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AlbumAudio;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.AlbumPhoto;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.AlbumVideo;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.ScanDialog;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import org.apache.commons.io.IOUtils;
@@ -42,7 +41,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ScanActivity extends AppCompatActivity {
+public class ScanFilesActivity extends AppCompatActivity {
 
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
@@ -52,7 +51,7 @@ public class ScanActivity extends AppCompatActivity {
     private ActivityScanBinding binding;
 
     public static void start(Context context, int type) {
-        Intent intent = new Intent(context, ScanActivity.class);
+        Intent intent = new Intent(context, ScanFilesActivity.class);
         intent.putExtra("type", type);
         context.startActivity(intent);
     }
@@ -108,7 +107,7 @@ public class ScanActivity extends AppCompatActivity {
             fileDirectoryPhoto.mkdirs();
         }
         if (this.mScanAsyncTask != null && this.mScanAsyncTask.getStatus() == AsyncTask.Status.RUNNING) {
-            Toast.makeText(ScanActivity.this, getString(R.string.scan_wait), Toast.LENGTH_LONG).show();
+            Toast.makeText(ScanFilesActivity.this, getString(R.string.scan_wait), Toast.LENGTH_LONG).show();
         } else {
             mAlbumAudio.clear();
             mAlbumPhoto.clear();
@@ -121,9 +120,9 @@ public class ScanActivity extends AppCompatActivity {
 
     public class ScanAsyncTask extends AsyncTask<Void, Integer, Void> {
         int typeScan = 0;
-        ArrayList<PhotoModel> listPhoto = new ArrayList<>();
-        ArrayList<VideoModel> listVideo = new ArrayList<>();
-        ArrayList<AudioModel> listAudio = new ArrayList<>();
+        ArrayList<PhotoEntity> listPhoto = new ArrayList<>();
+        ArrayList<VideoEntity> listVideo = new ArrayList<>();
+        ArrayList<AudioEntity> listAudio = new ArrayList<>();
         int number = 0;
 
         public ScanAsyncTask(int type) {
@@ -266,7 +265,7 @@ public class ScanActivity extends AppCompatActivity {
                             File file = new File(fileArr[i].getPath());
                             int file_size = Integer.parseInt(String.valueOf(file.length()));
                             if (file_size > 10000) {
-                                listPhoto.add(new PhotoModel(fileArr[i].getPath(), file.lastModified(), file_size));
+                                listPhoto.add(new PhotoEntity(fileArr[i].getPath(), file.lastModified(), file_size));
                                 number = number + 1;
                                 publishProgress(number);
 
@@ -276,7 +275,7 @@ public class ScanActivity extends AppCompatActivity {
                             File file = new File(fileArr[i].getPath());
                             int file_size = Integer.parseInt(String.valueOf(file.length()));
                             if (file_size > 50000) {
-                                listPhoto.add(new PhotoModel(fileArr[i].getPath(), file.lastModified(), file_size));
+                                listPhoto.add(new PhotoEntity(fileArr[i].getPath(), file.lastModified(), file_size));
                                 number = number + 1;
                                 publishProgress(number);
 
@@ -288,18 +287,18 @@ public class ScanActivity extends AppCompatActivity {
                 }
             }
 
-            if (listPhoto.size() != 0 && !temp.contains(Utils.getPathSave(ScanActivity.this, getString(R.string.restore_folder_path_photo)))) {
+            if (listPhoto.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_photo)))) {
                 AlbumPhoto obj_model = new AlbumPhoto();
                 obj_model.setStr_folder(temp);
                 obj_model.setLastModified(new File(temp).lastModified());
-                Collections.sort(listPhoto, new Comparator<PhotoModel>() {
+                Collections.sort(listPhoto, new Comparator<PhotoEntity>() {
                     @Override
-                    public int compare(PhotoModel lhs, PhotoModel rhs) {
+                    public int compare(PhotoEntity lhs, PhotoEntity rhs) {
 
                         return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                     }
                 });
-                obj_model.setListPhoto((ArrayList<PhotoModel>) listPhoto.clone());
+                obj_model.setListPhoto((ArrayList<PhotoEntity>) listPhoto.clone());
                 mAlbumPhoto.add(obj_model);
             }
             listPhoto.clear();
@@ -348,7 +347,7 @@ public class ScanActivity extends AppCompatActivity {
                             } catch (Exception e) {
 
                             }
-                            listVideo.add(new VideoModel(fileArr[i].getPath(), file.lastModified(), file.length(), type, Utils.convertDuration(duration)));
+                            listVideo.add(new VideoEntity(fileArr[i].getPath(), file.lastModified(), file.length(), type, Utils.convertDuration(duration)));
                             number = number + 1;
                             publishProgress(number);
 
@@ -358,18 +357,18 @@ public class ScanActivity extends AppCompatActivity {
                     }
                 }
 
-                if (listVideo.size() != 0 && !temp.contains(Utils.getPathSave(ScanActivity.this, getString(R.string.restore_folder_path_video)))) {
+                if (listVideo.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_video)))) {
                     AlbumVideo obj_model = new AlbumVideo();
                     obj_model.setStr_folder(temp);
                     obj_model.setLastModified(new File(temp).lastModified());
-                    Collections.sort(listVideo, new Comparator<VideoModel>() {
+                    Collections.sort(listVideo, new Comparator<VideoEntity>() {
                         @Override
-                        public int compare(VideoModel lhs, VideoModel rhs) {
+                        public int compare(VideoEntity lhs, VideoEntity rhs) {
 
                             return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                         }
                     });
-                    obj_model.setListPhoto((ArrayList<VideoModel>) listVideo.clone());
+                    obj_model.setListPhoto((ArrayList<VideoEntity>) listVideo.clone());
                     mAlbumVideo.add(obj_model);
                 }
                 listVideo.clear();
@@ -415,7 +414,7 @@ public class ScanActivity extends AppCompatActivity {
                         File file = new File(fileArr[i].getPath());
                         int file_size = Integer.parseInt(String.valueOf(file.length()));
                         if (file_size > 10000) {
-                            listAudio.add(new AudioModel(fileArr[i].getPath(), file.lastModified(), file_size));
+                            listAudio.add(new AudioEntity(fileArr[i].getPath(), file.lastModified(), file_size));
                             number = number + 1;
                             publishProgress(number);
 
@@ -427,18 +426,18 @@ public class ScanActivity extends AppCompatActivity {
                 }
             }
 
-            if (listAudio.size() != 0 && !temp.contains(Utils.getPathSave(ScanActivity.this, getString(R.string.restore_folder_path_audio)))) {
+            if (listAudio.size() != 0 && !temp.contains(Utils.getPathSave(ScanFilesActivity.this, getString(R.string.restore_folder_path_audio)))) {
                 AlbumAudio obj_model = new AlbumAudio();
                 obj_model.setStr_folder(temp);
                 obj_model.setLastModified(new File(temp).lastModified());
-                Collections.sort(listAudio, new Comparator<AudioModel>() {
+                Collections.sort(listAudio, new Comparator<AudioEntity>() {
                     @Override
-                    public int compare(AudioModel lhs, AudioModel rhs) {
+                    public int compare(AudioEntity lhs, AudioEntity rhs) {
 
                         return Long.valueOf(rhs.getLastModified()).compareTo(lhs.getLastModified());
                     }
                 });
-                obj_model.setListPhoto((ArrayList<AudioModel>) listAudio.clone());
+                obj_model.setListPhoto((ArrayList<AudioEntity>) listAudio.clone());
                 mAlbumAudio.add(obj_model);
             }
             listAudio.clear();
@@ -530,7 +529,7 @@ public class ScanActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (this.mScanAsyncTask != null && this.mScanAsyncTask.getStatus() == AsyncTask.Status.RUNNING) {
-            Toast.makeText(ScanActivity.this, getString(R.string.scan_wait), Toast.LENGTH_LONG).show();
+            Toast.makeText(ScanFilesActivity.this, getString(R.string.scan_wait), Toast.LENGTH_LONG).show();
         } else {
             super.onBackPressed();
         }

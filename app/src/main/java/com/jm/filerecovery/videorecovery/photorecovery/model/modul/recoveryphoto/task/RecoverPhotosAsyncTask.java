@@ -7,9 +7,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.widget.TextView;
 
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.LoadingDialog;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoringDialog;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.MediaScanner;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -22,14 +22,14 @@ import java.util.ArrayList;
 
 public class RecoverPhotosAsyncTask extends AsyncTask<String, Integer, String> {
     private final String TAG = getClass().getName();
-    private ArrayList<PhotoModel> listPhoto;
+    private ArrayList<PhotoEntity> listPhoto;
     private Context mContext;
-    private LoadingDialog progressDialog;
+    private RestoringDialog progressDialog;
     private OnRestoreListener onRestoreListener;
     TextView tvNumber;
     int count = 0;
 
-    public RecoverPhotosAsyncTask(Context context, ArrayList<PhotoModel> mList, OnRestoreListener mOnRestoreListener) {
+    public RecoverPhotosAsyncTask(Context context, ArrayList<PhotoEntity> mList, OnRestoreListener mOnRestoreListener) {
         this.mContext = context;
         this.listPhoto = mList;
         this.onRestoreListener = mOnRestoreListener;
@@ -37,7 +37,7 @@ public class RecoverPhotosAsyncTask extends AsyncTask<String, Integer, String> {
 
     protected void onPreExecute() {
         super.onPreExecute();
-        this.progressDialog = new LoadingDialog(this.mContext);
+        this.progressDialog = new RestoringDialog(this.mContext);
         this.progressDialog.setCancelable(false);
         this.progressDialog.show();
     }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AlbumPhoto {
     String str_folder;
-    ArrayList<PhotoModel> listPhoto;
+    ArrayList<PhotoEntity> listPhoto;
     long lastModified;
 
     public long getLastModified(){
@@ -21,11 +21,11 @@ public class AlbumPhoto {
         this.str_folder = str_folder;
     }
 
-    public ArrayList<PhotoModel> getListPhoto() {
+    public ArrayList<PhotoEntity> getListPhoto() {
         return listPhoto;
     }
 
-    public void setListPhoto(ArrayList<PhotoModel> mList) {
+    public void setListPhoto(ArrayList<PhotoEntity> mList) {
         this.listPhoto = mList;
     }
 }

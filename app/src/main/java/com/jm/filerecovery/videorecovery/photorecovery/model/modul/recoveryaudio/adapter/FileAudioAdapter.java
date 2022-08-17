@@ -17,18 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.util.ArrayList;
 
-public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.MyViewHolder>{
+public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyViewHolder>{
     Context context;
-    ArrayList<AudioModel> listPhoto = new ArrayList<>();
+    ArrayList<AudioEntity> listPhoto = new ArrayList<>();
     BitmapDrawable placeholder;
-    public AudioAdapter(Context context, ArrayList<AudioModel> mList) {
+    public FileAudioAdapter(Context context, ArrayList<AudioEntity> mList) {
         this.context = context;
         this.listPhoto = mList;
     }
@@ -54,7 +54,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.MyViewHolder
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final AudioModel imageData = listPhoto.get(position);
+        final AudioEntity imageData = listPhoto.get(position);
         holder.tvDate.setText(DateFormat.getDateInstance().format(imageData.getLastModified()));
         holder.tvSize.setText(Utils.formatSize(imageData.getSizePhoto()));
         holder.tvTitle.setText(Utils.getFileTitle(imageData.getPathPhoto()));
@@ -91,8 +91,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.MyViewHolder
     public int getItemCount() {
         return listPhoto.size();
     }
-    public ArrayList<AudioModel> getSelectedItem() {
-        ArrayList<AudioModel> arrayList = new ArrayList();
+    public ArrayList<AudioEntity> getSelectedItem() {
+        ArrayList<AudioEntity> arrayList = new ArrayList();
         if (this.listPhoto != null) {
             for (int i = 0; i < this.listPhoto.size(); i++) {
                 if ((this.listPhoto.get(i)).getIsCheck()) {

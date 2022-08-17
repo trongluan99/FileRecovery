@@ -13,18 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.util.ArrayList;
 
-public class SectionListAudioAdapter extends RecyclerView.Adapter<SectionListAudioAdapter.SingleItemRowHolder> {
+public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdapter.SingleItemRowHolder> {
 
-    private ArrayList<AudioModel> itemsList;
+    private ArrayList<AudioEntity> itemsList;
     private Context mContext;
     int size;
     int postion;
-    public SectionListAudioAdapter(Context context, ArrayList<AudioModel> itemsList, int mPostion) {
+    public FileAudioGridAdapter(Context context, ArrayList<AudioEntity> itemsList, int mPostion) {
         this.itemsList = itemsList;
         this.mContext = context;
         postion = mPostion;
@@ -45,7 +45,7 @@ public class SectionListAudioAdapter extends RecyclerView.Adapter<SectionListAud
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
 
-        AudioModel singleItem = itemsList.get(i);
+        AudioEntity singleItem = itemsList.get(i);
         holder.tvTitle.setText(Utils.getFileTitle(singleItem.getPathPhoto()));
         holder.album_card.setOnClickListener(new View.OnClickListener() {
             @Override

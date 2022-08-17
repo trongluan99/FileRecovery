@@ -18,14 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.AlbumsAudioAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.GroupAudioHorizontalAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 
-public class AlbumAudioActivity extends AppCompatActivity implements AlbumsAudioAdapter.OnClickItemListener {
+public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
         Intent intent = new Intent(getApplicationContext(), AudioActivity.class);
@@ -34,7 +33,7 @@ public class AlbumAudioActivity extends AppCompatActivity implements AlbumsAudio
     }
 
     RecyclerView recyclerView;
-    AlbumsAudioAdapter adapter;
+    GroupAudioHorizontalAdapter adapter;
     Toolbar toolbar;
 
     @Override
@@ -68,7 +67,7 @@ public class AlbumAudioActivity extends AppCompatActivity implements AlbumsAudio
     }
 
     public void intData() {
-        adapter = new AlbumsAudioAdapter(AlbumAudioActivity.this, ScanActivity.mAlbumAudio, AlbumAudioActivity.this);
+        adapter = new GroupAudioHorizontalAdapter(AlbumAudioActivity.this, ScanFilesActivity.mAlbumAudio, AlbumAudioActivity.this);
         recyclerView.setAdapter(adapter);
     }
 

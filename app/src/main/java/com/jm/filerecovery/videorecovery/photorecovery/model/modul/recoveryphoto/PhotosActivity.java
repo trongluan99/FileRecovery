@@ -21,13 +21,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FilePhotoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.task.RecoverPhotosAsyncTask;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
@@ -37,9 +36,9 @@ import java.util.ArrayList;
 public class PhotosActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    PhotoAdapter adapter;
+    FilePhotoAdapter adapter;
     Button btnRestore;
-    ArrayList<PhotoModel> mList = new ArrayList<PhotoModel>();
+    ArrayList<PhotoEntity> mList = new ArrayList<PhotoEntity>();
     RecoverPhotosAsyncTask mRecoverPhotosAsyncTask;
     Toolbar toolbar;
 
@@ -77,14 +76,14 @@ public class PhotosActivity extends AppCompatActivity {
 
     public void intData() {
         int_position = getIntent().getIntExtra("value", 0);
-        if (ScanActivity.mAlbumPhoto != null && ScanActivity.mAlbumPhoto.size() > int_position)
-            mList.addAll((ArrayList<PhotoModel>) ScanActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
-        adapter = new PhotoAdapter(this, mList);
+        if (ScanFilesActivity.mAlbumPhoto != null && ScanFilesActivity.mAlbumPhoto.size() > int_position)
+            mList.addAll((ArrayList<PhotoEntity>) ScanFilesActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
+        adapter = new FilePhotoAdapter(this, mList);
         recyclerView.setAdapter(adapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<PhotoModel> tempList = adapter.getSelectedItem();
+                final ArrayList<PhotoEntity> tempList = adapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {

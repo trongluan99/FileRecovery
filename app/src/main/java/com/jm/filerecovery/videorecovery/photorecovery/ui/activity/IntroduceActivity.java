@@ -9,13 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -27,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-public class HelpActivity extends AppCompatActivity {
+public class IntroduceActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
@@ -44,7 +42,7 @@ public class HelpActivity extends AppCompatActivity {
             public void onActivityResult(ActivityResult result) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     if (Environment.isExternalStorageManager()) {
-                        startActivity(new Intent(HelpActivity.this, MainActivity.class));
+                        startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                         finish();
                     }
                 }
@@ -55,7 +53,7 @@ public class HelpActivity extends AppCompatActivity {
     public void onStartClick(View view) {
         try {
             requestPermissionAll(() -> {
-                startActivity(new Intent(HelpActivity.this, MainActivity.class));
+                startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                 finish();
                 return null;
             });

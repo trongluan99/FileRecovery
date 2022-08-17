@@ -1,7 +1,6 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -9,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
 
-public class HistoryActivity extends AppCompatActivity {
+public class FileRecoveredActivity extends AppCompatActivity {
 
     private ActivityHistoryBinding binding;
     private FileRestoredAdapter fileRestoredAdapter;
@@ -138,7 +136,7 @@ public class HistoryActivity extends AppCompatActivity {
                                 exception.printStackTrace();
                             }
                         }
-                        Toast.makeText(HistoryActivity.this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FileRecoveredActivity.this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
                         setTypeDisplay(type);
                         dialog.dismiss();
                     })

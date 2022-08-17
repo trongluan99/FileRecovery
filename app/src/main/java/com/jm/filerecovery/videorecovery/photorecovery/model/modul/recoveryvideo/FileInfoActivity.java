@@ -29,7 +29,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverOneVideosAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -45,7 +45,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     Button btnOpen,btnShare,btnRestore;
     TextView tvDate,tvSize,tvType;
     ImageView ivVideo;
-    VideoModel mVideoModel;
+    VideoEntity mVideoEntity;
     Toolbar toolbar;
     RecoverOneVideosAsyncTask mRecoverOneVideosAsyncTask;
     SharedPreferences sharedPreferences;
@@ -84,13 +84,13 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     }
     public void intData(){
         Intent i = getIntent();
-        mVideoModel = (VideoModel)i.getSerializableExtra("ojectVideo");
-        tvDate.setText(DateFormat.getDateInstance().format(mVideoModel.getLastModified())+"  "+mVideoModel.getTimeDuration());
-        tvSize.setText(Utils.formatSize(mVideoModel.getSizePhoto()));
-        tvType.setText(mVideoModel.getTypeFile());
+        mVideoEntity = (VideoEntity)i.getSerializableExtra("ojectVideo");
+        tvDate.setText(DateFormat.getDateInstance().format(mVideoEntity.getLastModified())+"  "+ mVideoEntity.getTimeDuration());
+        tvSize.setText(Utils.formatSize(mVideoEntity.getSizePhoto()));
+        tvType.setText(mVideoEntity.getTypeFile());
 
         Glide.with(this)
-                .load("file://" + mVideoModel.getPathPhoto())
+                .load("file://" + mVideoEntity.getPathPhoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .priority(Priority.HIGH)
                 .centerCrop()
@@ -112,14 +112,14 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
 
         switch (view.getId()){
             case R.id.btnOpen:
-                openFile(mVideoModel.getPathPhoto());
+                openFile(mVideoEntity.getPathPhoto());
                 break;
             case R.id.btnShare:
-                shareVideo(mVideoModel.getPathPhoto());
+                shareVideo(mVideoEntity.getPathPhoto());
                 break;
             case R.id.btnRestore:
               //  showDalogConfirmRestore();
-                mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoModel, new RecoverOneVideosAsyncTask.OnRestoreListener() {
+                mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
                     @Override
                     public void onComplete() {
                         Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
@@ -132,7 +132,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                 mRecoverOneVideosAsyncTask.execute();
                 break;
             case R.id.ivVideo:
-                openFile(mVideoModel.getPathPhoto());
+                openFile(mVideoEntity.getPathPhoto());
                 break;
                 default:
                     break;
@@ -256,7 +256,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
             if (editor.commit()) {
                 editor.apply();
                 if (f) {
-                    mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoModel, new RecoverOneVideosAsyncTask.OnRestoreListener() {
+                    mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, mVideoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);

@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,17 +16,17 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 
-public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder>{
+public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyViewHolder>{
     Context context;
-    ArrayList<PhotoModel> listPhoto = new ArrayList<>();
+    ArrayList<PhotoEntity> listPhoto = new ArrayList<>();
     BitmapDrawable placeholder;
-    public PhotoAdapter(Context context, ArrayList<PhotoModel> mList) {
+    public FilePhotoAdapter(Context context, ArrayList<PhotoEntity> mList) {
         this.context = context;
         this.listPhoto = mList;
     }
@@ -52,7 +51,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final PhotoModel imageData = listPhoto.get(position);
+        final PhotoEntity imageData = listPhoto.get(position);
         holder.tvDate.setText(DateFormat.getDateInstance().format(imageData.getLastModified()));
         holder.tvSize.setText(Utils.formatSize(imageData.getSizePhoto()));
         if(imageData.getIsCheck()){
@@ -93,8 +92,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
     public int getItemCount() {
         return listPhoto.size();
     }
-    public ArrayList<PhotoModel> getSelectedItem() {
-        ArrayList<PhotoModel> arrayList = new ArrayList();
+    public ArrayList<PhotoEntity> getSelectedItem() {
+        ArrayList<PhotoEntity> arrayList = new ArrayList();
         if (this.listPhoto != null) {
             for (int i = 0; i < this.listPhoto.size(); i++) {
                 if ((this.listPhoto.get(i)).getIsCheck()) {

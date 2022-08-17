@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,14 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.AlbumsPhotoAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.GroupPhotoHorizontalAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 
-public class AlbumPhotoActivity extends AppCompatActivity implements AlbumsPhotoAdapter.OnClickItemListener {
+public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
         Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
@@ -34,7 +32,7 @@ public class AlbumPhotoActivity extends AppCompatActivity implements AlbumsPhoto
     }
 
     RecyclerView recyclerView;
-    AlbumsPhotoAdapter adapter;
+    GroupPhotoHorizontalAdapter adapter;
     Toolbar toolbar;
 
     @Override
@@ -68,7 +66,7 @@ public class AlbumPhotoActivity extends AppCompatActivity implements AlbumsPhoto
     }
 
     public void intData() {
-        adapter = new AlbumsPhotoAdapter(AlbumPhotoActivity.this, ScanActivity.mAlbumPhoto, AlbumPhotoActivity.this);
+        adapter = new GroupPhotoHorizontalAdapter(AlbumPhotoActivity.this, ScanFilesActivity.mAlbumPhoto, AlbumPhotoActivity.this);
         recyclerView.setAdapter(adapter);
     }
 

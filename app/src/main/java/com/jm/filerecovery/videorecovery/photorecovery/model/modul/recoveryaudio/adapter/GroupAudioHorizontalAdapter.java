@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AlbumAudio;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 
 import java.util.ArrayList;
 
-public class AlbumsAudioAdapter extends RecyclerView.Adapter<AlbumsAudioAdapter.MyViewHolder>{
+public class GroupAudioHorizontalAdapter extends RecyclerView.Adapter<GroupAudioHorizontalAdapter.MyViewHolder>{
     Context context;
     ArrayList<AlbumAudio> al_menu = new ArrayList<>();
     OnClickItemListener mOnClickItemListener;
-    public AlbumsAudioAdapter(Context context, ArrayList<AlbumAudio> mList, OnClickItemListener onClickItemListener) {
+    public GroupAudioHorizontalAdapter(Context context, ArrayList<AlbumAudio> mList, OnClickItemListener onClickItemListener) {
         this.context = context;
         this.al_menu = mList;
         mOnClickItemListener = onClickItemListener;
@@ -57,8 +57,8 @@ public class AlbumsAudioAdapter extends RecyclerView.Adapter<AlbumsAudioAdapter.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_foldersize.setText(al_menu.get(position).getListPhoto().size()+" Audio");
-        ArrayList<AudioModel> singleSectionItems = al_menu.get(position).getListPhoto();
-        SectionListAudioAdapter itemListDataAdapter = new SectionListAudioAdapter(context, singleSectionItems,position);
+        ArrayList<AudioEntity> singleSectionItems = al_menu.get(position).getListPhoto();
+        FileAudioGridAdapter itemListDataAdapter = new FileAudioGridAdapter(context, singleSectionItems,position);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, 1);
         holder.recycler_view_list.setLayoutManager(mLayoutManager);
         holder.recycler_view_list.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(context,10), true));

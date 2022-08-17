@@ -5,10 +5,10 @@ import android.content.Context;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 
-public class LoadingDialog extends Dialog {
+public class RestoringDialog extends Dialog {
     private Context mContext;
 
-    public LoadingDialog(Context activity) {
+    public RestoringDialog(Context activity) {
         super(activity, R.style.Theme_AppCompat_DayNight_Dialog);
         this.mContext = activity;
         requestWindowFeature(1);

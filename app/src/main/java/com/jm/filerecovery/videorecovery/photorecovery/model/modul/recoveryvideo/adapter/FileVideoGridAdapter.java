@@ -14,18 +14,18 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity;
 
 import java.util.ArrayList;
 
-public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder> {
+public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdapter.SingleItemRowHolder> {
 
-    private ArrayList<VideoModel> itemsList;
+    private ArrayList<VideoEntity> itemsList;
     private Context mContext;
     int size;
     int postion;
-    public SectionListDataAdapter(Context context, ArrayList<VideoModel> itemsList, int mPostion) {
+    public FileVideoGridAdapter(Context context, ArrayList<VideoEntity> itemsList, int mPostion) {
         this.itemsList = itemsList;
         this.mContext = context;
         postion = mPostion;
@@ -47,7 +47,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
 
-        VideoModel singleItem = itemsList.get(i);
+        VideoEntity singleItem = itemsList.get(i);
 
         try {
             Glide.with(mContext)

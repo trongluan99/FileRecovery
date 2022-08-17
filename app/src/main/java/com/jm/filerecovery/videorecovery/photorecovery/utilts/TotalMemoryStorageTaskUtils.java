@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.StatFs;
 
-public class TotalMemoryStorageTask extends AsyncTask<Void, Integer, Boolean> {
+public class TotalMemoryStorageTaskUtils extends AsyncTask<Void, Integer, Boolean> {
 
     private long totalMemory;
     private long useMemory;
@@ -16,7 +16,7 @@ public class TotalMemoryStorageTask extends AsyncTask<Void, Integer, Boolean> {
     }
 
 
-    public TotalMemoryStorageTask(DataCallBack mDataCallBack) {
+    public TotalMemoryStorageTaskUtils(DataCallBack mDataCallBack) {
         this.mDataCallBack = mDataCallBack;
     }
 

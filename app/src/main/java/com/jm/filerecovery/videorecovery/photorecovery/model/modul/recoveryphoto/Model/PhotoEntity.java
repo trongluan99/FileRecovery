@@ -1,12 +1,12 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model;
 
-public class PhotoModel {
+public class PhotoEntity {
     String pathPhoto;
     long lastModifiedPhoto;
     long sizePhoto;
     boolean isCheck= false;
 
-    public PhotoModel(String path,long date,long size){
+    public PhotoEntity(String path, long date, long size){
         this.pathPhoto = path;
         this.lastModifiedPhoto = date;
         this.sizePhoto = size;

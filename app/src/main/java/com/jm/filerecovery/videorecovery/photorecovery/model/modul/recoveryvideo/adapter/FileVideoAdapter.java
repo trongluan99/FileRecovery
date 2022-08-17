@@ -18,16 +18,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder>{
+public class FileVideoAdapter extends RecyclerView.Adapter<FileVideoAdapter.MyViewHolder>{
     Context context;
-    ArrayList<VideoModel> listPhoto = new ArrayList<>();
-    public VideoAdapter(Context context, ArrayList<VideoModel> mList) {
+    ArrayList<VideoEntity> listPhoto = new ArrayList<>();
+    public FileVideoAdapter(Context context, ArrayList<VideoEntity> mList) {
         this.context = context;
         this.listPhoto = mList;
     }
@@ -56,7 +56,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder
     }
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final VideoModel imageData = listPhoto.get(position);
+        final VideoEntity imageData = listPhoto.get(position);
         holder.tvDate.setText(DateFormat.getDateInstance().format(imageData.getLastModified())+"  "+imageData.getTimeDuration());
         holder.cbSelected.setChecked(imageData.getIsCheck());
         holder.tvSize.setText(Utils.formatSize(imageData.getSizePhoto()));
@@ -99,8 +99,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder
     public int getItemCount() {
         return listPhoto.size();
     }
-    public ArrayList<VideoModel> getSelectedItem() {
-        ArrayList<VideoModel> arrayList = new ArrayList();
+    public ArrayList<VideoEntity> getSelectedItem() {
+        ArrayList<VideoEntity> arrayList = new ArrayList();
         if (this.listPhoto != null) {
             for (int i = 0; i < this.listPhoto.size(); i++) {
                 if ((this.listPhoto.get(i)).getIsCheck()) {

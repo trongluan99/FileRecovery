@@ -7,23 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.AlbumPhoto;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 
 import org.apache.commons.io.FilenameUtils;
 
 import java.util.ArrayList;
 
-public class AlbumsPhotoAdapter extends RecyclerView.Adapter<AlbumsPhotoAdapter.MyViewHolder> {
+public class GroupPhotoHorizontalAdapter extends RecyclerView.Adapter<GroupPhotoHorizontalAdapter.MyViewHolder> {
     Context context;
     ArrayList<AlbumPhoto> al_menu = new ArrayList<>();
     OnClickItemListener mOnClickItemListener;
 
-    public AlbumsPhotoAdapter(Context context, ArrayList<AlbumPhoto> mList, OnClickItemListener onClickItemListener) {
+    public GroupPhotoHorizontalAdapter(Context context, ArrayList<AlbumPhoto> mList, OnClickItemListener onClickItemListener) {
         this.context = context;
         this.al_menu = mList;
         mOnClickItemListener = onClickItemListener;
@@ -58,8 +57,8 @@ public class AlbumsPhotoAdapter extends RecyclerView.Adapter<AlbumsPhotoAdapter.
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        ArrayList<PhotoModel> singleSectionItems = al_menu.get(position).getListPhoto();
-        SectionListDataAdapter itemListDataAdapter = new SectionListDataAdapter(context, singleSectionItems, position);
+        ArrayList<PhotoEntity> singleSectionItems = al_menu.get(position).getListPhoto();
+        FilePhotoGridAdapter itemListDataAdapter = new FilePhotoGridAdapter(context, singleSectionItems, position);
         holder.recycler_view_list.setHasFixedSize(true);
         holder.recycler_view_list.setAdapter(itemListDataAdapter);
 

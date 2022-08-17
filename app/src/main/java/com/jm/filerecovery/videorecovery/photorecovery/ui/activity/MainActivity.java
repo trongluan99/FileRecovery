@@ -1,18 +1,14 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -26,42 +22,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.core.os.EnvironmentCompat;
 
 import com.ads.control.AdmobHelp;
 import com.ads.control.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AlbumAudio;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.AlbumPhoto;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoModel;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.AlbumVideo;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.ScanDialog;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtil;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTask;
+import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTaskUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
-import com.skyfishjy.library.RippleBackground;
-
-import org.apache.commons.io.IOUtils;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -102,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initMemoryData() {
-        new TotalMemoryStorageTask((useMemory, totalMemory) -> {
+        new TotalMemoryStorageTaskUtils((useMemory, totalMemory) -> {
             binding.tvMemory.setText(FileUtil.longToSizeText(totalMemory));
             binding.tvUsed.setText(FileUtil.longToSizeText(useMemory));
             binding.tvFree.setText(FileUtil.longToSizeText(totalMemory - useMemory));
@@ -119,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ClickableSpan ClickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+                startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
             }
 
             @Override
@@ -174,12 +151,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.iv_his_click:
-                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+                startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
                 break;
             case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanActivity.start(MainActivity.this, 0);
+                        ScanFilesActivity.start(MainActivity.this, 0);
                         return null;
                     });
                 } catch (Exception e) {
@@ -190,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanActivity.start(MainActivity.this, 2);
+                        ScanFilesActivity.start(MainActivity.this, 2);
                         return null;
                     });
                 } catch (Exception e) {
@@ -200,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanActivity.start(MainActivity.this, 1);
+                        ScanFilesActivity.start(MainActivity.this, 1);
                         return null;
                     });
                 } catch (Exception e) {

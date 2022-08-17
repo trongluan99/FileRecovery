@@ -18,14 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.AlbumsVideoAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.GroupVideoHorizontalAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 
-public class AlbumVideoActivity extends AppCompatActivity implements AlbumsVideoAdapter.OnClickItemListener {
+public class AlbumVideoActivity extends AppCompatActivity implements GroupVideoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
         Intent intent = new Intent(getApplicationContext(), VideoActivity.class);
@@ -34,7 +33,7 @@ public class AlbumVideoActivity extends AppCompatActivity implements AlbumsVideo
     }
 
     RecyclerView recyclerView;
-    AlbumsVideoAdapter adapter;
+    GroupVideoHorizontalAdapter adapter;
     Toolbar toolbar;
 
     @Override
@@ -68,7 +67,7 @@ public class AlbumVideoActivity extends AppCompatActivity implements AlbumsVideo
     }
 
     public void intData() {
-        adapter = new AlbumsVideoAdapter(AlbumVideoActivity.this, ScanActivity.mAlbumVideo, AlbumVideoActivity.this);
+        adapter = new GroupVideoHorizontalAdapter(AlbumVideoActivity.this, ScanFilesActivity.mAlbumVideo, AlbumVideoActivity.this);
         recyclerView.setAdapter(adapter);
     }
 

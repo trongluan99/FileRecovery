@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AlbumAudio {
     String str_folder;
-    ArrayList<AudioModel> listPhoto;
+    ArrayList<AudioEntity> listPhoto;
     long lastModified;
 
     public long getLastModified(){
@@ -21,11 +21,11 @@ public class AlbumAudio {
         this.str_folder = str_folder;
     }
 
-    public ArrayList<AudioModel> getListPhoto() {
+    public ArrayList<AudioEntity> getListPhoto() {
         return listPhoto;
     }
 
-    public void setListPhoto(ArrayList<AudioModel> mList) {
+    public void setListPhoto(ArrayList<AudioEntity> mList) {
         this.listPhoto = mList;
     }
 }

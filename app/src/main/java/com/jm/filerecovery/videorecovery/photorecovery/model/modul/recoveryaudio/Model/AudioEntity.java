@@ -1,12 +1,12 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model;
 
-public class AudioModel {
+public class AudioEntity {
     String pathPhoto;
     long lastModifiedPhoto;
     long sizePhoto;
     boolean isCheck= false;
 
-    public AudioModel(String path, long date, long size){
+    public AudioEntity(String path, long date, long size){
         this.pathPhoto = path;
         this.lastModifiedPhoto = date;
         this.sizePhoto = size;

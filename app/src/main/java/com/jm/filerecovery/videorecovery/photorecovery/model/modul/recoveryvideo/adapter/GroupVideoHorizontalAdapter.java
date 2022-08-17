@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.AlbumVideo;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 
 import java.util.ArrayList;
 
-public class AlbumsVideoAdapter extends RecyclerView.Adapter<AlbumsVideoAdapter.MyViewHolder>{
+public class GroupVideoHorizontalAdapter extends RecyclerView.Adapter<GroupVideoHorizontalAdapter.MyViewHolder>{
     Context context;
     ArrayList<AlbumVideo> al_menu = new ArrayList<>();
     OnClickItemListener mOnClickItemListener;
-    public AlbumsVideoAdapter(Context context, ArrayList<AlbumVideo> mList, OnClickItemListener onClickItemListener) {
+    public GroupVideoHorizontalAdapter(Context context, ArrayList<AlbumVideo> mList, OnClickItemListener onClickItemListener) {
         this.context = context;
         this.al_menu = mList;
         mOnClickItemListener = onClickItemListener;
@@ -54,8 +54,8 @@ public class AlbumsVideoAdapter extends RecyclerView.Adapter<AlbumsVideoAdapter.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.tv_foldersize.setText(al_menu.get(position).getListPhoto().size()+" Videos");
-        ArrayList<VideoModel> singleSectionItems = al_menu.get(position).getListPhoto();
-        SectionListDataAdapter itemListDataAdapter = new SectionListDataAdapter(context, singleSectionItems,position);
+        ArrayList<VideoEntity> singleSectionItems = al_menu.get(position).getListPhoto();
+        FileVideoGridAdapter itemListDataAdapter = new FileVideoGridAdapter(context, singleSectionItems,position);
 
         holder.recycler_view_list.setHasFixedSize(true);
         holder.recycler_view_list.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));

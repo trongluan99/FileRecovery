@@ -20,13 +20,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoModel;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.VideoAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.FileVideoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.util.ArrayList;
@@ -39,9 +38,9 @@ import java.util.ArrayList;
 public class VideoActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    VideoAdapter adapter;
+    FileVideoAdapter adapter;
     Button btnRestore;
-    ArrayList<VideoModel> mList = new ArrayList<VideoModel>();
+    ArrayList<VideoEntity> mList = new ArrayList<VideoEntity>();
     RecoverVideoAsyncTask mRecoverVideoAsyncTask;
     Toolbar toolbar;
 
@@ -79,14 +78,14 @@ public class VideoActivity extends AppCompatActivity {
 
     public void intData() {
         int_position = getIntent().getIntExtra("value", 0);
-        if (ScanActivity.mAlbumVideo != null && ScanActivity.mAlbumVideo.size() > int_position)
-            mList.addAll((ArrayList<VideoModel>) ScanActivity.mAlbumVideo.get(int_position).getListPhoto().clone());
-        adapter = new VideoAdapter(this, mList);
+        if (ScanFilesActivity.mAlbumVideo != null && ScanFilesActivity.mAlbumVideo.size() > int_position)
+            mList.addAll((ArrayList<VideoEntity>) ScanFilesActivity.mAlbumVideo.get(int_position).getListPhoto().clone());
+        adapter = new FileVideoAdapter(this, mList);
         recyclerView.setAdapter(adapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<VideoModel> tempList = adapter.getSelectedItem();
+                final ArrayList<VideoEntity> tempList = adapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {

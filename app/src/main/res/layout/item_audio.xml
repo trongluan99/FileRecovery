@@ -25,13 +25,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true">
+
             <com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView
                 android:id="@+id/iv_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/audio"
-                />
+                android:src="@drawable/audio" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

@@ -21,13 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.ads.control.AdmobHelp;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioModel;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.AudioAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
@@ -41,9 +40,9 @@ import java.util.ArrayList;
 public class AudioActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
-    AudioAdapter adapter;
+    FileAudioAdapter adapter;
     Button btnRestore;
-    ArrayList<AudioModel> mList = new ArrayList<AudioModel>();
+    ArrayList<AudioEntity> mList = new ArrayList<AudioEntity>();
     RecoverAudioAsyncTask mRecoverPhotosAsyncTask;
     Toolbar toolbar;
 
@@ -80,14 +79,14 @@ public class AudioActivity extends AppCompatActivity {
 
     public void intData() {
         int_position = getIntent().getIntExtra("value", 0);
-        if (ScanActivity.mAlbumAudio != null && ScanActivity.mAlbumAudio.size() > int_position)
-            mList.addAll((ArrayList<AudioModel>) ScanActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
-        adapter = new AudioAdapter(this, mList);
+        if (ScanFilesActivity.mAlbumAudio != null && ScanFilesActivity.mAlbumAudio.size() > int_position)
+            mList.addAll((ArrayList<AudioEntity>) ScanFilesActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
+        adapter = new FileAudioAdapter(this, mList);
         recyclerView.setAdapter(adapter);
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList<AudioModel> tempList = adapter.getSelectedItem();
+                final ArrayList<AudioEntity> tempList = adapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {

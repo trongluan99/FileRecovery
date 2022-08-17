@@ -3,7 +3,7 @@ package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvide
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class VideoModel implements Serializable {
+public class VideoEntity implements Serializable {
     String pathPhoto;
     long lastModifiedPhoto;
     long sizePhoto;
@@ -11,7 +11,7 @@ public class VideoModel implements Serializable {
     String typeFile;
     String  timeDuration;
 
-    public VideoModel(String path, long date, long size,String typeFile,String timeDuration){
+    public VideoEntity(String path, long date, long size, String typeFile, String timeDuration){
         this.pathPhoto = path;
         this.lastModifiedPhoto = date;
         this.sizePhoto = size;

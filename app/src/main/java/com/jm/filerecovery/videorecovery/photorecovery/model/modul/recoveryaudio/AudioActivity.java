@@ -19,9 +19,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.ads.control.AdmobHelp;
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
@@ -59,7 +59,7 @@ public class AudioActivity extends AppCompatActivity {
         Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
-        AdmobHelp.getInstance().loadBanner(this);
+        AdmobUtils.getInstance().loadBanner(this);
     }
 
     public void intView() {
@@ -90,18 +90,23 @@ public class AudioActivity extends AppCompatActivity {
                 if (tempList.size() == 0) {
                     Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
-                        @Override
-                        public void onComplete() {
-                            Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
-                            intent.putExtra("value", tempList.size());
-                            intent.putExtra("type", 2);
-                            startActivity(intent);
-                            fileAudioAdapter.setAllImagesUnseleted();
-                            fileAudioAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    mRecoverPhotosAsyncTask.execute();
+                    Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 2);
+                    startActivity(intent);
+
+//                    mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
+//                        @Override
+//                        public void onComplete() {
+//                            Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+//                            intent.putExtra("value", tempList.size());
+//                            intent.putExtra("type", 2);
+//                            startActivity(intent);
+//                            fileAudioAdapter.setAllImagesUnseleted();
+//                            fileAudioAdapter.notifyDataSetChanged();
+//                        }
+//                    });
+//                    mRecoverPhotosAsyncTask.execute();
                 }
 
             }
@@ -221,7 +226,7 @@ public class AudioActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
 
 
     }

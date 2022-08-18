@@ -15,4 +15,6 @@
     <color name="color_042834">#042834</color>
     <color name="color_black_30">#4D000000</color>
     <color name="text_color_2">#068abf</color>
+    <color name="background_install">#0984e3</color>
+    <color name="text_ads">#000</color>
 </resources>

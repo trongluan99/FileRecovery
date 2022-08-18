@@ -28,5 +28,13 @@
         <item name="android:windowExitAnimation">@anim/fade_out_ads</item>
     </style>
 
+    <style name="RatingBarNativeAds" parent="@android:style/Widget.RatingBar">
+        <item name="colorControlNormal">@color/grey_500</item>
+        <item name="colorControlActivated">#ffc107</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="android:maxHeight">12dp</item>
+    </style>
 
+
+    <color name="grey_500">#9e9e9e</color>
 </resources>

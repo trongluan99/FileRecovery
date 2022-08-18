@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.ads.control.AdmobHelp;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -54,7 +55,7 @@ public class NoFileActiviy extends AppCompatActivity implements View.OnClickList
     }
 
     public void intData() {
-        AdmobHelp.getInstance().loadNative(NoFileActiviy.this);
+        AdmobUtils.getInstance().loadNativeActivity(NoFileActiviy.this);
     }
 
     @Override
@@ -67,7 +68,7 @@ public class NoFileActiviy extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
 
 
     }

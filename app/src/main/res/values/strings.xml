@@ -67,6 +67,11 @@
     <string name="skip">SKIP</string>
     <string name="allow_watch_ads">WATCH ADS</string>
     <string name="watch_ads_confirm_ring">Free download music for offline listening! \n Just watch a short promotional video and you can download music for free.</string>
+    <string name="go_to_google_play">Review On Google Play</string>
+    <string name="tks_to_rate">Thanks for your review!</string>
+    <string name="are_you_like_me">Do you love this app?</string>
+    <string name="rate_in_google_play">Please rate and comment your opinion on google play. Thank you!</string>
+    <string name="send">Send</string>
 
 
 </resources>

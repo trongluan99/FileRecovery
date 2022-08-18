@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.ads.control.AdmobHelp;
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.GroupVideoHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
@@ -121,7 +121,7 @@ public class AlbumVideoActivity extends AppCompatActivity implements GroupVideoH
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this
+        AdmobUtils.getInstance().showInterstitialAd(this
                 , () -> finish());
 
 

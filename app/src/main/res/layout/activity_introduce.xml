@@ -33,12 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:fontFamily="@font/roboto_regular"
         android:gravity="center"
         android:text="@string/how_to_work"
         android:textColor="#000"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cv_use_intro" />
 

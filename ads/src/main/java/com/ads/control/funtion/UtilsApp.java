@@ -31,11 +31,11 @@ public class UtilsApp {
                 Toast.LENGTH_LONG).show();
     }
 
-    public static void OpenMoreApp(Context mContext) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://search?q=pub:" + mContext.getString(R.string.store)));
-        mContext.startActivity(intent);
-    }
+//    public static void OpenMoreApp(Context mContext) {
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("market://search?q=pub:" + mContext.getString(R.string.store)));
+//        mContext.startActivity(intent);
+//    }
 
     public static void OpenBrower(Context mContext, String mLink) {
         try {

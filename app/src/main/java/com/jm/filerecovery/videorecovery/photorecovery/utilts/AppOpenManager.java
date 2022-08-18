@@ -1,22 +1,22 @@
-package com.ads.control;
+package com.jm.filerecovery.videorecovery.photorecovery.utilts;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.ads.control.AdsApplication;
+import com.ads.control.SharePreferenceUtils;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
 
 import java.util.Date;
 
@@ -27,14 +27,13 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
     private static final String LOG_TAG = "AppOpenManager";
     private AppOpenAd appOpenAd = null;
     private static boolean isShowingAd = false;
-    private long loadTime = 0;
-    private long timeshowAds = 0;
-    private long timeReshow = 30 * 1000;
+    private long loadTimeAdsAfter4Hours = 0;
+    private long timeLoad = 0;
+    private long TimeReload = 30 * 1000;
     private AppOpenAd.AppOpenAdLoadCallback loadCallback;
-
     private final AdsApplication myApplication;
     private Activity currentActivity;
-
+    private boolean isLoadingAd = false;
     /**
      * Constructor
      */
@@ -46,58 +45,36 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
 
     @OnLifecycleEvent(ON_START)
     public void onStart() {
-        showAdIfAvailable();
+        if (currentActivity instanceof SplashActivity) {
+            if (!isAdAvailable()) {
+                Log.d(LOG_TAG, "Application -------->  appOpenAd ===>>> " + appOpenAd);
+                fetchAd();
+            }
+        } else {
+            showOpenAds();
+        }
         Log.d(LOG_TAG, "onStart");
     }
 
-    /**
-     * Request an ad
-     */
-    public void fetchAd() {
-        // Have unused ad, no need to fetch another.
-        if (isAdAvailable()) {
-            return;
+    private void showOpenAds() {
+//        if (SharePreferenceUtils.getInstance(currentActivity).getPurchase()) return;
+        Log.d("AppOpenManager", " showOpenAds");
+        if ((timeLoad + TimeReload) < System.currentTimeMillis()) {
+            Log.d("AppOpenManager", " (timeLoad + TimeReload) < System.currentTimeMillis() ");
+            showAdIfAvailable();
+            timeLoad = System.currentTimeMillis();
+        } else {
+            Log.d("AppOpenManager", " (timeLoad + TimeReload) > System.currentTimeMillis() ");
         }
-
-        loadCallback =
-                new AppOpenAd.AppOpenAdLoadCallback() {
-                    /**
-                     * Called when an app open ad has loaded.
-                     *
-                     * @param ad the loaded app open ad.
-                     */
-                    @Override
-                    public void onAdLoaded(AppOpenAd ad) {
-                        AppOpenManager.this.appOpenAd = ad;
-                        AppOpenManager.this.loadTime = (new Date()).getTime();
-                    }
-
-                    /**
-                     * Called when an app open ad has failed to load.
-                     *
-                     * @param loadAdError the error.
-                     */
-                    @Override
-                    public void onAdFailedToLoad(LoadAdError loadAdError) {
-                        // Handle the error.
-                    }
-
-                };
-        AdRequest request = getAdRequest();
-        AppOpenAd.load(
-                myApplication, myApplication.getString(R.string.admob_open_app), request,
-                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, loadCallback);
     }
 
     /**
      * Shows the ad if one isn't already showing.
      */
     public void showAdIfAvailable() {
-        // Only show ad if there is not already an app open ad currently showing
-        // and an ad is available.
-        if (!isShowingAd && isAdAvailable() && canShow()) {
+        if (!isShowingAd && isAdAvailable()) {
+            boolean isShowInter = SharePreferenceUtils.getInstance(myApplication).getShowFullAds();
             Log.d(LOG_TAG, "Will show ad.");
-            timeshowAds = System.currentTimeMillis();
             FullScreenContentCallback fullScreenContentCallback =
                     new FullScreenContentCallback() {
                         @Override
@@ -119,7 +96,14 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
                     };
 
             appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
-            appOpenAd.show(currentActivity);
+            if (currentActivity != null && !isShowInter) {
+                if (currentActivity instanceof SplashActivity) {
+                    Log.d("AppOpenManager", " currentActivity instanceof SplashActivity");
+                } else {
+                    Log.d("AppOpenManager", "  appOpenAd.show(currentActivity)");
+                    appOpenAd.show(currentActivity);
+                }
+            }
 
         } else {
             Log.d(LOG_TAG, "Can not show ad.");
@@ -135,9 +119,50 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
     }
 
     private boolean wasLoadTimeLessThanNHoursAgo(long numHours) {
-        long dateDifference = (new Date()).getTime() - this.loadTime;
+        long dateDifference = (new Date()).getTime() - this.loadTimeAdsAfter4Hours;
         long numMilliSecondsPerHour = 3600000;
         return (dateDifference < (numMilliSecondsPerHour * numHours));
+    }
+
+    /**
+     * Request an ad
+     */
+    public void fetchAd() {
+//        if (SharePreferenceUtils.getInstance(currentActivity).getPurchase()) return;
+        if (isAdAvailable()|| isLoadingAd) {
+            return;
+        }
+
+        loadCallback =
+                new AppOpenAd.AppOpenAdLoadCallback() {
+                    /**
+                     * Called when an app open ad has loaded.
+                     *
+                     * @param ad the loaded app open ad.
+                     */
+                    @Override
+                    public void onAdLoaded(AppOpenAd ad) {
+                        AppOpenManager.this.appOpenAd = ad;
+                        AppOpenManager.this.isLoadingAd = false;
+                        AppOpenManager.this.loadTimeAdsAfter4Hours = (new Date()).getTime();
+                    }
+
+                    /**
+                     * Called when an app open ad has failed to load.
+                     *
+                     * @param loadAdError the error.
+                     */
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError loadAdError) {
+                        // Handle the error.
+                    }
+
+                };
+        isLoadingAd = true;
+        AdRequest request = getAdRequest();
+        AppOpenAd.load(
+                myApplication, myApplication.getString(com.ads.control.R.string.admob_open_app), request,
+                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, loadCallback);
     }
 
     /**
@@ -146,10 +171,6 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
     public boolean isAdAvailable() {
         return appOpenAd != null
                 && wasLoadTimeLessThanNHoursAgo(4);
-    }
-
-    public boolean canShow() {
-        return (timeshowAds + timeReshow) < System.currentTimeMillis();
     }
 
     @Override

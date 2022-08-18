@@ -19,7 +19,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.AdmobHelp;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
@@ -57,7 +58,7 @@ public class VideoActivity extends AppCompatActivity {
         Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
-        AdmobHelp.getInstance().loadBanner(this);
+        AdmobUtils.getInstance().loadBanner(this);
 
     }
 
@@ -162,7 +163,7 @@ public class VideoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
 
     }
 }

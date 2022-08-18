@@ -8,7 +8,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/bg_card_native.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/bg_native_radius.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/bg_text_ads.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/btn_skip_all.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/selected_indicator.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/style_dialog_full.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/drawable/tab_selector.xml" value="0.223" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/ads_native_exit_layout.xml" value="0.22083333333333333" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/dialog_rate_app.xml" value="0.22083333333333333" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/layout_ads_control.xml" value="0.35052083333333334" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/layout_banner_control.xml" value="0.22083333333333333" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/load_banner.xml" value="0.22083333333333333" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/ads/src/main/res/layout/native_admob_ad.xml" value="0.22083333333333333" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/drawable/bg_btn_rate_yes_watch_ads.xml" value="0.182" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/drawable/bg_rate_btn.xml" value="0.182" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/drawable/bg_rate_dialog.xml" value="0.182" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/drawable/ic_more_horizontal.xml" value="0.223" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_album.xml" value="0.35052083333333334" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_file_info.xml" value="0.1734375" />
@@ -27,6 +42,7 @@
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/bar_home_app.xml" value="0.1734375" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/card_album_2.xml" value="0.26979166666666665" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/card_album_new.xml" value="0.26979166666666665" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/dialog_rate_app.xml" value="0.1734375" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/dialog_scan.xml" value="0.35052083333333334" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_audio.xml" value="0.35052083333333334" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_audio_album.xml" value="0.1734375" />

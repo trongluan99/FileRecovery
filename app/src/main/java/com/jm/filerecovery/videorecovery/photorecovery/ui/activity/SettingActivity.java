@@ -20,7 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.ads.control.funtion.UtilsApp;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.SharePreferenceUtils;
+import com.ads.control.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.util.Locale;

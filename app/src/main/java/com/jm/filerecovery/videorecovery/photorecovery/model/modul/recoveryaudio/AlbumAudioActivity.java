@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.ads.control.AdmobHelp;
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.GroupAudioHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
@@ -121,6 +121,8 @@ public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioH
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(AlbumAudioActivity.this, () -> {
+            finish();
+        });
     }
 }

@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.ads.control.AdmobHelp;
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
@@ -55,7 +55,7 @@ public class PhotosActivity extends AppCompatActivity {
         Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
-        AdmobHelp.getInstance().loadBanner(this);
+        AdmobUtils.getInstance().loadBanner(this);
 
     }
 
@@ -218,7 +218,7 @@ public class PhotosActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
 
     }
 }

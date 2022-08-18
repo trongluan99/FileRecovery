@@ -16,7 +16,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ads.control.AdmobHelp;
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.GroupPhotoHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
@@ -120,7 +120,7 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
 
     @Override
     public void onBackPressed() {
-        AdmobHelp.getInstance().showInterstitialAd(this, () -> finish());
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
 
     }
 }

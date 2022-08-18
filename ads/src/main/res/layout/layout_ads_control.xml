@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/height_native_ads">
+    android:layout_height="@dimen/height_native_ads"
+    >
+
 
     <FrameLayout
         android:visibility="gone"
@@ -12,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_native_ads"
         android:orientation="vertical"
-        android:background="@drawable/bg_card_ads"/>
-    <include
-        layout="@layout/load_fb_adx"/>
+        android:background="@drawable/bg_card_native"/>
+
 </LinearLayout>

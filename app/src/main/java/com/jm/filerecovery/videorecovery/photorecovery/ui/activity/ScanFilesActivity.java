@@ -17,7 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.os.EnvironmentCompat;
 
-import com.ads.control.AdmobHelp;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
@@ -75,7 +76,13 @@ public class ScanFilesActivity extends AppCompatActivity {
     }
 
     private void intView() {
-        AdmobHelp.getInstance().loadNative(this);
+        AdmobUtils.getInstance().loadNativeActivity(this);
+        AdmobUtils.getInstance().showInterstitialAd(this, new AdmobUtils.AdCloseListener() {
+            @Override
+            public void onAdClosed() {
+
+            }
+        });
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
 

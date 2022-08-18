@@ -9,9 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.ads.control.AdmobHelp;
-import com.ads.control.Rate;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 
@@ -36,7 +37,7 @@ public class RestoreResultActivity extends AppCompatActivity {
 
         intView();
         intData();
-        AdmobHelp.getInstance().loadNative(RestoreResultActivity.this);
+        AdmobUtils.getInstance().loadNativeActivity(RestoreResultActivity.this);
 
     }
     public void intView(){
@@ -76,8 +77,8 @@ public class RestoreResultActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Rate.Show(this,1);
-
+        super.onBackPressed();
+//        Rate.Show(this,1);
 
     }
 }

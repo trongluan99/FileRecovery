@@ -1,4 +1,4 @@
-package com.jm.filerecovery.videorecovery.photorecovery.utilts;
+package com.ads.control;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,7 +11,7 @@ public class SharePreferenceUtils {
 
     private SharePreferenceUtils(Context context) {
         this.mContext = context;
-        this.pre = context.getSharedPreferences("data_app", Context.MODE_PRIVATE);
+        this.pre = context.getSharedPreferences("recovery_file_share_preference", Context.MODE_PRIVATE);
         this.editor = this.pre.edit();
     }
 
@@ -46,4 +46,12 @@ public class SharePreferenceUtils {
         editor.commit();
     }
 
+    public void saveShowFullAds(boolean showFullAds) {
+        editor.putBoolean("ShowFullAds", showFullAds);
+        editor.commit();
+    }
+
+    public boolean getShowFullAds() {
+        return pre.getBoolean("ShowFullAds", false);
+    }
 }

@@ -15,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.ads.control.AdmobHelp;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.DialogScanBinding;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 
 public class ScanDialog extends DialogFragment {
 
@@ -44,7 +46,7 @@ public class ScanDialog extends DialogFragment {
         getDialog().setCanceledOnTouchOutside(false);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        AdmobHelp.getInstance().loadNativeFragment(getActivity(), binding.getRoot());
+        AdmobUtils.getInstance().loadNativeFragment(getActivity(),binding.getRoot());
     }
 
     private int getWidth(Context context) {

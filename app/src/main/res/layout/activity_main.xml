@@ -332,7 +332,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.55" />
+                        app:layout_constraintWidth_percent="0.45" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_image"
@@ -388,7 +388,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.55" />
+                        app:layout_constraintWidth_percent="0.45" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_video"
@@ -443,7 +443,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.55" />
+                        app:layout_constraintWidth_percent="0.45" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_audio"
@@ -498,7 +498,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        app:layout_constraintWidth_percent="0.55" />
+                        app:layout_constraintWidth_percent="0.45" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_his"

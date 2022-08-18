@@ -23,7 +23,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.ads.control.AdmobHelp;
+
+import com.ads.control.AdmobUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -64,7 +65,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         intData();
         intEvent();
 
-        AdmobHelp.getInstance().loadNative(FileInfoActivity.this);
+        AdmobUtils.getInstance().loadNativeActivity(FileInfoActivity.this);
     }
     public void intView(){
         toolbar = findViewById(R.id.toolbar);

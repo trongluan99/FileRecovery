@@ -27,10 +27,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.ads.control.AdmobHelp;
-import com.ads.control.Rate;
+
+import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtils;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void intView() {
-        AdmobHelp.getInstance().loadBanner(this);
+        AdmobUtils.getInstance().loadBanner(this);
     }
 
     @Override
@@ -284,7 +285,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        Rate.Show(this, 1);
+        Rate.Show(this, new Rate.OnResult() {
+            @Override
+            public void callActionAfter() {
+             finish();
+            }
+        });
     }
 
 }

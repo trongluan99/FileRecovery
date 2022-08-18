@@ -6,12 +6,14 @@ import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,6 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.task.RecoverPhotosAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.FileVideoAdapter;
@@ -90,22 +96,36 @@ public class VideoActivity extends AppCompatActivity {
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, fileVideoAdapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
-                        @Override
-                        public void onComplete() {
-                            Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
-                            intent.putExtra("value", tempList.size());
-                            intent.putExtra("type", 1);
-                            startActivity(intent);
-                            fileVideoAdapter.setAllImagesUnseleted();
-                            fileVideoAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    mRecoverVideoAsyncTask.execute();
+                    Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 2);
+                    startActivityForResult(intent, 10900);
+
                 }
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("AdmobHelper", " requestCode =" + requestCode + " resultCode = " + resultCode);
+        if (requestCode == 10900 && resultCode == 888) {
+            final ArrayList<VideoEntity> tempList = fileVideoAdapter.getSelectedItem();
+            mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, fileVideoAdapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
+                @Override
+                public void onComplete() {
+                    Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 1);
+                    startActivity(intent);
+                    fileVideoAdapter.setAllImagesUnseleted();
+                    fileVideoAdapter.notifyDataSetChanged();
+                }
+            });
+            mRecoverVideoAsyncTask.execute();
+        }
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

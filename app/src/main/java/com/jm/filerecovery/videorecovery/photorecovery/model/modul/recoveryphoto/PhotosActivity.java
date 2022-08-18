@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,10 @@ import android.widget.Toast;
 
 import com.ads.control.AdmobUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FilePhotoAdapter;
@@ -87,22 +93,34 @@ public class PhotosActivity extends AppCompatActivity {
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
-                        @Override
-                        public void onComplete() {
-                            Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
-                            intent.putExtra("value", tempList.size());
-                            intent.putExtra("type", 0);
-                            startActivity(intent);
-                            filePhotoAdapter.setAllImagesUnseleted();
-                            filePhotoAdapter.notifyDataSetChanged();
-                        }
-                    });
-                    mRecoverPhotosAsyncTask.execute();
+                    Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 2);
+                    startActivityForResult(intent, 10900);
                 }
 
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("AdmobHelper", " requestCode =" + requestCode + " resultCode = " + resultCode);
+        if (requestCode == 10900 && resultCode == 888) {
+            final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
+            mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
+            @Override
+            public void onComplete() {
+                Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+                intent.putExtra("value", tempList.size());
+                intent.putExtra("type", 0);
+                startActivity(intent);
+                filePhotoAdapter.setAllImagesUnseleted();
+                filePhotoAdapter.notifyDataSetChanged();
+            }
+        });
+            mRecoverPhotosAsyncTask.execute();
+        }
     }
 
     public boolean SDCardCheck() {

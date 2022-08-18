@@ -5,12 +5,14 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -93,7 +95,7 @@ public class AudioActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
                     intent.putExtra("value", tempList.size());
                     intent.putExtra("type", 2);
-                    startActivity(intent);
+                    startActivityForResult(intent, 10900);
 
 //                    mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
 //                        @Override
@@ -119,6 +121,27 @@ public class AudioActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("AdmobHelper", " requestCode =" + requestCode + " resultCode = " + resultCode);
+        if (requestCode == 10900 && resultCode == 888) {
+            final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+            mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
+                @Override
+                public void onComplete() {
+                    Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 2);
+                    startActivity(intent);
+                    fileAudioAdapter.setAllImagesUnseleted();
+                    fileAudioAdapter.notifyDataSetChanged();
+                }
+            });
+            mRecoverPhotosAsyncTask.execute();
+        }
     }
 
     //    private void showDalogConfirmDelete() {

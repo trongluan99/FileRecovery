@@ -27,6 +27,7 @@
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string> // id test
     <string name="admob_native" translatable="false">/6499/example/native</string>
     <string name="admob_full" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>
     <string name="admob_banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="admob_open_splash" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app" translatable="false">ca-app-pub-3940256099942544/3419835294</string>

@@ -48,7 +48,8 @@
 
         <activity
             android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity"
-            android:theme="@style/Theme_AppCompat_Light_NoActionBar_FullScreen">
+            android:theme="@style/Theme_AppCompat_Light_NoActionBar_FullScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

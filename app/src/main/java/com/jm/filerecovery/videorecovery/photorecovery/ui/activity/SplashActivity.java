@@ -66,8 +66,6 @@ public class SplashActivity extends AppCompatActivity {
             language = "ar";
         }else if(index==6) {
             language = "es";
-        }else if(index==7) {
-            language = "in";
         }
 
         if (SharePreferenceUtils.getInstance(this).getFirstRun()) {
@@ -93,10 +91,6 @@ public class SplashActivity extends AppCompatActivity {
             if (language.equalsIgnoreCase("es")) {
                 SharePreferenceUtils.getInstance(this).saveLanguageIndex(6);
             }
-            if (language.equalsIgnoreCase("in")) {
-                SharePreferenceUtils.getInstance(this).saveLanguageIndex(7);
-            }
-
         }
 
         Locale myLocale = new Locale(language);

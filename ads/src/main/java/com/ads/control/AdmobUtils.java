@@ -39,7 +39,7 @@ public class AdmobUtils {
     private AdCloseListener adCloseListener;
     private boolean isReloaded = false;
     public static long timeLoad=0;
-    public static long TimeReload = 30*1000;
+    public static long TimeReload = 15*1000;
 
     public static AdmobUtils getInstance() {
         if (instance == null) {

@@ -46,7 +46,7 @@
     <string name="delete_success">Xóa thành công</string>
     <string name="files">"Files : %d"</string>
     <string name="allow_watch_ads">XEM QUẢNG CÁO</string>
-    <string name="skip">SKIP</string>
+    <string name="skip">BỎ QUA</string>
     <string name="watch_ads_confirm_ring">Khôi phục file của bạn! \n Chỉ cần xem một đoạn video quảng cáo ngắn và bạn có thể khôi phục file đã chọn.</string>
     <string name="go_to_google_play">Đánh giá trên Google Play</string>
     <string name="tks_to_rate">Cảm ơn đánh giá của bạn!</string>

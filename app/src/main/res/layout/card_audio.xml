@@ -57,19 +57,19 @@
                 android:background="@color/colorPrimary">
 
                 <TextView
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/roboto_regular"
                     android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:fontFamily="@font/roboto_regular"
                     android:maxLines="1"
-                    android:text="Chao be "
-                    android:paddingEnd="@dimen/sub_big_spacing"
-                    android:paddingLeft="@dimen/alternate_margin"
-                    android:paddingRight="@dimen/sub_big_spacing"
                     android:paddingStart="@dimen/alternate_margin"
+                    android:paddingLeft="@dimen/alternate_margin"
                     android:paddingTop="@dimen/alternate_margin"
+                    android:paddingEnd="@dimen/sub_big_spacing"
+                    android:paddingRight="@dimen/sub_big_spacing"
+                    android:text="Chao be "
+                    android:textColor="@color/white"
                     android:textSize="@dimen/medium_text" />
 
 

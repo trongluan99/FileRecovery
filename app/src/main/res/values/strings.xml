@@ -74,6 +74,7 @@
     <string name="send">Send</string>
     <string name="second">seconds</string>
     <string name="ads_after">Ads are displayed after</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
 
 
 </resources>

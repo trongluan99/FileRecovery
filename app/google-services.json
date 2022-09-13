@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "221526354227",
+    "project_id": "file-recovery-e6e95",
+    "storage_bucket": "file-recovery-e6e95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221526354227:android:b3ae1dd6459bec43953646",
+        "android_client_info": {
+          "package_name": "com.jm.filerecovery.videorecovery.photorecovery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221526354227-64gg14l4urcqqocjmp7g8m223abl2bre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jm.filerecovery.videorecovery.photorecovery",
+            "certificate_hash": "8360516f33d1274c2a8b2b15b1dcd6bd1e5202ea"
+          }
+        },
+        {
+          "client_id": "221526354227-1pj0slssieoap9mr845taiep8ngk5b2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbVcp6tH-HeYJ1INBt0e1zn17I0NV83eU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221526354227-1pj0slssieoap9mr845taiep8ngk5b2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

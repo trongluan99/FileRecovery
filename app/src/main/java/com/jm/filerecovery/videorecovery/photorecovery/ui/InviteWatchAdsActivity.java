@@ -38,10 +38,16 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_invite_watch_ads);
         btnYes= findViewById(R.id.btn_yes);
         btnNo= findViewById(R.id.btn_no);
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            finish();
+            }
+        });
         if (rewardedInterstitialAd == null && !isLoadingAds) {
             loadRewardedInterstitialAd();
         }
-        createTimer(4);
+        createTimer(6);
     }
 
     private void loadRewardedInterstitialAd() {

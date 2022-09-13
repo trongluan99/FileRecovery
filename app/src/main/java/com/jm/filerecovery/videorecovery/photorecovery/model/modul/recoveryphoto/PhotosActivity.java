@@ -62,7 +62,7 @@ public class PhotosActivity extends AppCompatActivity {
         intView();
         intData();
         AdmobUtils.getInstance().loadBanner(this);
-
+        AdmobUtils.getInstance().showInterstitialAd(this, () -> {});
     }
 
     public void intView() {
@@ -236,7 +236,7 @@ public class PhotosActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
+        super.onBackPressed();
 
     }
 }

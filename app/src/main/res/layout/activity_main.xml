@@ -524,7 +524,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ctr_audio" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
@@ -534,7 +534,6 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_number_image"
-                app:layout_constraintEnd_toStartOf="@+id/tv_see_all"
                 app:layout_constraintStart_toEndOf="@+id/tv_number_image"
                 app:layout_constraintTop_toTopOf="@+id/tv_number_image" />
 

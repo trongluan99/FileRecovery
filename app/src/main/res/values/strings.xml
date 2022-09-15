@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">File Recovery</string>
-    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
-    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="rating">Rating</string>
     <string name="share">Share to friends</string>
     <string name="policy">PRIVACY POLICY</string>
     <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="link_more_app" translatable="false">//</string>
-    <string name="more_app" translatable="false">More App</string>
+    <string name="more_app">More App</string>
     <string name="feedback">Feedback</string>
     <string name="scan">Scan</string>
 
@@ -23,13 +23,13 @@
     <string name="scan_wait">Please wait while scanning files...</string>
     <string name="not_found">No photos found</string>
     <string name="restore_now">Restore Now</string>
-    <string name="let_start" translatable="false">Let\'s Start</string>
-    <string name="restoring_number_format" translatable="false">Restored ... %d files</string>
-    <string name="restore_photo" translatable="false">Restore Deleted Files</string>
+    <string name="let_start">Let\'s Start</string>
+    <string name="restoring_number_format">Restored ... %d files</string>
+    <string name="restore_photo">Restore Deleted Files</string>
     <string name="photo_recovery">Photo Recovery</string>
 
     <string name="language_setting">Language</string>
-    <string-array name="arrLanguage">
+    <string-array name="arrLanguage" translatable="false">
         <item>English</item>
         <item>Portuguese</item>
         <item>Tiếng Việt</item>
@@ -46,7 +46,7 @@
     <string name="restoring_video">Restoring video...</string>
     <string name="open_file">Open File</string>
     <string name="share_file">Share File</string>
-    <string name="restoring_number_format_audio" translatable="false">Restored ... %d files</string>
+    <string name="restoring_number_format_audio">Restored ... %d files</string>
     <string name="feature">Feature</string>
     <string name="image">Image</string>
     <string name="video">Video</string>

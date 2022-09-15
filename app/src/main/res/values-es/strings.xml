@@ -1,30 +1,58 @@
 <resources>
+    <string name="app_name">Recuperación de archivo</string>
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
 
-    <string name="rating">Califíquenos</string>
-    <string name="share">Compartir a amigos</string>
-    <string name="policy">Política de privacidad</string>
-    <string name="feedback">Realimentación</string>
+    <string name="rating">Clasificación</string>
+    <string name="share">Compartir con amigos</string>
+    <string name="policy">POLÍTICA DE PRIVACIDAD</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">Más aplicaciones</string>
+    <string name="feedback">Retroalimentación</string>
     <string name="scan">Escanear</string>
 
-    <string name="scan_tip">La aplicación le ayuda a recuperar fotos eliminadas.\\nLa aplicación mostrará todas las imágenes (eliminadas y no eliminadas). Solo sigue buscando y encontrarás fotos que estás buscando.\\nPor favor, sea paciente y espere hasta que escanea todas las carpetas y archivos.</string>
+    <string name="scan_tip">La aplicación te ayuda a recuperar fotos eliminadas.\nLa aplicación mostrará todas las imágenes (eliminadas y no eliminadas). Simplemente siga buscando y encontrará las fotos que está buscando.\nTenga paciencia y espere hasta que escanee todas las carpetas y archivos.</string>
     <string name="how_to_work">¿Cómo funciona?</string>
     <string name="restore">Restaurar</string>
+    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
+    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
+    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Ver fotos restauradas</string>
-    <string name="setting">Configuración</string>
-    <string name="scan_wait">Por favor espere mientras escanea archivos...</string>
-    <string name="not_found">No se encontraron fotos.</string>
+    <string name="setting">Ajustes</string>
+    <string name="scan_wait">Espere mientras escanea archivos...</string>
+    <string name="not_found">No se encontraron fotos</string>
     <string name="restore_now">Restaurar ahora</string>
+    <string name="let_start">Empecemos</string>
+    <string name="restoring_number_format">Restaurado... %d archivos</string>
+    <string name="restore_photo">Restaurar archivos eliminados</string>
     <string name="photo_recovery">Recuperación de fotos</string>
 
     <string name="language_setting">Idioma</string>
-    <string name="more_app" translatable="false">Más aplicaciones</string>
-    <string name="analyzing">Analizando ...</string>
+    <string name="not_found_audio">audio no encontrado</string>
+    <string name="analyzing">Analizando...</string>
     <string name="video_recovery">Recuperación de vídeo</string>
-    <string name="audio_recovery">Recuperación de Audio</string>
+    <string name="audio_recovery">Recuperación de audio</string>
     <string name="restore_file">Restaurar archivo</string>
-    <string name="restoring_video">Restaurando video ...</string>
-    <string name="open_file">Abre el archivo</string>
-    <string name="share_file">Comparte el archivo</string>
-
-
+    <string name="restoring_video">Restaurando vídeo...</string>
+    <string name="open_file">Abrir documento</string>
+    <string name="share_file">Recurso compartido de archivos</string>
+    <string name="restoring_number_format_audio">Restaurado... %d archivos</string>
+    <string name="feature">Rasgo</string>
+    <string name="image">Imagen</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="recovery_file">Archivo de recuperación</string>
+    <string name="photo_restored">La foto ha sido restaurada.</string>
+    <string name="see_all">Ver todo</string>
+    <string name="view_using">ver usando</string>
+    <string name="all_file">Todo el archivo</string>
+    <string name="request_delete_all">¿Quieres eliminar todos los %s?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">OK</string>
+    <string name="memory">Memoria</string>
+    <string name="used">Usó</string>
+    <string name="free">Libre</string>
+    <string name="delete_success">Eliminar con éxito</string>
+    <string name="files">"Archivos: %d"</string>
 </resources>

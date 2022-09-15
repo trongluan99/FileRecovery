@@ -33,6 +33,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.FileVideoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.utilts.ButtonRestore;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class VideoActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
-    Button btnRestore;
+    ButtonRestore btnRestore;
     ArrayList<VideoEntity> mList = new ArrayList<VideoEntity>();
     RecoverVideoAsyncTask mRecoverVideoAsyncTask;
     Toolbar toolbar;
@@ -75,7 +76,7 @@ public class VideoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        btnRestore = (Button) findViewById(R.id.btnRestore);
+        btnRestore = (ButtonRestore) findViewById(R.id.btnRestore);
         recyclerView = (RecyclerView) findViewById(R.id.gv_folder);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);

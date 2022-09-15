@@ -1,50 +1,59 @@
 <resources>
+    <string name="navigation_drawer_open">Mở ngăn điều hướng</string>
+    <string name="navigation_drawer_close">Đóng ngăn điều hướng</string>
     <string name="app_name">Khôi Phục Ảnh &amp; Video</string>
     <string name="rating">Xếp hạng</string>
-    <string name="share">Chia sẻ với bạn bè</string>
+    <string name="share">Chia sẻ cho bạn bè</string>
     <string name="policy">CHÍNH SÁCH BẢO MẬT</string>
-    <string name="feedback">Phản hồi</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">Nhiều ứng dụng hơn</string>
+    <string name="feedback">Nhận xét</string>
     <string name="scan">Quét</string>
 
-    <string name="scan_tip">Ứng dụng giúp bạn khôi phục ảnh đã xóa. \nỨng dụng sẽ hiển thị tất cả các hình ảnh (Đã xóa và chưa xóa). Chỉ cần tiếp tục tìm kiếm và bạn sẽ tìm thấy những bức ảnh bạn đang tìm kiếm. \nHãy kiên nhẫn và đợi cho đến khi nó quét tất cả các thư mục và tệp.</string>
+    <string name="scan_tip">Ứng dụng giúp bạn khôi phục ảnh đã xóa. \N Ứng dụng sẽ hiển thị tất cả ảnh (Đã xóa và Chưa xóa). Chỉ cần Tiếp tục tìm và bạn sẽ tìm thấy ảnh mình đang tìm. \NHãy kiên nhẫn và đợi cho đến khi nó quét tất cả các thư mục và tệp.</string>
     <string name="how_to_work">Làm thế nào nó hoạt động?</string>
     <string name="restore">Khôi phục</string>
-    <string name="view_restored_photos">Xem hình ảnh được khôi phục</string>
+    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
+    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
+    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
+    <string name="view_restored_photos">Xem ảnh đã khôi phục</string>
     <string name="setting">Cài đặt</string>
     <string name="scan_wait">Vui lòng đợi trong khi quét tệp ...</string>
     <string name="not_found">Không tìm thấy ảnh</string>
     <string name="restore_now">Khôi phục ngay</string>
-    <string name="let_start" translatable="false">Bắt đầu</string>
-    <string name="photo_recovery">Phục hồi hình ảnh</string>
+    <string name="let_start">Hãy bắt đầu</string>
+    <string name="restoring_number_format">Đã khôi phục ... %d tệp</string>
+    <string name="restore_photo">Khôi phục các tệp đã xóa</string>
+    <string name="photo_recovery">Phục hồi ảnh</string>
 
     <string name="language_setting">Ngôn ngữ</string>
-    <string name="more_app" translatable="false">Thêm ứng dụng</string>
-    <string name="analyzing">Đang phân tích...</string>
+    <string name="not_found_audio">Không tìm thấy âm thanh</string>
+    <string name="analyzing">Đang phân tích ...</string>
     <string name="video_recovery">Phục hồi video</string>
-    <string name="audio_recovery">Phục hồi Audio</string>
-    <string name="restore_file">Khôi phục file</string>
-    <string name="restoring_video">Đang khôi phục video</string>
-    <string name="open_file">Mở File</string>
-    <string name="share_file">Chia sẻ File</string>
-
-    <string name="restoring_number_format_audio" translatable="false">Đang khôi phục ... %d files</string>
+    <string name="audio_recovery">Phục hồi âm thanh</string>
+    <string name="restore_file">Khôi phục tệp</string>
+    <string name="restoring_video">Đang khôi phục video ...</string>
+    <string name="open_file">Mở tệp</string>
+    <string name="share_file">Chia sẻ thư mục</string>
+    <string name="restoring_number_format_audio">Đã khôi phục ... %d tệp</string>
     <string name="feature">Tính năng</string>
-    <string name="image">Ảnh</string>
+    <string name="image">Hình ảnh</string>
     <string name="video">Video</string>
     <string name="audio">Âm thanh</string>
-    <string name="recovery_file">Tệp Đã Khôi Phục</string>
+    <string name="recovery_file">Tệp khôi phục</string>
     <string name="photo_restored">Ảnh đã được khôi phục</string>
-    <string name="see_all">Xem tất cả</string>
-    <string name="view_using">View using</string>
-    <string name="all_file">Tất Cả Tệp Tin</string>
-    <string name="request_delete_all">Bạn có muốn xóa tất cả %s ?</string>
-    <string name="cancel">Hủy</string>
-    <string name="ok">Ok</string>
+    <string name="see_all">Nhìn thấy tất cả</string>
+    <string name="view_using">Xem bằng cách sử dụng</string>
+    <string name="all_file">Tất cả các tập tin</string>
+    <string name="request_delete_all">Bạn có muốn xóa tất cả %s không?</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="ok">Được</string>
     <string name="memory">Bộ nhớ</string>
-    <string name="used">Đã dùng</string>
-    <string name="free">Trống</string>
+    <string name="used">Đã sử dụng</string>
+    <string name="free">Tự do</string>
     <string name="delete_success">Xóa thành công</string>
-    <string name="files">"Files : %d"</string>
+    <string name="files">"Tệp: %d"</string>
     <string name="allow_watch_ads">XEM QUẢNG CÁO</string>
     <string name="skip">BỎ QUA</string>
     <string name="watch_ads_confirm_ring">Khôi phục file của bạn! \n Chỉ cần xem một đoạn video quảng cáo ngắn và bạn có thể khôi phục file đã chọn.</string>

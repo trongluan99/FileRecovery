@@ -29,6 +29,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.utilts.ButtonRestore;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.io.File;
@@ -43,7 +44,7 @@ public class AudioActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
     FileAudioAdapter fileAudioAdapter;
-    Button btnRestore;
+    ButtonRestore btnRestore;
     ArrayList<AudioEntity> mList = new ArrayList<AudioEntity>();
     RecoverAudioAsyncTask mRecoverPhotosAsyncTask;
     Toolbar toolbar;
@@ -73,7 +74,7 @@ public class AudioActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        btnRestore = (Button) findViewById(R.id.btnRestore);
+        btnRestore = (ButtonRestore) findViewById(R.id.btnRestore);
         recyclerView = (RecyclerView) findViewById(R.id.gv_folder);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);

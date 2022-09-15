@@ -1,30 +1,58 @@
 <resources>
+    <string name="app_name">Восстановление файлов</string>
+    <string name="navigation_drawer_open">Открыть панель навигации</string>
+    <string name="navigation_drawer_close">Закрыть панель навигации</string>
 
-    <string name="rating">Оцените нас</string>
-    <string name="share">Отправить друзьям</string>
-    <string name="policy">Конфиденциальности</string>
+    <string name="rating">Рейтинг</string>
+    <string name="share">Поделитесь с друзьями</string>
+    <string name="policy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">Больше приложений</string>
     <string name="feedback">Обратная связь</string>
-    <string name="scan">сканирование</string>
+    <string name="scan">Сканировать</string>
 
-    <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\\nПриложение покажет все изображения (удалены и не удалены). Просто продолжайте искать, и вы найдете фотографии, которые вы ищете.\\nПожалуйста, будьте терпеливы и подождите, пока он сканирует все папки и файлы.</string>
+    <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\nПриложение покажет все изображения (удаленные и не удаленные). Просто продолжайте искать, и вы найдете нужные фотографии.\nНаберитесь терпения и подождите, пока программа просканирует все папки и файлы.</string>
     <string name="how_to_work">Как это работает?</string>
-    <string name="restore">Восстановление</string>
-    <string name="view_restored_photos">Просмотр восстановленных фотографий</string>
-    <string name="setting">настройки</string>
-    <string name="scan_wait">Подождите, пока сканирование файлов...</string>
+    <string name="restore">Восстановить</string>
+    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
+    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
+    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
+    <string name="view_restored_photos">Посмотреть восстановленные фотографии</string>
+    <string name="setting">Настройки</string>
+    <string name="scan_wait">Пожалуйста, подождите, пока сканируются файлы...</string>
     <string name="not_found">Фотографии не найдены</string>
     <string name="restore_now">Восстановить сейчас</string>
+    <string name="let_start">Давайте начнем</string>
+    <string name="restoring_number_format">Восстановлено ... %d файлов</string>
+    <string name="restore_photo">Восстановить удаленные файлы</string>
     <string name="photo_recovery">Восстановление фотографий</string>
 
-    <string name="language_setting">язык</string>
-    <string name="more_app" translatable="false">Больше приложений</string>
-    <string name="analyzing">Анализ ...</string>
-    <string name="video_recovery">Видео Восстановление</string>
-    <string name="audio_recovery">Аудио Восстановление</string>
+    <string name="language_setting">Язык</string>
+    <string name="not_found_audio">Аудио не найдено</string>
+    <string name="analyzing">Анализ...</string>
+    <string name="video_recovery">Восстановление видео</string>
+    <string name="audio_recovery">Восстановление аудио</string>
     <string name="restore_file">Восстановить файл</string>
-    <string name="restoring_video">Восстановление видео ...</string>
+    <string name="restoring_video">Восстановление видео...</string>
     <string name="open_file">Открыть файл</string>
-    <string name="share_file">Поделиться файл</string>
-
-
+    <string name="share_file">Поделиться файлом</string>
+    <string name="restoring_number_format_audio">Восстановлено ... %d файлов</string>
+    <string name="feature">Особенность</string>
+    <string name="image">Изображение</string>
+    <string name="video">видео</string>
+    <string name="audio">Аудио</string>
+    <string name="recovery_file">Файл восстановления</string>
+    <string name="photo_restored">Фото восстановлено</string>
+    <string name="see_all">Увидеть все</string>
+    <string name="view_using">Посмотреть с помощью</string>
+    <string name="all_file">Весь файл</string>
+    <string name="request_delete_all">Вы хотите удалить все %s?</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">Ok</string>
+    <string name="memory">Память</string>
+    <string name="used">Использовал</string>
+    <string name="free">Свободно</string>
+    <string name="delete_success">Удалить успешно</string>
+    <string name="files">"Файлы: %d"</string>
 </resources>

@@ -72,6 +72,9 @@ public class ScanFilesActivity extends AppCompatActivity {
         }
         Utils.setStatusBarHomeTransparent(this);
 
+        setSupportActionBar(ctrToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         intView();
     }
 
@@ -85,12 +88,6 @@ public class ScanFilesActivity extends AppCompatActivity {
         });
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setTitle(getString(R.string.app_name));
     }
 
     @Override

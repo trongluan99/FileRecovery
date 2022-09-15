@@ -139,7 +139,6 @@
 
             <androidx.cardview.widget.CardView
                 style="@style/AppOptionStyle"
-                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="3dp"
                 app:cardElevation="3dp">
 
@@ -147,7 +146,7 @@
                     android:id="@+id/btnRestore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
+                    android:background="@drawable/bg_result"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/restore_file"
                     android:textColor="@color/white"

@@ -15,5 +15,7 @@
     <color name="text_color">#ff666666</color>
     <color name="text_gray">#7d7d7d</color>
     <color name="teal_200">#80cbc4</color>
-    <color name="colorTextPopup">#09090a</color> <!-- Use with black text -->
+    <color name="colorTextPopup">#09090a</color>
+    <color name="blur">#0984e3</color>
+    <color name="blue">#FF375BF1</color> <!-- Use with black text -->
 </resources>

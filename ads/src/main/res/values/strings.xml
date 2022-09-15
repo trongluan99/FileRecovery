@@ -21,7 +21,7 @@
 
     // Title mail and email feed back
     <string name="Title_email" translatable="false">Title FeedBack</string>
-    <string name="email_feedback" translatable="false">emailne@gmail.com</string>
+    <string name="email_feedback" translatable="false">tuanatp0308@gmail.com</string>
 
     //Info id admob id test
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string> // id test

@@ -1,30 +1,58 @@
 <resources>
+    <string name="app_name">استعادة الملفات</string>
+    <string name="navigation_drawer_open">افتح درج التنقل</string>
+    <string name="navigation_drawer_close">أغلق درج التنقل</string>
 
-    <string name="rating">قيمنا</string>
-    <string name="share">حصة للأصدقاء</string>
+    <string name="rating">تقييم</string>
+    <string name="share">شارك مع الأصدقاء</string>
     <string name="policy">سياسة الخصوصية</string>
-    <string name="feedback">ردود الفعل</string>
-    <string name="scan">تفحص</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">المزيد من التطبيقات</string>
+    <string name="feedback">استجابة</string>
+    <string name="scan">مسح</string>
 
-    <string name="scan_tip">التطبيق تساعدك علي استعاده الصور المحذوفة.\\nالتطبيق سوف تظهر جميع الصور (حذف وغير محذوفة). فقط استمر في البحث وسوف تجد الصور التي تبحث عنها.\\nيرجى التحلي بالصبر والانتظار حتى يقوم بمسح جميع المجلدات والملفات.</string>
-    <string name="how_to_work">كيف يعمل ؟</string>
-    <string name="restore">استعاده</string>
+    <string name="scan_tip">يساعدك التطبيق على استعادة الصور المحذوفة. \nسيعرض التطبيق جميع الصور (محذوفة وغير محذوفة). استمر في البحث وستجد الصور التي تبحث عنها. \nيرجى التحلي بالصبر والانتظار حتى يقوم بمسح كافة المجلدات والملفات.</string>
+    <string name="how_to_work">كيف تعمل؟</string>
+    <string name="restore">يعيد</string>
+    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
+    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
+    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">عرض الصور المستعادة</string>
-    <string name="setting">اعدادات</string>
-    <string name="scan_wait">يرجى الانتظار أثناء فحص الملفات ...</string>
-    <string name="not_found">لا توجد صور</string>
-    <string name="restore_now">استعاده الآن</string>
-    <string name="photo_recovery">استعاده الصور</string>
+    <string name="setting">إعدادات</string>
+    <string name="scan_wait">الرجاء الانتظار أثناء فحص الملفات ...</string>
+    <string name="not_found">لم يتم العثور على صور</string>
+    <string name="restore_now">استعادة الآن</string>
+    <string name="let_start">لنبدأ</string>
+    <string name="restoring_number_format">تمت الاستعادة ...٪ d ملفات</string>
+    <string name="restore_photo">استعادة الملفات المحذوفة</string>
+    <string name="photo_recovery">استعادة الصور</string>
 
     <string name="language_setting">لغة</string>
-    <string name="more_app" translatable="false">المزيد من التطبيق</string>
-    <string name="analyzing">تحليل ...</string>
-    <string name="video_recovery">استعادة الفيديو المحذوف</string>
+    <string name="not_found_audio">لم يتم العثور على الصوت</string>
+    <string name="analyzing">جاري التحليل ...</string>
+    <string name="video_recovery">استعادة الفيديو</string>
     <string name="audio_recovery">استعادة الصوت</string>
-    <string name="restore_file">استعاده الملف</string>
+    <string name="restore_file">استعادة الملف</string>
     <string name="restoring_video">استعادة الفيديو ...</string>
-    <string name="open_file">افتح الملف</string>
-    <string name="share_file">شارك الملف</string>
-
-
+    <string name="open_file">افتح ملف</string>
+    <string name="share_file">مشاركة الملفات</string>
+    <string name="restoring_number_format_audio">تمت الاستعادة ...٪ d ملفات</string>
+    <string name="feature">ميزة</string>
+    <string name="image">صورة</string>
+    <string name="video">فيديو</string>
+    <string name="audio">صوتي</string>
+    <string name="recovery_file">ملف الاسترداد</string>
+    <string name="photo_restored">تمت استعادة الصورة</string>
+    <string name="see_all">اظهار الكل</string>
+    <string name="view_using">عرض باستخدام</string>
+    <string name="all_file">كل الملف</string>
+    <string name="request_delete_all">هل تريد حذف كافة٪ s؟</string>
+    <string name="cancel">يلغي</string>
+    <string name="ok">موافق</string>
+    <string name="memory">ذاكرة</string>
+    <string name="used">تستخدم</string>
+    <string name="free">حر</string>
+    <string name="delete_success">تم الحذف بنجاح</string>
+    <string name="files">"الملفات:٪ d"</string>
 </resources>

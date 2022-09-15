@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:shape="rectangle">
+    <corners android:radius="@dimen/_18sdp" />
+    <solid android:color="#FF2C78DF" />
+</shape>
+
+
+<!--<vector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:aapt="http://schemas.android.com/aapt"-->
+<!--android:width="360dp"-->
+<!--android:height="86dp"-->
+<!--android:viewportWidth="360"-->
+<!--android:viewportHeight="86">-->
+<!--<path android:pathData="M0,0h360v86h-360z">-->
+<!--    <aapt:attr name="android:fillColor">-->
+<!--        <gradient-->
+<!--            android:endX="-1.50966"-->
+<!--            android:endY="123.521"-->
+<!--            android:startX="-16.7143"-->
+<!--            android:startY="3.67337"-->
+<!--            android:type="linear">-->
+<!--            <item-->
+<!--                android:color="#FF2C78DF"-->
+<!--                android:offset="0" />-->
+<!--            <item-->
+<!--                android:color="#FF41CAF5"-->
+<!--                android:offset="1" />-->
+<!--        </gradient>-->
+<!--    </aapt:attr>-->
+<!--</path>-->
+<!--</vector>-->

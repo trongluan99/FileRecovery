@@ -1,30 +1,61 @@
 <resources>
+    <string name="app_name">Recuperação de arquivo</string>
+    <string name="navigation_drawer_open">Abrir gaveta de navegação</string>
+    <string name="navigation_drawer_close">Fechar gaveta de navegação</string>
 
-    <string name="rating">Avalie-nos</string>
-    <string name="share">Compartilhar para amigos</string>
-    <string name="policy">Política de privacidade</string>
+    <string name="rating">Classificação</string>
+    <string name="share">Compartilhar com amigos</string>
+    <string name="policy">POLÍTICA DE PRIVACIDADE</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">Mais aplicativo</string>
     <string name="feedback">Comentários</string>
-    <string name="scan">Scan</string>
+    <string name="scan">Digitalizar</string>
 
-    <string name="scan_tip">O aplicativo ajuda você a recuperar fotos excluídas.\\nO aplicativo mostrará todas as imagens (excluídas e não excluídas). Basta continuar procurando e você vai encontrar fotos que você está procurando.\\nPor favor, seja paciente e aguarde até que ele verifica todas as pastas e arquivos.</string>
+    <string name="scan_tip">O aplicativo ajuda você a recuperar fotos excluídas.\nO aplicativo mostrará todas as imagens (excluídas e não excluídas). Continue procurando e você encontrará as fotos que procura.\nSeja paciente e espere até que ele verifique todas as pastas e arquivos.</string>
     <string name="how_to_work">Como funciona?</string>
     <string name="restore">Restaurar</string>
-    <string name="view_restored_photos">Ver fotos restauradas</string>
+
+    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
+    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
+    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
+    <string name="view_restored_photos">Visualizar fotos restauradas</string>
     <string name="setting">Configurações</string>
-    <string name="scan_wait">Por favor aguarde enquanto escaneia os arquivos...</string>
+    <string name="scan_wait">Aguarde enquanto verifica os arquivos...</string>
     <string name="not_found">Nenhuma foto encontrada</string>
     <string name="restore_now">Restaurar agora</string>
+    <string name="let_start">Vamos começar</string>
+    <string name="restoring_number_format">Restaurado ... %d arquivos</string>
+    <string name="restore_photo">Restaurar arquivos excluídos</string>
     <string name="photo_recovery">Recuperação de fotos</string>
 
     <string name="language_setting">Idioma</string>
-    <string name="more_app" translatable="false">Mais apps</string>
+    <string name="not_found_audio">Áudio não encontrado</string>
     <string name="analyzing">Analisando...</string>
     <string name="video_recovery">Recuperação de vídeo</string>
-    <string name="audio_recovery">Recuperação de Áudio</string>
-    <string name="restore_file">Arquivo de restauração</string>
-    <string name="restoring_video">Restaurando vídeo ...</string>
+    <string name="audio_recovery">Recuperação de áudio</string>
+    <string name="restore_file">Restaurar arquivo</string>
+    <string name="restoring_video">Restaurando vídeo...</string>
     <string name="open_file">Abrir arquivo</string>
     <string name="share_file">Compartilhar arquivo</string>
+    <string name="restoring_number_format_audio">Restaurado ... %d arquivos</string>
+    <string name="feature">Recurso</string>
+    <string name="image">Imagem</string>
+    <string name="video">Vídeo</string>
+    <string name="audio">Áudio</string>
+    <string name="recovery_file">Arquivo de recuperação</string>
+    <string name="photo_restored">A foto foi restaurada</string>
+    <string name="see_all">Ver todos</string>
+    <string name="view_using">Visualizar usando</string>
+    <string name="all_file">Todos os arquivos</string>
+    <string name="request_delete_all">Deseja excluir todos os %s ?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">Ok</string>
+    <string name="memory">Memória</string>
+    <string name="used">Usado</string>
+    <string name="free">Gratuito</string>
+    <string name="delete_success">Excluir com sucesso</string>
+    <string name="files">"Arquivos: %d"</string>
 
 
 </resources>

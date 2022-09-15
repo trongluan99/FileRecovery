@@ -1,11 +1,17 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui;
 
 
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+
 import com.ads.control.AdsApplication;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.AppOpenManager;
+
+import java.util.Locale;
 
 
 public class AnGApp extends AdsApplication {
@@ -21,5 +27,27 @@ public class AnGApp extends AdsApplication {
         });
         appOpenManager = new AppOpenManager(this);
 
+    }
+
+    @NonNull
+    @Override
+    public Locale getDefaultLanguage(@NonNull Context context) {
+        String currentLanguage = context.getResources().getConfiguration().locale.getLanguage();
+        if ("en".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("pt".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("vi".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("ru".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("fr".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("ar".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("es".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        }
+        return Locale.ENGLISH;
     }
 }

@@ -13,7 +13,7 @@
                 android:bottomRightRadius="70dp"/>
 
             <solid
-                android:color="@color/colorPrimaryDark"/>
+                android:color="@color/blur"/>
         </shape>
     </item>
     <item>
@@ -26,7 +26,7 @@
                 android:topLeftRadius="70dp"
                 android:bottomRightRadius="70dp"/>
             <solid
-                android:color="@color/colorPrimary"/>
+                android:color="@color/blur"/>
         </shape>
     </item>
 </selector>

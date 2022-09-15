@@ -29,19 +29,23 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
     private int coinCount;
     private long timeRemaining;
     private boolean isRewarded;
+    private boolean isActivity;
     private int GAME_OVER_REWARD = 1;
     private Button btnYes;
     private Button btnNo;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_watch_ads);
-        btnYes= findViewById(R.id.btn_yes);
-        btnNo= findViewById(R.id.btn_no);
+        isActivity = true;
+        btnYes = findViewById(R.id.btn_yes);
+        btnNo = findViewById(R.id.btn_no);
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            finish();
+                isActivity = false;
+                finish();
             }
         });
         if (rewardedInterstitialAd == null && !isLoadingAds) {
@@ -74,14 +78,14 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
     }
 
     private void createTimer(long time) {
-        if(countDownTimer!=null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
-        countDownTimer = new CountDownTimer(time *1000,50) {
+        countDownTimer = new CountDownTimer(time * 1000, 50) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeRemaining = millisUntilFinished / 1000 + 1;
-                btnYes.setText(getResources().getString(R.string.ads_after)+" "+timeRemaining+" "+getResources().getString(R.string.second));
+                btnYes.setText(getResources().getString(R.string.ads_after) + " " + timeRemaining + " " + getResources().getString(R.string.second));
 
             }
 
@@ -90,13 +94,15 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
                 addCoins(GAME_OVER_REWARD);
                 btnYes.setVisibility(View.VISIBLE);
                 gameOver = true;
-                if (rewardedInterstitialAd == null) {
-                    setResult(888);
-                    finish();
-                    Log.d("AdmobHelper", "The game is over but the rewarded interstitial ad wasn't ready yet.");
-                } else {
-                    showRewardedVideo();
-                    Log.d("AdmobHelper", "The rewarded interstitial ad is ready.");
+                if (isActivity) {
+                    if (rewardedInterstitialAd == null) {
+                        setResult(888);
+                        finish();
+                        Log.d("AdmobHelper", "The game is over but the rewarded interstitial ad wasn't ready yet.");
+                    } else {
+                        showRewardedVideo();
+                        Log.d("AdmobHelper", "The rewarded interstitial ad is ready.");
+                    }
                 }
             }
         };
@@ -125,7 +131,7 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
                 super.onAdDismissedFullScreenContent();
                 rewardedInterstitialAd = null;
                 loadRewardedInterstitialAd();
-                if(isRewarded) {
+                if (isRewarded) {
                     setResult(888);
                 } else {
                     setResult(777);
@@ -138,7 +144,7 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
                 super.onAdImpression();
             }
         });
-        if(rewardedInterstitialAd !=null){
+        if (rewardedInterstitialAd != null) {
             rewardedInterstitialAd.show(this, new OnUserEarnedRewardListener() {
                 @Override
                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
@@ -155,17 +161,24 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
     public void loadAd() {
         // Use the test ad unit ID to load an ad.
         RewardedInterstitialAd.load(InviteWatchAdsActivity.this, "ca-app-pub-3940256099942544/5354046379",
-                new AdRequest.Builder().build(),  new RewardedInterstitialAdLoadCallback() {
+                new AdRequest.Builder().build(), new RewardedInterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(RewardedInterstitialAd ad) {
                         Log.d(TAG, "Ad was loaded.");
                         rewardedInterstitialAd = ad;
                     }
+
                     @Override
                     public void onAdFailedToLoad(LoadAdError loadAdError) {
                         Log.d(TAG, loadAdError.toString());
                         rewardedInterstitialAd = null;
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isActivity = false;
     }
 }

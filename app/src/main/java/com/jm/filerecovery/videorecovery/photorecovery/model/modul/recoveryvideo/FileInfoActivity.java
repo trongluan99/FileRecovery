@@ -29,8 +29,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverOneVideosAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
@@ -43,13 +43,14 @@ import static java.security.AccessController.getContext;
 
 public class FileInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnOpen,btnShare,btnRestore;
-    TextView tvDate,tvSize,tvType;
+    Button btnOpen, btnShare, btnRestore;
+    TextView tvDate, tvSize, tvType;
     ImageView ivVideo;
     VideoEntity videoEntity;
     Toolbar toolbar;
     RecoverOneVideosAsyncTask mRecoverOneVideosAsyncTask;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,23 +68,25 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
 
         AdmobUtils.getInstance().loadNativeActivity(FileInfoActivity.this);
     }
-    public void intView(){
+
+    public void intView() {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.restore_photo));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        btnOpen = (Button)findViewById(R.id.btnOpen);
-        btnShare = (Button)findViewById(R.id.btnShare);
-        btnRestore = (Button)findViewById(R.id.btnRestore);
+        btnOpen = (Button) findViewById(R.id.btnOpen);
+        btnShare = (Button) findViewById(R.id.btnShare);
+        btnRestore = (Button) findViewById(R.id.btnRestore);
 
-        tvDate = (TextView)findViewById(R.id.tvDate);
-        tvSize = (TextView)findViewById(R.id.tvSize);
-        tvType = (TextView)findViewById(R.id.tvType);
-        ivVideo = (ImageView)findViewById(R.id.ivVideo);
+        tvDate = (TextView) findViewById(R.id.tvDate);
+        tvSize = (TextView) findViewById(R.id.tvSize);
+        tvType = (TextView) findViewById(R.id.tvType);
+        ivVideo = (ImageView) findViewById(R.id.ivVideo);
 
     }
-    public void intData(){
+
+    public void intData() {
         Intent i = getIntent();
         videoEntity = (VideoEntity)i.getSerializableExtra("ojectVideo");
         tvDate.setText(DateFormat.getDateInstance().format(videoEntity.getLastModified())+"  "+ videoEntity.getTimeDuration());
@@ -101,7 +104,8 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
-    public void intEvent(){
+
+    public void intEvent() {
         btnOpen.setOnClickListener(this);
         btnShare.setOnClickListener(this);
         btnRestore.setOnClickListener(this);
@@ -111,7 +115,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnOpen:
                 openFile(videoEntity.getPathPhoto());
                 break;
@@ -124,7 +128,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onComplete() {
                         Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
-                        intent.putExtra("value",1);
+                        intent.putExtra("value", 1);
                         startActivity(intent);
                         finish();
 
@@ -135,10 +139,11 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
             case R.id.ivVideo:
                 openFile(videoEntity.getPathPhoto());
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
+
     public void cancleUIUPdate() {
         if (this.mRecoverOneVideosAsyncTask != null && this.mRecoverOneVideosAsyncTask.getStatus() == AsyncTask.Status.RUNNING) {
             this.mRecoverOneVideosAsyncTask.cancel(true);
@@ -164,28 +169,28 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     public void fileSearch() {
         startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE"), 100);
     }
-    public void openFile(String path){
-        Intent createChooser;
 
-
-        if(Build.VERSION.SDK_INT<24){
-            Intent intent2 = new Intent("android.intent.action.VIEW");
-            intent2.setDataAndType(Uri.fromFile(new File(path)), "video/*");
-            createChooser = Intent.createChooser(intent2, "Complete action using");
-        }else{
-            File file = new File(path);
-            Intent intent4 = new Intent("android.intent.action.VIEW");
-            Uri contentUri2 = FileProvider.getUriForFile(this, getPackageName() + ".provider",file );
-            grantUriPermission(getPackageName(), contentUri2, 1);
-            intent4.setType("*/*");
+    public void openFile(String path) {
+        try {
+            Intent createChooser;
             if (Build.VERSION.SDK_INT < 24) {
-                contentUri2 = Uri.fromFile(file);
+                Intent intent2 = new Intent("android.intent.action.VIEW");
+                intent2.setDataAndType(Uri.fromFile(new File(path)), "video/*");
+                createChooser = Intent.createChooser(intent2, "Complete action using");
+            } else {
+                File file = new File(path);
+                Intent intent4 = new Intent("android.intent.action.VIEW");
+                Uri contentUri2 = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
+                grantUriPermission(getPackageName(), contentUri2, 1);
+                intent4.setType("*/*");
+                intent4.setData(contentUri2);
+                intent4.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                createChooser = Intent.createChooser(intent4, "Complete action using");
             }
-            intent4.setData(contentUri2);
-            intent4.setFlags(1);
-            createChooser = Intent.createChooser(intent4, "Complete action using");
+            this.startActivity(createChooser);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        this.startActivity(createChooser);
     }
 
     private void shareVideo(String path) {
@@ -193,7 +198,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
             Uri fileUri = FileProvider.getUriForFile(
                     this, this.getPackageName() +
                             ".provider",
-                   new File(path)
+                    new File(path)
             );
 
             Intent Shareintent = new Intent()
@@ -201,7 +206,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                     .setType("video/*")
                     .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     .putExtra(Intent.EXTRA_STREAM, fileUri);
-            this.startActivity(Intent.createChooser(Shareintent,""));
+            this.startActivity(Intent.createChooser(Shareintent, ""));
         } catch (Exception e) {
         }
     }
@@ -211,6 +216,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         super.onBackPressed();
         cancleUIUPdate();
     }
+
     @TargetApi(21)
     private static boolean checkIfSDCardRoot(Uri uri) {
         return isExternalStorageDocument(uri) && isRootUri(uri) && !isInternalStorage(uri);
@@ -261,8 +267,8 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onComplete() {
                             Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
-                            intent.putExtra("value",1);
-                            intent.putExtra("type",1);
+                            intent.putExtra("value", 1);
+                            intent.putExtra("type", 1);
                             startActivity(intent);
                             finish();
 
@@ -272,7 +278,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         }
-        if(requestCode==200){
+        if (requestCode == 200) {
             if (resultCode == RESULT_OK) {
                 finish();
             }

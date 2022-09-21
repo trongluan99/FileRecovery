@@ -1,0 +1,18 @@
+<resources>
+    <string name="confirm_exit">Willst du wirklich gehen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+
+    <string name="rate_msg">Unser Team arbeitet sehr hart daran, Ihnen die beste kostenlose Anwendung zu bieten. Ihre 5-Sterne-Bewertung ist mehr wert als alles Geld. Bitte schreiben Sie eine nette Bewertung in Google Play, um mich zu ermutigen.</string>
+    <string name="remind_later">Erinnere mich später</string>
+    <string name="good_5_stars">Gut, 5 Sterne</string>
+    <string name="not_good">Nicht gut</string>
+    <string name="title_dialog_feed_back">Senden Sie ein Feedback zurück</string>
+    <string name="message_dialog_feed_back">Fordern Sie eine Fehlerbehebung an und implementieren Sie neue Funktionen per E-Mail</string>
+    <string name="exit_app">Ausgang</string>
+
+    <string name="confirm_close">Möchten Sie diese Aktivität wirklich schließen?</string>
+
+    <string name="rate_app">Bewertungs App</string>
+    <string name="install_app_ads">Jetzt installieren</string>
+</resources>

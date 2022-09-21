@@ -26,12 +26,12 @@ import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 import java.util.Locale;
 
 
-
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
-    TextView tvDir,tvLanguage;
-    RelativeLayout rlMoreApp,rlRate,rlShare,rlPolicy,rlLanguage;
+    TextView tvDir, tvLanguage;
+    RelativeLayout rlMoreApp, rlRate, rlShare, rlPolicy, rlLanguage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,26 +47,29 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         intData();
         intEvent();
     }
-    public void intView(){
+
+    public void intView() {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.setting));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        tvDir = (TextView)findViewById(R.id.tvDir);
-        tvLanguage = (TextView)findViewById(R.id.tvLanguage);
-        rlMoreApp = (RelativeLayout)findViewById(R.id.rlMoreApp);
-        rlRate = (RelativeLayout)findViewById(R.id.rlRate);
-        rlShare = (RelativeLayout)findViewById(R.id.rlShare);
-        rlPolicy = (RelativeLayout)findViewById(R.id.rlPolicy);
-        rlLanguage = (RelativeLayout)findViewById(R.id.rlLanguage);
+        tvDir = (TextView) findViewById(R.id.tvDir);
+        tvLanguage = (TextView) findViewById(R.id.tvLanguage);
+        rlMoreApp = (RelativeLayout) findViewById(R.id.rlMoreApp);
+        rlRate = (RelativeLayout) findViewById(R.id.rlRate);
+        rlShare = (RelativeLayout) findViewById(R.id.rlShare);
+        rlPolicy = (RelativeLayout) findViewById(R.id.rlPolicy);
+        rlLanguage = (RelativeLayout) findViewById(R.id.rlLanguage);
     }
-    public void intData(){
-      //  tvDir.setText(Utils.getPathSave());
+
+    public void intData() {
+        //  tvDir.setText(Utils.getPathSave());
         tvLanguage.setText(getResources().getStringArray(R.array.arrLanguage)[SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex()]);
 
     }
-    public void intEvent(){
+
+    public void intEvent() {
         rlMoreApp.setOnClickListener(this);
         rlRate.setOnClickListener(this);
         rlShare.setOnClickListener(this);
@@ -78,7 +81,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.rlMoreApp:
                 UtilsApp.OpenBrower(SettingActivity.this, getString(R.string.link_more_app));
@@ -96,12 +99,13 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.rlPolicy:
                 UtilsApp.OpenBrower(SettingActivity.this, getString(R.string.link_policy));
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
+
     public void showDialogLanguage() {
-        final String [] arrLanguage = getResources().getStringArray(R.array.arrLanguage) ;
+        final String[] arrLanguage = getResources().getStringArray(R.array.arrLanguage);
         AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
 
@@ -119,7 +123,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 });
 
 
-
         String negativeText = getString(android.R.string.cancel);
         builder.setNegativeButton(negativeText,
                 new DialogInterface.OnClickListener() {
@@ -133,28 +136,41 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         // display dialog
         dialog.show();
     }
-    public void setSaveLanguage(int index){
-        if(index==0) {
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(0);
+
+    public void setSaveLanguage(int index) {
+        SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(index);
+        if (index == 0) {
             setLocale("en");
-        }else if(index==1) {
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(1);
+        } else if (index == 1) {
             setLocale("pt");
-        } else if(index==2){
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(2);
+        } else if (index == 2) {
             setLocale("vi");
-        }else if(index==3){
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(3);
+        } else if (index == 3) {
             setLocale("ru");
-        }else if(index==4){
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(4);
+        } else if (index == 4) {
             setLocale("fr");
-        }else if(index==5){
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(5);
+        } else if (index == 5) {
             setLocale("ar");
-        }else if(index==6){
-            SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(6);
+        } else if (index == 6) {
             setLocale("es");
+        } else if (index == 7) {
+            setLocale("de");
+        } else if (index == 8) {
+            setLocale("hi");
+        } else if (index == 9) {
+            setLocale("in");
+        } else if (index == 10) {
+            setLocale("it");
+        } else if (index == 11) {
+            setLocale("ja");
+        } else if (index == 12) {
+            setLocale("ko");
+        } else if (index == 13) {
+            setLocale("ml");
+        } else if (index == 14) {
+            setLocale("th");
+        } else if (index == 15) {
+            setLocale("zh");
         }
 
     }
@@ -170,6 +186,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(refresh);
         finish();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

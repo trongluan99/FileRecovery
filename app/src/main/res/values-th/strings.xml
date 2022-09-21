@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">การกู้คืนไฟล์</string>
+    <string name="navigation_drawer_open">เปิดลิ้นชักการนำทาง</string>
+    <string name="navigation_drawer_close">ปิดแถบเมนูเลื่อนด้านข้าง</string>
+
+    <string name="rating">เรตติ้ง</string>
+    <string name="share">แบ่งปันให้เพื่อน</string>
+    <string name="policy">นโยบายความเป็นส่วนตัว</string>
+    <string name="more_app">แอพเพิ่มเติม</string>
+    <string name="feedback">ข้อเสนอแนะ</string>
+    <string name="scan">สแกน</string>
+
+    <string name="scan_tip">แอปช่วยคุณกู้คืนรูปภาพที่ถูกลบ\nแอปจะแสดงรูปภาพทั้งหมด (ลบแล้วและไม่ถูกลบ) เพียงแค่ค้นหาต่อไปแล้วคุณจะพบรูปภาพที่ต้องการ\nโปรดอดใจรอจนกว่ามันจะสแกนโฟลเดอร์และไฟล์ทั้งหมด</string>
+    <string name="how_to_work">มันทำงานอย่างไร?</string>
+    <string name="restore">คืนค่า</string>
+    <string name="view_restored_photos">ดูรูปภาพที่กู้คืน</string>
+    <string name="setting">การตั้งค่า</string>
+    <string name="scan_wait">โปรดรอขณะสแกนไฟล์...</string>
+    <string name="not_found">ไม่พบรูปภาพ</string>
+    <string name="restore_now">คืนค่าตอนนี้</string>
+    <string name="let_start">เริ่มกันเลย</string>
+    <string name="restoring_number_format">กู้คืน ... %d ไฟล์</string>
+    <string name="restore_photo">กู้คืนไฟล์ที่ถูกลบ</string>
+    <string name="photo_recovery">การกู้คืนภาพถ่าย</string>
+
+    <string name="language_setting">ภาษา</string>
+    <string name="not_found_audio">ไม่พบเสียง</string>
+    <string name="analyzing">กำลังวิเคราะห์...</string>
+    <string name="video_recovery">การกู้คืนวิดีโอ</string>
+    <string name="audio_recovery">การกู้คืนเสียง</string>
+    <string name="restore_file">กู้คืนไฟล์</string>
+    <string name="restoring_video">กำลังกู้คืนวิดีโอ...</string>
+    <string name="open_file">เปิดไฟล์</string>
+    <string name="share_file">แชร์ไฟล์</string>
+    <string name="restoring_number_format_audio">กู้คืน ... %d ไฟล์</string>
+    <string name="feature">ลักษณะเฉพาะ</string>
+    <string name="image">ภาพ</string>
+    <string name="video">วีดีโอ</string>
+    <string name="audio">เครื่องเสียง</string>
+    <string name="recovery_file">กู้คืนไฟล์</string>
+    <string name="photo_restored">กู้คืนรูปภาพแล้ว</string>
+    <string name="see_all">ดูทั้งหมด</string>
+    <string name="view_using">ดูโดยใช้</string>
+    <string name="all_file">ไฟล์ทั้งหมด</string>
+    <string name="request_delete_all">คุณต้องการลบ %s ทั้งหมดหรือไม่</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="ok">ตกลง</string>
+    <string name="memory">หน่วยความจำ</string>
+    <string name="used">ใช้แล้ว</string>
+    <string name="free">ฟรี</string>
+    <string name="delete_success">ลบสำเร็จ</string>
+    <string name="files">"ไฟล์: %d"</string>
+    <string name="skip">ข้าม</string>
+    <string name="allow_watch_ads">ดูโฆษณา</string>
+    <string name="watch_ads_confirm_ring">กู้คืนไฟล์ของคุณ! \nเพียงดูวิดีโอโปรโมตสั้นๆ คุณก็จะกู้คืนไฟล์ที่เลือกได้</string>
+    <string name="go_to_google_play">รีวิวบน Google Play</string>
+    <string name="tks_to_rate">ขอบคุณสำหรับความคิดเห็นของคุณ!</string>
+    <string name="are_you_like_me">คุณรักแอพนี้หรือไม่?</string>
+    <string name="rate_in_google_play">กรุณาให้คะแนนและแสดงความคิดเห็นของคุณบน Google Play ขอขอบคุณ!</string>
+    <string name="send">ส่ง</string>
+    <string name="second">วินาที</string>
+    <string name="ads_after">โฆษณาจะแสดงหลังจาก</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+</resources>

@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Pemulihan data</string>
+    <string name="navigation_drawer_open">Buka laci navigasi</string>
+    <string name="navigation_drawer_close">Tutup laci navigasi</string>
+
+    <string name="rating">Peringkat</string>
+    <string name="share">Bagikan ke teman</string>
+    <string name="policy">KEBIJAKAN PRIBADI</string>
+
+    <string name="more_app">Lebih Banyak Aplikasi</string>
+    <string name="feedback">Masukan</string>
+    <string name="scan">Pindai</string>
+
+    <string name="scan_tip">Aplikasi membantu Anda memulihkan foto yang dihapus.\nAplikasi akan menampilkan semua gambar (Dihapus dan Tidak Dihapus). Teruslah mencari dan Anda akan menemukan foto yang Anda cari.\nHarap bersabar dan tunggu hingga ia memindai semua folder dan file.</string>
+    <string name="how_to_work">Bagaimana itu bekerja?</string>
+    <string name="restore">Memulihkan</string>
+    <string name="view_restored_photos">Lihat Foto yang Dipulihkan</string>
+    <string name="setting">Pengaturan</string>
+    <string name="scan_wait">Harap tunggu saat memindai file...</string>
+    <string name="not_found">Tidak ada foto yang ditemukan</string>
+    <string name="restore_now">Pulihkan Sekarang</string>
+    <string name="let_start">Ayo mulai</string>
+    <string name="restoring_number_format">Dipulihkan ... %d file</string>
+    <string name="restore_photo">Kembalikan File yang Dihapus</string>
+    <string name="photo_recovery">Pemulihan Foto</string>
+
+    <string name="language_setting">Bahasa</string>
+
+    <string name="not_found_audio">Tidak ditemukan audio</string>
+    <string name="analyzing">Menganalisa...</string>
+    <string name="video_recovery">Pemulihan Video</string>
+    <string name="audio_recovery">Pemulihan Audio</string>
+    <string name="restore_file">Pulihkan File</string>
+    <string name="restoring_video">Memulihkan video...</string>
+    <string name="open_file">Membuka file</string>
+    <string name="share_file">Bagikan File</string>
+    <string name="restoring_number_format_audio">Dipulihkan ... %d file</string>
+    <string name="feature">Fitur</string>
+    <string name="image">Gambar</string>
+    <string name="video">Video</string>
+    <string name="audio">audio</string>
+    <string name="recovery_file">File Dipulihkan</string>
+    <string name="photo_restored">Foto telah dipulihkan</string>
+    <string name="see_all">Lihat semua</string>
+    <string name="view_using">Lihat menggunakan</string>
+    <string name="all_file">Semua Berkas</string>
+    <string name="request_delete_all">Apakah Anda ingin menghapus semua %s ?</string>
+    <string name="cancel">Membatalkan</string>
+    <string name="ok">Oke</string>
+    <string name="memory">Penyimpanan</string>
+    <string name="used">Digunakan</string>
+    <string name="free">Gratis</string>
+    <string name="delete_success">Hapus berhasil</string>
+    <string name="files">"File: %d"</string>
+    <string name="skip">MELEWATI</string>
+    <string name="allow_watch_ads">LIHAT IKLAN</string>
+    <string name="watch_ads_confirm_ring">Pulihkan file Anda! \nCukup tonton video promosi singkat dan Anda dapat memulihkan file yang dipilih.</string>
+    <string name="go_to_google_play">Ulasan Di Google Play</string>
+    <string name="tks_to_rate">Terima kasih atas ulasan Anda!</string>
+    <string name="are_you_like_me">Apakah Anda menyukai aplikasi ini?</string>
+    <string name="rate_in_google_play">Silakan beri peringkat dan komentari pendapat Anda di google play. Terima kasih!</string>
+    <string name="send">Kirim</string>
+    <string name="second">detik</string>
+    <string name="ads_after">Iklan ditampilkan setelah</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+</resources>

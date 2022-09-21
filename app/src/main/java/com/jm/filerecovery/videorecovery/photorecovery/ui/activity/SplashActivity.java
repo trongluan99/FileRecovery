@@ -23,7 +23,6 @@ import com.ads.control.SharePreferenceUtils;
 import java.util.Locale;
 
 
-
 public class SplashActivity extends AppCompatActivity {
     private AppOpenAd.AppOpenAdLoadCallback loadCallback;
     private AppOpenAd appOpenAd = null;
@@ -45,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
             if (appOpenAd == null && splashActivity) {
                 Log.d(TAG, "SplashActivity --------> go to category activity 6500");
                 moveIntroduceActivity();
-            } else if(!splashActivity){
+            } else if (!splashActivity) {
                 isLoadFailed = true;
             }
         }, time);
@@ -122,21 +121,39 @@ public class SplashActivity extends AppCompatActivity {
 
     public void setLocale() {
         int index = SharePreferenceUtils.getInstance(this).getLanguageIndex();
-        String language ="en";
-        if(index==0){
-            language ="en";
-        } else if(index==1){
-            language ="pt";
-        }else if(index==2) {
+        String language = "en";
+        if (index == 0) {
+            language = "en";
+        } else if (index == 1) {
+            language = "pt";
+        } else if (index == 2) {
             language = "vi";
-        }else if(index==3) {
+        } else if (index == 3) {
             language = "ru";
-        }else if(index==4) {
+        } else if (index == 4) {
             language = "fr";
-        }else if(index==5) {
+        } else if (index == 5) {
             language = "ar";
-        }else if(index==6) {
+        } else if (index == 6) {
             language = "es";
+        } else if (index == 7) {
+            language = "de";
+        } else if (index == 8) {
+            language = "hi";
+        } else if (index == 9) {
+            language = "in";
+        } else if (index == 10) {
+            language = "it";
+        } else if (index == 11) {
+            language = "ja";
+        } else if (index == 12) {
+            language = "ko";
+        } else if (index == 13) {
+            language = "ml";
+        } else if (index == 14) {
+            language = "th";
+        } else if (index == 15) {
+            language = "zh";
         }
 
         if (SharePreferenceUtils.getInstance(this).getFirstRun()) {
@@ -162,6 +179,33 @@ public class SplashActivity extends AppCompatActivity {
             if (language.equalsIgnoreCase("es")) {
                 SharePreferenceUtils.getInstance(this).saveLanguageIndex(6);
             }
+            if (language.equalsIgnoreCase("de")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(7);
+            }
+            if (language.equalsIgnoreCase("hi")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(8);
+            }
+            if (language.equalsIgnoreCase("in")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(9);
+            }
+            if (language.equalsIgnoreCase("it")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(10);
+            }
+            if (language.equalsIgnoreCase("ja")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(11);
+            }
+            if (language.equalsIgnoreCase("ko")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(12);
+            }
+            if (language.equalsIgnoreCase("ml")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(13);
+            }
+            if (language.equalsIgnoreCase("th")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(14);
+            }
+            if (language.equalsIgnoreCase("zh")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(15);
+            }
         }
 
         Locale myLocale = new Locale(language);
@@ -171,6 +215,7 @@ public class SplashActivity extends AppCompatActivity {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
     }
+
     public void moveIntroduceActivity() {
         splashActivity = false;
         Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);

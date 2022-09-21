@@ -1,0 +1,19 @@
+<resources>
+    <string name="confirm_exit">本当に終了しますか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+
+    <string name="rate_msg">私たちのチームは、最高の無料アプリケーションを提供するために一生懸命働いています。あなたの 5 つ星のレビューは、すべてのお金よりも価値があります。私を励ますために、Google Play で素敵なレビューを書いてください。</string>
+    <string name="remind_later">後で通知</string>
+    <string name="good_5_stars">良い、5つ星</string>
+    <string name="not_good">良くない</string>
+    <string name="title_dialog_feed_back">フィードバックを送る</string>
+    <string name="message_dialog_feed_back">メールでバグ修正をリクエストし、新機能を実装する</string>
+    <string name="exit_app">出口</string>
+
+    <string name="confirm_close">このアクティビティを終了してもよろしいですか?</string>
+
+    <string name="rate_app">アプリを評価</string>
+    <string name="install_app_ads">今すぐインストール</string>
+
+</resources>

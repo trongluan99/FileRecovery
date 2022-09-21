@@ -1,0 +1,18 @@
+<resources>
+    <string name="confirm_exit">你真的要退出吗？</string>
+    <string name="yes">是的</string>
+    <string name="no">不</string>
+
+    <string name="rate_msg">我们的团队正在努力为您提供最好的免费应用程序。您的 5 星评价比所有金钱都更有价值。请在 Google Play 上写一篇不错的评论来鼓励我。</string>
+    <string name="remind_later">稍后提醒</string>
+    <string name="good_5_stars">不错，5星</string>
+    <string name="not_good">不好</string>
+    <string name="title_dialog_feed_back">发送反馈</string>
+    <string name="message_dialog_feed_back">通过电子邮件请求错误修复并实施新功能</string>
+    <string name="exit_app">出口</string>
+
+    <string name="confirm_close">您确定要关闭此活动吗？</string>
+
+    <string name="rate_app">评价应用</string>
+    <string name="install_app_ads">现在安装</string>
+</resources>

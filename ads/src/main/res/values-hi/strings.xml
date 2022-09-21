@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="confirm_exit">क्या आप वाकई बाहर निकलना चाहते हैं?</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+
+    <string name="rate_msg">हमारी टीम आपको सबसे अच्छा मुफ्त आवेदन देने के लिए बहुत मेहनत कर रही है। आपकी 5-सितारा समीक्षा सभी पैसे से अधिक मूल्य की है। कृपया मुझे प्रोत्साहित करने के लिए Google Play में एक अच्छी समीक्षा लिखें।</string>
+    <string name="remind_later">बाद में याद दिलाना</string>
+    <string name="good_5_stars">अच्छा, 5 सितारे</string>
+    <string name="not_good">ठीक नहीं</string>
+    <string name="title_dialog_feed_back">फ़ीडबैक भेजें</string>
+    <string name="message_dialog_feed_back">बग फिक्स का अनुरोध करें और ईमेल के माध्यम से नई सुविधाओं को लागू करें</string>
+    <string name="exit_app">बाहर निकलना</string>
+
+    <string name="confirm_close">क्या आप वाकई इस गतिविधि को बंद करना चाहते हैं?</string>
+
+    <string name="rate_app">एप्प का मूल्यांकन</string>
+    <string name="install_app_ads">अब स्थापित करें</string>
+</resources>

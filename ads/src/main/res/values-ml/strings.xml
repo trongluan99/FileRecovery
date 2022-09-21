@@ -1,0 +1,19 @@
+<resources>
+    <string name="confirm_exit">നിങ്ങൾക്ക് ശരിക്കും പുറത്തുകടക്കാൻ താൽപ്പര്യമുണ്ടോ?</string>
+    <string name="yes">അതെ</string>
+    <string name="no">ഇല്ല</string>
+
+    <string name="rate_msg">നിങ്ങൾക്ക് മികച്ച സൗജന്യ ആപ്ലിക്കേഷൻ നൽകാൻ ഞങ്ങളുടെ ടീം കഠിനമായി പരിശ്രമിക്കുന്നു. നിങ്ങളുടെ 5-നക്ഷത്ര അവലോകനത്തിന് എല്ലാ പണത്തേക്കാളും വിലയുണ്ട്. എന്നെ പ്രോത്സാഹിപ്പിക്കുന്നതിന് ദയവായി Google Play-യിൽ ഒരു നല്ല അവലോകനം എഴുതുക.</string>
+    <string name="remind_later">പിന്നീട് ഓർമ്മിപ്പിക്കുക</string>
+    <string name="good_5_stars">നല്ലത്, 5 നക്ഷത്രങ്ങൾ</string>
+    <string name="not_good">നല്ലതല്ല</string>
+    <string name="title_dialog_feed_back">ഒരു ഫീഡ് തിരികെ അയയ്ക്കുക</string>
+    <string name="message_dialog_feed_back">ഇമെയിൽ വഴി ബഗ് പരിഹരിക്കാൻ അഭ്യർത്ഥിക്കുകയും പുതിയ സവിശേഷതകൾ നടപ്പിലാക്കുകയും ചെയ്യുക</string>
+    <string name="exit_app">പുറത്ത്</string>
+
+    <string name="confirm_close">ഈ പ്രവർത്തനം അവസാനിപ്പിക്കണമെന്ന് തീർച്ചയാണോ?</string>
+
+    <string name="rate_app">ആപ്പ് റേറ്റ് ചെയ്യുക</string>
+    <string name="install_app_ads">ഇപ്പോൾ ഇൻസ്റ്റാൾ ചെയ്യുക</string>
+
+</resources>

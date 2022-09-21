@@ -37,6 +37,15 @@
         <item>Français</item>
         <item>العربية</item>
         <item>Español</item>
+        <item>Deutsch</item>
+        <item>हिन्दी</item>
+        <item>bahasa Indo</item>
+        <item>Italiano</item>
+        <item>日本</item>
+        <item>한국인</item>
+        <item>മലേഷ്യൻ</item>
+        <item>ภาษาไทย</item>
+        <item>中国人</item>
     </string-array>
     <string name="not_found_audio">Not found audio</string>
     <string name="analyzing">Analyzing...</string>

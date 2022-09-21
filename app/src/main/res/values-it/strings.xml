@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Recupero file</string>
+    <string name="navigation_drawer_open">Apri il cassetto di navigazione</string>
+    <string name="navigation_drawer_close">Chiudi il cassetto di navigazione</string>
+
+    <string name="rating">Valutazione</string>
+    <string name="share">Condividi con gli amici</string>
+    <string name="policy">POLITICA SULLA RISERVATEZZA</string>
+
+    <string name="more_app">Più applicazioni</string>
+    <string name="feedback">Feedback</string>
+    <string name="scan">Scansione</string>
+
+    <string name="scan_tip">L\'app ti aiuta a recuperare le foto cancellate.\nL\'app mostrerà tutte le immagini (cancellate e non eliminate). Continua a cercare e troverai le foto che stai cercando.\nPer favore, sii paziente e attendi che esegua la scansione di tutte le cartelle e i file.</string>
+    <string name="how_to_work">Come funziona?</string>
+    <string name="restore">Ristabilire</string>
+    <string name="view_restored_photos">Visualizza le foto ripristinate</string>
+    <string name="setting">Impostazioni</string>
+    <string name="scan_wait">Si prega di attendere durante la scansione dei file...</string>
+    <string name="not_found">Nessuna foto trovata</string>
+    <string name="restore_now">Ripristina ora</string>
+    <string name="let_start">Iniziamo</string>
+    <string name="restoring_number_format">Ripristinati... %d file</string>
+    <string name="restore_photo">Ripristina i file eliminati</string>
+    <string name="photo_recovery">recupero della foto</string>
+
+    <string name="language_setting">Lingua</string>
+
+    <string name="not_found_audio">Audio non trovato</string>
+    <string name="analyzing">Analizzando...</string>
+    <string name="video_recovery">Recupero video</string>
+    <string name="audio_recovery">Recupero audio</string>
+    <string name="restore_file">Ripristina file</string>
+    <string name="restoring_video">Ripristino video...</string>
+    <string name="open_file">Apri il file</string>
+    <string name="share_file">Condividi file</string>
+    <string name="restoring_number_format_audio">Ripristinati... %d file</string>
+    <string name="feature">Caratteristica</string>
+    <string name="image">Immagine</string>
+    <string name="video">video</string>
+    <string name="audio">Audio</string>
+    <string name="recovery_file">File ripristinato</string>
+    <string name="photo_restored">La foto è stata restaurata</string>
+    <string name="see_all">Vedi tutto</string>
+    <string name="view_using">Visualizza utilizzando</string>
+    <string name="all_file">Tutti i file</string>
+    <string name="request_delete_all">Vuoi eliminare tutti %s?</string>
+    <string name="cancel">Annulla</string>
+    <string name="ok">Ok</string>
+    <string name="memory">Memoria</string>
+    <string name="used">Usato</string>
+    <string name="free">Gratuito</string>
+    <string name="delete_success">Elimina con successo</string>
+    <string name="files">"File: %d"</string>
+    <string name="skip">SALTA</string>
+    <string name="allow_watch_ads">GUARDA GLI ANNUNCI</string>
+    <string name="watch_ads_confirm_ring">Ripristina i tuoi file! \nBasta guardare un breve video promozionale e potrai recuperare il file selezionato.</string>
+    <string name="go_to_google_play">Recensione su Google Play</string>
+    <string name="tks_to_rate">Grazie per la tua recensione!</string>
+    <string name="are_you_like_me">Ti piace questa app?</string>
+    <string name="rate_in_google_play">Si prega di valutare e commentare la tua opinione su Google Play. Grazie!</string>
+    <string name="send">Inviare</string>
+    <string name="second">secondi</string>
+    <string name="ads_after">Gli annunci vengono visualizzati dopo</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+</resources>

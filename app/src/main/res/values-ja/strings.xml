@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">ファイルの回復</string>
+    <string name="navigation_drawer_open">ナビゲーション ドロワーを開く</string>
+    <string name="navigation_drawer_close">ナビゲーション ドロワーを閉じる</string>
+
+    <string name="rating">評価</string>
+    <string name="share">友達にシェア</string>
+    <string name="policy">プライバシーポリシー</string>
+    <string name="more_app">より多くのアプリ</string>
+    <string name="feedback">フィードバック</string>
+    <string name="scan">スキャン</string>
+
+    <string name="scan_tip">アプリは、削除された写真を復元するのに役立ちます。\nアプリは、すべての画像 (削除されたものと削除されていないもの) を表示します。探し続けるだけで、探している写真が見つかります。\nすべてのフォルダとファイルがスキャンされるまで、しばらくお待ちください。</string>
+    <string name="how_to_work">使い方？</string>
+    <string name="restore">戻す</string>
+    <string name="view_restored_photos">復元された写真を見る</string>
+    <string name="setting">設定</string>
+    <string name="scan_wait">ファイルをスキャンしています。しばらくお待ちください...</string>
+    <string name="not_found">写真が見つかりません</string>
+    <string name="restore_now">今すぐ復元</string>
+    <string name="let_start">はじめましょう</string>
+    <string name="restoring_number_format">復元された ... %d 個のファイル</string>
+    <string name="restore_photo">削除されたファイルを復元する</string>
+    <string name="photo_recovery">写真の回復</string>
+
+    <string name="language_setting">言語</string>
+    <string name="not_found_audio">音声が見つかりません</string>
+    <string name="analyzing">分析しています...</string>
+    <string name="video_recovery">ビデオの回復</string>
+    <string name="audio_recovery">オーディオリカバリ</string>
+    <string name="restore_file">ファイルの復元</string>
+    <string name="restoring_video">ビデオを復元しています...</string>
+    <string name="open_file">ファイルを開く</string>
+    <string name="share_file">ファイルを共有</string>
+    <string name="restoring_number_format_audio">復元された ... %d 個のファイル</string>
+    <string name="feature">特徴</string>
+    <string name="image">画像</string>
+    <string name="video">ビデオ</string>
+    <string name="audio">オーディオ</string>
+    <string name="recovery_file">ファイルが復元されました</string>
+    <string name="photo_restored">写真が復元されました</string>
+    <string name="see_all">すべてを見る</string>
+    <string name="view_using">を使用して表示</string>
+    <string name="all_file">すべてのファイル</string>
+    <string name="request_delete_all">すべての %s を削除しますか?</string>
+    <string name="cancel">キャンセル</string>
+    <string name="ok">Ok</string>
+    <string name="memory">メモリー</string>
+    <string name="used">使用済み</string>
+    <string name="free">無料</string>
+    <string name="delete_success">削除しました</string>
+    <string name="files">"ファイル: %d"</string>
+    <string name="skip">スキップ</string>
+    <string name="allow_watch_ads">広告を見る</string>
+    <string name="watch_ads_confirm_ring">ファイルを復元してください！ \n短いプロモーション ビデオを見るだけで、選択したファイルを復元できます。</string>
+    <string name="go_to_google_play">Google Play でレビューする</string>
+    <string name="tks_to_rate">レビューありがとうございます！</string>
+    <string name="are_you_like_me">あなたはこのアプリが好きですか？</string>
+    <string name="rate_in_google_play">グーグルプレイであなたの意見を評価してコメントしてください。ありがとうございました！</string>
+    <string name="send">送信</string>
+    <string name="second">秒</string>
+    <string name="ads_after">広告は次の後に表示されます</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+</resources>

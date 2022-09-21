@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="confirm_exit">Apakah Anda benar-benar ingin keluar?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+
+    <string name="rate_msg">Tim kami bekerja sangat keras untuk memberikan Anda aplikasi gratis terbaik. Ulasan bintang 5 Anda lebih berharga daripada semua uang. Silakan tulis ulasan yang bagus di Google Play untuk mendorong saya.</string>
+    <string name="remind_later">Ingatkan nanti</string>
+    <string name="good_5_stars">Bagus, 5 bintang</string>
+    <string name="not_good">Tidak baik</string>
+    <string name="title_dialog_feed_back">Kirim umpan balik</string>
+    <string name="message_dialog_feed_back">Minta perbaikan bug dan terapkan fitur baru melalui email</string>
+    <string name="exit_app">KELUAR</string>
+
+    <string name="confirm_close">Yakin ingin menutup aktivitas ini?</string>
+
+    <string name="rate_app">Nilai Aplikasi</string>
+    <string name="install_app_ads">Instal sekarang</string>
+
+</resources>

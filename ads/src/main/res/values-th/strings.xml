@@ -1,0 +1,19 @@
+<resources>
+    <string name="confirm_exit">คุณต้องการที่จะออกจริงๆ?</string>
+    <string name="yes">ใช่</string>
+    <string name="no">ไม่</string>
+
+    <string name="rate_msg">ทีมงานของเรากำลังทำงานอย่างเต็มที่เพื่อให้คุณได้รับแอปพลิเคชันฟรีที่ดีที่สุด บทวิจารณ์ระดับ 5 ดาวของคุณมีค่ามากกว่าเงินทั้งหมด โปรดเขียนรีวิวดีๆ ใน Google Play เพื่อเป็นกำลังใจฉัน</string>
+    <string name="remind_later">เตือนทีหลัง</string>
+    <string name="good_5_stars">ดี5ดาว</string>
+    <string name="not_good">ไม่ดี</string>
+    <string name="title_dialog_feed_back">ส่งฟีดแบ็ค</string>
+    <string name="message_dialog_feed_back">ขอแก้ไขจุดบกพร่องและใช้คุณสมบัติใหม่ผ่านอีเมล</string>
+    <string name="exit_app">ทางออก</string>
+
+    <string name="confirm_close">คุณแน่ใจหรือไม่ว่าต้องการปิดกิจกรรมนี้</string>
+
+    <string name="rate_app">ให้คะแนนแอพ</string>
+    <string name="install_app_ads">ติดตั้งในขณะนี้</string>
+
+</resources>

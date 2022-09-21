@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Wiederherstellung von Dateien</string>
+    <string name="navigation_drawer_open">Navigationsschublade öffnen</string>
+    <string name="navigation_drawer_close">Navigationsschublade schließen</string>
+
+    <string name="rating">Bewertung</string>
+    <string name="share">Teilen Sie mit Freunden</string>
+    <string name="policy">DATENSCHUTZ-BESTIMMUNGEN</string>
+    <string name="more_app">Mehr App</string>
+    <string name="feedback">Feedback</string>
+    <string name="scan">Scan</string>
+
+    <string name="scan_tip">Die App hilft Ihnen, gelöschte Fotos wiederherzustellen.\nDie App zeigt alle Bilder an (gelöscht und nicht gelöscht). Suchen Sie einfach weiter und Sie werden Fotos finden, nach denen Sie suchen.\nBitte haben Sie etwas Geduld und warten Sie, bis alle Ordner und Dateien gescannt wurden.</string>
+    <string name="how_to_work">Wie es funktioniert?</string>
+    <string name="restore">Wiederherstellen</string>
+    <string name="view_restored_photos">Wiederhergestellte Fotos anzeigen</string>
+    <string name="setting">Einstellungen</string>
+    <string name="scan_wait">Bitte warten Sie, während Dateien gescannt werden...</string>
+    <string name="not_found">Keine Fotos gefunden</string>
+    <string name="restore_now">Jetzt wiederherstellen</string>
+    <string name="let_start">Lasst uns beginnen</string>
+    <string name="restoring_number_format">Wiederhergestellt ... %d Dateien</string>
+    <string name="restore_photo">Gelöschte Dateien wiederherstellen</string>
+    <string name="photo_recovery">Fotowiederherstellung</string>
+
+    <string name="language_setting">Sprache</string>
+
+    <string name="not_found_audio">Ton nicht gefunden</string>
+    <string name="analyzing">Analysieren...</string>
+    <string name="video_recovery">Videowiederherstellung</string>
+    <string name="audio_recovery">Audiowiederherstellung</string>
+    <string name="restore_file">Datei wiederherstellen</string>
+    <string name="restoring_video">Videos werden wiederhergestellt...</string>
+    <string name="open_file">Datei öffnen</string>
+    <string name="share_file">Datei teilen</string>
+    <string name="restoring_number_format_audio">Wiederhergestellt ... %d Dateien</string>
+    <string name="feature">Feature</string>
+    <string name="image">Bild</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="recovery_file">Datei wiederhergestellt</string>
+    <string name="photo_restored">Foto wurde restauriert</string>
+    <string name="see_all">Alles sehen</string>
+    <string name="view_using">Mit ansehen</string>
+    <string name="all_file">Alle Dateien</string>
+    <string name="request_delete_all">Möchten Sie alle %s löschen?</string>
+    <string name="cancel">Absagen</string>
+    <string name="ok">OK</string>
+    <string name="memory">Erinnerung</string>
+    <string name="used">Gebraucht</string>
+    <string name="free">Frei</string>
+    <string name="delete_success">Erfolgreich löschen</string>
+    <string name="files">"Dateien: %d"</string>
+    <string name="skip">ÜBERSPRINGEN</string>
+    <string name="allow_watch_ads">ANZEIGEN ANSEHEN</string>
+    <string name="watch_ads_confirm_ring">Stellen Sie Ihre Dateien wieder her! \nSehen Sie sich einfach ein kurzes Werbevideo an und Sie können die ausgewählte Datei wiederherstellen.</string>
+    <string name="go_to_google_play">Rezension auf Google Play</string>
+    <string name="tks_to_rate">Vielen Dank für Ihre Bewertung!</string>
+    <string name="are_you_like_me">Liebst du diese App?</string>
+    <string name="rate_in_google_play">Bitte bewerten und kommentieren Sie Ihre Meinung zu Google Play. Vielen Dank!</string>
+    <string name="send">Senden</string>
+    <string name="second">Sekunden</string>
+    <string name="ads_after">Anzeigen werden danach angezeigt</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+</resources>

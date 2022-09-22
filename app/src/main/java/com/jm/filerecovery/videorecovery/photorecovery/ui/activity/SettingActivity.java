@@ -171,6 +171,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             setLocale("th");
         } else if (index == 15) {
             setLocale("zh");
+        } else if (index == 16) {
+            setLocale("zh-rHK");
+        } else if (index == 17) {
+            setLocale("zh-rTW");
         }
 
     }

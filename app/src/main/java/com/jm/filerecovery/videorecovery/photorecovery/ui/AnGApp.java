@@ -65,6 +65,10 @@ public class AnGApp extends AdsApplication {
             return context.getResources().getConfiguration().locale;
         } else if ("zh".equals(currentLanguage)) {
             return context.getResources().getConfiguration().locale;
+        } else if ("zh-rHK".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
+        } else if ("zh-rTW".equals(currentLanguage)) {
+            return context.getResources().getConfiguration().locale;
         }
         return Locale.ENGLISH;
     }

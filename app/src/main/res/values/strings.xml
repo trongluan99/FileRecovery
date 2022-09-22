@@ -46,6 +46,8 @@
         <item>മലേഷ്യൻ</item>
         <item>ภาษาไทย</item>
         <item>中国人</item>
+        <item>台灣</item>
+        <item>港語</item>
     </string-array>
     <string name="not_found_audio">Not found audio</string>
     <string name="analyzing">Analyzing...</string>

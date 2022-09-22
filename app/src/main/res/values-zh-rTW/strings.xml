@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">文件恢復</string>
+    <string name="navigation_drawer_open">打開導航抽屜</string>
+    <string name="navigation_drawer_close">關閉導航抽屜</string>
+
+    <string name="rating">評分</string>
+    <string name="share">分享給朋友</string>
+    <string name="policy">隱私政策</string>
+    <string name="more_app">更多應用</string>
+    <string name="feedback">反饋</string>
+    <string name="scan">掃描</string>
+
+    <string name="scan_tip">該應用程序幫助您恢復已刪除的照片。\n該應用程序將顯示所有圖像（已刪除和未刪除）。只要繼續尋找，您就會找到您正在尋找的照片。\n請耐心等待，直到它掃描所有文件夾和文件。</string>
+    <string name="how_to_work">它是如何工作的？</string>
+    <string name="restore">恢復</string>
+    <string name="view_restored_photos">查看恢復的照片</string>
+    <string name="setting">設置</string>
+    <string name="scan_wait">掃描文件中請稍候...</string>
+    <string name="not_found">​​沒有找到照片</string>
+    <string name="restore_now">立即恢復</string>
+    <string name="let_start">讓我們開始</string>
+    <string name="restoring_number_format">已恢復 ... %d 個文件</string>
+    <string name="restore_photo">恢復已刪除文件</string>
+    <string name="photo_recovery">照片恢復</string>
+
+    <string name="language_setting">語言</string>
+
+    <string name="not_found_audio">未找到音頻</string>
+    <string name="analyzing">分析中...</string>
+    <string name="video_recovery">視頻恢復</string>
+    <string name="audio_recovery">音頻恢復</string>
+    <string name="restore_file">恢復文件</string>
+    <string name="restoring_video">正在恢復視頻...</string>
+    <string name="open_file">打開文件</string>
+    <string name="share_file">共享文件</string>
+    <string name="restoring_number_format_audio">已恢復 ... %d 個文件</string>
+    <string name="feature">功能</string>
+    <string name="image">圖片</string>
+    <string name="video">視頻</string>
+    <string name="audio">音頻</string>
+    <string name="recovery_file">文件已恢復</string>
+    <string name="photo_restored">照片已恢復</string>
+    <string name="see_all">查看全部</string>
+    <string name="view_using">查看使用</string>
+    <string name="all_file">所有文件</string>
+    <string name="request_delete_all">要刪除所有 %s 嗎？</string>
+    <string name="cancel">取消</string>
+    <string name="ok">好的</string>
+    <string name="memory">內存</string>
+    <string name="used">二手</string>
+    <string name="free">免費</string>
+    <string name="delete_success">刪除成功</string>
+    <string name="files">"文件：%d"</string>
+    <string name="skip">跳過</string>
+    <string name="allow_watch_ads">觀看廣告</string>
+    <string name="watch_ads_confirm_ring">恢復您的文件！ \n 只需觀看一個簡短的宣傳視頻，您就可以恢復所選文件。</string>
+    <string name="go_to_google_play">在 Google Play 上查看</string>
+    <string name="tks_to_rate">感謝您的評價！</string>
+    <string name="are_you_like_me">你喜歡這個應用嗎？</string>
+    <string name="rate_in_google_play">請評價並評論您對 google play 的看法。謝謝！</string>
+    <string name="send">發送</string>
+    <string name="second">秒</string>
+    <string name="ads_after">廣告展示在</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+
+</resources>

@@ -154,6 +154,10 @@ public class SplashActivity extends AppCompatActivity {
             language = "th";
         } else if (index == 15) {
             language = "zh";
+        } else if (index == 16) {
+            language = "zh-rHK";
+        } else if (index == 17) {
+            language = "zh-rTW";
         }
 
         if (SharePreferenceUtils.getInstance(this).getFirstRun()) {
@@ -205,6 +209,12 @@ public class SplashActivity extends AppCompatActivity {
             }
             if (language.equalsIgnoreCase("zh")) {
                 SharePreferenceUtils.getInstance(this).saveLanguageIndex(15);
+            }
+            if (language.equalsIgnoreCase("zh-rHK")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(16);
+            }
+            if (language.equalsIgnoreCase("zh-rTW")) {
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(17);
             }
         }
 

@@ -3,6 +3,9 @@ package com.ads.control;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SharePreferenceUtils {
     private static SharePreferenceUtils instance;
     private SharedPreferences.Editor editor;
@@ -21,6 +24,7 @@ public class SharePreferenceUtils {
         }
         return instance;
     }
+
     public boolean getFirstRun() {
         boolean isFirst = pre.getBoolean("first_run_app", true);
         if (isFirst) {
@@ -29,14 +33,7 @@ public class SharePreferenceUtils {
         }
         return isFirst;
     }
-    public String getLanguage() {
-        return pre.getString("language", "en");
-    }
 
-    public void saveLanguage(String language) {
-        editor.putString("language", language);
-        editor.commit();
-    }
     public int getLanguageIndex() {
         return pre.getInt("languageindex", 0);
     }
@@ -46,6 +43,10 @@ public class SharePreferenceUtils {
         editor.commit();
     }
 
+    public boolean getPurchase() {
+        return false;
+    }
+
     public void saveShowFullAds(boolean showFullAds) {
         editor.putBoolean("ShowFullAds", showFullAds);
         editor.commit();
@@ -53,5 +54,23 @@ public class SharePreferenceUtils {
 
     public boolean getShowFullAds() {
         return pre.getBoolean("ShowFullAds", false);
+    }
+
+    public void setSaveLanguage(String language) {
+        editor.putString("setSaveLanguage", language);
+        editor.commit();
+    }
+
+    public String getSaveLanguage() {
+        return pre.getString("setSaveLanguage", "en");
+    }
+
+    public void setSelectedLanguage(boolean b) {
+        editor.putBoolean("setSelectedLanguage", b);
+        editor.commit();
+    }
+
+    public boolean getSelectedLanguage() {
+        return pre.getBoolean("setSelectedLanguage", false);
     }
 }

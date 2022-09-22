@@ -18,4 +18,8 @@
     <color name="colorTextPopup">#09090a</color>
     <color name="blur">#0984e3</color>
     <color name="blue">#FF375BF1</color> <!-- Use with black text -->
+
+    <color name="background_language_act">#eef8f5</color>
+    <color name="color_bg_button_blue">#017cfe</color>
+    <color name="color_9E9E9E">#9E9E9E</color>
 </resources>

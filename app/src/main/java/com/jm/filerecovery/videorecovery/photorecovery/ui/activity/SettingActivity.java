@@ -1,6 +1,5 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,6 +19,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.ads.control.funtion.UtilsApp;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.ads.control.SharePreferenceUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.utilts.GlobalAppCache;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
 
 import java.util.Locale;
@@ -64,8 +64,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void intData() {
-        //  tvDir.setText(Utils.getPathSave());
-        tvLanguage.setText(getResources().getStringArray(R.array.arrLanguage)[SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex()]);
+        int index = SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex();
+        tvLanguage.setText(GlobalAppCache.getInstance(SettingActivity.this)
+                .getLanguageModelList().get(index).getName());
 
     }
 
@@ -87,7 +88,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 UtilsApp.OpenBrower(SettingActivity.this, getString(R.string.link_more_app));
                 break;
             case R.id.rlLanguage:
-                showDialogLanguage();
+                openLanguagesAct();
 
                 break;
             case R.id.rlRate:
@@ -104,80 +105,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    public void showDialogLanguage() {
-        final String[] arrLanguage = getResources().getStringArray(R.array.arrLanguage);
-        AlertDialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
-
-        builder.setTitle(R.string.language_setting);
-        String[] items = getResources().getStringArray(R.array.arrLanguage);
-
-        builder.setSingleChoiceItems(items, SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex(),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        tvLanguage.setText(arrLanguage[which]);
-                        setSaveLanguage(which);
-                        dialog.dismiss();
-                    }
-                });
-
-
-        String negativeText = getString(android.R.string.cancel);
-        builder.setNegativeButton(negativeText,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // negative button logic
-                    }
-                });
-
-        dialog = builder.create();
-        // display dialog
-        dialog.show();
+    private void openLanguagesAct() {
+        Intent intent = new Intent(this, LanguageActivity.class);
+        startActivity(intent);
     }
 
-    public void setSaveLanguage(int index) {
-        SharePreferenceUtils.getInstance(SettingActivity.this).saveLanguageIndex(index);
-        if (index == 0) {
-            setLocale("en");
-        } else if (index == 1) {
-            setLocale("pt");
-        } else if (index == 2) {
-            setLocale("vi");
-        } else if (index == 3) {
-            setLocale("ru");
-        } else if (index == 4) {
-            setLocale("fr");
-        } else if (index == 5) {
-            setLocale("ar");
-        } else if (index == 6) {
-            setLocale("es");
-        } else if (index == 7) {
-            setLocale("de");
-        } else if (index == 8) {
-            setLocale("hi");
-        } else if (index == 9) {
-            setLocale("in");
-        } else if (index == 10) {
-            setLocale("it");
-        } else if (index == 11) {
-            setLocale("ja");
-        } else if (index == 12) {
-            setLocale("ko");
-        } else if (index == 13) {
-            setLocale("ml");
-        } else if (index == 14) {
-            setLocale("th");
-        } else if (index == 15) {
-            setLocale("zh");
-        } else if (index == 16) {
-            setLocale("zh-rHK");
-        } else if (index == 17) {
-            setLocale("zh-rTW");
-        }
-
-    }
 
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);

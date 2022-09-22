@@ -40,6 +40,7 @@
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity" />
 
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

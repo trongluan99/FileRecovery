@@ -92,20 +92,14 @@ public class LanguageActivity extends AppCompatActivity {
             recyclerLanguage.scrollToPosition(currentPosition);
         }
         imgSaveLanguage.setOnClickListener(it -> {
-            if (checkManipulationAct) {
+            if (!checkManipulationAct && !fromSplashActivity) {
+                finish();
+            } else {
                 SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
                 SharePreferenceUtils.getInstance(this).setSaveLanguage(languageModelList.get(currentPosition).getId());
+                SharePreferenceUtils.getInstance(this).saveLanguageIndex(currentPosition);
                 setLocale(languageModelList.get(currentPosition).getId());
-            } else {
-                if(fromSplashActivity){
-                    SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
-                    SharePreferenceUtils.getInstance(this).setSaveLanguage(languageModelList.get(currentPosition).getId());
-                    setLocale(languageModelList.get(currentPosition).getId());
-                } else {
-                    finish();
-                }
             }
-
         });
         if (!SharePreferenceUtils.getInstance(this).getPurchase()) {
             if (!fromSplashActivity)

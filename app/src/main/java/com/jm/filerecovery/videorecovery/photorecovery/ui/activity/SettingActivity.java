@@ -67,7 +67,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         int index = SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex();
         tvLanguage.setText(GlobalAppCache.getInstance(SettingActivity.this)
                 .getLanguageModelList().get(index).getName());
-
     }
 
     public void intEvent() {

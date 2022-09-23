@@ -34,6 +34,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTaskUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         intView();
         intEvent();
-
     }
 
     public void intView() {
@@ -288,7 +288,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Rate.Show(this, new Rate.OnResult() {
             @Override
             public void callActionAfter() {
-             finish();
+                AdmobUtils.getInstance().showInterstitialAd(MainActivity.this, new AdmobUtils.AdCloseListener() {
+                    @Override
+                    public void onAdClosed() {
+                        Intent intent = new Intent(MainActivity.this, ExitActivity.class);
+                        MainActivity.this.finish();
+                        MainActivity.this.finishAffinity();
+                        startActivity(intent);
+                    }
+                });
             }
         });
     }

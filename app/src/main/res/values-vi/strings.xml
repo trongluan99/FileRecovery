@@ -11,7 +11,7 @@
     <string name="feedback">Nhận xét</string>
     <string name="scan">Quét</string>
 
-    <string name="scan_tip">Ứng dụng giúp bạn khôi phục ảnh đã xóa. \N Ứng dụng sẽ hiển thị tất cả ảnh (Đã xóa và Chưa xóa). Chỉ cần Tiếp tục tìm và bạn sẽ tìm thấy ảnh mình đang tìm. \NHãy kiên nhẫn và đợi cho đến khi nó quét tất cả các thư mục và tệp.</string>
+    <string name="scan_tip">Ứng dụng giúp bạn khôi phục ảnh đã xóa.\n Ứng dụng sẽ hiển thị tất cả ảnh (Đã xóa và Chưa xóa). Chỉ cần Tiếp tục tìm và bạn sẽ tìm thấy ảnh mình đang tìm. \n Hãy kiên nhẫn và đợi cho đến khi nó quét tất cả các thư mục và tệp.</string>
     <string name="how_to_work">Làm thế nào nó hoạt động?</string>
     <string name="restore">Khôi phục</string>
     <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
@@ -43,7 +43,7 @@
     <string name="audio">Âm thanh</string>
     <string name="recovery_file">Tệp khôi phục</string>
     <string name="photo_restored">Ảnh đã được khôi phục</string>
-    <string name="see_all">Nhìn thấy tất cả</string>
+    <string name="see_all">Xem tất cả</string>
     <string name="view_using">Xem bằng cách sử dụng</string>
     <string name="all_file">Tất cả các tập tin</string>
     <string name="request_delete_all">Bạn có muốn xóa tất cả %s không?</string>
@@ -51,7 +51,7 @@
     <string name="ok">Được</string>
     <string name="memory">Bộ nhớ</string>
     <string name="used">Đã sử dụng</string>
-    <string name="free">Tự do</string>
+    <string name="free">Trống</string>
     <string name="delete_success">Xóa thành công</string>
     <string name="files">"Tệp: %d"</string>
     <string name="allow_watch_ads">XEM QUẢNG CÁO</string>

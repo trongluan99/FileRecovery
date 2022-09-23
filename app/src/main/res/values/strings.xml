@@ -68,6 +68,8 @@
     <string name="default_notification_channel_id">file_recover_jm</string>
 
     <string name="language_title">Language</string>
+    <string name="text_title_thank">Thank You!</string>
+    <string name="text_des_thank">Thank you for using our App. Would you to post your review on store. This will help and motivate us a lot. See you soon!</string>
 
 
 </resources>

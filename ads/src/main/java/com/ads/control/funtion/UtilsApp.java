@@ -13,6 +13,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ads.control.SharePreferenceUtils;
+
 import java.util.Locale;
 
 public class UtilsApp {
@@ -49,6 +51,7 @@ public class UtilsApp {
     }
 
     public static void RateApp(Context mContext) {
+        SharePreferenceUtils.getInstance(mContext).saveShowFullAds(true);
         mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + mContext.getPackageName())));
     }
 

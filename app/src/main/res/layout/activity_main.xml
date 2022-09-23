@@ -9,8 +9,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
-        android:src="@drawable/logo"
         android:layout_marginStart="@dimen/_15sdp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_title" />
@@ -118,18 +118,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
+
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
+                app:layout_constraintBottom_toBottomOf="@+id/card_memory"
                 app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/card_used"
-                app:layout_constraintTop_toTopOf="@+id/circular_progress">
+                app:layout_constraintTop_toTopOf="@+id/card_memory">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="@dimen/_6sdp"
                     android:orientation="vertical">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
@@ -167,20 +169,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_free"
                 app:layout_constraintStart_toEndOf="@+id/card_memory"
-                app:layout_constraintTop_toTopOf="@+id/card_free"
-                android:visibility="gone">
+                app:layout_constraintTop_toTopOf="@+id/card_free">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:padding="@dimen/_12sdp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/_12sdp">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
                         android:id="@+id/tv_used"
@@ -219,20 +221,21 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:elevation="0dp"
+                android:visibility="visible"
                 app:cardBackgroundColor="#F0F0F0"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:layout_constraintDimensionRatio="H,1:1.2"
                 app:layout_constraintEnd_toStartOf="@+id/card_used"
                 app:layout_constraintStart_toEndOf="@+id/circular_progress"
-                app:layout_constraintTop_toTopOf="@+id/card_free"
-                android:visibility="visible">
+                app:layout_constraintBottom_toBottomOf="@+id/circular_progress"
+                app:layout_constraintTop_toTopOf="@+id/circular_progress">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:padding="@dimen/_12sdp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/_12sdp">
 
                     <com.veeyaar.supergradienttextview.GradientTextView
                         android:id="@+id/tv_memory"
@@ -273,12 +276,11 @@
                 android:background="@drawable/circle_number"
                 android:gravity="center"
                 android:text="4"
-                android:visibility="gone"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circular_progress"
-               />
+                app:layout_constraintTop_toBottomOf="@+id/circular_progress" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_function"
@@ -529,9 +531,9 @@
                 android:text="4"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ctr_audio"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@+id/ctr_audio" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title_image"
@@ -555,8 +557,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:text="@string/see_all"
-                android:textSize="@dimen/_13sdp"
                 android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_13sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_title_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_title_image" />

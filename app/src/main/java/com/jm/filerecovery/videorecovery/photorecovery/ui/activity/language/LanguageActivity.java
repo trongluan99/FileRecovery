@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -108,6 +109,8 @@ public class LanguageActivity extends AppCompatActivity {
                 });
             AdmobUtils.getInstance().loadNativeActivityLanguage(this);
         }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     public void setLocale(String lang) {

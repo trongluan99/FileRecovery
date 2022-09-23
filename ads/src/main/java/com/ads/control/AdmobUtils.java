@@ -495,7 +495,7 @@ public class AdmobUtils {
                 .setVideoOptions(videoOptions)
                 .build();
 
-        AdLoader adLoader = new AdLoader.Builder(mActivity, mActivity.getResources().getString(com.ads.control.R.string.ads_native_language))
+        AdLoader adLoader = new AdLoader.Builder(mActivity, mActivity.getResources().getString(com.ads.control.R.string.admob_native))
                 .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                     @Override
                     public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {

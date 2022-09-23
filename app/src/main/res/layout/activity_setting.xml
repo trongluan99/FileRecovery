@@ -208,7 +208,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:background="@color/white"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"

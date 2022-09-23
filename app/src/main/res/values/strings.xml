@@ -29,26 +29,6 @@
     <string name="photo_recovery">Photo Recovery</string>
 
     <string name="language_setting">Language</string>
-    <string-array name="arrLanguage" translatable="false">
-        <item>English</item>
-        <item>Portuguese</item>
-        <item>Tiếng Việt</item>
-        <item>Русский</item>
-        <item>Français</item>
-        <item>العربية</item>
-        <item>Español</item>
-        <item>Deutsch</item>
-        <item>हिन्दी</item>
-        <item>bahasa Indo</item>
-        <item>Italiano</item>
-        <item>日本</item>
-        <item>한국인</item>
-        <item>മലേഷ്യൻ</item>
-        <item>ภาษาไทย</item>
-        <item>中国人</item>
-        <item>台灣</item>
-        <item>港語</item>
-    </string-array>
     <string name="not_found_audio">Not found audio</string>
     <string name="analyzing">Analyzing...</string>
     <string name="video_recovery">Video Recovery</string>
@@ -86,6 +66,8 @@
     <string name="second">seconds</string>
     <string name="ads_after">Ads are displayed after</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+
+    <string name="language_title">Language</string>
 
 
 </resources>

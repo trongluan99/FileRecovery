@@ -38,8 +38,8 @@ public class AdmobUtils {
     InterstitialAd mInterstitialAd;
     private AdCloseListener adCloseListener;
     private boolean isReloaded = false;
-    public static long timeLoad=0;
-    public static long TimeReload = 15*1000;
+    public static long timeLoad = 0;
+    public static long TimeReload = 15 * 1000;
 
     public static AdmobUtils getInstance() {
         if (instance == null) {
@@ -181,20 +181,20 @@ public class AdmobUtils {
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(mActivity, adWidth);
     }
 
-    public void loadInterstitialNew(Context context){
+    public void loadInterstitialNew(Context context) {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(context, context.getResources().getString(R.string.admob_full), adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 mInterstitialAd = interstitialAd;
-                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                     @Override
                     public void onAdDismissedFullScreenContent() {
                         // Called when fullscreen content is dismissed.
                         Log.d("AdmobHelper", "The ad was dismissed.");
                         if (adCloseListener != null) {
                             adCloseListener.onAdClosed();
-                            Log.d("AdmobHelper"," onAdClosed");
+                            Log.d("AdmobHelper", " onAdClosed");
                         }
                         loadInterstitialNew(context);
                         SharePreferenceUtils.getInstance(context).saveShowFullAds(false);
@@ -221,25 +221,25 @@ public class AdmobUtils {
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 mInterstitialAd = null;
-                Log.d("AdmobHelper", "onAdFailedToLoad = "+loadAdError.toString());
+                Log.d("AdmobHelper", "onAdFailedToLoad = " + loadAdError.toString());
             }
         });
 
     }
 
     public void showInterstitialAd(Activity activity, AdCloseListener adCloseListener) {
-        Log.d("AdmobHelper"," showInterstitialAd");
-        if((timeLoad+TimeReload)<System.currentTimeMillis()){
+        Log.d("AdmobHelper", " showInterstitialAd");
+        if ((timeLoad + TimeReload) < System.currentTimeMillis()) {
             if (canShowInterstitialAd()) {
-                Log.d("AdmobHelper"," canShowInterstitialAd");
+                Log.d("AdmobHelper", " canShowInterstitialAd");
                 this.adCloseListener = adCloseListener;
                 mInterstitialAd.show(activity);
                 timeLoad = System.currentTimeMillis();
             } else {
-                Log.d("AdmobHelper"," canShowInterstitialAd = false");
+                Log.d("AdmobHelper", " canShowInterstitialAd = false");
                 adCloseListener.onAdClosed();
             }
-        }else{
+        } else {
             adCloseListener.onAdClosed();
         }
     }
@@ -287,7 +287,7 @@ public class AdmobUtils {
         void onAdClosed();
     }
 
-    public void loadNativeActivity(final Activity mActivity){
+    public void loadNativeActivity(final Activity mActivity) {
         VideoOptions videoOptions = new VideoOptions.Builder()
                 .setStartMuted(true)
                 .build();
@@ -296,13 +296,13 @@ public class AdmobUtils {
                 .setVideoOptions(videoOptions)
                 .build();
 
-        AdLoader adLoader = new AdLoader.Builder(mActivity,mActivity.getResources().getString(R.string.admob_native))
+        AdLoader adLoader = new AdLoader.Builder(mActivity, mActivity.getResources().getString(R.string.admob_native))
                 .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                     @Override
                     public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
                         FrameLayout frameLayout =
                                 mActivity.findViewById(R.id.fl_adplaceholder);
-                        if(frameLayout!=null){
+                        if (frameLayout != null) {
                             frameLayout.setVisibility(View.VISIBLE);
                             NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
                                     .inflate(R.layout.native_admob_ad, null);
@@ -323,7 +323,8 @@ public class AdmobUtils {
                 .build();
         adLoader.loadAd(new AdRequest.Builder().build());
     }
-    public void loadNativeFragment(final Activity mActivity,final View rootView){
+
+    public void loadNativeFragment(final Activity mActivity, final View rootView) {
         VideoOptions videoOptions = new VideoOptions.Builder()
                 .setStartMuted(true)
                 .build();
@@ -332,13 +333,13 @@ public class AdmobUtils {
                 .setVideoOptions(videoOptions)
                 .build();
 
-        AdLoader adLoader = new AdLoader.Builder(mActivity,mActivity.getResources().getString(R.string.admob_native))
+        AdLoader adLoader = new AdLoader.Builder(mActivity, mActivity.getResources().getString(R.string.admob_native))
                 .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                     @Override
                     public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
                         FrameLayout frameLayout =
                                 rootView.findViewById(R.id.fl_adplaceholder);
-                        if(frameLayout!=null){
+                        if (frameLayout != null) {
                             frameLayout.setVisibility(View.VISIBLE);
                             NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
                                     .inflate(R.layout.native_admob_ad, null);
@@ -359,6 +360,7 @@ public class AdmobUtils {
                 .build();
         adLoader.loadAd(new AdRequest.Builder().build());
     }
+
     private void populateUnifiedNativeAdView(NativeAd nativeAd, NativeAdView adView) {
         MediaView mediaView = adView.findViewById(R.id.ad_media);
         adView.setMediaView(mediaView);
@@ -483,4 +485,41 @@ public class AdmobUtils {
         adView.setNativeAd(nativeAd);
     }
 
+
+    public void loadNativeActivityLanguage(final Activity mActivity) {
+        VideoOptions videoOptions = new VideoOptions.Builder()
+                .setStartMuted(true)
+                .build();
+
+        NativeAdOptions adOptions = new NativeAdOptions.Builder()
+                .setVideoOptions(videoOptions)
+                .build();
+
+        AdLoader adLoader = new AdLoader.Builder(mActivity, mActivity.getResources().getString(com.ads.control.R.string.ads_native_language))
+                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
+                        FrameLayout frameLayout =
+                                mActivity.findViewById(com.ads.control.R.id.fl_adplaceholder);
+                        if (frameLayout != null) {
+                            frameLayout.setVisibility(View.VISIBLE);
+                            NativeAdView adView = (NativeAdView) mActivity.getLayoutInflater()
+                                    .inflate(com.ads.control.R.layout.native_admob_ad, null);
+                            populateUnifiedNativeAdView(nativeAd, adView);
+                            frameLayout.removeAllViews();
+                            frameLayout.addView(adView);
+                        }
+
+                    }
+                })
+                .withAdListener(new AdListener() {
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                    }
+                })
+                .withNativeAdOptions(adOptions)
+                .build();
+        adLoader.loadAd(new AdRequest.Builder().build());
+    }
 }

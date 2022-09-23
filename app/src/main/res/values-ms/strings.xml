@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Pemulihan Fail</string>
+    <string name="navigation_drawer_open">Buka laci navigasi</string>
+    <string name="navigation_drawer_close" translatable="false">Tutup laci navigasi</string>
+
+    <string name="rating">Penilaian</string>
+    <string name="share">Kongsikan kepada rakan-rakan</string>
+    <string name="policy">PRIVACY POLICY</string>
+    <string name="link_policy" translatable="false">https://policy.com</string>
+    <string name="link_more_app" translatable="false">//</string>
+    <string name="more_app">More App</string>
+    <string name="feedback">Feedback</string>
+    <string name="scan">Imbas</string>
+
+    <string name="scan_tip">Apl membantu anda memulihkan foto yang dipadamkan.</string>
+    <string name="how_to_work">Bagaimana ia berfungsi?</string>
+    <string name="restore">Pulihkan</string>
+    <string name="restore_folder_path_photo" translatable="false">Restored_Photos</string>
+    <string name="restore_folder_path_video" translatable="false">Restored_Videos</string>
+    <string name="restore_folder_path_audio" translatable="false">Restored_Audios</string>
+    <string name="view_restored_photos">Lihat Foto Dipulihkan</string>
+    <string name="setting">tetapan</string>
+    <string name="scan_wait">Sila tunggu semasa mengimbas fail...</string>
+    <string name="not_found">Tiada foto ditemui</string>
+    <string name="restore_now">Pulihkan Sekarang</string>
+    <string name="let_start">Mari mulakan</string>
+    <string name="restoring_number_format">Dipulihkan ... %d fail</string>
+    <string name="restore_photo">Pulihkan Fail yang Dipadamkan</string>
+    <string name="photo_recovery">Pemulihan Foto</string>
+
+    <string name="language_setting">Bahasa</string>
+    <string name="not_found_audio">Tidak ditemui audio</string>
+    <string name="analyzing">Menganalisis...</string>
+    <string name="video_recovery">Pemulihan Video</string>
+    <string name="audio_recovery">Pemulihan Audio</string>
+    <string name="restore_file">Pulihkan Fail</string>
+    <string name="restoring_video">Memulihkan video...</string>
+    <string name="open_file">Buka fail</string>
+    <string name="share_file">Kongsi Fail</string>
+    <string name="restoring_number_format_audio">Dipulihkan ... %d fail</string>
+    <string name="feature">Ciri</string>
+    <string name="image">Imej</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="recovery_file">Fail Dipulihkan</string>
+    <string name="photo_restored">Foto telah dipulihkan</string>
+    <string name="see_all">Lihat semua</string>
+    <string name="view_using">Lihat menggunakan</string>
+    <string name="all_file">Semua Fail</string>
+    <string name="request_delete_all">Adakah anda mahu memadam semua %s ?</string>
+    <string name="cancel">Batal</string>
+    <string name="ok">Okey</string>
+    <string name="memory">Ingatan</string>
+    <string name="used">terpakai</string>
+    <string name="free">Percuma</string>
+    <string name="delete_success">Padam berjaya</string>
+    <string name="files">Fail: %d</string>
+    <string name="skip">SKIP</string>
+    <string name="allow_watch_ads">WATCH ADS</string>
+    <string name="watch_ads_confirm_ring">Pulihkan fail anda!
+  Hanya menonton video promosi pendek dan anda boleh memulihkan fail yang dipilih.</string>
+    <string name="go_to_google_play">Semakan Di Google Play</string>
+    <string name="tks_to_rate">Terima kasih atas ulasan anda!</string>
+    <string name="are_you_like_me">Adakah anda suka aplikasi ini?</string>
+    <string name="rate_in_google_play">Sila nilai dan komen pendapat anda di google play. Terima kasih!</string>
+    <string name="send">Hantar</string>
+    <string name="second">detik</string>
+    <string name="ads_after">Iklan dipaparkan selepas</string>
+    <string name="default_notification_channel_id">file_recover_jm</string>
+
+    <string name="language_title">Bahasa</string>
+
+
+</resources>

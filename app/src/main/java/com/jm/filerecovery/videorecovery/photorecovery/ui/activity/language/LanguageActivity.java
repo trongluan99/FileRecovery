@@ -50,6 +50,7 @@ public class LanguageActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         fromSplashActivity = getIntent().getBooleanExtra("SplashActivity", false);
         languageModelList = GlobalAppCache.getInstance(this).getLanguageModelList();
+
         /// nếu đã chọn đc nn rồi thì ko cần lấy nn mặc định nữa
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             // lấy ra language default
@@ -94,9 +95,15 @@ public class LanguageActivity extends AppCompatActivity {
             if (checkManipulationAct) {
                 SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
                 SharePreferenceUtils.getInstance(this).setSaveLanguage(languageModelList.get(currentPosition).getId());
-                setSaveLanguage(languageModelList.get(currentPosition).getId());
+                setLocale(languageModelList.get(currentPosition).getId());
             } else {
-                finish();
+                if(fromSplashActivity){
+                    SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
+                    SharePreferenceUtils.getInstance(this).setSaveLanguage(languageModelList.get(currentPosition).getId());
+                    setLocale(languageModelList.get(currentPosition).getId());
+                } else {
+                    finish();
+                }
             }
 
         });
@@ -107,62 +114,6 @@ public class LanguageActivity extends AppCompatActivity {
                 });
             AdmobUtils.getInstance().loadNativeActivityLanguage(this);
         }
-    }
-
-    public void setSaveLanguage(String id) {
-        if (id.equals("en")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(0);
-            setLocale("en");
-        } else if (id.equals("hi")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(1);
-            setLocale("hi");
-        } else if (id.equals("in")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(2);
-            setLocale("in");
-        } else if (id.equals("zh_CN")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(3);
-            setLocale("zh_CN");
-        } else if (id.equals("zh_TW")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(4);
-            setLocale("zh_TW");
-        } else if (id.equals("pt")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(5);
-            setLocale("pt");
-        } else if (id.equals("es")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(6);
-            setLocale("es");
-        } else if (id.equals("ja")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(7);
-            setLocale("ja");
-        } else if (id.equals("ko")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(8);
-            setLocale("ko");
-        } else if (id.equals("vi")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(9);
-            setLocale("vi");
-        } else if (id.equals("ru")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(10);
-            setLocale("ru");
-        } else if (id.equals("de")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(11);
-            setLocale("de");
-        } else if (id.equals("bn")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(12);
-            setLocale("bn");
-        } else if (id.equals("th")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(13);
-            setLocale("th");
-        } else if (id.equals("my")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(14);
-            setLocale("my");
-        } else if (id.equals("ms")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(15);
-            setLocale("ms");
-        } else if (id.equals("it")) {
-            SharePreferenceUtils.getInstance(this).saveLanguageIndex(16);
-            setLocale("it");
-        }
-
     }
 
     public void setLocale(String lang) {

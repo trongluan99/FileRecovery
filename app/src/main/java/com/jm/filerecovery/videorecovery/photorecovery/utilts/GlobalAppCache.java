@@ -36,6 +36,7 @@ public class GlobalAppCache {
         languageModelList.add(new LanguageModel("my", R.drawable.img_language_my, 0, "Myanmar"));
         languageModelList.add(new LanguageModel("ms", R.drawable.img_language_ms, 0, "Malaysia"));
         languageModelList.add(new LanguageModel("it", R.drawable.img_language_it, 0, "Italy"));
+        languageModelList.add(new LanguageModel("ar", R.drawable.img_language_ar, 0, "Saudi Arabia"));
     }
 
     public List<LanguageModel> getLanguageModelList() {

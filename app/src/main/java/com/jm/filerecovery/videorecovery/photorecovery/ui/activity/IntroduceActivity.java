@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.ads.control.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 
 import java.util.ArrayList;
@@ -109,11 +110,13 @@ public class IntroduceActivity extends AppCompatActivity {
                     intent.addCategory("android.intent.category.DEFAULT");
                     intent.setData(Uri.parse(String.format("package:%s", getApplicationContext().getPackageName())));
                     mGetPermission.launch(intent);
+                    SharePreferenceUtils.getInstance(IntroduceActivity.this).saveShowFullAds(true);
 //                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
                 } catch (Exception e) {
                     Intent intent = new Intent();
                     intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                     mGetPermission.launch(intent);
+                    SharePreferenceUtils.getInstance(IntroduceActivity.this).saveShowFullAds(true);
 //                    startActivityForResult(intent, MY_PERMISSIONS_REQUEST_STORAGE);
                 }
             }

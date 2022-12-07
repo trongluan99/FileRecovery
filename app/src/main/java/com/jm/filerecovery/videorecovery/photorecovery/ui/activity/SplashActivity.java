@@ -4,22 +4,22 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ads.control.AdmobUtils;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
+
+import com.ads.control.admob.Admob;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
 import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.ads.control.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 
 import java.util.Locale;
 
@@ -32,72 +32,64 @@ public class SplashActivity extends AppCompatActivity {
     boolean splashActivity = false;
     boolean adsDisplayed = false;
     boolean isLoadFailed = false;
+    private boolean getConfigSuccess = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        AdmobUtils.getInstance().init(this);
         splashActivity = true;
-        initOpenAdmob();
-        new Handler().postDelayed(() -> {
-            if (appOpenAd == null && splashActivity) {
-                Log.d(TAG, "SplashActivity --------> go to category activity 6500");
-                moveIntroduceActivity();
-            } else if (!splashActivity) {
-                isLoadFailed = true;
-            }
-        }, time);
 
+        RemoteConfigUtils.INSTANCE.init(() -> {
+            Log.d("RemoteConfigUtils", " Remote config fetch complete");
+            getConfigSuccess = true;
+        });
+        loadingRemoteConfig();
     }
 
-    private void initOpenAdmob() {
-        loadCallback = new AppOpenAd.AppOpenAdLoadCallback() {
-
+    private void loadingRemoteConfig() {
+        new CountDownTimer(5000, 100) {
             @Override
-            public void onAdLoaded(@NonNull AppOpenAd ad) {
-                appOpenAd = ad;
-                Log.d(TAG, "SplashActivity --------> onAppOpenAdLoaded appOpenAd = " + appOpenAd);
-                FullScreenContentCallback fullScreenContentCallback = new FullScreenContentCallback() {
-                    @Override
-                    public void onAdDismissedFullScreenContent() {
-                        SplashActivity.this.appOpenAd = null;
-                        Log.d(TAG, "SplashActivity --------> onAdDismissedFullScreenContent");
-                        moveIntroduceActivity();
-                    }
-
-                    @Override
-                    public void onAdFailedToShowFullScreenContent(AdError adError) {
-
-                    }
-
-                    @Override
-                    public void onAdShowedFullScreenContent() {
-                        adsDisplayed = true;
-                    }
-                };
-                if (splashActivity & !adsDisplayed) {
-                    adsDisplayed = true;
-                    appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
-                    appOpenAd.show(SplashActivity.this);
+            public void onTick(long millisUntilFinished) {
+                if (getConfigSuccess) {
+                    checkRemoteConfigResult();
+                    this.cancel();
                 }
             }
-
             @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                isLoadFailed = true;
-                if (splashActivity) {
-                    moveIntroduceActivity();
+            public void onFinish() {
+                if (!getConfigSuccess) {
+                    checkRemoteConfigResult();
                 }
             }
-        };
-
-        AdRequest request = getAdRequest();
-        AppOpenAd.load(this, getResources().getString(R.string.admob_open_splash), request, AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, loadCallback);
+        }.start();
     }
 
-    public AdRequest getAdRequest() {
-        return new AdRequest.Builder().build();
+    private void checkRemoteConfigResult() {
+        if (RemoteConfigUtils.INSTANCE.getOnInterLunch().equals("on")) {
+            Log.d(TAG, " checkRemoteConfigResult getOnInterSplash == on");
+            AperoAdCallback adCallback = new AperoAdCallback() {
+                @Override
+                public void onNextAction() {
+                    super.onNextAction();
+                    Log.d(TAG, "onNextAction");
+                    if (Admob.getInstance().getmInterstitialSplash() != null) {
+                        Log.d(TAG, "onAdImpression");
+                        SharePreferenceUtils.getInstance(SplashActivity.this).saveLastTimeShowInter(System.currentTimeMillis());
+                    }
+                    if (splashActivity) moveIntroduceActivity();
+                }
+            };
+            AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                @Override
+                public void initAdSuccess() {
+                    AperoAd.getInstance().loadSplashInterstitialAds(SplashActivity.this, getResources().getString(R.string.admob_inter_splash), 10000, 500, true, adCallback);
+                }
+            });
+
+        } else {
+            if (splashActivity) moveIntroduceActivity();
+        }
     }
 
     protected void onStop() {
@@ -108,9 +100,10 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!adsDisplayed && appOpenAd != null || isLoadFailed) {
-            moveIntroduceActivity();
-        }
+        splashActivity = true;
+//        if (!adsDisplayed && appOpenAd != null || isLoadFailed) {
+//            moveIntroduceActivity();
+//        }
     }
 
     @Override
@@ -126,7 +119,6 @@ public class SplashActivity extends AppCompatActivity {
             intent.putExtra("SplashActivity",true);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();
         } else {
             Locale myLocale = new Locale(SharePreferenceUtils.getInstance(this).getSaveLanguage());
             Resources res = getResources();
@@ -137,7 +129,7 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();
         }
+        finish();
     }
 }

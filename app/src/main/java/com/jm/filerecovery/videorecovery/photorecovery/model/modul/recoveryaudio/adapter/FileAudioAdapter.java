@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.text.DateFormat;

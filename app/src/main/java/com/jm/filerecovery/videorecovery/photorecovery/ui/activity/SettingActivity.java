@@ -16,12 +16,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 
-import com.ads.control.funtion.UtilsApp;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.ads.control.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.GlobalAppCache;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.GlobalAppCache;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.UtilsApp;
 
 import java.util.Locale;
 

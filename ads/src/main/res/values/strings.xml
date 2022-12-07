@@ -25,6 +25,16 @@
 
     //Info id admob id test
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string> // id test
+    <string name="admob_native_language" translatable="false">/6499/example/native</string>
+    <string name="admob_native_home" translatable="false">/6499/example/native</string>
+    <string name="admob_inter_splash" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_inter_click_home" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_inter_click_item" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_native_scan" translatable="false">/6499/example/native</string>
+    <string name="admob_native_list_item" translatable="false">/6499/example/native</string>
+    <string name="admob_native_recovery_item" translatable="false">/6499/example/native</string>
+    <string name="admob_native_finish" translatable="false">/6499/example/native</string>
+
     <string name="admob_native" translatable="false">/6499/example/native</string>
     <string name="admob_full" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>
@@ -32,10 +42,9 @@
     <string name="admob_open_splash" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
 
-    <string name="ads_fb_full" translatable="false">2379042515473010_2392946664082595</string>
-    <string name="ads_fb_banner" translatable="false">2379042515473010_2392947067415888</string>
-    <string name="ads_fb_native" translatable="false">2379042515473010_2379043072139621</string>
-
-    <string name="ads_native_language" translatable="false">/6499/example/native</string>
+<!--    <string name="ads_fb_full" translatable="false">2379042515473010_2392946664082595</string>-->
+<!--    <string name="ads_fb_banner" translatable="false">2379042515473010_2392947067415888</string>-->
+<!--    <string name="ads_fb_native" translatable="false">2379042515473010_2379043072139621</string>-->
+<!--    <string name="ads_native_language" translatable="false">/6499/example/native</string>-->
 
 </resources>

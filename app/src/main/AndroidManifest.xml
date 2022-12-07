@@ -14,7 +14,7 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
-        android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.AnGApp"
+        android:name="com.jm.filerecovery.videorecovery.photorecovery.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

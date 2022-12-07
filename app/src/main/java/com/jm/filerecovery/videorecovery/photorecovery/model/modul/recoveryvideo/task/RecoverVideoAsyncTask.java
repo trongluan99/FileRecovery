@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoringDialog;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.MediaScanner;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.MediaScanner;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -17,7 +17,7 @@
 
     <include
         android:id="@+id/layout_ads"
-        layout="@layout/layout_ads_control"
+        layout="@layout/layout_native_control_280dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_15sdp"

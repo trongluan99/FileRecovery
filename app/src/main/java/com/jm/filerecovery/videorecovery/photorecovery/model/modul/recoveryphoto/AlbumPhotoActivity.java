@@ -12,25 +12,43 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.GroupPhotoHorizontalAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
 public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
-        Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
-        intent.putExtra("value", position);
-        startActivity(intent);
+        Log.d("TuanPA38"," AlbumPhotoActivity onClickItem");
+//        AperoAdCallback adCallback = new AperoAdCallback() {
+//            @Override
+//            public void onNextAction() {
+//                super.onNextAction();
+//                Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
+//                intent.putExtra("value", position);
+//                startActivity(intent);
+//            }
+//        };
+//        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+//            @Override
+//            public void initAdSuccess() {
+//                AperoAd.getInstance().loadSplashInterstitialAds(AlbumPhotoActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+//            }
+//        });
     }
-
     RecyclerView recyclerView;
     GroupPhotoHorizontalAdapter groupPhotoHorizontalAdapter;
     Toolbar toolbar;
@@ -48,7 +66,23 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
         Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
-        //    AdsCompat.getInstance(AlbumPhotoActivity.this).loadBanner(true);
+        initAds();
+        initStatusBar();
+    }
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
+    }
+    private void initAds() {
+        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
     }
 
     public void intView() {
@@ -120,7 +154,6 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
 
     @Override
     public void onBackPressed() {
-        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
-
+        super.onBackPressed();
     }
 }

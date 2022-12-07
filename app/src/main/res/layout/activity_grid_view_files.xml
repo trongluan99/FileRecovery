@@ -6,21 +6,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:background="@drawable/bg_toolbar_history"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!--    <androidx.appcompat.widget.Toolbar-->
+    <!--        android:id="@+id/toolbar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:minHeight="@dimen/_60sdp"-->
+    <!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+    <!--        app:titleTextAppearance="@style/textsizetoolbar" />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/_60sdp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextAppearance="@style/textsizetoolbar" />
+        android:layout_height="68dp"
+        android:background="@drawable/bg_toolbar_history"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_2" />
+
+        <TextView
+            android:id="@+id/txt_recovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo_recovery"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_recovery_now"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="@string/restore_now"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:background="@drawable/bg_result">
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gv_folder"
@@ -32,51 +73,19 @@
         android:clipToPadding="false"
         android:scrollbarThumbVertical="@drawable/ic_scrollbar"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_38sdp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dip"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_marginLeft="@dimen/_34sdp"
-        android:layout_marginRight="@dimen/_34sdp"
-        app:layout_constraintBottom_toTopOf="@+id/lrAds"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg_result">
-
-        <com.jm.filerecovery.videorecovery.photorecovery.utilts.ButtonRestore
-            android:id="@+id/btnRestore"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dip"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/bg_anim_premium"
-            android:clickable="true"
-            android:fontFamily="@font/roboto_regular"
-            android:gravity="left|center_vertical|center_horizontal|center|start"/>
-
-        <TextView
-            android:id="@+id/tv_pay_now"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/restore_now"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-    </FrameLayout>
-
+        app:layout_constraintBottom_toTopOf="@+id/layout_native"
+        app:layout_constraintTop_toBottomOf="@+id/cons_toolbar" />
 
     <include
-        android:id="@+id/lrAds"
-        layout="@layout/layout_banner_control"
+        android:id="@+id/layout_native"
+        layout="@layout/layout_native_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-
+        android:layout_marginStart="5dip"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="5dip"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,4 +22,7 @@
     <color name="background_language_act">#eef8f5</color>
     <color name="color_bg_button_blue">#017cfe</color>
     <color name="color_9E9E9E">#9E9E9E</color>
+    <color name="color_0379ff">#0379ff</color>
+    <color name="white_blur">#bf9c9c9c</color>
+    <color name="stocke_card">#5E58595A</color>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="size_title_spash">17sp</dimen>
-    <dimen name="size_detail_spash">10sp</dimen>
+    <dimen name="size_detail_spash">14sp</dimen>
     <dimen name="size_toolbar">15sp</dimen>
 
     <dimen name="sub_big_spacing">20dp</dimen>

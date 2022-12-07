@@ -16,14 +16,13 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-
             android:paddingBottom="32dp">
 
             <ImageView
                 android:id="@+id/loBattery"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
-                android:src="@drawable/logo"/>
+                android:src="@drawable/icon_recovery_512"/>
 
 
             <LinearLayout
@@ -49,23 +48,6 @@
 
             </LinearLayout>
 
-
-
-            <TextView
-                android:layout_marginTop="10dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center_horizontal"
-                android:lineSpacingMultiplier="1.06"
-                android:shadowColor="#0000"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="The best app for mobile"
-                android:textAllCaps="true"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/size_detail_spash" />
-
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_60sdp"
@@ -73,5 +55,15 @@
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true" />
         </LinearLayout>
+        <TextView
+            android:layout_marginTop="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/_48sdp"
+            android:text="Ads are about to be shown..."
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_detail_spash" />
     </FrameLayout>
 </RelativeLayout>

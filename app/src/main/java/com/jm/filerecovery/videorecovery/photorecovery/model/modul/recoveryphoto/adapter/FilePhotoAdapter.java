@@ -17,7 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

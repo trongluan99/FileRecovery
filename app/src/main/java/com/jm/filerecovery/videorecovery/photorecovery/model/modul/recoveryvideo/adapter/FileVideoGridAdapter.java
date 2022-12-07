@@ -9,11 +9,15 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity;
 
@@ -64,9 +68,24 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
         holder.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, VideoActivity.class);
-                intent.putExtra("value",postion);
-                mContext.startActivity(intent);
+
+                AperoAdCallback adCallback = new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        super.onNextAction();
+
+                        Intent intent = new Intent(mContext, VideoActivity.class);
+                        intent.putExtra("value",postion);
+                        mContext.startActivity(intent);
+                    }
+                };
+                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                    @Override
+                    public void initAdSuccess() {
+                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                    }
+                });
+
             }
         });
     }

@@ -19,7 +19,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

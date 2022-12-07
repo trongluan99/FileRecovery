@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
 
     <include
-        layout="@layout/layout_ads_control"
+        layout="@layout/layout_native_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dip"

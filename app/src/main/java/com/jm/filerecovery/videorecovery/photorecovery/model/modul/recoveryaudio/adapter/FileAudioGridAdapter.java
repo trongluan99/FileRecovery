@@ -11,10 +11,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -50,10 +54,21 @@ public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdap
         holder.album_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, AudioActivity.class);
-                intent.putExtra("value",postion);
-                mContext.startActivity(intent);
-
+                AperoAdCallback adCallback = new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        super.onNextAction();
+                        Intent intent = new Intent(mContext, AudioActivity.class);
+                        intent.putExtra("value",postion);
+                        mContext.startActivity(intent);
+                    }
+                };
+                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                    @Override
+                    public void initAdSuccess() {
+                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                    }
+                });
             }
         });
     }

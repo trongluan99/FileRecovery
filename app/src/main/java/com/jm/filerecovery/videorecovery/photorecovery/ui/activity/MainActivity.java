@@ -15,9 +15,12 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,16 +31,22 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.admob.Admob;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.Rate;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.FileUtils;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.TotalMemoryStorageTaskUtils;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.FileUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.TotalMemoryStorageTaskUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -60,12 +69,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#66000000"));
         }
-        intView();
         intEvent();
+        initAds();
+        initStatusBar();
     }
 
-    public void intView() {
-        AdmobUtils.getInstance().loadBanner(this);
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
+    }
+    public void initAds() {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on")) {
+            binding.layoutNative.setVisibility(View.VISIBLE);
+            FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+            ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_home), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        } else {
+            binding.layoutNative.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -121,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             fileDirectory.mkdirs();
         }
         File[] lstFilePhoto = fileDirectory.listFiles() != null ? fileDirectory.listFiles() : new File[0];
-        binding.tvNumberImage.setText(lstFilePhoto.length + "");
+//        binding.tvNumberImage.setText(lstFilePhoto.length + "");
 
         photoRestoredAdapter = new PhotoRestoredAdapter(lstFilePhoto, file -> {
             Intent intent = new Intent();
@@ -148,8 +175,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_more:
-                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivity(intent);
+
+                AperoAdCallback adCallback2 = new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        super.onNextAction();
+                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+
+                        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                        startActivity(intent);
+                    }
+                };
+                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                    @Override
+                    public void initAdSuccess() {
+                        AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback2);
+                    }
+                });
+
                 break;
             case R.id.iv_his_click:
                 startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
@@ -157,7 +200,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanFilesActivity.start(MainActivity.this, 0);
+                        AperoAdCallback adCallback3 = new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                super.onNextAction();
+                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                ScanFilesActivity.start(MainActivity.this, 0);
+                            }
+                        };
+                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback3);
+                            }
+                        });
+
                         return null;
                     });
                 } catch (Exception e) {
@@ -168,7 +225,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanFilesActivity.start(MainActivity.this, 2);
+                        AperoAdCallback adCallback4 = new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                super.onNextAction();
+                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                ScanFilesActivity.start(MainActivity.this, 2);
+                            }
+                        };
+                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback4);
+                            }
+                        });
                         return null;
                     });
                 } catch (Exception e) {
@@ -178,7 +248,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
-                        ScanFilesActivity.start(MainActivity.this, 1);
+                        AperoAdCallback adCallback5 = new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                super.onNextAction();
+                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                ScanFilesActivity.start(MainActivity.this, 1);
+                            }
+                        };
+                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback5);
+                            }
+                        });
                         return null;
                     });
                 } catch (Exception e) {
@@ -191,6 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void requestPermissionAll(Callable<Void> callable) throws Exception {
+        com.ads.control.admob.AppOpenManager.getInstance().disableAppResume();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (Environment.isExternalStorageManager()) {
                 callable.call();
@@ -288,15 +372,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Rate.Show(this, new Rate.OnResult() {
             @Override
             public void callActionAfter() {
-                AdmobUtils.getInstance().showInterstitialAd(MainActivity.this, new AdmobUtils.AdCloseListener() {
-                    @Override
-                    public void onAdClosed() {
+//                AdmobUtils.getInstance().showInterstitialAd(MainActivity.this, new AdmobUtils.AdCloseListener() {
+//                    @Override
+//                    public void onAdClosed() {
                         Intent intent = new Intent(MainActivity.this, ExitActivity.class);
                         MainActivity.this.finish();
                         MainActivity.this.finishAffinity();
                         startActivity(intent);
-                    }
-                });
+//                    }
+//                });
             }
         });
     }

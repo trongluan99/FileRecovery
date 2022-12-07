@@ -8,9 +8,8 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.TextView;
-
-import com.ads.control.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 
 import java.util.Locale;
 

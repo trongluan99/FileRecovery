@@ -11,7 +11,11 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
 import com.bumptech.glide.Glide;
@@ -67,9 +71,23 @@ public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdap
         holder.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, PhotosActivity.class);
-                intent.putExtra("value", postion);
-                mContext.startActivity(intent);
+                AperoAdCallback adCallback = new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        super.onNextAction();
+
+                        Intent intent = new Intent(mContext, PhotosActivity.class);
+                        intent.putExtra("value", postion);
+                        mContext.startActivity(intent);
+                    }
+                };
+                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                    @Override
+                    public void initAdSuccess() {
+                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                    }
+                });
+
             }
         });
 

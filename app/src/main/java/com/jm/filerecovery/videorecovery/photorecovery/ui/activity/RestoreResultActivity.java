@@ -3,6 +3,8 @@ package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,10 +12,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.ads.AperoAd;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.Rate;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
 public class RestoreResultActivity extends AppCompatActivity {
@@ -37,9 +39,25 @@ public class RestoreResultActivity extends AppCompatActivity {
 
         intView();
         intData();
-        AdmobUtils.getInstance().loadNativeActivity(RestoreResultActivity.this);
-
+        initAds();
+        initStatusBar();
     }
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
+    }
+    private void initAds() {
+        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_finish), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+    }
+
     public void intView(){
         type = getIntent().getIntExtra("type", 0);
         toolbar = findViewById(R.id.toolbar);

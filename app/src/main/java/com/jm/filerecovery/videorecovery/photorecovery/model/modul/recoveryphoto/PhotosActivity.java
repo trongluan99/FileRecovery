@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -19,13 +20,19 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.wrapper.ApAdError;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
@@ -33,8 +40,8 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FilePhotoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.task.RecoverPhotosAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.ButtonRestore;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.ButtonRestore;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,36 +51,51 @@ public class PhotosActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
     FilePhotoAdapter filePhotoAdapter;
-    ButtonRestore btnRestore;
+    TextView txt_recovery_now;
     ArrayList<PhotoEntity> mList = new ArrayList<PhotoEntity>();
     RecoverPhotosAsyncTask mRecoverPhotosAsyncTask;
-    Toolbar toolbar;
+    AppCompatImageView imgBack;
+    TextView txtTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view_files);
-        Toolbar ctrToolbar = findViewById(R.id.toolbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
-            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
-            ctrToolbar.setLayoutParams(params);
-        }
-        Utils.setStatusBarHomeTransparent(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         intView();
         intData();
-        AdmobUtils.getInstance().loadBanner(this);
-        AdmobUtils.getInstance().showInterstitialAd(this, () -> {});
+        initAds();
+        initStatusBar();
+        restore = true;
+    }
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
+    }
+    private void initAds() {
+        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
     }
 
     public void intView() {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.photo_recovery));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        btnRestore = (ButtonRestore) findViewById(R.id.btnRestore);
+        imgBack = findViewById(R.id.img_back);
+        txtTitle = findViewById(R.id.txt_recovery);
+        txtTitle.setText(getString(R.string.photo_recovery));
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        txt_recovery_now = (TextView) findViewById(R.id.txt_recovery_now);
         recyclerView = (RecyclerView) findViewById(R.id.gv_folder);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -87,29 +109,58 @@ public class PhotosActivity extends AppCompatActivity {
             mList.addAll((ArrayList<PhotoEntity>) ScanFilesActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
         filePhotoAdapter = new FilePhotoAdapter(this, mList);
         recyclerView.setAdapter(filePhotoAdapter);
-        btnRestore.setOnClickListener(new View.OnClickListener() {
+        txt_recovery_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
-                    intent.putExtra("value", tempList.size());
-                    intent.putExtra("type", 2);
-                    startActivityForResult(intent, 10900);
+                    AperoAdCallback adCallback = new AperoAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            super.onNextAction();
+                            Log.d("TuanPA38", " onNextAction ");
+                        }
+
+                        @Override
+                        public void onAdClosed() {
+                            super.onAdClosed();
+                            restoreFile();
+                            Log.d("TuanPA38", " onAdClosed ");
+                        }
+
+                        @Override
+                        public void onAdFailedToShow(@Nullable ApAdError adError) {
+                            super.onAdFailedToShow(adError);
+                            restoreFile();
+                            Log.d("TuanPA38", " onAdFailedToShow ");
+                        }
+
+                        @Override
+                        public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                            super.onAdFailedToLoad(adError);
+                            restoreFile();
+                            Log.d("TuanPA38", " onAdFailedToLoad ");
+                        }
+                    };
+                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            AperoAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                        }
+                    });
+
                 }
 
             }
         });
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d("AdmobHelper", " requestCode =" + requestCode + " resultCode = " + resultCode);
-        if (requestCode == 10900 && resultCode == 888) {
-            final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
-            mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
+    boolean restore = true;
+    private void restoreFile() {
+        if(!restore) return;
+        final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
+        mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
             @Override
             public void onComplete() {
                 Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
@@ -120,6 +171,33 @@ public class PhotosActivity extends AppCompatActivity {
                 filePhotoAdapter.notifyDataSetChanged();
             }
         });
+        mRecoverPhotosAsyncTask.execute();
+        restore = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        restore = true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("TuanPA38", " requestCode =" + requestCode + " resultCode = " + resultCode);
+        if (requestCode == 10900 && resultCode == 888) {
+            final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
+            mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
+                @Override
+                public void onComplete() {
+                    Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+                    intent.putExtra("value", tempList.size());
+                    intent.putExtra("type", 0);
+                    startActivity(intent);
+                    filePhotoAdapter.setAllImagesUnseleted();
+                    filePhotoAdapter.notifyDataSetChanged();
+                }
+            });
             mRecoverPhotosAsyncTask.execute();
         }
     }
@@ -132,60 +210,6 @@ public class PhotosActivity extends AppCompatActivity {
         return true;
     }
 
-    //    private void showDalogConfirmDelete() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(DuplicateActivity.this);
-//        builder.setTitle(getString(R.string.delete_title));
-//        builder.setMessage(getString(R.string.are_you_sure_to_delete));
-//
-//        String positiveText = getString(android.R.string.ok);
-//        builder.setPositiveButton(positiveText,
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        if (!sharedPreferences.getString("sdCardUri", "").equals("")) {
-//                            deleteFiles();
-//                        } else if (SDCardCheck()) {
-//
-//                            SDcardFilesDialog();
-//                        } else {
-//
-//                            deleteFiles();
-//                        }
-//
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//        String negativeText = getString(android.R.string.cancel);
-//        builder.setNegativeButton(negativeText,
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // negative button logic
-//                    }
-//                });
-//
-//        AlertDialog dialog = builder.create();
-//        // display dialog
-//        dialog.show();
-//    }
-//    private void SDcardFilesDialog() {
-//
-//        final Dialog main_dialog2 = new ProgressDialog(this);
-//        main_dialog2.requestWindowFeature(1);
-//        main_dialog2.setCancelable(false);
-//        main_dialog2.setCanceledOnTouchOutside(false);
-//        main_dialog2.show();
-//        main_dialog2.setContentView(R.layout.sdcard_dialog);
-//        ((Button) main_dialog2.findViewById(R.id.ok_sd)).setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                if (main_dialog2 != null) {
-//                    main_dialog2.dismiss();
-//                }
-//                fileSearch();
-//            }
-//        });
-//    }
     public void fileSearch() {
         startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE"), 100);
     }
@@ -225,14 +249,6 @@ public class PhotosActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

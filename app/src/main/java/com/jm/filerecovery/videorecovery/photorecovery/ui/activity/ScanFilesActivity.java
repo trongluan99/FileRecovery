@@ -8,8 +8,12 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +22,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.os.EnvironmentCompat;
 
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.ads.AperoAd;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AlbumAudio;
@@ -31,7 +35,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.AlbumVideo;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import org.apache.commons.io.IOUtils;
 
@@ -76,16 +80,25 @@ public class ScanFilesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         intView();
+        initStatusBar();
+    }
+
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
     }
 
     private void intView() {
-        AdmobUtils.getInstance().loadNativeActivity(this);
-        AdmobUtils.getInstance().showInterstitialAd(this, new AdmobUtils.AdCloseListener() {
-            @Override
-            public void onAdClosed() {
-
-            }
-        });
+        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        Log.d("TuanPA38", "FragmentHome getOnBannerTool loadBannerFragment");
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
     }
@@ -179,7 +192,7 @@ public class ScanFilesActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            binding.tvStatus.setText(getString(R.string.files,values[0]));
+            binding.tvStatus.setText(getString(R.string.files, values[0]));
         }
 
         @Override

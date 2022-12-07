@@ -30,7 +30,21 @@
         android:clipToPadding="false"
         android:scrollbarThumbVertical="@drawable/ic_scrollbar"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_native"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <include
+        android:id="@+id/layout_native"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="5dip"
+        android:layout_marginEnd="5dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/layout_native_medium"
+        android:visibility="visible">
+    </include>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

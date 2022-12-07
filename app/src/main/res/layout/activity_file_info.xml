@@ -29,7 +29,7 @@
         android:layout_height="0dp"
         android:background="@color/white"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_btn"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <LinearLayout
@@ -62,7 +62,7 @@
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/logo" />
+                            android:src="@drawable/icon_recovery_512" />
 
                         <ImageView
                             android:layout_width="50dip"
@@ -137,36 +137,39 @@
                     android:textColor="@color/text_color" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                style="@style/AppOptionStyle"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp">
-
-                <Button
-                    android:id="@+id/btnRestore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_result"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/restore_file"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="5dp" />
-
-            <include
-                layout="@layout/layout_ads_control"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dip"
-                android:layout_marginTop="10dip"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginEnd="5dip"/>
         </LinearLayout>
     </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_btn"
+        style="@style/AppOptionStyle"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_ads"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnRestore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_result"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/restore_file"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+    <include
+        android:id="@+id/layout_ads"
+        layout="@layout/layout_native_control_280dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="5dip"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

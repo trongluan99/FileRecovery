@@ -14,14 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
-import com.ads.control.AdmobUtils;
+
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityFileRecoveredBinding;
-import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityFileRecoveredBinding;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FileRestoredAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 
@@ -149,8 +147,8 @@ public class FileRecoveredActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AdmobUtils.getInstance().showInterstitialAd(this, () -> {
-            finish();
-        });
+//        AdmobUtils.getInstance().showInterstitialAd(this, () -> {
+//            finish();
+//        });
     }
 }

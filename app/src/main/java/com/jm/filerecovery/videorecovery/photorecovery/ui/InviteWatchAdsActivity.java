@@ -55,26 +55,26 @@ public class InviteWatchAdsActivity extends AppCompatActivity {
     }
 
     private void loadRewardedInterstitialAd() {
-        if (rewardedInterstitialAd == null && !isRewarded) {
-            isLoadingAds = true;
-            AdRequest adRequest = new AdRequest.Builder().build();
-            RewardedInterstitialAd.load(this, getResources().getString(R.string.admob_full_reward), adRequest, new RewardedInterstitialAdLoadCallback() {
-                        @Override
-                        public void onAdLoaded(@NonNull RewardedInterstitialAd ad) {
-                            super.onAdLoaded(ad);
-                            rewardedInterstitialAd = ad;
-                            isLoadingAds = false;
-                        }
-
-                        @Override
-                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                            super.onAdFailedToLoad(loadAdError);
-                            isLoadingAds = false;
-                            rewardedInterstitialAd = null;
-                        }
-                    }
-            );
-        }
+//        if (rewardedInterstitialAd == null && !isRewarded) {
+//            isLoadingAds = true;
+//            AdRequest adRequest = new AdRequest.Builder().build();
+//            RewardedInterstitialAd.load(this, getResources().getString(R.string.admob_full_reward), adRequest, new RewardedInterstitialAdLoadCallback() {
+//                        @Override
+//                        public void onAdLoaded(@NonNull RewardedInterstitialAd ad) {
+//                            super.onAdLoaded(ad);
+//                            rewardedInterstitialAd = ad;
+//                            isLoadingAds = false;
+//                        }
+//
+//                        @Override
+//                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                            super.onAdFailedToLoad(loadAdError);
+//                            isLoadingAds = false;
+//                            rewardedInterstitialAd = null;
+//                        }
+//                    }
+//            );
+//        }
     }
 
     private void createTimer(long time) {

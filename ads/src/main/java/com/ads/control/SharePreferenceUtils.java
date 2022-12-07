@@ -73,4 +73,12 @@ public class SharePreferenceUtils {
     public boolean getSelectedLanguage() {
         return pre.getBoolean("setSelectedLanguage", false);
     }
+
+    public void saveLastTimeShowInter(long timeLoad) {
+        editor.putLong("LastTimeShowInter", timeLoad);
+        editor.commit();
+    }
+    public Long getLastTimeShowInter() {
+        return pre.getLong("LastTimeShowInter", 0);
+    }
 }

@@ -10,11 +10,14 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -22,7 +25,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.ads.control.AdmobUtils;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.wrapper.ApAdError;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
@@ -33,8 +40,8 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.FileVideoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.ButtonRestore;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.Utils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.ButtonRestore;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -47,36 +54,53 @@ public class VideoActivity extends AppCompatActivity {
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
-    ButtonRestore btnRestore;
+    TextView txt_recovery_now;
     ArrayList<VideoEntity> mList = new ArrayList<VideoEntity>();
     RecoverVideoAsyncTask mRecoverVideoAsyncTask;
-    Toolbar toolbar;
+    AppCompatImageView imgBack;
+    TextView txtTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view_files);
-        Toolbar ctrToolbar = findViewById(R.id.toolbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
-            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
-            ctrToolbar.setLayoutParams(params);
-        }
-        Utils.setStatusBarHomeTransparent(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         intView();
         intData();
-        AdmobUtils.getInstance().loadBanner(this);
-        AdmobUtils.getInstance().showInterstitialAd(this, () -> {});
+        initAds();
+        initStatusBar();
+        restore = true;
+    }
+
+    private void initAds() {
+        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
+        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+    }
+
+    private void initStatusBar() {
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e) {
+
+        }
     }
 
     public void intView() {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getString(R.string.video_recovery));
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        btnRestore = (ButtonRestore) findViewById(R.id.btnRestore);
+        imgBack = findViewById(R.id.img_back);
+        txtTitle = findViewById(R.id.txt_recovery);
+        txtTitle.setText(getString(R.string.video_recovery));
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        txt_recovery_now = (TextView) findViewById(R.id.txt_recovery_now);
         recyclerView = (RecyclerView) findViewById(R.id.gv_folder);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -90,22 +114,73 @@ public class VideoActivity extends AppCompatActivity {
             mList.addAll((ArrayList<VideoEntity>) ScanFilesActivity.mAlbumVideo.get(int_position).getListPhoto().clone());
         fileVideoAdapter = new FileVideoAdapter(this, mList);
         recyclerView.setAdapter(fileVideoAdapter);
-        btnRestore.setOnClickListener(new View.OnClickListener() {
+        txt_recovery_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final ArrayList<VideoEntity> tempList = fileVideoAdapter.getSelectedItem();
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), InviteWatchAdsActivity.class);
-                    intent.putExtra("value", tempList.size());
-                    intent.putExtra("type", 2);
-                    startActivityForResult(intent, 10900);
+                    AperoAdCallback adCallback = new AperoAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            super.onNextAction();
+                            restoreFile();
+                        }
+
+                        @Override
+                        public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                            super.onAdFailedToLoad(adError);
+                            restoreFile();
+                        }
+
+                        @Override
+                        public void onAdFailedToShow(@Nullable ApAdError adError) {
+                            super.onAdFailedToShow(adError);
+                            restoreFile();
+                        }
+
+                        @Override
+                        public void onAdClosed() {
+                            super.onAdClosed();
+                            restoreFile();
+                        }
+                    };
+                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            AperoAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                        }
+                    });
 
                 }
 
             }
         });
+    }
+
+    boolean restore = true;
+    private void restoreFile() {
+        if(!restore) return;
+        final ArrayList<VideoEntity> tempList = fileVideoAdapter.getSelectedItem();
+        mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, fileVideoAdapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
+            @Override
+            public void onComplete() {
+                Intent intent = new Intent(getApplicationContext(), RestoreResultActivity.class);
+                intent.putExtra("value", tempList.size());
+                intent.putExtra("type", 1);
+                startActivity(intent);
+                fileVideoAdapter.setAllImagesUnseleted();
+                fileVideoAdapter.notifyDataSetChanged();
+            }
+        });
+        mRecoverVideoAsyncTask.execute();
+        restore = false;
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        restore = true;
     }
 
     @Override

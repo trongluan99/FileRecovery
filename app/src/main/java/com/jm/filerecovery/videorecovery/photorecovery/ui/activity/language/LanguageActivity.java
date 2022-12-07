@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
@@ -14,15 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.ads.control.AdmobUtils;
-import com.ads.control.SharePreferenceUtils;
+import com.ads.control.ads.AperoAd;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.LanguageAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SettingActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utilts.GlobalAppCache;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.GlobalAppCache;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +46,35 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+        ButterKnife.bind(this);
         recyclerLanguage = findViewById(R.id.rcv_language);
         imgSaveLanguage = findViewById(R.id.img_save_language);
-        ButterKnife.bind(this);
         fromSplashActivity = getIntent().getBooleanExtra("SplashActivity", false);
+        initLanguage();
+        initStatusBar();
+        initAds();
+    }
+
+    private void initAds() {
+        if(RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")){
+            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
+        }
+    }
+
+    private void initStatusBar() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        try {
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        } catch (Exception e){
+
+        }
+    }
+
+    private void initLanguage() {
         languageModelList = GlobalAppCache.getInstance(this).getLanguageModelList();
 
         /// nếu đã chọn đc nn rồi thì ko cần lấy nn mặc định nữa
@@ -102,15 +127,6 @@ public class LanguageActivity extends AppCompatActivity {
                 setLocale(languageModelList.get(currentPosition).getId());
             }
         });
-        if (!SharePreferenceUtils.getInstance(this).getPurchase()) {
-            if (!fromSplashActivity)
-                AdmobUtils.getInstance().showInterstitialAd(LanguageActivity.this, () -> {
-
-                });
-            AdmobUtils.getInstance().loadNativeActivityLanguage(this);
-        }
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     public void setLocale(String lang) {
@@ -138,6 +154,4 @@ public class LanguageActivity extends AppCompatActivity {
 
         }
     }
-
-
 }

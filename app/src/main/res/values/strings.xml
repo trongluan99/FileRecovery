@@ -12,7 +12,7 @@
     <string name="feedback">Feedback</string>
     <string name="scan">Scan</string>
 
-    <string name="scan_tip">The App help you recover deleted photos.\nThe App will show all the images(Deleted and Not Deleted). Just Keep looking and you will find photos you are looking for.\nPlease be patient and wait until it scans all folders and files.</string>
+    <string name="scan_tip">The App will show all the images(Deleted and Not Deleted). Just Keep looking and you will find photos you are looking for.\nPlease be patient and wait until it scans all folders and files.</string>
     <string name="how_to_work">How it works?</string>
     <string name="restore">Restore</string>
     <string name="restore_folder_path_photo" translatable="false">Restored_Photos</string>
@@ -76,6 +76,7 @@
 <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
 <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
 <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->
+<!--    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-6691965685689933/1937136345</string>-->
 <!--    <string name="admob_inter_click_home" translatable="false">ca-app-pub-6691965685689933/2797351511</string>-->
 <!--    <string name="admob_inter_click_item" translatable="false">ca-app-pub-6691965685689933/7100392754</string>-->
 <!--    <string name="admob_inter_recovery" translatable="false">ca-app-pub-6691965685689933/3080298837</string>-->
@@ -90,6 +91,7 @@
     <string name="admob_native_language" translatable="false">/6499/example/native</string>
     <string name="admob_native_home" translatable="false">/6499/example/native</string>
     <string name="admob_inter_splash" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_click_home" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_click_item" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_recovery" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
@@ -102,4 +104,11 @@
 
 <!--    <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>-->
     <string name="email_feedback">glorymobile88@gmail.com</string>
+    <string name="next">Next</string>
+    <string name="scan_tip_1">Select the file type you want to recover. Please be patient and wait until the app scans all folders and files</string>
+    <string name="scan_tip_2">Search for the file you want to recover. Select the file and press the restore button.</string>
+    <string name="scan_tip_note">Note: The app only works on 80% of Android devices. Some devices may not be able to recover the file you seek</string>
+    <string name="step1">Step 1:</string>
+    <string name="step2">Step 2:</string>
+    <string name="step_note">Note</string>
 </resources>

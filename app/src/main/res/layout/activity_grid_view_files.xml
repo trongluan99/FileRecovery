@@ -49,17 +49,18 @@
         <TextView
             android:id="@+id/txt_recovery_now"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="34dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:padding="10dp"
+            android:paddingLeft="@dimen/_8sdp"
+            android:paddingRight="@dimen/_8sdp"
             android:gravity="center"
             android:text="@string/restore_now"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:background="@drawable/bg_result">
+            android:textSize="11sp"
+            android:background="@drawable/bg_result_off">
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

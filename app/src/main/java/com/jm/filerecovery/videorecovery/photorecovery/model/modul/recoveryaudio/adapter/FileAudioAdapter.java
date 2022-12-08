@@ -28,6 +28,16 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
     Context context;
     ArrayList<AudioEntity> audioEntities = new ArrayList<>();
     BitmapDrawable placeholder;
+    public FileAudioAdapter.OnClickItem onClickItem;
+
+    public OnClickItem getOnClickItem() {
+        return onClickItem;
+    }
+
+    public void setOnClickItem(OnClickItem onClickItem) {
+        this.onClickItem = onClickItem;
+    }
+
     public FileAudioAdapter(Context context, ArrayList<AudioEntity> mList) {
         this.context = context;
         this.audioEntities = mList;
@@ -72,6 +82,7 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
                     holder.ivChecked.setChecked(true);
                     audioEntity.setIsCheck(true);
                 }
+                onClickItem.onClick();
             }
         });
         holder.album_card.setOnClickListener(new View.OnClickListener() {
@@ -130,4 +141,8 @@ public class FileAudioAdapter extends RecyclerView.Adapter<FileAudioAdapter.MyVi
             context.startActivity(createChooser);
         }
     }
+
+    public interface OnClickItem {
+        void onClick();
+   }
 }

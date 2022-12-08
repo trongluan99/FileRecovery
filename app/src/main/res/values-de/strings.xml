@@ -62,4 +62,8 @@
     <string name="second">Sekunden</string>
     <string name="ads_after">Anzeigen werden danach angezeigt</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_1">Wählen Sie den Dateityp aus, den Sie wiederherstellen möchten. Bitte haben Sie etwas Geduld und warten Sie, bis die App alle Ordner und Dateien gescannt hat</string>
+    <string name="scan_tip_2">Suchen Sie nach der Datei, die Sie wiederherstellen möchten. Wählen Sie die Datei aus und drücken Sie die Wiederherstellungstaste.</string>
+    <string name="scan_tip_note">Hinweis: Die App funktioniert nur auf 80 % der Android-Geräte. Einige Geräte können die gesuchte Datei möglicherweise nicht wiederherstellen</string>
+    <string name="next">Nächste</string>
 </resources>

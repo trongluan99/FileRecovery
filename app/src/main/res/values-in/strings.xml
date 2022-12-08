@@ -63,4 +63,7 @@
     <string name="second">detik</string>
     <string name="ads_after">Iklan ditampilkan setelah</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_1">Pilih jenis file yang ingin Anda pulihkan. Harap bersabar dan tunggu hingga aplikasi memindai semua folder dan file</string>
+    <string name="scan_tip_2">Cari file yang ingin Anda pulihkan. Pilih file dan tekan tombol pulihkan.</string>
+    <string name="scan_tip_note">Catatan: Aplikasi ini hanya berfungsi di 80% perangkat Android. Beberapa perangkat mungkin tidak dapat memulihkan file yang Anda cari</string>
 </resources>

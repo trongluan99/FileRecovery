@@ -61,5 +61,9 @@
     <string name="second">സെക്കന്റുകൾ</string>
     <string name="ads_after">ശേഷം പരസ്യങ്ങൾ പ്രദർശിപ്പിക്കും</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_note">ശ്രദ്ധിക്കുക: 80% Android ഉപകരണങ്ങളിൽ മാത്രമേ ആപ്പ് പ്രവർത്തിക്കൂ. നിങ്ങൾ അന്വേഷിക്കുന്ന ഫയൽ വീണ്ടെടുക്കാൻ ചില ഉപകരണങ്ങൾക്ക് കഴിഞ്ഞേക്കില്ല</string>
+    <string name="scan_tip_2">നിങ്ങൾ വീണ്ടെടുക്കാൻ ആഗ്രഹിക്കുന്ന ഫയലിനായി തിരയുക. ഫയൽ തിരഞ്ഞെടുത്ത് പുനഃസ്ഥാപിക്കുക ബട്ടൺ അമർത്തുക.</string>
+    <string name="scan_tip_1">നിങ്ങൾ വീണ്ടെടുക്കാൻ ആഗ്രഹിക്കുന്ന ഫയൽ തരം തിരഞ്ഞെടുക്കുക. ആപ്പ് എല്ലാ ഫോൾഡറുകളും ഫയലുകളും സ്കാൻ ചെയ്യുന്നത് വരെ ക്ഷമയോടെ കാത്തിരിക്കുക</string>
+    <string name="next">അടുത്തത്</string>
 
 </resources>

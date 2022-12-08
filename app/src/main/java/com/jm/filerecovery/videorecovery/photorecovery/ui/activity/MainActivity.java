@@ -35,6 +35,8 @@ import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.wrapper.ApAdError;
+import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
@@ -60,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private PhotoRestoredAdapter photoRestoredAdapter;
     private ActivityMainBinding binding;
-
+    private ApInterstitialAd mInterstitialAd = null;
+    private boolean activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intEvent();
         initAds();
         initStatusBar();
+        activity= true;
+        loadAdInterstitial();
     }
-
+    private void loadAdInterstitial() {
+        mInterstitialAd = AperoAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_click_home));
+    }
     private void initStatusBar() {
         try {
             View decorView = getWindow().getDecorView();
@@ -98,12 +105,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
+        activity=true;
         try {
             intDataImage();
             initMemoryData();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        activity=false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activity=false;
     }
 
     private void initMemoryData() {
@@ -195,26 +215,85 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.iv_his_click:
-                startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                if(mInterstitialAd!=null){
+                    if (mInterstitialAd.isReady()) {
+                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                if (activity){
+                                    startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                                    activity = false;
+                                }
+                            }
+
+                            @Override
+                            public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                super.onAdFailedToShow(adError);
+                                Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                if (activity){
+                                    startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                                    activity = false;
+                                }
+                            }
+
+                        }, true);
+                    } else {
+                        if (activity){
+                            startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                            activity = false;
+                        }
+                    }
+                } else {
+                    if (activity){
+                        startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                        activity = false;
+                    }
+                }
+
                 break;
             case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
-                        AperoAdCallback adCallback3 = new AperoAdCallback() {
-                            @Override
-                            public void onNextAction() {
-                                super.onNextAction();
+                        if(mInterstitialAd!=null){
+                            if (mInterstitialAd.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 0);
+                                            activity = false;
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                        super.onAdFailedToShow(adError);
+                                        Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 0);
+                                            activity = false;
+                                        }
+                                    }
+
+                                }, true);
+                            } else {
+                                if (activity){
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                    ScanFilesActivity.start(MainActivity.this, 0);
+                                    activity = false;
+                                }
+                            }
+                        } else {
+                            if (activity){
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 0);
+                                activity = false;
                             }
-                        };
-                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                            @Override
-                            public void initAdSuccess() {
-                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback3);
-                            }
-                        });
-
+                        }
                         return null;
                     });
                 } catch (Exception e) {
@@ -225,20 +304,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
-                        AperoAdCallback adCallback4 = new AperoAdCallback() {
-                            @Override
-                            public void onNextAction() {
-                                super.onNextAction();
+                        if(mInterstitialAd!=null){
+                            if (mInterstitialAd.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 2);
+                                            activity = false;
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                        super.onAdFailedToShow(adError);
+                                        Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 2);
+                                            activity = false;
+                                        }
+                                    }
+
+                                }, true);
+                            } else {
+                                if (activity){
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                    ScanFilesActivity.start(MainActivity.this, 2);
+                                    activity = false;
+                                }
+                            }
+                        } else {
+                            if (activity){
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 2);
+                                activity = false;
                             }
-                        };
-                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                            @Override
-                            public void initAdSuccess() {
-                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback4);
-                            }
-                        });
+                        }
                         return null;
                     });
                 } catch (Exception e) {
@@ -248,20 +352,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
-                        AperoAdCallback adCallback5 = new AperoAdCallback() {
-                            @Override
-                            public void onNextAction() {
-                                super.onNextAction();
+                        if(mInterstitialAd!=null){
+                            if (mInterstitialAd.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 1);
+                                            activity = false;
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                        super.onAdFailedToShow(adError);
+                                        Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                        if (activity){
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 1);
+                                            activity = false;
+                                        }
+                                    }
+
+                                }, true);
+                            } else {
+                                if (activity){
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                    ScanFilesActivity.start(MainActivity.this, 1);
+                                    activity = false;
+                                }
+                            }
+                        } else {
+                            if (activity){
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 1);
+                                activity = false;
                             }
-                        };
-                        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                            @Override
-                            public void initAdSuccess() {
-                                AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback5);
-                            }
-                        });
+                        }
                         return null;
                     });
                 } catch (Exception e) {

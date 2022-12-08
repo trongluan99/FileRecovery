@@ -9,16 +9,27 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.ads.control.admob.Admob;
+import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.wrapper.ApAdError;
+import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 
 import java.util.ArrayList;
@@ -30,10 +41,25 @@ public class IntroduceActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
     ActivityResultLauncher<Intent> mGetPermission;
+    int step = 0;
+    TextView title_step;
+    TextView txt_Start;
+    TextView txt_intro;
+    TextView txt_intro_1;
+    TextView txt_intro_2;
+    TextView txt_intro_note;
+    private boolean activity;
+    private ApInterstitialAd mInterstitialAd = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduce);
+        title_step = findViewById(R.id.title_step);
+        txt_Start = findViewById(R.id.txt_Start);
+        txt_intro = findViewById(R.id.txt_intro);
+        txt_intro_1 = findViewById(R.id.txt_intro_1);
+        txt_intro_2 = findViewById(R.id.txt_intro_2);
+        txt_intro_note = findViewById(R.id.txt_intro_note);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#66000000"));
         }
@@ -42,25 +68,130 @@ public class IntroduceActivity extends AppCompatActivity {
             public void onActivityResult(ActivityResult result) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     if (Environment.isExternalStorageManager()) {
-                        startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
-                        finish();
+                        showStep();
                     }
                 }
             }
         });
+        activity= true;
+        loadAdInterstitial();
+    }
+    private void loadAdInterstitial() {
+        mInterstitialAd = AperoAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_tutorial));
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        activity=true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        activity = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activity = false;
     }
 
     public void onStartClick(View view) {
         try {
             requestPermissionAll(() -> {
-                startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
-                finish();
+                showStep();
                 return null;
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    private void showStep() {
+        if(step==0){
+            txt_intro.setVisibility(View.INVISIBLE);
+            txt_intro_1.setVisibility(View.VISIBLE);
+            txt_intro_2.setVisibility(View.INVISIBLE);
+            txt_intro_note.setVisibility(View.INVISIBLE);
+            step = 1;
+            title_step.setText(getResources().getString(R.string.step1));
+            txt_Start.setText(getResources().getString(R.string.next));
+        } else if(step==1){
+            txt_intro.setVisibility(View.INVISIBLE);
+            txt_intro_1.setVisibility(View.INVISIBLE);
+            txt_intro_2.setVisibility(View.VISIBLE);
+            txt_intro_note.setVisibility(View.INVISIBLE);
+            step = 2;
+            title_step.setText(getResources().getString(R.string.step2));
+            txt_Start.setText(getResources().getString(R.string.next));
+        } else if(step==2){
+            txt_intro.setVisibility(View.INVISIBLE);
+            txt_intro_1.setVisibility(View.INVISIBLE);
+            txt_intro_2.setVisibility(View.INVISIBLE);
+            txt_intro_note.setVisibility(View.VISIBLE);
+            step = 3;
+            title_step.setText(getResources().getString(R.string.step_note));
+            txt_Start.setText(getResources().getString(R.string.let_start));
+        } else if(step==3){
+            if (RemoteConfigUtils.INSTANCE.getOnInterIntroduce().equals("on")) {
+                Log.d("TuanPA38", " checkRemoteConfigResult getOnInterIntroduce == on");
+                if(mInterstitialAd!=null){
+                    if (mInterstitialAd.isReady()) {
+                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                if (activity){
+                                    startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                                    finish();
+                                    activity = false;
+                                }
+                            }
+
+                            @Override
+                            public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                super.onAdFailedToShow(adError);
+                                Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                if (activity){
+                                    startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                                    finish();
+                                    activity = false;
+                                }
+                            }
+
+                        }, true);
+                    } else {
+                        if (activity){
+                            startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                            finish();
+                            activity = false;
+                        }
+                    }
+                } else {
+                    if (activity){
+                        startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                        finish();
+                        activity = false;
+                    }
+                }
+
+            } else {
+                if (activity) {
+                    startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                    finish();
+                    activity = false;
+                }
+            }
+            step = 4;
+        } else {
+            if (activity) {
+                startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
+                finish();
+                activity = false;
+            }
+        }
     }
 
     @Override

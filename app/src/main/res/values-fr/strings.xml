@@ -55,4 +55,7 @@
     <string name="free">Libre</string>
     <string name="delete_success">Supprimer avec succès</string>
     <string name="files">"Fichiers: %d"</string>
+    <string name="scan_tip_2">Recherchez le fichier que vous souhaitez récupérer. Sélectionnez le fichier et appuyez sur le bouton de restauration.</string>
+    <string name="scan_tip_note">Remarque : L\'application ne fonctionne que sur 80 % des appareils Android. Certains appareils peuvent ne pas être en mesure de récupérer le fichier que vous recherchez</string>
+    <string name="scan_tip_1">Sélectionnez le type de fichier que vous souhaitez récupérer. Veuillez patienter et attendre que l\'application analyse tous les dossiers et fichiers</string>
 </resources>

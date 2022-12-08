@@ -16,6 +16,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
@@ -26,6 +27,15 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
     Context context;
     ArrayList<PhotoEntity> photoEntities = new ArrayList<>();
     BitmapDrawable placeholder;
+    public FilePhotoAdapter.OnClickItem onClickItem;
+
+    public FilePhotoAdapter.OnClickItem getOnClickItem() {
+        return onClickItem;
+    }
+
+    public void setOnClickItem(FilePhotoAdapter.OnClickItem onClickItem) {
+        this.onClickItem = onClickItem;
+    }
     public FilePhotoAdapter(Context context, ArrayList<PhotoEntity> mList) {
         this.context = context;
         this.photoEntities = mList;
@@ -83,6 +93,7 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
                     holder.ivChecked.setVisibility(View.VISIBLE);
                     photoEntity.setIsCheck(true);
                 }
+                onClickItem.onClick();
             }
         });
 
@@ -112,5 +123,9 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
                 }
             }
         }
+    }
+
+    public interface OnClickItem {
+        void onClick();
     }
 }

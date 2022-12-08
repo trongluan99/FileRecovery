@@ -53,7 +53,7 @@ public class ScanFilesActivity extends AppCompatActivity {
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
     public static ArrayList<AlbumPhoto> mAlbumPhoto = new ArrayList<>();
     private ScanAsyncTask mScanAsyncTask;
-
+    int typeScan = 0;
     private ActivityScanningBinding binding;
 
     public static void start(Context context, int type) {
@@ -101,6 +101,41 @@ public class ScanFilesActivity extends AppCompatActivity {
         AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
+        binding.buttonScanNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (typeScan == 0) {
+                    if (mAlbumPhoto.size() == 0) {
+                        Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), AlbumPhotoActivity.class);
+                        startActivity(intent);
+                    }
+                    finish();
+                }
+                if (typeScan == 1) {
+                    if (mAlbumVideo.size() == 0) {
+                        Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), AlbumVideoActivity.class);
+                        startActivity(intent);
+                    }
+                    finish();
+                }
+                if (typeScan == 2) {
+                    if (mAlbumAudio.size() == 0) {
+                        Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), AlbumAudioActivity.class);
+                        startActivity(intent);
+                    }
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
@@ -137,7 +172,6 @@ public class ScanFilesActivity extends AppCompatActivity {
     }
 
     public class ScanAsyncTask extends AsyncTask<Void, Integer, Void> {
-        int typeScan = 0;
         ArrayList<PhotoEntity> listPhoto = new ArrayList<>();
         ArrayList<VideoEntity> listVideo = new ArrayList<>();
         ArrayList<AudioEntity> listAudio = new ArrayList<>();
@@ -156,37 +190,8 @@ public class ScanFilesActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if (typeScan == 0) {
-                if (mAlbumPhoto.size() == 0) {
-                    Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), AlbumPhotoActivity.class);
-                    startActivity(intent);
-                }
-                finish();
-            }
-            if (typeScan == 1) {
-                if (mAlbumVideo.size() == 0) {
-                    Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), AlbumVideoActivity.class);
-                    startActivity(intent);
-                }
-                finish();
-            }
-            if (typeScan == 2) {
-                if (mAlbumAudio.size() == 0) {
-                    Intent intent = new Intent(getApplicationContext(), NoFileActiviy.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), AlbumAudioActivity.class);
-                    startActivity(intent);
-                }
-                finish();
-            }
-
+            binding.buttonScanNext.setVisibility(View.VISIBLE);
+            binding.imgDone.cancelAnimation();
         }
 
         @Override

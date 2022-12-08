@@ -50,7 +50,7 @@ import java.util.ArrayList;
  * Created by deepshikha on 20/3/17.
  */
 
-public class VideoActivity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity implements  FileVideoAdapter.OnClickItem {
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
@@ -113,7 +113,9 @@ public class VideoActivity extends AppCompatActivity {
         if (ScanFilesActivity.mAlbumVideo != null && ScanFilesActivity.mAlbumVideo.size() > int_position)
             mList.addAll((ArrayList<VideoEntity>) ScanFilesActivity.mAlbumVideo.get(int_position).getListPhoto().clone());
         fileVideoAdapter = new FileVideoAdapter(this, mList);
+        fileVideoAdapter.setOnClickItem(this);
         recyclerView.setAdapter(fileVideoAdapter);
+
         txt_recovery_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,6 +203,16 @@ public class VideoActivity extends AppCompatActivity {
                 }
             });
             mRecoverVideoAsyncTask.execute();
+        }
+    }
+
+    @Override
+    public void onClick() {
+        final ArrayList<VideoEntity> tempList = fileVideoAdapter.getSelectedItem();
+        if(tempList.size()>0){
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
+        } else {
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result_off));
         }
     }
 

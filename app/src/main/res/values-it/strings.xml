@@ -63,4 +63,7 @@
     <string name="second">secondi</string>
     <string name="ads_after">Gli annunci vengono visualizzati dopo</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_note">Nota: l\'app funziona solo sull\'80% dei dispositivi Android. Alcuni dispositivi potrebbero non essere in grado di recuperare il file cercato</string>
+    <string name="scan_tip_2">Cerca il file che vuoi recuperare. Seleziona il file e premi il pulsante di ripristino.</string>
+    <string name="scan_tip_1">Seleziona il tipo di file che vuoi recuperare. Si prega di pazientare e attendere fino a quando l\'app esegue la scansione di tutte le cartelle e i file</string>
 </resources>

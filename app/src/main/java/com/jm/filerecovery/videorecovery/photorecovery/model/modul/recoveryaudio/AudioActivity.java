@@ -50,7 +50,7 @@ import java.util.ArrayList;
  * Created by deepshikha on 20/3/17.
  */
 
-public class AudioActivity extends AppCompatActivity {
+public class AudioActivity extends AppCompatActivity implements  FileAudioAdapter.OnClickItem{
     int int_position;
     RecyclerView recyclerView;
     FileAudioAdapter fileAudioAdapter;
@@ -114,6 +114,7 @@ public class AudioActivity extends AppCompatActivity {
         if (ScanFilesActivity.mAlbumAudio != null && ScanFilesActivity.mAlbumAudio.size() > int_position)
             mList.addAll((ArrayList<AudioEntity>) ScanFilesActivity.mAlbumAudio.get(int_position).getListPhoto().clone());
         fileAudioAdapter = new FileAudioAdapter(this, mList);
+        fileAudioAdapter.setOnClickItem(this);
         recyclerView.setAdapter(fileAudioAdapter);
         txt_recovery_now.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,62 +215,18 @@ public class AudioActivity extends AppCompatActivity {
         }
     }
 
-    //    private void showDalogConfirmDelete() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(DuplicateActivity.this);
-//        builder.setTitle(getString(R.string.delete_title));
-//        builder.setMessage(getString(R.string.are_you_sure_to_delete));
-//
-//        String positiveText = getString(android.R.string.ok);
-//        builder.setPositiveButton(positiveText,
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        if (!sharedPreferences.getString("sdCardUri", "").equals("")) {
-//                            deleteFiles();
-//                        } else if (SDCardCheck()) {
-//
-//                            SDcardFilesDialog();
-//                        } else {
-//
-//                            deleteFiles();
-//                        }
-//
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//        String negativeText = getString(android.R.string.cancel);
-//        builder.setNegativeButton(negativeText,
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // negative button logic
-//                    }
-//                });
-//
-//        AlertDialog dialog = builder.create();
-//        // display dialog
-//        dialog.show();
-//    }
-//    private void SDcardFilesDialog() {
-//
-//        final Dialog main_dialog2 = new ProgressDialog(this);
-//        main_dialog2.requestWindowFeature(1);
-//        main_dialog2.setCancelable(false);
-//        main_dialog2.setCanceledOnTouchOutside(false);
-//        main_dialog2.show();
-//        main_dialog2.setContentView(R.layout.sdcard_dialog);
-//        ((Button) main_dialog2.findViewById(R.id.ok_sd)).setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                if (main_dialog2 != null) {
-//                    main_dialog2.dismiss();
-//                }
-//                fileSearch();
-//            }
-//        });
-//    }
     public void fileSearch() {
         startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE"), 100);
+    }
+
+    @Override
+    public void onClick() {
+        final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+        if(tempList.size()>0){
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
+        } else {
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result_off));
+        }
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

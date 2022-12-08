@@ -62,5 +62,9 @@
     <string name="second">秒</string>
     <string name="ads_after">廣告展示在</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_1">选择要恢复的文件类型。 请耐心等待应用程序扫描所有文件夹和文件</string>
+    <string name="scan_tip_2">搜索要恢复的文件。 选择文件并按恢复按钮。</string>
+    <string name="scan_tip_note">注意：该应用程序仅适用于 80% 的 Android 设备。 某些设备可能无法恢复您寻找的文件</string>
+    <string name="next">下一个</string>
 
 </resources>

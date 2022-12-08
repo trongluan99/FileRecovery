@@ -33,6 +33,7 @@ import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
@@ -47,7 +48,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 
-public class PhotosActivity extends AppCompatActivity {
+public class PhotosActivity extends AppCompatActivity implements FilePhotoAdapter.OnClickItem{
     int int_position;
     RecyclerView recyclerView;
     FilePhotoAdapter filePhotoAdapter;
@@ -108,6 +109,7 @@ public class PhotosActivity extends AppCompatActivity {
         if (ScanFilesActivity.mAlbumPhoto != null && ScanFilesActivity.mAlbumPhoto.size() > int_position)
             mList.addAll((ArrayList<PhotoEntity>) ScanFilesActivity.mAlbumPhoto.get(int_position).getListPhoto().clone());
         filePhotoAdapter = new FilePhotoAdapter(this, mList);
+        filePhotoAdapter.setOnClickItem(this);
         recyclerView.setAdapter(filePhotoAdapter);
         txt_recovery_now.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,6 +214,16 @@ public class PhotosActivity extends AppCompatActivity {
 
     public void fileSearch() {
         startActivityForResult(new Intent("android.intent.action.OPEN_DOCUMENT_TREE"), 100);
+    }
+
+    @Override
+    public void onClick() {
+        final ArrayList<PhotoEntity> tempList = filePhotoAdapter.getSelectedItem();
+        if(tempList.size()>0){
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
+        } else {
+            txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result_off));
+        }
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

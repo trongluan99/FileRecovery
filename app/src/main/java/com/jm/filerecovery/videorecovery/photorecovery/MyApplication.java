@@ -3,6 +3,7 @@ import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdConfig;
 import com.ads.control.application.AdsMultiDexApplication;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
 
 
@@ -36,6 +37,7 @@ public class MyApplication extends AdsMultiDexApplication {
         Admob.getInstance().setDisableAdResumeWhenClickAds(true);
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
+        com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(IntroduceActivity.class);
     }
 
 //    @NonNull

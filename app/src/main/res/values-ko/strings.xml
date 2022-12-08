@@ -62,4 +62,8 @@
     <string name="second">초</string>
     <string name="ads_after">광고가 표시됩니다.</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_note">참고: 이 앱은 Android 기기의 80%에서만 작동합니다. 일부 장치는 원하는 파일을 복구하지 못할 수 있습니다.</string>
+    <string name="scan_tip_2">복구하려는 파일을 검색합니다. 파일을 선택하고 복원 버튼을 누릅니다.</string>
+    <string name="scan_tip_1">복구할 파일 형식을 선택합니다. 인내심을 갖고 앱이 모든 폴더와 파일을 스캔할 때까지 기다리십시오.</string>
+    <string name="next">다음</string>
 </resources>

@@ -16,6 +16,7 @@ object RemoteConfigUtils {
     private const val ON_NATIVE_HOME = "on_native_home"
     private const val ON_NATIVE_RESULT = "on_native_result_activity"
     private const val ON_INTER_LUNCH = "on_inter_lunch"
+    private const val ON_INTER_INTRODUCE = "on_inter_introduce"
     private const val ON_INTER_RESULT = "on_inter_result"
 
     //    private const val HELLO_BUTTON_COLOR = "hello_button_color"
@@ -29,6 +30,7 @@ object RemoteConfigUtils {
             ON_NATIVE_LANGUAGE to "on",
             ON_NATIVE_RESULT to "on",
             ON_INTER_LUNCH to "on",
+            ON_INTER_INTRODUCE to "on",
             ON_INTER_RESULT to "on"
         )
 
@@ -156,5 +158,16 @@ object RemoteConfigUtils {
         }
         return "off"
     }
+    fun getOnInterIntroduce(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_INTER_INTRODUCE)
+            }
+        } catch (e: Exception) {
 
+        }
+        return "off"
+    }
 }

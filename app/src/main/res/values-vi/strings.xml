@@ -64,4 +64,11 @@
     <string name="send">Gửi</string>
     <string name="second">giây</string>
     <string name="ads_after">Quảng cáo hiển thị sau</string>
+    <string name="scan_tip_2">Tìm kiếm tệp bạn muốn khôi phục. Chọn tệp và nhấn nút khôi phục.</string>
+    <string name="scan_tip_note">Lưu ý: Ứng dụng chỉ hoạt động trên 80% thiết bị Android. Một số thiết bị có thể không khôi phục được tệp bạn tìm kiếm</string>
+    <string name="scan_tip_1">Chọn loại tệp bạn muốn khôi phục. Hãy kiên nhẫn và đợi cho đến khi ứng dụng quét tất cả các thư mục và tệp</string>
+    <string name="step_note">Ghi chú</string>
+    <string name="step2">Bước 2:</string>
+    <string name="step1">Bước 1:</string>
+    <string name="next">Tiếp theo</string>
 </resources>

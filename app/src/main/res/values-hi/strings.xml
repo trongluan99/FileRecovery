@@ -62,4 +62,8 @@
     <string name="second">सेकंड</string>
     <string name="ads_after">विज्ञापन बाद में प्रदर्शित होते हैं</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_note">नोट: ऐप केवल 80% Android उपकरणों पर काम करता है। हो सकता है कि कुछ डिवाइस आपके द्वारा खोजी गई फ़ाइल को पुनर्प्राप्त करने में सक्षम न हों</string>
+    <string name="scan_tip_2">उस फ़ाइल को खोजें जिसे आप पुनर्प्राप्त करना चाहते हैं। फ़ाइल का चयन करें और रिस्टोर बटन दबाएं।</string>
+    <string name="scan_tip_1">उस फ़ाइल प्रकार का चयन करें जिसे आप पुनर्प्राप्त करना चाहते हैं। कृपया धैर्य रखें और तब तक प्रतीक्षा करें जब तक कि ऐप सभी फ़ोल्डरों और फ़ाइलों को स्कैन न कर ले</string>
+    <string name="next">अगला</string>
 </resources>

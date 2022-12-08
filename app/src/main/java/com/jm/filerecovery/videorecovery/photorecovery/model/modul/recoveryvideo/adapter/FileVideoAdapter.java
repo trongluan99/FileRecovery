@@ -17,6 +17,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
@@ -27,6 +28,16 @@ import java.util.ArrayList;
 public class FileVideoAdapter extends RecyclerView.Adapter<FileVideoAdapter.MyViewHolder>{
     Context context;
     ArrayList<VideoEntity> listPhoto = new ArrayList<>();
+    public FileVideoAdapter.OnClickItem onClickItem;
+
+    public FileVideoAdapter.OnClickItem getOnClickItem() {
+        return onClickItem;
+    }
+
+    public void setOnClickItem(FileVideoAdapter.OnClickItem onClickItem) {
+        this.onClickItem = onClickItem;
+    }
+
     public FileVideoAdapter(Context context, ArrayList<VideoEntity> mList) {
         this.context = context;
         this.listPhoto = mList;
@@ -91,6 +102,7 @@ public class FileVideoAdapter extends RecyclerView.Adapter<FileVideoAdapter.MyVi
                 }else{
                     imageData.setIsCheck(false);
                 }
+                onClickItem.onClick();
             }
         });
 
@@ -119,5 +131,8 @@ public class FileVideoAdapter extends RecyclerView.Adapter<FileVideoAdapter.MyVi
                 }
             }
         }
+    }
+    public interface OnClickItem {
+        void onClick();
     }
 }

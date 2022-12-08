@@ -60,4 +60,24 @@
         android:layout_marginTop="10dip"
         android:layout_marginEnd="5dip"
         app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+    <Button
+        android:id="@+id/button_scan_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="22dp"
+        android:paddingLeft="@dimen/_36sdp"
+        android:paddingRight="@dimen/_36sdp"
+        android:background="@drawable/bg_button_native_blue_light"
+        android:gravity="center"
+        android:text="@string/next"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

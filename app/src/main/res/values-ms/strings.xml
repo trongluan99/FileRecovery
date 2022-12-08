@@ -69,6 +69,10 @@
     <string name="default_notification_channel_id">file_recover_jm</string>
 
     <string name="language_title">Bahasa</string>
+    <string name="scan_tip_1">Pilih jenis fail yang anda mahu pulihkan. Sila bersabar dan tunggu sehingga apl mengimbas semua folder dan fail</string>
+    <string name="scan_tip_2">Cari fail yang ingin anda pulihkan. Pilih fail dan tekan butang pulihkan.</string>
+    <string name="scan_tip_note">Nota: Apl ini hanya berfungsi pada 80% peranti Android. Sesetengah peranti mungkin tidak dapat memulihkan fail yang anda cari</string>
+    <string name="next">Seterusnya</string>
 
 
 </resources>

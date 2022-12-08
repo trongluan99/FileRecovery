@@ -56,6 +56,9 @@
     <string name="free">Gratuito</string>
     <string name="delete_success">Excluir com sucesso</string>
     <string name="files">"Arquivos: %d"</string>
+    <string name="scan_tip_1">Selecione o tipo de arquivo que deseja recuperar. Seja paciente e aguarde até que o aplicativo verifique todas as pastas e arquivos</string>
+    <string name="scan_tip_2">Procure o arquivo que deseja recuperar. Selecione o arquivo e pressione o botão restaurar.</string>
+    <string name="scan_tip_note">Observação: o aplicativo funciona apenas em 80% dos dispositivos Android. Alguns dispositivos podem não conseguir recuperar o arquivo que você procura</string>
 
 
 </resources>

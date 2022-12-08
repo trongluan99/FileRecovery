@@ -61,4 +61,11 @@
     <string name="second">วินาที</string>
     <string name="ads_after">โฆษณาจะแสดงหลังจาก</string>
     <string name="default_notification_channel_id">file_recover_jm</string>
+    <string name="scan_tip_1">เลือกประเภทไฟล์ที่คุณต้องการกู้คืน โปรดอดใจรอจนกว่าแอปจะสแกนโฟลเดอร์และไฟล์ทั้งหมด</string>
+    <string name="scan_tip_2">ค้นหาไฟล์ที่คุณต้องการกู้คืน เลือกไฟล์แล้วกดปุ่มกู้คืน</string>
+    <string name="scan_tip_note">หมายเหตุ: แอปใช้งานได้บนอุปกรณ์ Android 80% เท่านั้น อุปกรณ์บางอย่างอาจไม่สามารถกู้คืนไฟล์ที่คุณต้องการได้</string>
+    <string name="step1">ขั้นตอนที่ 1:</string>
+    <string name="step2">ขั้นตอนที่ 2:</string>
+    <string name="step_note">บันทึก</string>
+    <string name="next">ต่อไป</string>
 </resources>

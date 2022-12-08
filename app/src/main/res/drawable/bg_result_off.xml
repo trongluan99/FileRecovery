@@ -4,5 +4,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:shape="rectangle">
     <corners android:radius="@dimen/_18sdp" />
-    <solid android:color="#0379ff" />
+    <solid android:color="#5b9fff" />
 </shape>

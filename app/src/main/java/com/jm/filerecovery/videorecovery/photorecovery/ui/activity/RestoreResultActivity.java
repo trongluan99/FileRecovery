@@ -14,11 +14,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.ads.control.ads.AperoAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
-public class RestoreResultActivity extends AppCompatActivity {
+public class RestoreResultActivity extends BaseActivity {
 
     Toolbar toolbar;
     int type=0;
@@ -40,18 +41,8 @@ public class RestoreResultActivity extends AppCompatActivity {
         intView();
         intData();
         initAds();
-        initStatusBar();
     }
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
 
-        }
-    }
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);

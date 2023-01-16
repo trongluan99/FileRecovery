@@ -21,6 +21,7 @@ import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.GroupAudioHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
@@ -29,7 +30,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActi
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
-public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioHorizontalAdapter.OnClickItemListener {
+public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
 //
@@ -68,17 +69,6 @@ public class AlbumAudioActivity extends AppCompatActivity implements GroupAudioH
         intView();
         intData();
        initAds();
-       initStatusBar();
-    }
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
-
-        }
     }
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);

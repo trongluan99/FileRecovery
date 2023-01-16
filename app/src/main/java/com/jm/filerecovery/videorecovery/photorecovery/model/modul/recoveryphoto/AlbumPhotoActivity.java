@@ -67,18 +67,8 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
         intView();
         intData();
         initAds();
-        initStatusBar();
     }
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
 
-        }
-    }
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);

@@ -17,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.GlobalAppCache;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;

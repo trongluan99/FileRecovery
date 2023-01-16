@@ -30,6 +30,7 @@ import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
@@ -50,7 +51,7 @@ import java.util.ArrayList;
  * Created by deepshikha on 20/3/17.
  */
 
-public class VideoActivity extends AppCompatActivity implements  FileVideoAdapter.OnClickItem {
+public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnClickItem {
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
@@ -69,7 +70,6 @@ public class VideoActivity extends AppCompatActivity implements  FileVideoAdapte
         intView();
         intData();
         initAds();
-        initStatusBar();
         restore = true;
     }
 
@@ -77,17 +77,6 @@ public class VideoActivity extends AppCompatActivity implements  FileVideoAdapte
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
         AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
-    }
-
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e) {
-
-        }
     }
 
     public void intView() {

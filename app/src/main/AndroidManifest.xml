@@ -40,7 +40,7 @@
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity" />
 
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.LanguageActivity" />
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity" />
 
         <meta-data

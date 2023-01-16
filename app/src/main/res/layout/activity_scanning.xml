@@ -27,7 +27,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/img_done"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="5dip"
@@ -52,25 +52,31 @@
         android:textSize="@dimen/_13sdp"
         app:layout_constraintTop_toBottomOf="@+id/img_done" />
 
-    <include
-        layout="@layout/layout_native_medium"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dip"
-        android:layout_marginTop="10dip"
-        android:layout_marginEnd="5dip"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+        app:layout_constraintBottom_toTopOf="@+id/button_scan_next">
+            <include
+                layout="@layout/layout_native_control_280dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginEnd="5dip"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/button_scan_next"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:layout_marginBottom="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="22dp"
-        android:paddingLeft="@dimen/_36sdp"
-        android:paddingRight="@dimen/_36sdp"
-        android:background="@drawable/bg_button_native_blue_light"
+        android:paddingLeft="@dimen/_30sdp"
+        android:paddingRight="@dimen/_30sdp"
+        android:background="@drawable/bg_result_off"
         android:gravity="center"
         android:text="@string/next"
         android:textColor="@color/colorWhite"
@@ -79,5 +85,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

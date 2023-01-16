@@ -16,18 +16,18 @@ import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.google.android.gms.ads.appopen.AppOpenAd;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.language.LanguageActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 
 import java.util.Locale;
 
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
     private AppOpenAd.AppOpenAdLoadCallback loadCallback;
     private AppOpenAd appOpenAd = null;
-    private String TAG = "SplashActivity";
+    private String TAG = "TuanPA38";
     private long time = 6000;
     boolean splashActivity = false;
     boolean adsDisplayed = false;
@@ -45,6 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             getConfigSuccess = true;
         });
         loadingRemoteConfig();
+        loadInterTutorial();
     }
 
     private void loadingRemoteConfig() {

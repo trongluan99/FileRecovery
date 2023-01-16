@@ -38,6 +38,7 @@ import com.ads.control.ads.AperoInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -56,13 +57,13 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
 
     private PhotoRestoredAdapter photoRestoredAdapter;
     private ActivityMainBinding binding;
-    private ApInterstitialAd mInterstitialAd = null;
+//    private ApInterstitialAd mInterstitialAd = null;
     private boolean activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,22 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         intEvent();
         initAds();
-        initStatusBar();
         activity= true;
-        loadAdInterstitial();
-    }
-    private void loadAdInterstitial() {
-        mInterstitialAd = AperoAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_click_home));
-    }
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
-
-        }
     }
     public void initAds() {
         if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on")) {
@@ -196,28 +182,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.iv_more:
 
-                AperoAdCallback adCallback2 = new AperoAdCallback() {
-                    @Override
-                    public void onNextAction() {
-                        super.onNextAction();
-                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                if(mInterstitialAdClickHome!=null){
+                    if (mInterstitialAdClickHome.isReady()) {
+                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                Log.i("TuanPA38", "onNextAction: start content and finish main");
+                                if (activity){
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                                    startActivity(intent);
+                                    activity = false;
+                                }
+                            }
 
+                            @Override
+                            public void onAdFailedToShow(@Nullable ApAdError adError) {
+                                super.onAdFailedToShow(adError);
+                                Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                                if (activity){
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+
+                                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                                    startActivity(intent);
+                                    activity = false;
+                                }
+                            }
+
+                        }, true);
+                    } else {
+                        if (activity){
+                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                            startActivity(intent);
+                            activity = false;
+                        }
+                    }
+                } else {
+                    if (activity){
+                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                         Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                         startActivity(intent);
+                        activity = false;
                     }
-                };
-                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                    @Override
-                    public void initAdSuccess() {
-                        AperoAd.getInstance().loadSplashInterstitialAds(MainActivity.this, getResources().getString(R.string.admob_inter_click_home), 5000, 0, true, adCallback2);
-                    }
-                });
+                }
 
                 break;
             case R.id.iv_his_click:
-                if(mInterstitialAd!=null){
-                    if (mInterstitialAd.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                if(mInterstitialAdClickHome!=null){
+                    if (mInterstitialAdClickHome.isReady()) {
+                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
                             @Override
                             public void onNextAction() {
                                 Log.i("TuanPA38", "onNextAction: start content and finish main");
@@ -255,9 +269,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAd!=null){
-                            if (mInterstitialAd.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                        if(mInterstitialAdClickHome!=null){
+                            if (mInterstitialAdClickHome.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");
@@ -304,9 +318,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAd!=null){
-                            if (mInterstitialAd.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                        if(mInterstitialAdClickHome!=null){
+                            if (mInterstitialAdClickHome.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");
@@ -352,9 +366,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAd!=null){
-                            if (mInterstitialAd.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                        if(mInterstitialAdClickHome!=null){
+                            if (mInterstitialAdClickHome.isReady()) {
+                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");

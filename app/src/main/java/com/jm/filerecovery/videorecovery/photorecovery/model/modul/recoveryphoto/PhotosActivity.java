@@ -31,6 +31,7 @@ import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
@@ -48,7 +49,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 
-public class PhotosActivity extends AppCompatActivity implements FilePhotoAdapter.OnClickItem{
+public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnClickItem{
     int int_position;
     RecyclerView recyclerView;
     FilePhotoAdapter filePhotoAdapter;
@@ -67,19 +68,9 @@ public class PhotosActivity extends AppCompatActivity implements FilePhotoAdapte
         intView();
         intData();
         initAds();
-        initStatusBar();
         restore = true;
     }
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
 
-        }
-    }
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);

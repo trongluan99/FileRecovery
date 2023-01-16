@@ -28,6 +28,7 @@ import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.ads.control.ads.wrapper.ApInterstitialAd;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
@@ -36,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-public class IntroduceActivity extends AppCompatActivity {
+public class IntroduceActivity extends BaseActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
@@ -49,7 +50,7 @@ public class IntroduceActivity extends AppCompatActivity {
     TextView txt_intro_2;
     TextView txt_intro_note;
     private boolean activity;
-    private ApInterstitialAd mInterstitialAd = null;
+//    private ApInterstitialAd mInterstitialAd = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +75,7 @@ public class IntroduceActivity extends AppCompatActivity {
             }
         });
         activity= true;
-        loadAdInterstitial();
-    }
-    private void loadAdInterstitial() {
-        mInterstitialAd = AperoAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_tutorial));
+        loadInterClickHome();
     }
     @Override
     protected void onResume() {
@@ -137,9 +135,9 @@ public class IntroduceActivity extends AppCompatActivity {
         } else if(step==3){
             if (RemoteConfigUtils.INSTANCE.getOnInterIntroduce().equals("on")) {
                 Log.d("TuanPA38", " checkRemoteConfigResult getOnInterIntroduce == on");
-                if(mInterstitialAd!=null){
-                    if (mInterstitialAd.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAd, new AperoAdCallback() {
+                if(mInterstitialAdTutorial!=null){
+                    if (mInterstitialAdTutorial.isReady()) {
+                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new AperoAdCallback() {
                             @Override
                             public void onNextAction() {
                                 Log.i("TuanPA38", "onNextAction: start content and finish main");

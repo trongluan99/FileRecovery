@@ -24,6 +24,7 @@ import androidx.core.os.EnvironmentCompat;
 
 import com.ads.control.ads.AperoAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityScanningBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
@@ -47,7 +48,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ScanFilesActivity extends AppCompatActivity {
+public class ScanFilesActivity extends BaseActivity {
 
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
@@ -67,7 +68,6 @@ public class ScanFilesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityScanningBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
@@ -80,25 +80,12 @@ public class ScanFilesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         intView();
-        initStatusBar();
     }
-
-    private void initStatusBar() {
-        try {
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(uiOptions);
-        } catch (Exception e){
-
-        }
-    }
-
     private void intView() {
+        Log.d("TuanPA38","ScanFilesActivity intView");
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        Log.d("TuanPA38", "FragmentHome getOnBannerTool loadBannerFragment");
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_full_size, frameLayout, shimmerFrameLayout);
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
         binding.buttonScanNext.setOnClickListener(new View.OnClickListener() {

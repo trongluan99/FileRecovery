@@ -90,7 +90,7 @@
         <Button
             android:id="@+id/ad_call_to_action"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/bg_button_native_blue_light"
             android:gravity="center"

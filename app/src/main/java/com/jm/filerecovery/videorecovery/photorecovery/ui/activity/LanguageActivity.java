@@ -98,7 +98,7 @@ public class LanguageActivity extends BaseActivity {
             languageAdapter.notifyDataSetChanged();
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerLanguage.setLayoutManager(mLayoutManager);
         recyclerLanguage.setAdapter(languageAdapter);
         if (isDuplicate) {

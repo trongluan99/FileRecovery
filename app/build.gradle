@@ -9,8 +9,8 @@ android {
         applicationId "com.jm.filerecovery.videorecovery.photorecovery"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 110
-        versionName "1.1.0"
+        versionCode 111
+        versionName "1.1.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

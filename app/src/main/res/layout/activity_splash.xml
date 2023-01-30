@@ -22,7 +22,7 @@
                 android:id="@+id/loBattery"
                 android:layout_width="100dip"
                 android:layout_height="100dip"
-                android:src="@drawable/icon_recovery_512"/>
+                android:src="@drawable/logo_512_new"/>
 
 
             <LinearLayout

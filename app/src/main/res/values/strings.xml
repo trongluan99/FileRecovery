@@ -111,4 +111,6 @@
     <string name="step1">Step 1:</string>
     <string name="step2">Step 2:</string>
     <string name="step_note">Note</string>
+    <string name="facebook_app_id" translatable="false">1232552674030733</string>
+    <string name="facebook_client_token" translatable="false">20945fd6f19af05f719b5d065ebda4ac</string>
 </resources>

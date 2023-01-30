@@ -62,7 +62,7 @@
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/icon_recovery_512" />
+                            android:src="@drawable/logo_512_new" />
 
                         <ImageView
                             android:layout_width="50dip"

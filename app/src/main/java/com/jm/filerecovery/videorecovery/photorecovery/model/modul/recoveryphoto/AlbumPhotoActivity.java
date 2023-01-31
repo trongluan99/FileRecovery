@@ -32,7 +32,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
-        Log.d("TuanPA38"," AlbumPhotoActivity onClickItem");
+        Log.d("TuanPA38"," AlbumPhotoActivity onClickItem1");
 //        AperoAdCallback adCallback = new AperoAdCallback() {
 //            @Override
 //            public void onNextAction() {

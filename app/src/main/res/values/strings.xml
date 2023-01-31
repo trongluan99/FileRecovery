@@ -113,4 +113,10 @@
     <string name="step_note">Note</string>
     <string name="facebook_app_id" translatable="false">1232552674030733</string>
     <string name="facebook_client_token" translatable="false">20945fd6f19af05f719b5d065ebda4ac</string>
+
+
+    <string name="press_to_move"><![CDATA[Press & hold item to move]]></string>
+    <string name="start">Start</string>
+    <string name="preview">Preview</string>
+
 </resources>

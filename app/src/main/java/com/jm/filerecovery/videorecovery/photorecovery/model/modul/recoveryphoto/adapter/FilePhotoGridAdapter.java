@@ -75,7 +75,6 @@ public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdap
                     @Override
                     public void onNextAction() {
                         super.onNextAction();
-
                         Intent intent = new Intent(mContext, PhotosActivity.class);
                         intent.putExtra("value", postion);
                         mContext.startActivity(intent);

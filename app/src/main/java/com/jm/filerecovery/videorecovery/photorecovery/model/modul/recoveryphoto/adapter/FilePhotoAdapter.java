@@ -103,6 +103,7 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
     public int getItemCount() {
         return photoEntities.size();
     }
+
     public ArrayList<PhotoEntity> getSelectedItem() {
         ArrayList<PhotoEntity> arrayList = new ArrayList();
         if (this.photoEntities != null) {
@@ -115,7 +116,17 @@ public class FilePhotoAdapter extends RecyclerView.Adapter<FilePhotoAdapter.MyVi
         return arrayList;
     }
 
-    public void setAllImagesUnseleted() {
+    public ArrayList<PhotoEntity> getSelectedItemTest(int index) {
+        ArrayList<PhotoEntity> arrayList = new ArrayList();
+        if (arrayList != null) {
+            arrayList.remove(index);
+        }
+        return arrayList;
+    }
+
+
+
+    public void setAllImagesUnSelected() {
         if (this.photoEntities != null) {
             for (int i = 0; i < this.photoEntities.size(); i++) {
                 if ((this.photoEntities.get(i)).getIsCheck()) {

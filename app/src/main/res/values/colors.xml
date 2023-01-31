@@ -26,4 +26,6 @@
     <color name="color_0379ff">#0379ff</color>
     <color name="white_blur">#bf9c9c9c</color>
     <color name="stocke_card">#5E58595A</color>
+
+    <color name="blackAlpha20">#33000000</color>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CornerView">
+        <attr name="cornerRadiusView" format="dimension"/>
+        <attr name="bgColor" format="color"/>
+        <attr name="shadowBottomOnly" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextViewRippleStyle">
+        <attr name="cornerRadiusTextView" format="dimension"/>
+        <attr name="bgColorTextView" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ImageRippleStyle">
+        <attr name="cornerRadiusImageView" format="dimension"/>
+        <attr name="rippleColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="RippleView">
+        <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
+
+
+</resources>

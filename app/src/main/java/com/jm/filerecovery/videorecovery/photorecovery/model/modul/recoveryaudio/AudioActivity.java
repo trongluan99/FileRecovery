@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemAudioSelectAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemVideoSelectAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
@@ -61,6 +64,12 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     AppCompatImageView imgBack;
     TextView txtTitle;
 
+    RecyclerView mediaPickedListView;
+    ArrayList<AudioEntity> tempList = new ArrayList<>();
+    ItemAudioSelectAdapter itemSelectAdapter;
+    ImageView imgNext;
+    ConstraintLayout imagePickedArea;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +89,9 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     }
 
     public void intView() {
+        imagePickedArea = findViewById(R.id.imagePickedArea);
+        imgNext = findViewById(R.id.img_next);
+        mediaPickedListView = findViewById(R.id.mediaPickedListView);
         imgBack = findViewById(R.id.img_back);
         txtTitle = findViewById(R.id.txt_recovery);
         txtTitle.setText(getString(R.string.audio_recovery));
@@ -96,6 +108,9 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new AudioActivity.GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        RecyclerView.LayoutManager mLayoutManagerHorizontal = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
+        mediaPickedListView.setLayoutManager(mLayoutManagerHorizontal);
     }
 
     public void intData() {
@@ -105,7 +120,56 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
         fileAudioAdapter = new FileAudioAdapter(this, mList);
         fileAudioAdapter.setOnClickItem(this);
         recyclerView.setAdapter(fileAudioAdapter);
+
+        itemSelectAdapter = new ItemAudioSelectAdapter(this, tempList);
+
+        mediaPickedListView.setAdapter(itemSelectAdapter);
+        txt_recovery_now.setVisibility(View.GONE);
         txt_recovery_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+                if (tempList.size() == 0) {
+                    Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
+                } else {
+
+                    AperoAdCallback adCallback = new AperoAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            super.onNextAction();
+                        }
+
+                        @Override
+                        public void onAdClosed() {
+                            super.onAdClosed();
+                            restoreFile();
+                        }
+
+                        @Override
+                        public void onAdFailedToShow(@Nullable ApAdError adError) {
+                            super.onAdFailedToShow(adError);
+                            restoreFile();
+                        }
+
+                        @Override
+                        public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                            super.onAdFailedToLoad(adError);
+                            restoreFile();
+                        }
+                    };
+                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            AperoAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+        imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
@@ -153,7 +217,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     boolean restore = true;
     private void restoreFile() {
         if(!restore) return;
-        final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+        tempList = fileAudioAdapter.getSelectedItem();
         mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
             @Override
             public void onComplete() {
@@ -163,6 +227,12 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                 startActivity(intent);
                 fileAudioAdapter.setAllImagesUnseleted();
                 fileAudioAdapter.notifyDataSetChanged();
+
+                tempList = fileAudioAdapter.getSelectedItem();
+                itemSelectAdapter.setAudioEntities(tempList);
+                itemSelectAdapter.notifyDataSetChanged();
+                imagePickedArea.setVisibility(View.GONE);
+
             }
         });
         mRecoverPhotosAsyncTask.execute();
@@ -188,7 +258,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
         super.onActivityResult(requestCode, resultCode, data);
         Log.d("AdmobHelper", " requestCode =" + requestCode + " resultCode = " + resultCode);
         if (requestCode == 10900 && resultCode == 888) {
-            final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+            tempList = fileAudioAdapter.getSelectedItem();
             mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
                 @Override
                 public void onComplete() {
@@ -198,6 +268,11 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                     startActivity(intent);
                     fileAudioAdapter.setAllImagesUnseleted();
                     fileAudioAdapter.notifyDataSetChanged();
+
+                    tempList = fileAudioAdapter.getSelectedItem();
+                    itemSelectAdapter.setAudioEntities(tempList);
+                    itemSelectAdapter.notifyDataSetChanged();
+                    imagePickedArea.setVisibility(View.GONE);
                 }
             });
             mRecoverPhotosAsyncTask.execute();
@@ -210,12 +285,17 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
 
     @Override
     public void onClick() {
-        final ArrayList<AudioEntity> tempList = fileAudioAdapter.getSelectedItem();
+        tempList = fileAudioAdapter.getSelectedItem();
         if(tempList.size()>0){
             txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
+            imagePickedArea.setVisibility(View.VISIBLE);
         } else {
             txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result_off));
+            imagePickedArea.setVisibility(View.GONE);
         }
+
+        itemSelectAdapter.setAudioEntities(tempList);
+        itemSelectAdapter.notifyDataSetChanged();
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

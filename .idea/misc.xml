@@ -51,7 +51,7 @@
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/drawable/ic_video.xml" value="0.2205" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_album.xml" value="0.35052083333333334" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_file_info.xml" value="0.1734375" />
-        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_grid_view_files.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_grid_view_files.xml" value="0.6736842105263158" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_group_horizontal.xml" value="0.22083333333333333" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_help.xml" value="0.1734375" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/activity_history.xml" value="0.35052083333333334" />
@@ -80,6 +80,7 @@
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_audio_album.xml" value="0.1734375" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_file_restored.xml" value="0.1734375" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_image.xml" value="0.1734375" />
+        <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_image_choosed.xml" value="0.1875" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_image_video.xml" value="0.35052083333333334" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_language.xml" value="0.33" />
         <entry key="..\:/AndroidProject/JMMStudio/FileRecovery/app/src/main/res/layout/item_photo_restored.xml" value="0.1734375" />

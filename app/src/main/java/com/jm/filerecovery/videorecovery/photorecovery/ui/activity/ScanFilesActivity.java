@@ -85,7 +85,7 @@ public class ScanFilesActivity extends BaseActivity {
         Log.d("TuanPA38","ScanFilesActivity intView");
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_full_size, frameLayout, shimmerFrameLayout);
+        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
         binding.buttonScanNext.setOnClickListener(new View.OnClickListener() {

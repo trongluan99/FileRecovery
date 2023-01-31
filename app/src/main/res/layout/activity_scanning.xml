@@ -27,7 +27,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/img_done"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="5dip"
@@ -49,6 +49,7 @@
         android:singleLine="true"
         android:text="@string/app_name"
         android:textColor="#ffffff"
+        android:textStyle="bold"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintTop_toBottomOf="@+id/img_done" />
 
@@ -58,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStatus"
         app:layout_constraintBottom_toTopOf="@+id/button_scan_next">
             <include
-                layout="@layout/layout_native_control_280dp"
+                layout="@layout/layout_native_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dip"
@@ -70,17 +71,17 @@
     <Button
         android:id="@+id/button_scan_next"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="22dp"
-        android:paddingLeft="@dimen/_30sdp"
-        android:paddingRight="@dimen/_30sdp"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
         android:background="@drawable/bg_result_off"
         android:gravity="center"
         android:text="@string/next"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

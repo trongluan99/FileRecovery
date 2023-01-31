@@ -22,7 +22,8 @@
     <string name="setting">Settings</string>
     <string name="scan_wait">Please wait while scanning files...</string>
     <string name="not_found">No photos found</string>
-    <string name="restore_now">Restore Now</string>
+    <string name="restore_now" translatable="false">Restore</string>
+    <string name="restore_now2" translatable="false">Restore</string>
     <string name="let_start">Let\'s Start</string>
     <string name="restoring_number_format">Restored ... %d files</string>
     <string name="restore_photo">Restore Deleted Files</string>
@@ -56,7 +57,7 @@
     <string name="delete_success">Delete successfully</string>
     <string name="files">"Files: %d"</string>
     <string name="skip">SKIP</string>
-    <string name="allow_watch_ads">WATCH ADS</string>
+    <string name="allow_watch_ads" translatable="false">WATCH ADS</string>
     <string name="watch_ads_confirm_ring">Restore your files! \n Just watch a short promotional video and you can recover the selected file.</string>
     <string name="go_to_google_play">Review On Google Play</string>
     <string name="tks_to_rate">Thanks for your review!</string>

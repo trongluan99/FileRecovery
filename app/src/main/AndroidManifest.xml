@@ -24,23 +24,46 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.NoFileActiviy"/>
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SettingActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.FileRecoveredActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.FileRecoveredActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity" />
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity" />
 
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"
+            />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
 
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
 
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity" />
-        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.LanguageActivity" />
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.FileInfoActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
+        <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.activity.LanguageActivity"
+            android:theme="@style/AppThemeLight"
+            android:exported="false"/>
         <activity android:name="com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity" />
 
         <meta-data

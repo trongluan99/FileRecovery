@@ -7,7 +7,6 @@
     <string name="share">Поделитесь с друзьями</string>
     <string name="policy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</string>
     <string name="link_policy" translatable="false">https://policy.com</string>
-    <string name="link_more_app" translatable="false">//</string>
     <string name="more_app">Больше приложений</string>
     <string name="feedback">Обратная связь</string>
     <string name="scan">Сканировать</string>

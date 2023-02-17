@@ -3,8 +3,10 @@ package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
@@ -45,7 +47,9 @@ public class SplashActivity extends BaseActivity {
             getConfigSuccess = true;
         });
         loadingRemoteConfig();
-        loadInterTutorial();
+        if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+            loadInterTutorial();
+        }
     }
 
     private void loadingRemoteConfig() {
@@ -57,6 +61,7 @@ public class SplashActivity extends BaseActivity {
                     this.cancel();
                 }
             }
+
             @Override
             public void onFinish() {
                 if (!getConfigSuccess) {
@@ -115,10 +120,10 @@ public class SplashActivity extends BaseActivity {
 
     public void moveIntroduceActivity() {
         splashActivity = false;
-        if(!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+        if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             Intent intent = new Intent(SplashActivity.this, LanguageActivity.class);
-            intent.putExtra("SplashActivity",true);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("SplashActivity", true);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } else {
             Locale myLocale = new Locale(SharePreferenceUtils.getInstance(this).getSaveLanguage());
@@ -127,9 +132,19 @@ public class SplashActivity extends BaseActivity {
             Configuration conf = res.getConfiguration();
             conf.locale = myLocale;
             res.updateConfiguration(conf, dm);
-            Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);
+                    startActivity(intent);
+                }
+            } else {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+
         }
         finish();
     }

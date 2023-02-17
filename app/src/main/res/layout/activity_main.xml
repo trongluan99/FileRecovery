@@ -408,21 +408,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-
-            <include
-                android:id="@+id/layout_native"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ctr_image"
-                layout="@layout/layout_native_medium"
-                android:visibility="visible">
-            </include>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/ctr_audio"
                 android:layout_width="0dp"
@@ -434,7 +419,7 @@
                 app:layout_constraintDimensionRatio="W,0.85:1"
                 app:layout_constraintEnd_toEndOf="@+id/ctr_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_native">
+                app:layout_constraintTop_toBottomOf="@+id/ctr_image">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -599,4 +584,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <include
+        android:id="@+id/layout_native"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/layout_native_medium"
+        android:visibility="visible">
+    </include>
 </androidx.constraintlayout.widget.ConstraintLayout>

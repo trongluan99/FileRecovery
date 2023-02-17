@@ -9,8 +9,8 @@ android {
         applicationId "com.jm.filerecovery.videorecovery.photorecovery"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 112
-        versionName "1.1.2"
+        versionCode 113
+        versionName "1.1.3"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -40,7 +40,7 @@ android {
             buildConfigField "Boolean", "build_debug", "true"
         }
         appProduct {
-            manifestPlaceholders = [admob_app_id: 'ca-app-pub-3940256099942544~3347511713']
+            manifestPlaceholders = [admob_app_id: 'ca-app-pub-6691965685689933~6787029656']
 //            buildConfigField "String", "ads_inter_splash", "\"ca-app-pub-3940256099942544/1033173712\""
 //            buildConfigField "String", "ads_inter_turn_on", "\"ca-app-pub-3940256099942544/1033173712\""
             buildConfigField "Boolean", "build_debug", "false"

@@ -22,6 +22,7 @@ import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.GroupPhotoHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
@@ -29,7 +30,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActi
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
-public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
+public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
         Log.d("TuanPA38"," AlbumPhotoActivity onClickItem1");
@@ -57,13 +58,13 @@ public class AlbumPhotoActivity extends AppCompatActivity implements GroupPhotoH
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_horizontal);
-        Toolbar ctrToolbar = findViewById(R.id.toolbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
-            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
-            ctrToolbar.setLayoutParams(params);
-        }
-        Utils.setStatusBarHomeTransparent(this);
+//        Toolbar ctrToolbar = findViewById(R.id.toolbar);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
+//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
+//            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
+//            ctrToolbar.setLayoutParams(params);
+//        }
+//        Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
         initAds();

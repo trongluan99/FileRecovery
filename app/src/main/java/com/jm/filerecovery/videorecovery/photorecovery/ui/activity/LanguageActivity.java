@@ -51,12 +51,13 @@ public class LanguageActivity extends BaseActivity {
         recyclerLanguage = findViewById(R.id.rcv_language);
         imgSaveLanguage = findViewById(R.id.img_save_language);
         fromSplashActivity = getIntent().getBooleanExtra("SplashActivity", false);
+        Log.d("TuanPA38", "LanguageActivity fromSplashActivity = " + fromSplashActivity);
         initLanguage();
         initAds();
     }
 
     private void initAds() {
-        if(RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")){
+        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")) {
             AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
         }
     }
@@ -108,15 +109,21 @@ public class LanguageActivity extends BaseActivity {
             if (!checkManipulationAct && !fromSplashActivity) {
                 finish();
             } else {
+                boolean showIntro = false;
+                if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+                    showIntro = true;
+                } else {
+                    showIntro = false;
+                }
                 SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
                 SharePreferenceUtils.getInstance(this).setSaveLanguage(languageModelList.get(currentPosition).getId());
                 SharePreferenceUtils.getInstance(this).saveLanguageIndex(currentPosition);
-                setLocale(languageModelList.get(currentPosition).getId());
+                setLocale(languageModelList.get(currentPosition).getId(), showIntro);
             }
         });
     }
 
-    public void setLocale(String lang) {
+    public void setLocale(String lang, boolean showIntro) {
         Locale myLocale;
         if (lang.equals("zh_CN")) {
             myLocale = new Locale("zh", "CN");
@@ -130,9 +137,15 @@ public class LanguageActivity extends BaseActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        Intent intent = new Intent(this, IntroduceActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        if (showIntro) {
+            Intent intent = new Intent(this, IntroduceActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
         finish();
 
         try {

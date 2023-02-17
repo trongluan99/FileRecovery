@@ -33,22 +33,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
-//
-//        AperoAdCallback adCallback = new AperoAdCallback() {
-//            @Override
-//            public void onNextAction() {
-//                super.onNextAction();
-//                Intent intent = new Intent(getApplicationContext(), AudioActivity.class);
-//                intent.putExtra("value", position);
-//                startActivity(intent);
-//            }
-//        };
-//        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-//            @Override
-//            public void initAdSuccess() {
-//                AperoAd.getInstance().loadSplashInterstitialAds(AlbumAudioActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
-//            }
-//        });
+
     }
 
     RecyclerView recyclerView;
@@ -60,12 +45,12 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_horizontal);
         Toolbar ctrToolbar = findViewById(R.id.toolbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
-            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
-            ctrToolbar.setLayoutParams(params);
-        }
-        Utils.setStatusBarHomeTransparent(this);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.getHeightStatusBar(this) > 0) {
+//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ctrToolbar.getLayoutParams();
+//            params.setMargins(0, Utils.getHeightStatusBar(this), 0, 0);
+//            ctrToolbar.setLayoutParams(params);
+//        }
+//        Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
        initAds();

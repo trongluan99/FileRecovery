@@ -7,7 +7,6 @@
     <string name="share">Compartilhar com amigos</string>
     <string name="policy">POLÍTICA DE PRIVACIDADE</string>
     <string name="link_policy" translatable="false">https://policy.com</string>
-    <string name="link_more_app" translatable="false">//</string>
     <string name="more_app">Mais aplicativo</string>
     <string name="feedback">Comentários</string>
     <string name="scan">Digitalizar</string>

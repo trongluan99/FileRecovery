@@ -10,13 +10,17 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 
 
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
@@ -48,8 +52,10 @@ public class SplashActivity extends BaseActivity {
         });
         loadingRemoteConfig();
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+            // show tutorial only one
             loadInterTutorial();
         }
+
     }
 
     private void loadingRemoteConfig() {
@@ -72,6 +78,94 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void checkRemoteConfigResult() {
+        if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+            loadNativeLanguage();
+            loadNativeHome();
+        } else {
+            // load native home only
+            loadNativeHome();
+        }
+        if (RemoteConfigUtils.INSTANCE.getOnOpenLunch().equals("on")) {
+            // load Open
+            initOpenAdmob();
+        } else {
+            if (RemoteConfigUtils.INSTANCE.getOnInterLunch().equals("on")) {
+                Log.d(TAG, " checkRemoteConfigResult getOnInterSplash == on");
+                AperoAdCallback adCallback = new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        super.onNextAction();
+                        Log.d(TAG, "onNextAction");
+                        if (Admob.getInstance().getmInterstitialSplash() != null) {
+                            Log.d(TAG, "onAdImpression");
+                            SharePreferenceUtils.getInstance(SplashActivity.this).saveLastTimeShowInter(System.currentTimeMillis());
+                        }
+                        if (splashActivity) moveIntroduceActivity();
+                    }
+                };
+                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                    @Override
+                    public void initAdSuccess() {
+                        AperoAd.getInstance().loadSplashInterstitialAds(SplashActivity.this, getResources().getString(R.string.admob_inter_splash), 10000, 500, true, adCallback);
+                    }
+                });
+
+            } else {
+                if (splashActivity) moveIntroduceActivity();
+            }
+        }
+    }
+
+    private void initOpenAdmob() {
+        loadCallback = new AppOpenAd.AppOpenAdLoadCallback() {
+
+            @Override
+            public void onAdLoaded(@NonNull AppOpenAd appOpenAd) {
+                SplashActivity.this.appOpenAd = appOpenAd;
+                Log.d(TAG, "SplashActivity --------> onAppOpenAdLoaded appOpenAd = " + appOpenAd);
+                FullScreenContentCallback fullScreenContentCallback = new FullScreenContentCallback() {
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        SplashActivity.this.appOpenAd = null;
+                        Log.d(TAG, "SplashActivity --------> onAdDismissedFullScreenContent");
+                        if (splashActivity) {
+                            moveIntroduceActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                        Log.d(TAG, "SplashActivity --------> onAdFailedToShowFullScreenContent");
+                        checkRemoteConfigResult222222222222();
+                        loadOpenFail = true;
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                    }
+                };
+                if (splashActivity) {
+                    appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
+                    appOpenAd.show(SplashActivity.this);
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                Log.d(TAG, "SplashActivity --------> onAppOpenAdLoaded onAdFailedToLoad = " + appOpenAd);
+                checkRemoteConfigResult222222222222();
+                loadOpenFail = true;
+            }
+        };
+
+        AdRequest request = getAdRequest();
+        AppOpenAd.load(this, getResources().getString(R.string.admob_open_app_lunch), request, AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, loadCallback);
+    }
+
+    boolean loadOpenFail = false;
+    private void checkRemoteConfigResult222222222222() {
+        Log.d(TAG, " checkRemoteConfigResult222222222222 loadOpenFail == "+loadOpenFail);
+        if(loadOpenFail) return;
         if (RemoteConfigUtils.INSTANCE.getOnInterLunch().equals("on")) {
             Log.d(TAG, " checkRemoteConfigResult getOnInterSplash == on");
             AperoAdCallback adCallback = new AperoAdCallback() {
@@ -97,7 +191,9 @@ public class SplashActivity extends BaseActivity {
             if (splashActivity) moveIntroduceActivity();
         }
     }
-
+    public AdRequest getAdRequest() {
+        return new AdRequest.Builder().build();
+    }
     protected void onStop() {
         super.onStop();
         splashActivity = false;

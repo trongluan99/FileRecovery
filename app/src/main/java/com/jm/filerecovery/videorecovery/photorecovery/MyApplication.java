@@ -30,7 +30,7 @@ public class MyApplication extends AdsMultiDexApplication {
     private void configAds() {
         aperoAdConfig.setMediationProvider(AperoAdConfig.PROVIDER_ADMOB);
         aperoAdConfig.setVariant(BuildConfig.build_debug);
-        aperoAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app));
+        aperoAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app_resume));
         listTestDevice.add("33BE2250B43518CCDA7DE426D04EE231");
         aperoAdConfig.setListDeviceTest(listTestDevice);
         AperoAd.getInstance().init(this, aperoAdConfig, false);

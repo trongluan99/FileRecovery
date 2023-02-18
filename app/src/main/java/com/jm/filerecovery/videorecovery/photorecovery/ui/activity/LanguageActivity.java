@@ -6,21 +6,19 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ads.control.ads.AperoAd;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.LanguageAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.GlobalAppCache;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
@@ -32,7 +30,7 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 
 
-public class LanguageActivity extends BaseActivity {
+public class LanguageActivity extends BaseActivity implements BaseActivity.PreLoadNativeListener {
     RecyclerView recyclerLanguage;
     ImageView imgSaveLanguage;
     List<LanguageModel> languageModelList = new ArrayList<>();
@@ -47,6 +45,7 @@ public class LanguageActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+        setPreLoadNativeListener(this);
         ButterKnife.bind(this);
         recyclerLanguage = findViewById(R.id.rcv_language);
         imgSaveLanguage = findViewById(R.id.img_save_language);
@@ -55,10 +54,18 @@ public class LanguageActivity extends BaseActivity {
         initLanguage();
         initAds();
     }
-
+    boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
     private void initAds() {
-        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")) {
-            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage!=null) {
+//            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
+            populateNativeAdView = true;
+            AperoAd.getInstance().populateNativeAdView(this,nativeAdViewLanguage,frameLayout,shimmerFrameLayout);
+        } else {
+            Log.d("TuanPA38", "LanguageActivity initAds nativeAdViewLanguage = "+nativeAdViewLanguage );
         }
     }
 
@@ -153,5 +160,31 @@ public class LanguageActivity extends BaseActivity {
         } catch (NullPointerException e) {
 
         }
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess" );
+        if(!populateNativeAdView){
+            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage!=null) {
+                populateNativeAdView = true;
+                AperoAd.getInstance().populateNativeAdView(this,nativeAdViewLanguage,frameLayout,shimmerFrameLayout);
+            }
+        }
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageFail" );
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
     }
 }

@@ -19,24 +19,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 
-import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
-import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
@@ -47,7 +42,6 @@ import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainB
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.FileUtils;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.TotalMemoryStorageTaskUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
@@ -57,7 +51,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, BaseActivity.PreLoadNativeListener {
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
 
@@ -70,6 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        setPreLoadNativeListener(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#66000000"));
         }
@@ -77,12 +72,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initAds();
         activity= true;
     }
+
+    boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
     public void initAds() {
-        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on")) {
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome!=null) {
             binding.layoutNative.setVisibility(View.VISIBLE);
-            FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-            ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_home), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+            populateNativeAdView = true;
+            AperoAd.getInstance().populateNativeAdView(this,nativeAdViewHome,frameLayout,shimmerFrameLayout);
         } else {
             binding.layoutNative.setVisibility(View.GONE);
         }
@@ -528,4 +528,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess" );
+        if(!populateNativeAdView){
+            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewHome!=null) {
+                populateNativeAdView = true;
+                AperoAd.getInstance().populateNativeAdView(this,nativeAdViewHome,frameLayout,shimmerFrameLayout);
+            }
+        }
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
 }

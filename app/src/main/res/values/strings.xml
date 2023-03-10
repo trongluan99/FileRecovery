@@ -77,6 +77,7 @@
 <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
 <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
 <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->
+<!--    <string name="admob_inter_splash_high" translatable="false">ca-app-pub-6691965685689933/4760186675</string>-->
 <!--    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-6691965685689933/1937136345</string>-->
 <!--    <string name="admob_inter_click_home" translatable="false">ca-app-pub-6691965685689933/2797351511</string>-->
 <!--    <string name="admob_inter_click_item" translatable="false">ca-app-pub-6691965685689933/7100392754</string>-->
@@ -93,6 +94,7 @@
     <string name="admob_native_language" translatable="false">/6499/example/native</string>
     <string name="admob_native_home" translatable="false">/6499/example/native</string>
     <string name="admob_inter_splash" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_inter_splash_high" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_tutorial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_click_home" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_click_item" translatable="false">ca-app-pub-3940256099942544/1033173712</string>

@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TuanPA38","BaseActivity onCreate mInterstitialAdTutorial = "+mInterstitialAdTutorial+" mInterstitialAdClickHome = "+mInterstitialAdClickHome);
+        Log.d("TuanPA38","BaseActivity onCreate");
         try {
             View decorView = getWindow().getDecorView();
             int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION

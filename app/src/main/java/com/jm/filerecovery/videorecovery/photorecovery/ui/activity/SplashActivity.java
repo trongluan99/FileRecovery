@@ -11,12 +11,15 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.ads.AperoAdCallback;
 import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.wrapper.ApAdError;
+import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
@@ -39,7 +42,13 @@ public class SplashActivity extends BaseActivity {
     boolean adsDisplayed = false;
     boolean isLoadFailed = false;
     private boolean getConfigSuccess = false;
-
+    ApInterstitialAd mInterstitialSplash = null;
+    ApInterstitialAd mInterstitialSplashHigh = null;
+    private int LOADING = 0;
+    private int SUCCESS = 1;
+    private int FAIL = 2;
+    boolean loadInterHighFail = false;
+    int loadInterAllSuccess = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +64,6 @@ public class SplashActivity extends BaseActivity {
             // show tutorial only one
             loadInterTutorial();
         }
-
     }
 
     private void loadingRemoteConfig() {
@@ -85,33 +93,199 @@ public class SplashActivity extends BaseActivity {
             // load native home only
             loadNativeHome();
         }
-        if (RemoteConfigUtils.INSTANCE.getOnOpenLunch().equals("on")) {
-            // load Open
-            initOpenAdmob();
+
+        // update request 10/3 high inter lunch
+        if (RemoteConfigUtils.INSTANCE.getOnInterLunchHigh().equals("on")) {
+            // load inter high
+            initInterLunchHigh();
         } else {
-            if (RemoteConfigUtils.INSTANCE.getOnInterLunch().equals("on")) {
-                Log.d(TAG, " checkRemoteConfigResult getOnInterSplash == on");
-                AperoAdCallback adCallback = new AperoAdCallback() {
+          //  update request 18/2 high open lunch
+            if (RemoteConfigUtils.INSTANCE.getOnOpenLunch().equals("on")) {
+                // load Open
+                initOpenAdmob();
+            } else {
+                if (RemoteConfigUtils.INSTANCE.getOnInterLunch().equals("on")) {
+                    Log.d(TAG, " checkRemoteConfigResult getOnInterSplash == on");
+                    AperoAdCallback adCallback = new AperoAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            super.onNextAction();
+                            Log.d(TAG, "onNextAction");
+                            if (Admob.getInstance().getmInterstitialSplash() != null) {
+                                Log.d(TAG, "onAdImpression");
+                                SharePreferenceUtils.getInstance(SplashActivity.this).saveLastTimeShowInter(System.currentTimeMillis());
+                            }
+                            if (splashActivity) moveIntroduceActivity();
+                        }
+                    };
+                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            AperoAd.getInstance().loadSplashInterstitialAds(SplashActivity.this, getResources().getString(R.string.admob_inter_splash), 10000, 500, true, adCallback);
+                        }
+                    });
+
+                } else {
+                    if (splashActivity) moveIntroduceActivity();
+                }
+            }
+        }
+    }
+
+    /**
+     * load 2 id inter
+     * ưu tiên load high trước
+     * -> load high thành công -> show
+     * -> load high thất bại -> tạo 1 timer để lắng nghe xem inter_all load -> load thành công show inter và cancel timer
+     */
+    private void initInterLunchHigh() {
+        if(mInterstitialSplashHigh == null){
+            mInterstitialSplashHigh = AperoAd.getInstance().getInterstitialAds(this,getResources().getString(R.string.admob_inter_splash_high), new AperoAdCallback(){
+
+                @Override
+                public void onInterstitialLoad(@Nullable ApInterstitialAd interstitialAd) {
+                    super.onInterstitialLoad(interstitialAd);
+                    Log.d(TAG, " mInterstitialSplashHigh onInterstitialLoad");
+                    handleAdsAfterLoadInterHigh();
+                }
+
+                @Override
+                public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                    super.onAdFailedToLoad(adError);
+                    loadInterHighFail = true;
+                    handleAdsAfterLoadInterHigh();
+                    Log.d(TAG, "mInterstitialSplashHigh onAdFailedToLoad");
+                }
+
+                @Override
+                public void onAdFailedToShow(@Nullable ApAdError adError) {
+                    super.onAdFailedToShow(adError);
+                    loadInterHighFail= true;
+                    handleAdsAfterLoadInterHigh();
+                    Log.d(TAG, "mInterstitialSplashHigh onAdFailedToShow");
+                }
+
+            });
+        }
+
+        if(mInterstitialSplash == null){
+            mInterstitialSplash = AperoAd.getInstance().getInterstitialAds(this,getResources().getString(R.string.admob_inter_splash),new AperoAdCallback(){
+
+                @Override
+                public void onInterstitialLoad(@Nullable ApInterstitialAd interstitialAd) {
+                    super.onInterstitialLoad(interstitialAd);
+                    Log.d(TAG, "mInterstitialSplash onInterstitialLoad");
+                    loadInterAllSuccess = SUCCESS;
+                }
+
+                @Override
+                public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                    super.onAdFailedToLoad(adError);
+                    Log.d(TAG, "mInterstitialSplash onAdFailedToLoad");
+                    loadInterAllSuccess = FAIL;
+                }
+
+                @Override
+                public void onAdFailedToShow(@Nullable ApAdError adError) {
+                    super.onAdFailedToShow(adError);
+                    Log.d(TAG, "mInterstitialSplash onAdFailedToShow");
+                    loadInterAllSuccess = FAIL;
+                }
+
+            });
+        }
+
+    }
+
+    /**
+     * load 2 id inter
+     * ưu tiên load high trước
+     * -> load high thành công -> show
+     * -> load high thất bại -> tạo 1 timer để lắng nghe xem inter_all load -> load thành công show inter và cancel timer
+     */
+    boolean handleAdsAfterLoadInterHigh = false; // param is to call method only once
+    private void handleAdsAfterLoadInterHigh() {
+        if(handleAdsAfterLoadInterHigh){
+            return;
+        }
+        handleAdsAfterLoadInterHigh = true;
+
+        if(mInterstitialSplashHigh!=null){
+            if (mInterstitialSplashHigh.isReady()) {
+                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialSplashHigh, new AperoAdCallback() {
                     @Override
                     public void onNextAction() {
-                        super.onNextAction();
-                        Log.d(TAG, "onNextAction");
-                        if (Admob.getInstance().getmInterstitialSplash() != null) {
-                            Log.d(TAG, "onAdImpression");
-                            SharePreferenceUtils.getInstance(SplashActivity.this).saveLastTimeShowInter(System.currentTimeMillis());
+                        Log.i("TuanPA38", " mInterstitialSplashHigh onNextAction: start content and finish main");
+                        if (splashActivity){
+                         moveIntroduceActivity();
                         }
-                        if (splashActivity) moveIntroduceActivity();
                     }
-                };
-                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                    @Override
-                    public void initAdSuccess() {
-                        AperoAd.getInstance().loadSplashInterstitialAds(SplashActivity.this, getResources().getString(R.string.admob_inter_splash), 10000, 500, true, adCallback);
-                    }
-                });
 
+                    @Override
+                    public void onAdFailedToShow(@Nullable ApAdError adError) {
+                        super.onAdFailedToShow(adError);
+                        Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                        loadInterHighFail= true;
+                    }
+
+                }, true);
             } else {
-                if (splashActivity) moveIntroduceActivity();
+                // tạo timer
+                new CountDownTimer(15000, 100) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                      if (loadInterAllSuccess == FAIL){
+                          if (splashActivity) {
+                              moveIntroduceActivity();
+                          }
+                          cancel();
+                      } else  if (loadInterAllSuccess == SUCCESS) {
+                          showInterAll();
+                          cancel();
+                      }
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        if (splashActivity) {
+                            moveIntroduceActivity();
+                        }
+                    }
+                }.start();
+            }
+        }
+    }
+
+    private void showInterAll() {
+        if(mInterstitialSplash!=null){
+            if (mInterstitialSplash.isReady()) {
+                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialSplash, new AperoAdCallback() {
+                    @Override
+                    public void onNextAction() {
+                        Log.i("TuanPA38", "mInterstitialSplash onNextAction: start content and finish main");
+                        if (splashActivity){
+                            moveIntroduceActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onAdFailedToShow(@Nullable ApAdError adError) {
+                        super.onAdFailedToShow(adError);
+                        if (splashActivity){
+                            moveIntroduceActivity();
+                        }
+                        Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                    }
+
+                }, true);
+            } else {
+                if (splashActivity){
+                    moveIntroduceActivity();
+                }
+            }
+        } else {
+            if (splashActivity){
+                moveIntroduceActivity();
             }
         }
     }
@@ -173,10 +347,6 @@ public class SplashActivity extends BaseActivity {
                 public void onNextAction() {
                     super.onNextAction();
                     Log.d(TAG, "onNextAction");
-                    if (Admob.getInstance().getmInterstitialSplash() != null) {
-                        Log.d(TAG, "onAdImpression");
-                        SharePreferenceUtils.getInstance(SplashActivity.this).saveLastTimeShowInter(System.currentTimeMillis());
-                    }
                     if (splashActivity) moveIntroduceActivity();
                 }
             };
@@ -203,9 +373,6 @@ public class SplashActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         splashActivity = true;
-//        if (!adsDisplayed && appOpenAd != null || isLoadFailed) {
-//            moveIntroduceActivity();
-//        }
     }
 
     @Override

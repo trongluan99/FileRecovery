@@ -1,8 +1,8 @@
 package com.jm.filerecovery.videorecovery.photorecovery;
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdConfig;
 import com.ads.control.application.AdsMultiDexApplication;
+import com.ads.control.config.AperoAdConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
 

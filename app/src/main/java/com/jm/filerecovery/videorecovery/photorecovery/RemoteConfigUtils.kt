@@ -20,6 +20,8 @@ object RemoteConfigUtils {
     private const val ON_APP_OPEN_LUNCH = "on_app_open_lunch"
     private const val ON_INTER_INTRODUCE = "on_inter_introduce"
     private const val ON_INTER_RESULT = "on_inter_result"
+    private const val ON_OPEN_HIGH_SPLASH_2_ID = "open_high_splash_2_id"
+    private const val ON_OPEN_HIGH_SPLASH_3_ID = "open_high_splash_3_id"
 
     //    private const val HELLO_BUTTON_COLOR = "hello_button_color"
     var completed = false
@@ -27,6 +29,8 @@ object RemoteConfigUtils {
         hashMapOf(
             ON_BANNER_HOME to "on",
             ON_NATIVE_HOME to "on",
+            ON_OPEN_HIGH_SPLASH_2_ID to "off",
+            ON_OPEN_HIGH_SPLASH_3_ID to "off",
             ON_BANNER_TOOL to "on",
             ON_BANNER_PERSONAL to "on",
             ON_NATIVE_LANGUAGE to "on",
@@ -200,4 +204,31 @@ object RemoteConfigUtils {
         }
         return "off"
     }
+
+    fun getOnOpenHighSplash2Id(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_OPEN_HIGH_SPLASH_2_ID)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return "off"
+    }
+
+    fun getOnOpenHighSplash3Id(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_OPEN_HIGH_SPLASH_3_ID)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return "off"
+    }
+
 }

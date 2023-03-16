@@ -7,10 +7,10 @@ android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "com.jm.filerecovery.videorecovery.photorecovery"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
-        versionCode 116
-        versionName "1.1.6"
+        versionCode 117
+        versionName "1.1.7"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -91,7 +91,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'com.github.AperoVN:AperoModuleAds:5.2.2'
+//    implementation 'com.github.AperoVN:AperoModuleAds:5.2.2'
+    implementation 'com.github.trongluan99:ITGModuleAds:1.0.7'
     implementation 'com.facebook.android:facebook-android-sdk:15.0.2'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

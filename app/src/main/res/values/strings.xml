@@ -73,7 +73,7 @@
     <string name="text_des_thank">Thank you for using our App. Would you to post your review on store. This will help and motivate us a lot. See you soon!</string>
 
     //Info id admob id publish
-<!--    <string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string> // id test-->
+<!--    <string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string>-->
 <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
 <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
 <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->

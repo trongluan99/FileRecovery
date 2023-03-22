@@ -29,8 +29,8 @@ object RemoteConfigUtils {
         hashMapOf(
             ON_BANNER_HOME to "on",
             ON_NATIVE_HOME to "on",
-            ON_OPEN_HIGH_SPLASH_2_ID to "off",
-            ON_OPEN_HIGH_SPLASH_3_ID to "off",
+            ON_OPEN_HIGH_SPLASH_2_ID to "on",
+            ON_OPEN_HIGH_SPLASH_3_ID to "on",
             ON_BANNER_TOOL to "on",
             ON_BANNER_PERSONAL to "on",
             ON_NATIVE_LANGUAGE to "on",

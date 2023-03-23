@@ -77,6 +77,7 @@
 <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
 <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
 <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->
+<!--    <string name="admob_inter_splash_new" translatable="false">ca-app-pub-6691965685689933/5497205774</string>-->
 <!--    <string name="admob_inter_splash_high" translatable="false">ca-app-pub-6691965685689933/4760186675</string>-->
 <!--    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-6691965685689933/1937136345</string>-->
 <!--    <string name="admob_inter_click_home" translatable="false">ca-app-pub-6691965685689933/2797351511</string>-->
@@ -87,6 +88,7 @@
 <!--    <string name="admob_native_recovery_item" translatable="false">ca-app-pub-6691965685689933/4302344182</string>-->
 <!--    <string name="admob_native_finish" translatable="false">ca-app-pub-6691965685689933/7188022660</string>-->
 <!--    <string name="open_lunch_high" translatable="false">ca-app-pub-6691965685689933/8138556884</string>-->
+<!--    <string name="open_lunch_high_new" translatable="false">ca-app-pub-6691965685689933/2056654217</string>-->
 <!--    <string name="open_lunch_medium" translatable="false">ca-app-pub-6691965685689933/2047468827</string>-->
 <!--    <string name="open_lunch_normal" translatable="false">ca-app-pub-6691965685689933/9734387158</string>-->
 <!--    <string name="admob_open_app_resume" translatable="false">ca-app-pub-6691965685689933/9801588695</string>-->
@@ -96,6 +98,7 @@
     <string name="admob_native_language" translatable="false">/6499/example/native</string>
     <string name="admob_native_home" translatable="false">/6499/example/native</string>
     <string name="admob_inter_splash" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_inter_splash_new" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_splash_high" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_tutorial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_click_home" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
@@ -106,6 +109,7 @@
     <string name="admob_native_recovery_item" translatable="false">/6499/example/native</string>
     <string name="admob_native_finish" translatable="false">/6499/example/native</string>
     <string name="open_lunch_high" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="open_lunch_high_new" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="open_lunch_medium" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="open_lunch_normal" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app_resume" translatable="false">ca-app-pub-3940256099942544/3419835294</string>

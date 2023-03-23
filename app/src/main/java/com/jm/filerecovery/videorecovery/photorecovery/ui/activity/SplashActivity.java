@@ -96,43 +96,15 @@ public class SplashActivity extends BaseActivity {
             // load native home only
             loadNativeHome();
         }
-
-        if (RemoteConfigUtils.INSTANCE.getOnOpenHighSplash3Id().equals("on")) {
-            Log.d(TAG, "SplashActivity --------> getOnOpenHighSplash3Id");
-            AppOpenManager.getInstance().loadSplashOpenHighFloor(SplashActivity.class, this,
-                    getResources().getString(R.string.open_lunch_high), getResources().getString(R.string.open_lunch_medium), getResources().getString(R.string.open_lunch_normal), 25000, new AdCallback(){
-                        @Override
-                        public void onNextAction() {
-                            super.onNextAction();
-                            if (splashActivity) {
-                                moveIntroduceActivity();
-                            }
-                        }
-                    });
-        } else if (RemoteConfigUtils.INSTANCE.getOnOpenHighSplash2Id().equals("on")){
-            Log.d(TAG, "SplashActivity --------> getOnOpenHighSplash2Id");
-            AppOpenManager.getInstance().loadSplashOpenHighFloor(SplashActivity.class, this,
-                    getResources().getString(R.string.open_lunch_high), "", getResources().getString(R.string.open_lunch_normal), 25000, new AdCallback(){
-                        @Override
-                        public void onNextAction() {
-                            super.onNextAction();
-                            if (splashActivity) {
-                                moveIntroduceActivity();
-                            }
-                        }
-                    });
-        } else {
-            AppOpenManager.getInstance().loadSplashOpenHighFloor(SplashActivity.class, this,
-                    "", "", getResources().getString(R.string.open_lunch_normal), 25000, new AdCallback(){
-                        @Override
-                        public void onNextAction() {
-                            super.onNextAction();
-                            if (splashActivity) {
-                                moveIntroduceActivity();
-                            }
-                        }
-                    });
-        }
+        AppOpenManager.getInstance().loadSplashOpenAndInter(SplashActivity.class,SplashActivity.this,getResources().getString(R.string.open_lunch_high_new),getResources().getString(R.string.admob_inter_splash_new),25000,new AdCallback(){
+            @Override
+            public void onNextAction() {
+                super.onNextAction();
+                if (splashActivity) {
+                    moveIntroduceActivity();
+                }
+            }
+        });
     }
 
     protected void onStop() {

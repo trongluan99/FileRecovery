@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.facebook.FacebookSdk;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -96,7 +97,7 @@ public class SplashActivity extends BaseActivity {
             // load native home only
             loadNativeHome();
         }
-        AppOpenManager.getInstance().loadSplashOpenAndInter(SplashActivity.class,SplashActivity.this,getResources().getString(R.string.open_lunch_high_new),getResources().getString(R.string.admob_inter_splash_new),25000,new AdCallback(){
+        AppOpenManager.getInstance().loadSplashOpenAndInter(SplashActivity.class,SplashActivity.this,getResources().getString(R.string.open_lunch_high),getResources().getString(R.string.admob_inter_splash),25000,new AdCallback(){
             @Override
             public void onNextAction() {
                 super.onNextAction();

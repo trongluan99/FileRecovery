@@ -5,6 +5,7 @@ import android.os.Build;
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.application.AdsMultiDexApplication;
+import com.ads.control.config.AdjustConfig;
 import com.ads.control.config.AperoAdConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
@@ -22,7 +23,7 @@ public class MyApplication extends AdsMultiDexApplication {
     public static MyApplication getInstance() {
         return instance;
     }
-
+    public String ADJUST_TOKEN = "isb4bnoaf18g";
     public static void setInstance(MyApplication instance) {
         MyApplication.instance = instance;
     }
@@ -41,6 +42,10 @@ public class MyApplication extends AdsMultiDexApplication {
         aperoAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app_resume));
         listTestDevice.add("33BE2250B43518CCDA7DE426D04EE231");
         aperoAdConfig.setListDeviceTest(listTestDevice);
+
+        AdjustConfig adjustConfig = new AdjustConfig(true, ADJUST_TOKEN);
+        aperoAdConfig.setAdjustConfig(adjustConfig);
+        aperoAdConfig.setFacebookClientToken(getResources().getString(R.string.facebook_client_token));
         AperoAd.getInstance().init(this, aperoAdConfig, false);
         Admob.getInstance().setDisableAdResumeWhenClickAds(true);
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);

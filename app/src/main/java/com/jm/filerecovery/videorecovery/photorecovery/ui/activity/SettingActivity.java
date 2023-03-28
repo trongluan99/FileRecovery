@@ -17,7 +17,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.GlobalAppCache;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.UtilsApp;
@@ -63,9 +62,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void intData() {
-        int index = SharePreferenceUtils.getInstance(SettingActivity.this).getLanguageIndex();
-        tvLanguage.setText(GlobalAppCache.getInstance(SettingActivity.this)
-                .getLanguageModelList().get(index).getName());
+        String name = SharePreferenceUtils.getInstance(this).getSaveNameLanguage();
+        tvLanguage.setText(name);
     }
 
     public void intEvent() {

@@ -6,7 +6,6 @@
     <string name="rating">Classificação</string>
     <string name="share">Compartilhar com amigos</string>
     <string name="policy">POLÍTICA DE PRIVACIDADE</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">Mais aplicativo</string>
     <string name="feedback">Comentários</string>
     <string name="scan">Digitalizar</string>
@@ -15,9 +14,6 @@
     <string name="how_to_work">Como funciona?</string>
     <string name="restore">Restaurar</string>
 
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Visualizar fotos restauradas</string>
     <string name="setting">Configurações</string>
     <string name="scan_wait">Aguarde enquanto verifica os arquivos...</string>
@@ -58,6 +54,25 @@
     <string name="scan_tip_1">Selecione o tipo de arquivo que deseja recuperar. Seja paciente e aguarde até que o aplicativo verifique todas as pastas e arquivos</string>
     <string name="scan_tip_2">Procure o arquivo que deseja recuperar. Selecione o arquivo e pressione o botão restaurar.</string>
     <string name="scan_tip_note">Observação: o aplicativo funciona apenas em 80% dos dispositivos Android. Alguns dispositivos podem não conseguir recuperar o arquivo que você procura</string>
+    <string name="next">Próximo</string>
+    <string name="skip">PULAR</string>
+    <string name="watch_ads_confirm_ring">Restaure seus arquivos! Basta assistir a um pequeno vídeo promocional e você pode recuperar o arquivo selecionado.</string>
+    <string name="go_to_google_play">Revisão no Google Play</string>
+    <string name="tks_to_rate">Obrigado pela sua resenha!</string>
+    <string name="are_you_like_me">Você ama este aplicativo?</string>
+    <string name="rate_in_google_play">Avalie e comente sua opinião sobre o Google Play. Obrigado!</string>
+    <string name="send">Enviar</string>
+    <string name="second">segundos</string>
+    <string name="ads_after">Os anúncios são exibidos depois</string>
+    <string name="step1">Passo 1:</string>
+    <string name="step2">Passo 2:</string>
+    <string name="step_note">Observação</string>
+    <string name="language_title">Linguagem</string>
+    <string name="text_title_thank">Obrigado!</string>
+    <string name="text_des_thank">Obrigado por usar nosso aplicativo. Você seria postar sua resenha na loja. Isso vai nos ajudar e nos motivar muito. Vejo você em breve!</string>
+    <string name="start">Começar</string>
+    <string name="preview">Visualização</string>
+    <string name="please_select_language">Selecione o idioma!</string>
 
 
 </resources>

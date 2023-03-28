@@ -52,8 +52,8 @@
     <string name="free">Gratis</string>
     <string name="delete_success">Hapus berhasil</string>
     <string name="files">"File: %d"</string>
+    <string name="next">Berikutnya</string>
     <string name="skip">MELEWATI</string>
-    <string name="allow_watch_ads">LIHAT IKLAN</string>
     <string name="watch_ads_confirm_ring">Pulihkan file Anda! \nCukup tonton video promosi singkat dan Anda dapat memulihkan file yang dipilih.</string>
     <string name="go_to_google_play">Ulasan Di Google Play</string>
     <string name="tks_to_rate">Terima kasih atas ulasan Anda!</string>
@@ -62,8 +62,16 @@
     <string name="send">Kirim</string>
     <string name="second">detik</string>
     <string name="ads_after">Iklan ditampilkan setelah</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_1">Pilih jenis file yang ingin Anda pulihkan. Harap bersabar dan tunggu hingga aplikasi memindai semua folder dan file</string>
     <string name="scan_tip_2">Cari file yang ingin Anda pulihkan. Pilih file dan tekan tombol pulihkan.</string>
     <string name="scan_tip_note">Catatan: Aplikasi ini hanya berfungsi di 80% perangkat Android. Beberapa perangkat mungkin tidak dapat memulihkan file yang Anda cari</string>
+    <string name="step1">Langkah 1:</string>
+    <string name="step2">Langkah 2:</string>
+    <string name="step_note">Catatan</string>
+    <string name="language_title">Bahasa</string>
+    <string name="text_title_thank">Terima kasih!</string>
+    <string name="text_des_thank">Terima kasih telah menggunakan aplikasi kami. Maukah Anda memposting ulasan Anda di toko. Ini akan banyak membantu dan memotivasi kami. Sampai berjumpa lagi!</string>
+    <string name="start">Awal</string>
+    <string name="preview">Pratinjau</string>
+    <string name="please_select_language">Pilih bahasa!</string>
 </resources>

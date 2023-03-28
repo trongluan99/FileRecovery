@@ -52,7 +52,6 @@
     <string name="delete_success">सफलतापूर्वक हटाएं</string>
     <string name="files">"फ़ाइलें:%d"</string>
     <string name="skip">छोड़ें</string>
-    <string name="allow_watch_ads">विज्ञापन देखें</string>
     <string name="watch_ads_confirm_ring">अपनी फ़ाइलें पुनर्स्थापित करें! \nबस एक छोटा प्रचार वीडियो देखें और आप चयनित फ़ाइल को पुनर्प्राप्त कर सकते हैं।</string>
     <string name="go_to_google_play">Google Play पर समीक्षा करें</string>
     <string name="tks_to_rate">आपकी समीक्षा के लिए धन्यवाद!</string>
@@ -61,9 +60,17 @@
     <string name="send">भेजना</string>
     <string name="second">सेकंड</string>
     <string name="ads_after">विज्ञापन बाद में प्रदर्शित होते हैं</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_note">नोट: ऐप केवल 80% Android उपकरणों पर काम करता है। हो सकता है कि कुछ डिवाइस आपके द्वारा खोजी गई फ़ाइल को पुनर्प्राप्त करने में सक्षम न हों</string>
     <string name="scan_tip_2">उस फ़ाइल को खोजें जिसे आप पुनर्प्राप्त करना चाहते हैं। फ़ाइल का चयन करें और रिस्टोर बटन दबाएं।</string>
     <string name="scan_tip_1">उस फ़ाइल प्रकार का चयन करें जिसे आप पुनर्प्राप्त करना चाहते हैं। कृपया धैर्य रखें और तब तक प्रतीक्षा करें जब तक कि ऐप सभी फ़ोल्डरों और फ़ाइलों को स्कैन न कर ले</string>
     <string name="next">अगला</string>
+    <string name="step1">स्टेप 1:</string>
+    <string name="step2">चरण दो:</string>
+    <string name="step_note">टिप्पणी</string>
+    <string name="language_title">भाषा</string>
+    <string name="text_title_thank">धन्यवाद!</string>
+    <string name="text_des_thank">हमारे ऐप का उपयोग करने के लिए धन्यवाद। क्या आप स्टोर पर अपनी समीक्षा पोस्ट करेंगे। यह हमें बहुत मदद करेगा और हमें बहुत प्रेरित करेगा। जल्द ही फिर मिलेंगे!</string>
+    <string name="start">शुरू</string>
+    <string name="preview">पूर्व दर्शन</string>
+    <string name="please_select_language">कृपया भाषा चुनें!</string>
 </resources>

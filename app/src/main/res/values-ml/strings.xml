@@ -51,7 +51,6 @@
     <string name="delete_success">ഇല്ലാതാക്കുക</string>
     <string name="files">"ഫയലുകൾ: %d"</string>
     <string name="skip">ഒഴിവാക്കുക</string>
-    <string name="allow_watch_ads">പരസ്യങ്ങൾ കാണുക</string>
     <string name="watch_ads_confirm_ring">നിങ്ങളുടെ ഫയലുകൾ പുനഃസ്ഥാപിക്കുക! \nഒരു ചെറിയ പ്രൊമോഷണൽ വീഡിയോ കാണുക, തിരഞ്ഞെടുത്ത ഫയൽ നിങ്ങൾക്ക് വീണ്ടെടുക്കാം.</string>
     <string name="go_to_google_play">Google Play-യിൽ അവലോകനം ചെയ്യുക</string>
     <string name="tks_to_rate">നിങ്ങളുടെ അവലോകനത്തിന് നന്ദി!</string>
@@ -60,10 +59,18 @@
     <string name="send">അയക്കുക</string>
     <string name="second">സെക്കന്റുകൾ</string>
     <string name="ads_after">ശേഷം പരസ്യങ്ങൾ പ്രദർശിപ്പിക്കും</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_note">ശ്രദ്ധിക്കുക: 80% Android ഉപകരണങ്ങളിൽ മാത്രമേ ആപ്പ് പ്രവർത്തിക്കൂ. നിങ്ങൾ അന്വേഷിക്കുന്ന ഫയൽ വീണ്ടെടുക്കാൻ ചില ഉപകരണങ്ങൾക്ക് കഴിഞ്ഞേക്കില്ല</string>
     <string name="scan_tip_2">നിങ്ങൾ വീണ്ടെടുക്കാൻ ആഗ്രഹിക്കുന്ന ഫയലിനായി തിരയുക. ഫയൽ തിരഞ്ഞെടുത്ത് പുനഃസ്ഥാപിക്കുക ബട്ടൺ അമർത്തുക.</string>
     <string name="scan_tip_1">നിങ്ങൾ വീണ്ടെടുക്കാൻ ആഗ്രഹിക്കുന്ന ഫയൽ തരം തിരഞ്ഞെടുക്കുക. ആപ്പ് എല്ലാ ഫോൾഡറുകളും ഫയലുകളും സ്കാൻ ചെയ്യുന്നത് വരെ ക്ഷമയോടെ കാത്തിരിക്കുക</string>
     <string name="next">അടുത്തത്</string>
+    <string name="step1">ഘട്ടം 1:</string>
+    <string name="step2">ഘട്ടം 2:</string>
+    <string name="step_note">കുറിപ്പ്</string>
+    <string name="language_title">ഭാഷ</string>
+    <string name="text_title_thank">നന്ദി!</string>
+    <string name="text_des_thank">ഞങ്ങളുടെ അപ്ലിക്കേഷൻ ഉപയോഗിച്ചതിന് നന്ദി. നിങ്ങളുടെ അവലോകനം സ്റ്റോറിൽ പോസ്റ്റുചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ. ഇത് ഞങ്ങളെ വളരെയധികം സഹായിക്കുകയും പ്രചോദിപ്പിക്കുകയും ചെയ്യും. ഉടൻ കാണാം!</string>
+    <string name="start">തുടക്കംകുറിക്കുക</string>
+    <string name="preview">പിവു</string>
+    <string name="please_select_language">ഭാഷ തിരഞ്ഞെടുക്കുക!</string>
 
 </resources>

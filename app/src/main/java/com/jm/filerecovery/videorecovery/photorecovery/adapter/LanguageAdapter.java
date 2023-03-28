@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.IClickLanguage;
 
 import java.util.List;
 
@@ -23,12 +24,12 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
 
     private Context mContext;
     private List<LanguageModel> languageModelList;
-    private ItemClickListener mItemClickListener;
+    private IClickLanguage iClickLanguage;
 
-    public LanguageAdapter(Context mContext, List<LanguageModel> languageModelList, ItemClickListener mItemClickListener) {
+    public LanguageAdapter(Context mContext, List<LanguageModel> languageModelList, IClickLanguage mItemClickListener) {
         this.mContext = mContext;
         this.languageModelList = languageModelList;
-        this.mItemClickListener = mItemClickListener;
+        this.iClickLanguage = mItemClickListener;
     }
 
     @NonNull
@@ -71,14 +72,27 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
                 img_language.setImageDrawable(mContext.getResources().getDrawable(languageModel.getIcon()));
                 img_language.setBorderColor(mContext.getResources().getColor(R.color.color_9E9E9E));
                 tv_title_language.setText(languageModel.getName());
-                checkbox_language.setChecked(languageModel.getState() == 1);
-                container.setOnClickListener(v -> mItemClickListener.onClickItem(getAdapterPosition()));
-                checkbox_language.setOnClickListener(v -> mItemClickListener.onClickItem(getAdapterPosition()));
+                if (languageModel.getState()) {
+                    checkbox_language.setChecked(true);
+                } else {
+                    checkbox_language.setChecked(false);
+                }
+                container.setOnClickListener(v -> iClickLanguage.onClick(languageModel));
+                checkbox_language.setOnClickListener(v -> iClickLanguage.onClick(languageModel));
             }
         }
     }
 
-    public interface ItemClickListener {
-        void onClickItem(int position);
+
+
+    public void setSelectLanguage(LanguageModel model) {
+        for (LanguageModel data : languageModelList) {
+            if (data.getName().equals(model.getName())) {
+                data.setState(true);
+            } else {
+                data.setState(false);
+            }
+        }
+        notifyDataSetChanged();
     }
 }

@@ -6,7 +6,6 @@
     <string name="rating">Clasificación</string>
     <string name="share">Compartir con amigos</string>
     <string name="policy">POLÍTICA DE PRIVACIDAD</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">Más aplicaciones</string>
     <string name="feedback">Retroalimentación</string>
     <string name="scan">Escanear</string>
@@ -14,9 +13,6 @@
     <string name="scan_tip">La aplicación te ayuda a recuperar fotos eliminadas.\nLa aplicación mostrará todas las imágenes (eliminadas y no eliminadas). Simplemente siga buscando y encontrará las fotos que está buscando.\nTenga paciencia y espere hasta que escanee todas las carpetas y archivos.</string>
     <string name="how_to_work">¿Cómo funciona?</string>
     <string name="restore">Restaurar</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Ver fotos restauradas</string>
     <string name="setting">Ajustes</string>
     <string name="scan_wait">Espere mientras escanea archivos...</string>
@@ -57,7 +53,23 @@
     <string name="scan_tip_1">Seleccione el tipo de archivo que desea recuperar. Tenga paciencia y espere hasta que la aplicación escanee todas las carpetas y archivos.</string>
     <string name="scan_tip_2">Busque el archivo que desea recuperar. Seleccione el archivo y presione el botón restaurar.</string>
     <string name="scan_tip_note">Nota: la aplicación solo funciona en el 80 % de los dispositivos Android. Es posible que algunos dispositivos no puedan recuperar el archivo que busca</string>
+    <string name="next">Próximo</string>
+    <string name="skip">SALTAR</string>
+    <string name="watch_ads_confirm_ring">¡Restaurar sus archivos! Simplemente mire un breve video promocional y puede recuperar el archivo seleccionado.</string>
+    <string name="go_to_google_play">Revisión en Google Play</string>
+    <string name="tks_to_rate">¡Gracias por tu reseña!</string>
+    <string name="are_you_like_me">¿Te encanta esta aplicación?</string>
+    <string name="rate_in_google_play">Califique y comente su opinión sobre Google Play. ¡Gracias!</string>
+    <string name="send">Enviar</string>
+    <string name="second">segundos</string>
+    <string name="ads_after">Los anuncios se muestran después</string>
     <string name="step1">Paso 1:</string>
     <string name="step2">Paso 2:</string>
     <string name="step_note">Nota</string>
+    <string name="language_title">Idioma</string>
+    <string name="text_title_thank">¡Gracias!</string>
+    <string name="text_des_thank">Gracias por usar nuestra aplicación. ¿Podrías publicar tu reseña en la tienda? Esto nos ayudará y nos motivará mucho. ¡Nos vemos pronto!</string>
+    <string name="start">Comenzar</string>
+    <string name="preview">Avance</string>
+    <string name="please_select_language">¡Seleccione el idioma!</string>
 </resources>

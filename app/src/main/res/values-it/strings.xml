@@ -52,8 +52,8 @@
     <string name="free">Gratuito</string>
     <string name="delete_success">Elimina con successo</string>
     <string name="files">"File: %d"</string>
+    <string name="next">Prossimo</string>
     <string name="skip">SALTA</string>
-    <string name="allow_watch_ads">GUARDA GLI ANNUNCI</string>
     <string name="watch_ads_confirm_ring">Ripristina i tuoi file! \nBasta guardare un breve video promozionale e potrai recuperare il file selezionato.</string>
     <string name="go_to_google_play">Recensione su Google Play</string>
     <string name="tks_to_rate">Grazie per la tua recensione!</string>
@@ -62,8 +62,16 @@
     <string name="send">Inviare</string>
     <string name="second">secondi</string>
     <string name="ads_after">Gli annunci vengono visualizzati dopo</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_note">Nota: l\'app funziona solo sull\'80% dei dispositivi Android. Alcuni dispositivi potrebbero non essere in grado di recuperare il file cercato</string>
     <string name="scan_tip_2">Cerca il file che vuoi recuperare. Seleziona il file e premi il pulsante di ripristino.</string>
     <string name="scan_tip_1">Seleziona il tipo di file che vuoi recuperare. Si prega di pazientare e attendere fino a quando l\'app esegue la scansione di tutte le cartelle e i file</string>
+    <string name="step1">Passo 1:</string>
+    <string name="step2">Passo 2:</string>
+    <string name="step_note">Nota</string>
+    <string name="language_title">Lingua</string>
+    <string name="text_title_thank">Grazie!</string>
+    <string name="text_des_thank">Grazie per aver usato la nostra app. Vorresti pubblicare la tua recensione sul negozio. Questo ci aiuterà e ci motiverà molto. Arrivederci!</string>
+    <string name="start">Inizio</string>
+    <string name="preview">Anteprima</string>
+    <string name="please_select_language">Seleziona il linguaggio!</string>
 </resources>

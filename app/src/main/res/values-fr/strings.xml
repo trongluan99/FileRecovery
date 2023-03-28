@@ -6,7 +6,6 @@
     <string name="rating">Évaluation</string>
     <string name="share">Partager avec des amis</string>
     <string name="policy">POLITIQUE DE CONFIDENTIALITÉ</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">Plus d\'application</string>
     <string name="feedback">Retour d\'information</string>
     <string name="scan">Analyse</string>
@@ -14,9 +13,6 @@
     <string name="scan_tip">L\'application vous aide à récupérer les photos supprimées.\nL\'application affichera toutes les images (supprimées et non supprimées). Continuez simplement à chercher et vous trouverez les photos que vous recherchez.\nVeuillez patienter et attendre qu\'il analyse tous les dossiers et fichiers.</string>
     <string name="how_to_work">Comment ça fonctionne?</string>
     <string name="restore">Restaurer</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Afficher les photos restaurées</string>
     <string name="setting">Réglages</string>
     <string name="scan_wait">Veuillez patienter pendant l\'analyse des fichiers...</string>
@@ -57,4 +53,23 @@
     <string name="scan_tip_2">Recherchez le fichier que vous souhaitez récupérer. Sélectionnez le fichier et appuyez sur le bouton de restauration.</string>
     <string name="scan_tip_note">Remarque : L\'application ne fonctionne que sur 80 % des appareils Android. Certains appareils peuvent ne pas être en mesure de récupérer le fichier que vous recherchez</string>
     <string name="scan_tip_1">Sélectionnez le type de fichier que vous souhaitez récupérer. Veuillez patienter et attendre que l\'application analyse tous les dossiers et fichiers</string>
+    <string name="next">Suivant</string>
+    <string name="skip">SAUTER</string>
+    <string name="watch_ads_confirm_ring">Restaurez vos fichiers! Regardez simplement une courte vidéo promotionnelle et vous pouvez récupérer le fichier sélectionné.</string>
+    <string name="go_to_google_play">Revue sur Google Play</string>
+    <string name="tks_to_rate">Merci pour votre critique!</string>
+    <string name="are_you_like_me">Aimez-vous cette application?</string>
+    <string name="rate_in_google_play">Veuillez noter et commenter votre opinion sur Google Play. Merci!</string>
+    <string name="send">Envoyer</string>
+    <string name="second">secondes</string>
+    <string name="ads_after">Les annonces sont affichées après</string>
+    <string name="step1">Étape 1:</string>
+    <string name="step2">Étape 2:</string>
+    <string name="step_note">Note</string>
+    <string name="language_title">Langue</string>
+    <string name="text_title_thank">Merci!</string>
+    <string name="text_des_thank">Merci d\'utiliser notre application. Souhaitez-vous publier votre avis sur le magasin. Cela nous aidera et nous motivera beaucoup. À bientôt!</string>
+    <string name="start">Commencer</string>
+    <string name="preview">Aperçu</string>
+    <string name="please_select_language">Veuillez sélectionner la langue!</string>
 </resources>

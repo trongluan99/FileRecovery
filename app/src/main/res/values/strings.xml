@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">File Recovery</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="rating">Rating</string>
     <string name="share">Share to friends</string>
@@ -22,7 +22,7 @@
     <string name="setting">Settings</string>
     <string name="scan_wait">Please wait while scanning files...</string>
     <string name="not_found">No photos found</string>
-    <string name="restore_now" translatable="false">Restore</string>
+    <string name="restore_now">Restore</string>
     <string name="restore_now2" translatable="false">Restore</string>
     <string name="let_start">Let\'s Start</string>
     <string name="restoring_number_format">Restored ... %d files</string>
@@ -56,21 +56,8 @@
     <string name="free">Free</string>
     <string name="delete_success">Delete successfully</string>
     <string name="files">"Files: %d"</string>
-    <string name="skip">SKIP</string>
+    <string name="default_notification_channel_id" translatable="false">file_recover_jm</string>
     <string name="allow_watch_ads" translatable="false">WATCH ADS</string>
-    <string name="watch_ads_confirm_ring">Restore your files! \n Just watch a short promotional video and you can recover the selected file.</string>
-    <string name="go_to_google_play">Review On Google Play</string>
-    <string name="tks_to_rate">Thanks for your review!</string>
-    <string name="are_you_like_me">Do you love this app?</string>
-    <string name="rate_in_google_play">Please rate and comment your opinion on google play. Thank you!</string>
-    <string name="send">Send</string>
-    <string name="second">seconds</string>
-    <string name="ads_after">Ads are displayed after</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
-
-    <string name="language_title">Language</string>
-    <string name="text_title_thank">Thank You!</string>
-    <string name="text_des_thank">Thank you for using our App. Would you to post your review on store. This will help and motivate us a lot. See you soon!</string>
 
     //Info id admob id publish
 <!--    <string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string>-->
@@ -113,23 +100,38 @@
     <string name="open_lunch_medium" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="open_lunch_normal" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app_resume" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
-
-
 <!--    <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>-->
-    <string name="email_feedback">glorymobile88@gmail.com</string>
-    <string name="next">Next</string>
+    <string name="email_feedback" translatable="false">glorymobile88@gmail.com</string>
     <string name="scan_tip_1">Select the file type you want to recover. Please be patient and wait until the app scans all folders and files</string>
     <string name="scan_tip_2">Search for the file you want to recover. Select the file and press the restore button.</string>
     <string name="scan_tip_note">Note: The app only works on 80% of Android devices. Some devices may not be able to recover the file you seek</string>
-    <string name="step1">Step 1:</string>
-    <string name="step2">Step 2:</string>
-    <string name="step_note">Note</string>
+
     <string name="facebook_app_id" translatable="false">1232552674030733</string>
     <string name="facebook_client_token" translatable="false">20945fd6f19af05f719b5d065ebda4ac</string>
 
+    <string name="press_to_move" translatable="false"><![CDATA[Press & hold item to move]]></string>
 
-    <string name="press_to_move"><![CDATA[Press & hold item to move]]></string>
+
+    <string name="skip">SKIP</string>
+    <string name="watch_ads_confirm_ring">Restore your files! \n Just watch a short promotional video and you can recover the selected file.</string>
+    <string name="go_to_google_play">Review On Google Play</string>
+    <string name="tks_to_rate">Thanks for your review!</string>
+    <string name="are_you_like_me">Do you love this app?</string>
+    <string name="rate_in_google_play">Please rate and comment your opinion on google play. Thank you!</string>
+    <string name="send">Send</string>
+    <string name="second">seconds</string>
+    <string name="ads_after">Ads are displayed after</string>
+    <string name="language_title">Language</string>
+    <string name="text_title_thank">Thank You!</string>
+    <string name="text_des_thank">Thank you for using our App. Would you to post your review on store. This will help and motivate us a lot. See you soon!</string>
+    <string name="step1">Step 1:</string>
+    <string name="step2">Step 2:</string>
+    <string name="step_note">Note</string>
+    <string name="next">Next</string>
     <string name="start">Start</string>
     <string name="preview">Preview</string>
+
+    <string name="please_select_language">Please select language!</string>
+
 
 </resources>

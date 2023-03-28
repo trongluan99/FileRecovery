@@ -52,7 +52,6 @@
     <string name="delete_success">Erfolgreich löschen</string>
     <string name="files">"Dateien: %d"</string>
     <string name="skip">ÜBERSPRINGEN</string>
-    <string name="allow_watch_ads">ANZEIGEN ANSEHEN</string>
     <string name="watch_ads_confirm_ring">Stellen Sie Ihre Dateien wieder her! \nSehen Sie sich einfach ein kurzes Werbevideo an und Sie können die ausgewählte Datei wiederherstellen.</string>
     <string name="go_to_google_play">Rezension auf Google Play</string>
     <string name="tks_to_rate">Vielen Dank für Ihre Bewertung!</string>
@@ -61,9 +60,17 @@
     <string name="send">Senden</string>
     <string name="second">Sekunden</string>
     <string name="ads_after">Anzeigen werden danach angezeigt</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_1">Wählen Sie den Dateityp aus, den Sie wiederherstellen möchten. Bitte haben Sie etwas Geduld und warten Sie, bis die App alle Ordner und Dateien gescannt hat</string>
     <string name="scan_tip_2">Suchen Sie nach der Datei, die Sie wiederherstellen möchten. Wählen Sie die Datei aus und drücken Sie die Wiederherstellungstaste.</string>
     <string name="scan_tip_note">Hinweis: Die App funktioniert nur auf 80 % der Android-Geräte. Einige Geräte können die gesuchte Datei möglicherweise nicht wiederherstellen</string>
     <string name="next">Nächste</string>
+    <string name="step1">Schritt 1:</string>
+    <string name="step2">Schritt 2:</string>
+    <string name="step_note">Notiz</string>
+    <string name="language_title">Sprache</string>
+    <string name="text_title_thank">Danke schön!</string>
+    <string name="text_des_thank">Vielen Dank, dass Sie unsere App verwendet haben. Würden Sie Ihre Bewertung im Geschäft veröffentlichen? Dies wird uns sehr helfen und uns sehr motivieren. Bis bald!</string>
+    <string name="start">Start</string>
+    <string name="preview">Vorschau</string>
+    <string name="please_select_language">Bitte wählen Sie Sprache!</string>
 </resources>

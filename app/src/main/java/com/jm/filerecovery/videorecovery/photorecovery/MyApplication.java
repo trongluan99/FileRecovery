@@ -1,10 +1,18 @@
 package com.jm.filerecovery.videorecovery.photorecovery;
+import android.content.res.Resources;
+import android.os.Build;
+
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
 import com.ads.control.application.AdsMultiDexApplication;
 import com.ads.control.config.AperoAdConfig;
+import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MyApplication extends AdsMultiDexApplication {
@@ -38,6 +46,65 @@ public class MyApplication extends AdsMultiDexApplication {
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(IntroduceActivity.class);
+    }
+
+
+
+    public LanguageModel getLanguage() {
+        LanguageModel languageModel = null;
+        String lang = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            lang = Resources.getSystem().getConfiguration().getLocales().get(0).getLanguage();
+        } else {
+            lang = Resources.getSystem().getConfiguration().locale.getLanguage();
+        }
+
+        String key = "";
+        if (!SystemUtil.getLanguageApp().contains(lang)) {
+            key = "";
+        } else {
+            key = lang;
+        }
+
+        for (LanguageModel model : getListLanguageApp()) {
+            if (key.equals(model.getId())) {
+                languageModel = model;
+                break;
+            }
+        }
+        return languageModel;
+    }
+
+    public List<LanguageModel> getListLanguageApp() {
+        ArrayList<LanguageModel> lists = new ArrayList();
+        lists.add(new LanguageModel("Arabic", "ar", false, R.drawable.img_language_ar));
+        lists.add(new LanguageModel("Czech", "cs", false, R.drawable.img_languages_czech));
+        lists.add(new LanguageModel("German", "de", false, R.drawable.img_language_de));
+        lists.add(new LanguageModel("Spanish", "es", false, R.drawable.img_language_spanish));
+        lists.add(new LanguageModel("Filipino", "fil", false, R.drawable.img_languages_filipino));
+        lists.add(new LanguageModel("French", "fr", false, R.drawable.img_languages_french));
+        lists.add(new LanguageModel("Hindi", "hi", false, R.drawable.img_languages_hindi));
+        lists.add(new LanguageModel("Croatian", "hr", false, R.drawable.img_languages_croatian));
+        lists.add(new LanguageModel("Indonesian", "in", false, R.drawable.img_language_indo));
+        lists.add(new LanguageModel("Italian", "it", false, R.drawable.img_language_it));
+        lists.add(new LanguageModel("Japanese", "ja", false, R.drawable.img_language_japan));
+        lists.add(new LanguageModel("Korean", "ko", false, R.drawable.img_language_korean));
+        lists.add(new LanguageModel("Malayalam", "ml", false, R.drawable.img_languages_malayalam));
+        lists.add(new LanguageModel("Malay", "ms", false, R.drawable.img_language_ms));
+        lists.add(new LanguageModel("Polish", "pl", false, R.drawable.img_languages_polish));
+        lists.add(new LanguageModel("Portuguese", "pt", false, R.drawable.img_language_pt));
+        lists.add(new LanguageModel("Russian", "ru", false, R.drawable.img_language_ru));
+        lists.add(new LanguageModel("Serbian", "sr", false, R.drawable.img_languages_serbian));
+        lists.add(new LanguageModel("Swedish", "sv", false, R.drawable.img_languages_swedish));
+        lists.add(new LanguageModel("Thai", "th", false, R.drawable.img_languages_thai));
+        lists.add(new LanguageModel("Turkish", "tr", false, R.drawable.img_langguages_turkish));
+        lists.add(new LanguageModel("Vietnamese", "vi", false, R.drawable.img_language_vi));
+        lists.add(new LanguageModel("Dutch", "nl", false, R.drawable.img_languages_dutch));
+        lists.add(new LanguageModel("English", "en", false, R.drawable.img_language_en));
+        lists.add(new LanguageModel("Chinese", "zh", false, R.drawable.img_language_china));
+        lists.add(new LanguageModel("Chinese (Hong Kong)", "zh-HK", false, R.drawable.img_languages_hong_kong));
+        lists.add(new LanguageModel("Taiwan", "zh-TW", false, R.drawable.img_languages_taiwan));
+        return lists;
     }
 
 //    @NonNull

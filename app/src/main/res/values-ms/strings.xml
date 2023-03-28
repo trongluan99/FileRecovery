@@ -6,7 +6,6 @@
     <string name="rating">Penilaian</string>
     <string name="share">Kongsikan kepada rakan-rakan</string>
     <string name="policy">PRIVACY POLICY</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">More App</string>
     <string name="feedback">Feedback</string>
     <string name="scan">Imbas</string>
@@ -14,9 +13,6 @@
     <string name="scan_tip">Apl membantu anda memulihkan foto yang dipadamkan.</string>
     <string name="how_to_work">Bagaimana ia berfungsi?</string>
     <string name="restore">Pulihkan</string>
-    <string name="restore_folder_path_photo" translatable="false">Restored_Photos</string>
-    <string name="restore_folder_path_video" translatable="false">Restored_Videos</string>
-    <string name="restore_folder_path_audio" translatable="false">Restored_Audios</string>
     <string name="view_restored_photos">Lihat Foto Dipulihkan</string>
     <string name="setting">tetapan</string>
     <string name="scan_wait">Sila tunggu semasa mengimbas fail...</string>
@@ -55,7 +51,6 @@
     <string name="delete_success">Padam berjaya</string>
     <string name="files">Fail: %d</string>
     <string name="skip">SKIP</string>
-    <string name="allow_watch_ads">WATCH ADS</string>
     <string name="watch_ads_confirm_ring">Pulihkan fail anda!
   Hanya menonton video promosi pendek dan anda boleh memulihkan fail yang dipilih.</string>
     <string name="go_to_google_play">Semakan Di Google Play</string>
@@ -65,13 +60,20 @@
     <string name="send">Hantar</string>
     <string name="second">detik</string>
     <string name="ads_after">Iklan dipaparkan selepas</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
 
+    <string name="step1">Langkah 1:</string>
+    <string name="step2">Langkah 2:</string>
+    <string name="step_note">Catatan</string>
     <string name="language_title">Bahasa</string>
     <string name="scan_tip_1">Pilih jenis fail yang anda mahu pulihkan. Sila bersabar dan tunggu sehingga apl mengimbas semua folder dan fail</string>
     <string name="scan_tip_2">Cari fail yang ingin anda pulihkan. Pilih fail dan tekan butang pulihkan.</string>
     <string name="scan_tip_note">Nota: Apl ini hanya berfungsi pada 80% peranti Android. Sesetengah peranti mungkin tidak dapat memulihkan fail yang anda cari</string>
     <string name="next">Seterusnya</string>
+    <string name="text_title_thank">Terima kasih!</string>
+    <string name="text_des_thank">Terima kasih kerana menggunakan aplikasi kami. Adakah anda akan menghantar ulasan anda di kedai. Ini akan membantu dan memotivasi kita banyak. Jumpa lagi!</string>
+    <string name="start">Mula</string>
+    <string name="preview">Pratonton</string>
+    <string name="please_select_language">Sila pilih bahasa!</string>
 
 
 </resources>

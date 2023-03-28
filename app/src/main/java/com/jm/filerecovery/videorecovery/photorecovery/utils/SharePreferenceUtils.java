@@ -62,6 +62,15 @@ public class SharePreferenceUtils {
         return pre.getString("setSaveLanguage", "en");
     }
 
+    public void setSaveNameLanguage(String language) {
+        editor.putString("setSaveNameLanguage", language);
+        editor.commit();
+    }
+
+    public String getSaveNameLanguage() {
+        return pre.getString("setSaveNameLanguage", "English");
+    }
+
     public void setSelectedLanguage(boolean b) {
         editor.putBoolean("setSelectedLanguage", b);
         editor.commit();
@@ -78,4 +87,11 @@ public class SharePreferenceUtils {
     public Long getLastTimeShowInter() {
         return pre.getLong("LastTimeShowInter", 0);
     }
+
+
+
+    public boolean isStartLang(Context context) {
+        return pre.getBoolean("LanguageFirst", false);
+    }
+
 }

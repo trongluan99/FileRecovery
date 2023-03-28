@@ -52,7 +52,6 @@
     <string name="delete_success">删除成功</string>
     <string name="files">“文件：%d”</string>
     <string name="skip">跳过</string>
-    <string name="allow_watch_ads">观看广告</string>
     <string name="watch_ads_confirm_ring">恢复您的文件！ \n只需观看简短的宣传视频，即可恢复所选文件。</string>
     <string name="go_to_google_play">在 Google Play 上评论</string>
     <string name="tks_to_rate">感谢您的点评！</string>
@@ -61,9 +60,17 @@
     <string name="send">发送</string>
     <string name="second">秒</string>
     <string name="ads_after">广告在之后显示</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_1">选择要恢复的文件类型。 请耐心等待应用程序扫描所有文件夹和文件</string>
     <string name="scan_tip_2">搜索要恢复的文件。 选择文件并按恢复按钮。</string>
     <string name="scan_tip_note">注意：该应用程序仅适用于 80% 的 Android 设备。 某些设备可能无法恢复您寻找的文件</string>
     <string name="next">下一个</string>
+    <string name="step1">步骤1：</string>
+    <string name="step2">第2步：</string>
+    <string name="step_note">笔记</string>
+    <string name="language_title">语言</string>
+    <string name="text_title_thank">谢谢你！</string>
+    <string name="text_des_thank">感谢您使用我们的应用。您可以在商店中发布评论吗？这将有助于我们很多。再见！</string>
+    <string name="start">开始</string>
+    <string name="preview">预览</string>
+    <string name="please_select_language">请选择语言！</string>
 </resources>

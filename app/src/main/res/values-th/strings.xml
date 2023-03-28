@@ -51,7 +51,6 @@
     <string name="delete_success">ลบสำเร็จ</string>
     <string name="files">"ไฟล์: %d"</string>
     <string name="skip">ข้าม</string>
-    <string name="allow_watch_ads">ดูโฆษณา</string>
     <string name="watch_ads_confirm_ring">กู้คืนไฟล์ของคุณ! \nเพียงดูวิดีโอโปรโมตสั้นๆ คุณก็จะกู้คืนไฟล์ที่เลือกได้</string>
     <string name="go_to_google_play">รีวิวบน Google Play</string>
     <string name="tks_to_rate">ขอบคุณสำหรับความคิดเห็นของคุณ!</string>
@@ -60,7 +59,6 @@
     <string name="send">ส่ง</string>
     <string name="second">วินาที</string>
     <string name="ads_after">โฆษณาจะแสดงหลังจาก</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_1">เลือกประเภทไฟล์ที่คุณต้องการกู้คืน โปรดอดใจรอจนกว่าแอปจะสแกนโฟลเดอร์และไฟล์ทั้งหมด</string>
     <string name="scan_tip_2">ค้นหาไฟล์ที่คุณต้องการกู้คืน เลือกไฟล์แล้วกดปุ่มกู้คืน</string>
     <string name="scan_tip_note">หมายเหตุ: แอปใช้งานได้บนอุปกรณ์ Android 80% เท่านั้น อุปกรณ์บางอย่างอาจไม่สามารถกู้คืนไฟล์ที่คุณต้องการได้</string>
@@ -68,4 +66,10 @@
     <string name="step2">ขั้นตอนที่ 2:</string>
     <string name="step_note">บันทึก</string>
     <string name="next">ต่อไป</string>
+    <string name="language_title">ภาษา</string>
+    <string name="text_title_thank">ขอบคุณ!</string>
+    <string name="text_des_thank">ขอบคุณที่ใช้แอพของเรา คุณจะโพสต์รีวิวของคุณในร้านค้าหรือไม่ สิ่งนี้จะช่วยและกระตุ้นให้เราได้มาก เจอกันเร็ว ๆ นี้!</string>
+    <string name="start">เริ่ม</string>
+    <string name="preview">ดูตัวอย่าง</string>
+    <string name="please_select_language">กรุณาเลือกภาษา!</string>
 </resources>

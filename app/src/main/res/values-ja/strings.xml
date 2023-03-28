@@ -51,7 +51,6 @@
     <string name="delete_success">削除しました</string>
     <string name="files">"ファイル: %d"</string>
     <string name="skip">スキップ</string>
-    <string name="allow_watch_ads">広告を見る</string>
     <string name="watch_ads_confirm_ring">ファイルを復元してください！ \n短いプロモーション ビデオを見るだけで、選択したファイルを復元できます。</string>
     <string name="go_to_google_play">Google Play でレビューする</string>
     <string name="tks_to_rate">レビューありがとうございます！</string>
@@ -60,9 +59,17 @@
     <string name="send">送信</string>
     <string name="second">秒</string>
     <string name="ads_after">広告は次の後に表示されます</string>
-    <string name="default_notification_channel_id">file_recover_jm</string>
     <string name="scan_tip_1">回復するファイルの種類を選択します。 アプリがすべてのフォルダとファイルをスキャンするまで、しばらくお待ちください</string>
     <string name="scan_tip_2">回復したいファイルを検索します。 ファイルを選択し、復元ボタンを押します。</string>
     <string name="scan_tip_note">注: アプリは 80% の Android デバイスでのみ動作します。 一部のデバイスでは、探しているファイルを回復できない場合があります</string>
     <string name="next">次</string>
+    <string name="step1">ステップ1：</string>
+    <string name="step2">ステップ2：</string>
+    <string name="step_note">ノート</string>
+    <string name="language_title">言語</string>
+    <string name="text_title_thank">ありがとう！</string>
+    <string name="text_des_thank">アプリを使用していただきありがとうございます。レビューを店に投稿しますか。これは私たちを大いに助けてくれるでしょう。また近いうちにお会いしましょう！</string>
+    <string name="start">始める</string>
+    <string name="preview">プレビュー</string>
+    <string name="please_select_language">言語を選択してください！</string>
 </resources>

@@ -6,7 +6,6 @@
     <string name="rating">تقييم</string>
     <string name="share">شارك مع الأصدقاء</string>
     <string name="policy">سياسة الخصوصية</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">المزيد من التطبيقات</string>
     <string name="feedback">استجابة</string>
     <string name="scan">مسح</string>
@@ -14,9 +13,6 @@
     <string name="scan_tip">يساعدك التطبيق على استعادة الصور المحذوفة. \nسيعرض التطبيق جميع الصور (محذوفة وغير محذوفة). استمر في البحث وستجد الصور التي تبحث عنها. \nيرجى التحلي بالصبر والانتظار حتى يقوم بمسح كافة المجلدات والملفات.</string>
     <string name="how_to_work">كيف تعمل؟</string>
     <string name="restore">يعيد</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">عرض الصور المستعادة</string>
     <string name="setting">إعدادات</string>
     <string name="scan_wait">الرجاء الانتظار أثناء فحص الملفات ...</string>
@@ -58,4 +54,22 @@
     <string name="scan_tip_note">ملاحظة: التطبيق يعمل فقط على 80٪ من أجهزة Android. قد لا تتمكن بعض الأجهزة من استرداد الملف الذي تبحث عنه</string>
     <string name="scan_tip_1">حدد نوع الملف الذي تريد استعادته. يرجى التحلي بالصبر والانتظار حتى يقوم التطبيق بمسح جميع المجلدات والملفات</string>
     <string name="next">التالي</string>
+    <string name="skip">يتخطى</string>
+    <string name="watch_ads_confirm_ring">استعادة ملفاتك! \\ n فقط شاهد مقطع فيديو ترويجي قصير ويمكنك استرداد الملف المحدد.</string>
+    <string name="go_to_google_play">مراجعة على Google Play</string>
+    <string name="tks_to_rate">شكرا لمراجعتك!</string>
+    <string name="are_you_like_me">هل تحب هذا التطبيق؟</string>
+    <string name="rate_in_google_play">يرجى التقييم والتعليق رأيك في Google Play. شكرًا لك!</string>
+    <string name="send">يرسل</string>
+    <string name="second">ثوان</string>
+    <string name="ads_after">يتم عرض الإعلانات بعد</string>
+    <string name="step1">الخطوة 1:</string>
+    <string name="step2">الخطوة 2:</string>
+    <string name="step_note">ملحوظة</string>
+    <string name="language_title">لغة</string>
+    <string name="text_title_thank">شكرًا لك!</string>
+    <string name="text_des_thank">شكرا لك على استخدام تطبيقنا. هل تنشر مراجعتك على المتجر. هذا سوف يساعدنا وتحفيزنا كثيرًا. اراك قريبا!</string>
+    <string name="start">يبدأ</string>
+    <string name="preview">معاينة</string>
+    <string name="please_select_language">الرجاء تحديد اللغة!</string>
 </resources>

@@ -6,7 +6,6 @@
     <string name="rating">Рейтинг</string>
     <string name="share">Поделитесь с друзьями</string>
     <string name="policy">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">Больше приложений</string>
     <string name="feedback">Обратная связь</string>
     <string name="scan">Сканировать</string>
@@ -14,9 +13,6 @@
     <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\nПриложение покажет все изображения (удаленные и не удаленные). Просто продолжайте искать, и вы найдете нужные фотографии.\nНаберитесь терпения и подождите, пока программа просканирует все папки и файлы.</string>
     <string name="how_to_work">Как это работает?</string>
     <string name="restore">Восстановить</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Посмотреть восстановленные фотографии</string>
     <string name="setting">Настройки</string>
     <string name="scan_wait">Пожалуйста, подождите, пока сканируются файлы...</string>
@@ -58,4 +54,22 @@
     <string name="scan_tip_2">Найдите файл, который хотите восстановить. Выберите файл и нажмите кнопку восстановления.</string>
     <string name="scan_tip_1">Выберите тип файла, который вы хотите восстановить. Пожалуйста, наберитесь терпения и подождите, пока приложение просканирует все папки и файлы.</string>
     <string name="next">Следующий</string>
+    <string name="skip">ПРОПУСКАТЬ</string>
+    <string name="watch_ads_confirm_ring">Восстановите свои файлы! Просто посмотрите короткое рекламное видео, и вы можете восстановить выбранный файл.</string>
+    <string name="go_to_google_play">Обзор на Google Play</string>
+    <string name="tks_to_rate">Спасибо за ваш обзор!</string>
+    <string name="are_you_like_me">Вы любите это приложение?</string>
+    <string name="rate_in_google_play">Пожалуйста, оцените и прокомментируйте свое мнение о Google Play. Спасибо!</string>
+    <string name="send">Отправлять</string>
+    <string name="second">секунды</string>
+    <string name="ads_after">Реклама отображается после</string>
+    <string name="step1">Шаг 1:</string>
+    <string name="step2">Шаг 2:</string>
+    <string name="step_note">Примечание</string>
+    <string name="language_title">Язык</string>
+    <string name="text_title_thank">Спасибо!</string>
+    <string name="text_des_thank">Спасибо за использование нашего приложения. Не могли бы вы опубликовать свой обзор в магазине. Это очень поможет и мотивирует нас. До скорой встречи!</string>
+    <string name="start">Начинать</string>
+    <string name="preview">Предварительный просмотр</string>
+    <string name="please_select_language">Пожалуйста, выберите язык!</string>
 </resources>

@@ -5,7 +5,6 @@
     <string name="rating">Xếp hạng</string>
     <string name="share">Chia sẻ cho bạn bè</string>
     <string name="policy">CHÍNH SÁCH BẢO MẬT</string>
-    <string name="link_policy" translatable="false">https://policy.com</string>
     <string name="more_app">Nhiều ứng dụng hơn</string>
     <string name="feedback">Nhận xét</string>
     <string name="scan">Quét</string>
@@ -13,9 +12,6 @@
     <string name="scan_tip">Ứng dụng giúp bạn khôi phục ảnh đã xóa.\n Ứng dụng sẽ hiển thị tất cả ảnh (Đã xóa và Chưa xóa). Chỉ cần Tiếp tục tìm và bạn sẽ tìm thấy ảnh mình đang tìm. \n Hãy kiên nhẫn và đợi cho đến khi nó quét tất cả các thư mục và tệp.</string>
     <string name="how_to_work">Làm thế nào nó hoạt động?</string>
     <string name="restore">Khôi phục</string>
-    <string name="restore_folder_path_photo" translatable="false">RestoredPhotos</string>
-    <string name="restore_folder_path_video" translatable="false">RestoredVideos</string>
-    <string name="restore_folder_path_audio" translatable="false">RestoredAudios</string>
     <string name="view_restored_photos">Xem ảnh đã khôi phục</string>
     <string name="setting">Cài đặt</string>
     <string name="scan_wait">Vui lòng đợi trong khi quét tệp ...</string>
@@ -53,7 +49,6 @@
     <string name="free">Trống</string>
     <string name="delete_success">Xóa thành công</string>
     <string name="files">"Tệp: %d"</string>
-    <string name="allow_watch_ads">XEM QUẢNG CÁO</string>
     <string name="skip">BỎ QUA</string>
     <string name="watch_ads_confirm_ring">Khôi phục file của bạn! \n Chỉ cần xem một đoạn video quảng cáo ngắn và bạn có thể khôi phục file đã chọn.</string>
     <string name="go_to_google_play">Đánh giá trên Google Play</string>
@@ -70,4 +65,10 @@
     <string name="step2">Bước 2:</string>
     <string name="step1">Bước 1:</string>
     <string name="next">Tiếp theo</string>
+    <string name="language_title">Ngôn ngữ</string>
+    <string name="text_title_thank">Cảm ơn!</string>
+    <string name="text_des_thank">Cảm ơn bạn đã sử dụng ứng dụng của chúng tôi. Bạn có thể đăng đánh giá của bạn trên cửa hàng. Điều này sẽ giúp và thúc đẩy chúng tôi rất nhiều. Hẹn sớm gặp lại!</string>
+    <string name="start">Băt đầu</string>
+    <string name="preview">Xem trước</string>
+    <string name="please_select_language">Vui lòng chọn ngôn ngữ!</string>
 </resources>

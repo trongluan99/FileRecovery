@@ -10,30 +10,30 @@
     <string name="feedback">प्रतिपुष्टि</string>
     <string name="scan">स्कैन</string>
 
-    <string name="scan_tip">ऐप आपको हटाए गए फ़ोटो को पुनर्प्राप्त करने में मदद करता है।\nऐप सभी छवियों को दिखाएगा (हटाए गए और हटाए नहीं गए)। बस खोजते रहें और आपको वे फ़ोटो मिल जाएंगी जिनकी आप तलाश कर रहे हैं।\nकृपया धैर्य रखें और तब तक प्रतीक्षा करें जब तक कि यह सभी फ़ोल्डरों और फ़ाइलों को स्कैन न कर ले।</string>
+    <string name="scan_tip">ऐप आपको हटाए गए फ़ोटो को पुनर्प्राप्त करने में मदद करता है। \n ऐप सभी छवियों को दिखाएगा (हटाए गए और हटाए नहीं गए)। बस खोजते रहें और आपको वे फ़ोटो मिल जाएंगी जिनकी आप तलाश कर रहे हैं।\nकृपया धैर्य रखें और तब तक प्रतीक्षा करें जब तक कि यह सभी फ़ोल्डरों और फ़ाइलों को स्कैन न कर ले।</string>
     <string name="how_to_work">यह काम किस प्रकार करता है?</string>
     <string name="restore">पुनर्स्थापित करना</string>
     <string name="view_restored_photos">पुनर्स्थापित तस्वीरें देखें</string>
     <string name="setting">समायोजन</string>
-    <string name="scan_wait">फ़ाइलें स्कैन करते समय कृपया प्रतीक्षा करें...</string>
+    <string name="scan_wait">फ़ाइलें स्कैन करते समय कृपया प्रतीक्षा करें…</string>
     <string name="not_found">कोई फ़ोटो नहीं मिला</string>
     <string name="restore_now">अभी पुनर्स्थापित करें</string>
     <string name="let_start">चलो शुरू करते हैं</string>
-    <string name="restoring_number_format">पुनर्स्थापित ... %d फ़ाइलें</string>
+    <string name="restoring_number_format">पुनर्स्थापित … %d फ़ाइलें</string>
     <string name="restore_photo">हटाई गई फ़ाइलें पुनर्स्थापित करें</string>
     <string name="photo_recovery">फोटो रिकवरी</string>
 
     <string name="language_setting">भाषा</string>
 
     <string name="not_found_audio">ऑडियो नहीं मिला</string>
-    <string name="analyzing">विश्लेषण कर रहा है...</string>
+    <string name="analyzing">विश्लेषण कर रहा है…</string>
     <string name="video_recovery">वीडियो रिकवरी</string>
     <string name="audio_recovery">ऑडियो रिकवरी</string>
     <string name="restore_file">फ़ाइल पुनर्स्थापित करें</string>
-    <string name="restoring_video">वीडियो बहाल किया जा रहा है...</string>
+    <string name="restoring_video">वीडियो बहाल किया जा रहा है…</string>
     <string name="open_file">खुली फाइल</string>
     <string name="share_file">फ़ाइल साझा करें</string>
-    <string name="restoring_number_format_audio">पुनर्स्थापित ... %d फ़ाइलें</string>
+    <string name="restoring_number_format_audio">पुनर्स्थापित … %d फ़ाइलें</string>
     <string name="feature">विशेषता</string>
     <string name="image">छवि</string>
     <string name="video">वीडियो</string>
@@ -52,7 +52,7 @@
     <string name="delete_success">सफलतापूर्वक हटाएं</string>
     <string name="files">"फ़ाइलें:%d"</string>
     <string name="skip">छोड़ें</string>
-    <string name="watch_ads_confirm_ring">अपनी फ़ाइलें पुनर्स्थापित करें! \nबस एक छोटा प्रचार वीडियो देखें और आप चयनित फ़ाइल को पुनर्प्राप्त कर सकते हैं।</string>
+    <string name="watch_ads_confirm_ring">अपनी फ़ाइलें पुनर्स्थापित करें! \n बस एक छोटा प्रचार वीडियो देखें और आप चयनित फ़ाइल को पुनर्प्राप्त कर सकते हैं।</string>
     <string name="go_to_google_play">Google Play पर समीक्षा करें</string>
     <string name="tks_to_rate">आपकी समीक्षा के लिए धन्यवाद!</string>
     <string name="are_you_like_me">क्या आप इस ऐप से प्यार करते हैं?</string>

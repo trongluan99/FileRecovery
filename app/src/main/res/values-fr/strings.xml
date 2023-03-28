@@ -10,29 +10,29 @@
     <string name="feedback">Retour d\'information</string>
     <string name="scan">Analyse</string>
 
-    <string name="scan_tip">L\'application vous aide à récupérer les photos supprimées.\nL\'application affichera toutes les images (supprimées et non supprimées). Continuez simplement à chercher et vous trouverez les photos que vous recherchez.\nVeuillez patienter et attendre qu\'il analyse tous les dossiers et fichiers.</string>
+    <string name="scan_tip">application vous aide à récupérer les photos supprimées.\n application affichera toutes les images (supprimées et non supprimées). Continuez simplement à chercher et vous trouverez les photos que vous recherchez.\nVeuillez patienter et attendre qu\'il analyse tous les dossiers et fichiers.</string>
     <string name="how_to_work">Comment ça fonctionne?</string>
     <string name="restore">Restaurer</string>
     <string name="view_restored_photos">Afficher les photos restaurées</string>
     <string name="setting">Réglages</string>
-    <string name="scan_wait">Veuillez patienter pendant l\'analyse des fichiers...</string>
+    <string name="scan_wait">Veuillez patienter pendant l\'analyse des fichiers…</string>
     <string name="not_found">Aucune photo trouvée</string>
     <string name="restore_now">Restaurer maintenant</string>
     <string name="let_start">Commençons</string>
-    <string name="restoring_number_format">Restauré... %d fichiers</string>
+    <string name="restoring_number_format">Restauré… %d fichiers</string>
     <string name="restore_photo">Restaurer les fichiers supprimés</string>
     <string name="photo_recovery">Récupération de photos</string>
 
     <string name="language_setting">Langue</string>
     <string name="not_found_audio">Audio introuvable</string>
-    <string name="analyzing">En cours d\'analyse...</string>
+    <string name="analyzing">En cours d\'analyse…</string>
     <string name="video_recovery">Récupération vidéo</string>
     <string name="audio_recovery">Récupération audio</string>
     <string name="restore_file">Restaurer le fichier</string>
-    <string name="restoring_video">Restauration de la vidéo...</string>
+    <string name="restoring_video">Restauration de la vidéo…</string>
     <string name="open_file">Fichier ouvert</string>
     <string name="share_file">Partager le fichier</string>
-    <string name="restoring_number_format_audio">Restauré... %d fichiers</string>
+    <string name="restoring_number_format_audio">Restauré… %d fichiers</string>
     <string name="feature">Caractéristique</string>
     <string name="image">Image</string>
     <string name="video">Vidéo</string>

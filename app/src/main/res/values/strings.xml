@@ -20,25 +20,25 @@
     <string name="restore_folder_path_audio" translatable="false">Restored_Audios</string>
     <string name="view_restored_photos">View Restored Photos</string>
     <string name="setting">Settings</string>
-    <string name="scan_wait">Please wait while scanning files...</string>
+    <string name="scan_wait">Please wait while scanning files…</string>
     <string name="not_found">No photos found</string>
     <string name="restore_now">Restore</string>
     <string name="restore_now2" translatable="false">Restore</string>
     <string name="let_start">Let\'s Start</string>
-    <string name="restoring_number_format">Restored ... %d files</string>
+    <string name="restoring_number_format">Restored … %d files</string>
     <string name="restore_photo">Restore Deleted Files</string>
     <string name="photo_recovery">Photo Recovery</string>
 
     <string name="language_setting">Language</string>
     <string name="not_found_audio">Not found audio</string>
-    <string name="analyzing">Analyzing...</string>
+    <string name="analyzing">Analyzing…</string>
     <string name="video_recovery">Video Recovery</string>
     <string name="audio_recovery">Audio Recovery</string>
     <string name="restore_file">Restore File</string>
-    <string name="restoring_video">Restoring video...</string>
+    <string name="restoring_video">Restoring video…</string>
     <string name="open_file">Open File</string>
     <string name="share_file">Share File</string>
-    <string name="restoring_number_format_audio">Restored ... %d files</string>
+    <string name="restoring_number_format_audio">Restored … %d files</string>
     <string name="feature">Feature</string>
     <string name="image">Image</string>
     <string name="video">Video</string>

@@ -19,21 +19,21 @@
     <string name="not_found">未找到照片</string>
     <string name="restore_now">立即恢复</string>
     <string name="let_start">开始吧</string>
-    <string name="restoring_number_format">已恢复... %d 个文件</string>
+    <string name="restoring_number_format">已恢复… %d 个文件</string>
     <string name="restore_photo">恢复已删除的文件</string>
     <string name="photo_recovery">照片恢复</string>
 
     <string name="language_setting">语</string>
 
     <string name="not_found_audio">找不到音频</string>
-    <string name="analyzing">分析...</string>
+    <string name="analyzing">分析…</string>
     <string name="video_recovery">视频恢复</string>
     <string name="audio_recovery">音频恢复</string>
     <string name="restore_file">恢复文件</string>
-    <string name="restoring_video">正在恢复视频...</string>
+    <string name="restoring_video">正在恢复视频…</string>
     <string name="open_file">打开文件</string>
     <string name="share_file">共享文件</string>
-    <string name="restoring_number_format_audio">已恢复... %d 个文件</string>
+    <string name="restoring_number_format_audio">已恢复… %d 个文件</string>
     <string name="feature">特征</string>
     <string name="image">图片</string>
     <string name="video">视频</string>

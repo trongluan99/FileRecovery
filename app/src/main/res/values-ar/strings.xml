@@ -19,7 +19,7 @@
     <string name="not_found">لم يتم العثور على صور</string>
     <string name="restore_now">استعادة الآن</string>
     <string name="let_start">لنبدأ</string>
-    <string name="restoring_number_format">تمت الاستعادة ...٪ d ملفات</string>
+    <string name="restoring_number_format">تمت الاستعادة ...%d ملفات</string>
     <string name="restore_photo">استعادة الملفات المحذوفة</string>
     <string name="photo_recovery">استعادة الصور</string>
 
@@ -32,7 +32,7 @@
     <string name="restoring_video">استعادة الفيديو ...</string>
     <string name="open_file">افتح ملف</string>
     <string name="share_file">مشاركة الملفات</string>
-    <string name="restoring_number_format_audio">تمت الاستعادة ...٪ d ملفات</string>
+    <string name="restoring_number_format_audio">تمت الاستعادة ...%d ملفات</string>
     <string name="feature">ميزة</string>
     <string name="image">صورة</string>
     <string name="video">فيديو</string>
@@ -55,7 +55,7 @@
     <string name="scan_tip_1">حدد نوع الملف الذي تريد استعادته. يرجى التحلي بالصبر والانتظار حتى يقوم التطبيق بمسح جميع المجلدات والملفات</string>
     <string name="next">التالي</string>
     <string name="skip">يتخطى</string>
-    <string name="watch_ads_confirm_ring">استعادة ملفاتك! \\ n فقط شاهد مقطع فيديو ترويجي قصير ويمكنك استرداد الملف المحدد.</string>
+    <string name="watch_ads_confirm_ring">استعادة ملفاتك! \n فقط شاهد مقطع فيديو ترويجي قصير ويمكنك استرداد الملف المحدد.</string>
     <string name="go_to_google_play">مراجعة على Google Play</string>
     <string name="tks_to_rate">شكرا لمراجعتك!</string>
     <string name="are_you_like_me">هل تحب هذا التطبيق؟</string>

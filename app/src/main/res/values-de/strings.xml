@@ -15,11 +15,11 @@
     <string name="restore">Wiederherstellen</string>
     <string name="view_restored_photos">Wiederhergestellte Fotos anzeigen</string>
     <string name="setting">Einstellungen</string>
-    <string name="scan_wait">Bitte warten Sie, während Dateien gescannt werden...</string>
+    <string name="scan_wait">Bitte warten Sie, während Dateien gescannt werden…</string>
     <string name="not_found">Keine Fotos gefunden</string>
     <string name="restore_now">Jetzt wiederherstellen</string>
     <string name="let_start">Lasst uns beginnen</string>
-    <string name="restoring_number_format">Wiederhergestellt ... %d Dateien</string>
+    <string name="restoring_number_format">Wiederhergestellt … %d Dateien</string>
     <string name="restore_photo">Gelöschte Dateien wiederherstellen</string>
     <string name="photo_recovery">Fotowiederherstellung</string>
 
@@ -30,10 +30,10 @@
     <string name="video_recovery">Videowiederherstellung</string>
     <string name="audio_recovery">Audiowiederherstellung</string>
     <string name="restore_file">Datei wiederherstellen</string>
-    <string name="restoring_video">Videos werden wiederhergestellt...</string>
+    <string name="restoring_video">Videos werden wiederhergestellt…</string>
     <string name="open_file">Datei öffnen</string>
     <string name="share_file">Datei teilen</string>
-    <string name="restoring_number_format_audio">Wiederhergestellt ... %d Dateien</string>
+    <string name="restoring_number_format_audio">Wiederhergestellt … %d Dateien</string>
     <string name="feature">Feature</string>
     <string name="image">Bild</string>
     <string name="video">Video</string>

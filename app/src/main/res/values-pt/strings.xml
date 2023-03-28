@@ -10,30 +10,30 @@
     <string name="feedback">Comentários</string>
     <string name="scan">Digitalizar</string>
 
-    <string name="scan_tip">O aplicativo ajuda você a recuperar fotos excluídas.\nO aplicativo mostrará todas as imagens (excluídas e não excluídas). Continue procurando e você encontrará as fotos que procura.\nSeja paciente e espere até que ele verifique todas as pastas e arquivos.</string>
+    <string name="scan_tip">O aplicativo ajuda você a recuperar fotos excluídas.\n aplicativo mostrará todas as imagens (excluídas e não excluídas). Continue procurando e você encontrará as fotos que procura.\nSeja paciente e espere até que ele verifique todas as pastas e arquivos.</string>
     <string name="how_to_work">Como funciona?</string>
     <string name="restore">Restaurar</string>
 
     <string name="view_restored_photos">Visualizar fotos restauradas</string>
     <string name="setting">Configurações</string>
-    <string name="scan_wait">Aguarde enquanto verifica os arquivos...</string>
+    <string name="scan_wait">Aguarde enquanto verifica os arquivos…</string>
     <string name="not_found">Nenhuma foto encontrada</string>
     <string name="restore_now">Restaurar agora</string>
     <string name="let_start">Vamos começar</string>
-    <string name="restoring_number_format">Restaurado ... %d arquivos</string>
+    <string name="restoring_number_format">Restaurado … %d arquivos</string>
     <string name="restore_photo">Restaurar arquivos excluídos</string>
     <string name="photo_recovery">Recuperação de fotos</string>
 
     <string name="language_setting">Idioma</string>
     <string name="not_found_audio">Áudio não encontrado</string>
-    <string name="analyzing">Analisando...</string>
+    <string name="analyzing">Analisando…</string>
     <string name="video_recovery">Recuperação de vídeo</string>
     <string name="audio_recovery">Recuperação de áudio</string>
     <string name="restore_file">Restaurar arquivo</string>
-    <string name="restoring_video">Restaurando vídeo...</string>
+    <string name="restoring_video">Restaurando vídeo…</string>
     <string name="open_file">Abrir arquivo</string>
     <string name="share_file">Compartilhar arquivo</string>
-    <string name="restoring_number_format_audio">Restaurado ... %d arquivos</string>
+    <string name="restoring_number_format_audio">Restaurado … %d arquivos</string>
     <string name="feature">Recurso</string>
     <string name="image">Imagem</string>
     <string name="video">Vídeo</string>

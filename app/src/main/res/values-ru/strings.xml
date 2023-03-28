@@ -10,29 +10,29 @@
     <string name="feedback">Обратная связь</string>
     <string name="scan">Сканировать</string>
 
-    <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\nПриложение покажет все изображения (удаленные и не удаленные). Просто продолжайте искать, и вы найдете нужные фотографии.\nНаберитесь терпения и подождите, пока программа просканирует все папки и файлы.</string>
+    <string name="scan_tip">Приложение поможет вам восстановить удаленные фотографии.\n Приложение покажет все изображения (удаленные и не удаленные). Просто продолжайте искать, и вы найдете нужные фотографии.\nНаберитесь терпения и подождите, пока программа просканирует все папки и файлы.</string>
     <string name="how_to_work">Как это работает?</string>
     <string name="restore">Восстановить</string>
     <string name="view_restored_photos">Посмотреть восстановленные фотографии</string>
     <string name="setting">Настройки</string>
-    <string name="scan_wait">Пожалуйста, подождите, пока сканируются файлы...</string>
+    <string name="scan_wait">Пожалуйста, подождите, пока сканируются файлы…</string>
     <string name="not_found">Фотографии не найдены</string>
     <string name="restore_now">Восстановить сейчас</string>
     <string name="let_start">Давайте начнем</string>
-    <string name="restoring_number_format">Восстановлено ... %d файлов</string>
+    <string name="restoring_number_format">Восстановлено … %d файлов</string>
     <string name="restore_photo">Восстановить удаленные файлы</string>
     <string name="photo_recovery">Восстановление фотографий</string>
 
     <string name="language_setting">Язык</string>
     <string name="not_found_audio">Аудио не найдено</string>
-    <string name="analyzing">Анализ...</string>
+    <string name="analyzing">Анализ…</string>
     <string name="video_recovery">Восстановление видео</string>
     <string name="audio_recovery">Восстановление аудио</string>
     <string name="restore_file">Восстановить файл</string>
-    <string name="restoring_video">Восстановление видео...</string>
+    <string name="restoring_video">Восстановление видео…</string>
     <string name="open_file">Открыть файл</string>
     <string name="share_file">Поделиться файлом</string>
-    <string name="restoring_number_format_audio">Восстановлено ... %d файлов</string>
+    <string name="restoring_number_format_audio">Восстановлено … %d файлов</string>
     <string name="feature">Особенность</string>
     <string name="image">Изображение</string>
     <string name="video">видео</string>

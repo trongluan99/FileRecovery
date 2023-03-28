@@ -13,7 +13,7 @@
     <string name="restore">Obnovit</string>
     <string name="view_restored_photos">Zobrazit obnovené fotografie</string>
     <string name="setting">Nastavení</string>
-    <string name="scan_wait">Počkejte prosím při skenování souborů ...</string>
+    <string name="scan_wait">Počkejte prosím při skenování souborů …</string>
     <string name="not_found">Žádné fotografie</string>
     <string name="restore_now">Obnovit</string>
     <string name="let_start">Začněme</string>
@@ -26,10 +26,10 @@
     <string name="video_recovery">Obnovení videa</string>
     <string name="audio_recovery">Zvuková obnova</string>
     <string name="restore_file">Obnovit soubor</string>
-    <string name="restoring_video">Obnovení videa ...</string>
+    <string name="restoring_video">Obnovení videa …</string>
     <string name="open_file">Otevřít soubor</string>
     <string name="share_file">Sdílet soubor</string>
-    <string name="restoring_number_format_audio">Obnovené ... %d soubory</string>
+    <string name="restoring_number_format_audio">Obnovené … %d soubory</string>
     <string name="feature">Vlastnosti</string>
     <string name="image">obraz</string>
     <string name="video">Video</string>

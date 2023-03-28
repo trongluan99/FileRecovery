@@ -15,25 +15,25 @@
     <string name="restore">恢復</string>
     <string name="view_restored_photos">查看恢復的照片</string>
     <string name="setting">設置</string>
-    <string name="scan_wait">掃描文件中請稍候...</string>
-    <string name="not_found">​​沒有找到照片</string>
+    <string name="scan_wait">掃描文件中請稍候…</string>
+    <string name="not_found">No photos found</string>
     <string name="restore_now">立即恢復</string>
     <string name="let_start">讓我們開始</string>
-    <string name="restoring_number_format">已恢復 ... %d 個文件</string>
+    <string name="restoring_number_format">已恢復 … %d 個文件</string>
     <string name="restore_photo">恢復已刪除文件</string>
     <string name="photo_recovery">照片恢復</string>
 
     <string name="language_setting">語言</string>
 
     <string name="not_found_audio">未找到音頻</string>
-    <string name="analyzing">分析中...</string>
+    <string name="analyzing">分析中…</string>
     <string name="video_recovery">視頻恢復</string>
     <string name="audio_recovery">音頻恢復</string>
     <string name="restore_file">恢復文件</string>
-    <string name="restoring_video">正在恢復視頻...</string>
+    <string name="restoring_video">正在恢復視頻…</string>
     <string name="open_file">打開文件</string>
     <string name="share_file">共享文件</string>
-    <string name="restoring_number_format_audio">已恢復 ... %d 個文件</string>
+    <string name="restoring_number_format_audio">已恢復 … %d 個文件</string>
     <string name="feature">功能</string>
     <string name="image">圖片</string>
     <string name="video">視頻</string>

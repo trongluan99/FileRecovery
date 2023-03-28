@@ -10,30 +10,30 @@
     <string name="feedback">피드백</string>
     <string name="scan">주사</string>
 
-    <string name="scan_tip">앱은 삭제된 사진을 복구하는 데 도움이 됩니다.\n앱은 모든 이미지(삭제된 이미지 및 삭제되지 않은 이미지)를 표시합니다. 계속 찾으면 원하는 사진을 찾을 수 있습니다.\n모든 폴더와 파일을 검색할 때까지 인내심을 갖고 기다리십시오.</string>
+    <string name="scan_tip">앱은 삭제된 사진을 복구하는 데 도움이 됩니다.\n 앱은 모든 이미지(삭제된 이미지 및 삭제되지 않은 이미지)를 표시합니다. 계속 찾으면 원하는 사진을 찾을 수 있습니다.\n모든 폴더와 파일을 검색할 때까지 인내심을 갖고 기다리십시오.</string>
     <string name="how_to_work">어떻게 작동합니까?</string>
     <string name="restore">복원하다</string>
     <string name="view_restored_photos">복원된 사진 보기</string>
     <string name="setting">설정</string>
-    <string name="scan_wait">파일을 스캔하는 동안 잠시 기다려 주십시오...</string>
+    <string name="scan_wait">파일을 스캔하는 동안 잠시 기다려 주십시오…</string>
     <string name="not_found">사진을 찾을 수 없습니다</string>
     <string name="restore_now">지금 복원</string>
     <string name="let_start">시작하자</string>
-    <string name="restoring_number_format">복원된 ... %d개의 파일</string>
+    <string name="restoring_number_format">복원된 … %d개의 파일</string>
     <string name="restore_photo">삭제된 파일 복원</string>
     <string name="photo_recovery">사진 복구</string>
 
     <string name="language_setting">언어</string>
 
     <string name="not_found_audio">오디오를 찾을 수 없음</string>
-    <string name="analyzing">분석하는...</string>
+    <string name="analyzing">분석하는…</string>
     <string name="video_recovery">비디오 복구</string>
     <string name="audio_recovery">오디오 복구</string>
     <string name="restore_file">파일 복원</string>
-    <string name="restoring_video">동영상 복원 중...</string>
+    <string name="restoring_video">동영상 복원 중…</string>
     <string name="open_file">파일 열기</string>
     <string name="share_file">파일 공유</string>
-    <string name="restoring_number_format_audio">복원된 ... %d개의 파일</string>
+    <string name="restoring_number_format_audio">복원된 … %d개의 파일</string>
     <string name="feature">특징</string>
     <string name="image">영상</string>
     <string name="video">동영상</string>

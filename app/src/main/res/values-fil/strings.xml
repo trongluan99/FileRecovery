@@ -21,14 +21,14 @@
     <string name="photo_recovery">Pagbawi ng larawan</string>
     <string name="language_setting">Wika</string>
     <string name="not_found_audio">Hindi natagpuan ang audio</string>
-    <string name="analyzing">Pag -aaral ...</string>
+    <string name="analyzing">Pag -aural …</string>
     <string name="video_recovery">Pagbawi ng video</string>
     <string name="audio_recovery">Pagbawi ng audio</string>
     <string name="restore_file">Ibalik ang file</string>
-    <string name="restoring_video">Pagpapanumbalik ng video ...</string>
+    <string name="restoring_video">Pagpapanumbalik ng video …</string>
     <string name="open_file">Buksan ang file</string>
     <string name="share_file">Ibahagi ang file</string>
-    <string name="restoring_number_format_audio">Naibalik ... %d file</string>
+    <string name="restoring_number_format_audio">Naibalik … %d file</string>
     <string name="feature">Tampok</string>
     <string name="image">Imahe</string>
     <string name="video">Video</string>

@@ -11,30 +11,30 @@
     <string name="feedback">Masukan</string>
     <string name="scan">Pindai</string>
 
-    <string name="scan_tip">Aplikasi membantu Anda memulihkan foto yang dihapus.\nAplikasi akan menampilkan semua gambar (Dihapus dan Tidak Dihapus). Teruslah mencari dan Anda akan menemukan foto yang Anda cari.\nHarap bersabar dan tunggu hingga ia memindai semua folder dan file.</string>
+    <string name="scan_tip">Aplikasi membantu Anda memulihkan foto yang dihapus.\n Aplikasi akan menampilkan semua gambar (Dihapus dan Tidak Dihapus). Teruslah mencari dan Anda akan menemukan foto yang Anda cari.\nHarap bersabar dan tunggu hingga ia memindai semua folder dan file.</string>
     <string name="how_to_work">Bagaimana itu bekerja?</string>
     <string name="restore">Memulihkan</string>
     <string name="view_restored_photos">Lihat Foto yang Dipulihkan</string>
     <string name="setting">Pengaturan</string>
-    <string name="scan_wait">Harap tunggu saat memindai file...</string>
+    <string name="scan_wait">Harap tunggu saat memindai file…</string>
     <string name="not_found">Tidak ada foto yang ditemukan</string>
     <string name="restore_now">Pulihkan Sekarang</string>
     <string name="let_start">Ayo mulai</string>
-    <string name="restoring_number_format">Dipulihkan ... %d file</string>
+    <string name="restoring_number_format">Dipulihkan … %d file</string>
     <string name="restore_photo">Kembalikan File yang Dihapus</string>
     <string name="photo_recovery">Pemulihan Foto</string>
 
     <string name="language_setting">Bahasa</string>
 
     <string name="not_found_audio">Tidak ditemukan audio</string>
-    <string name="analyzing">Menganalisa...</string>
+    <string name="analyzing">Menganalisa…</string>
     <string name="video_recovery">Pemulihan Video</string>
     <string name="audio_recovery">Pemulihan Audio</string>
     <string name="restore_file">Pulihkan File</string>
-    <string name="restoring_video">Memulihkan video...</string>
+    <string name="restoring_video">Memulihkan video…</string>
     <string name="open_file">Membuka file</string>
     <string name="share_file">Bagikan File</string>
-    <string name="restoring_number_format_audio">Dipulihkan ... %d file</string>
+    <string name="restoring_number_format_audio">Dipulihkan … %d file</string>
     <string name="feature">Fitur</string>
     <string name="image">Gambar</string>
     <string name="video">Video</string>

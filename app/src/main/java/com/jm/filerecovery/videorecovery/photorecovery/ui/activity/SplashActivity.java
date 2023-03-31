@@ -32,6 +32,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
 
 import java.util.Locale;
 
@@ -55,6 +56,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SystemUtil.setLocale(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         splashActivity = true;

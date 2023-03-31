@@ -100,7 +100,8 @@
     <string name="open_lunch_medium" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="open_lunch_normal" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app_resume" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
-<!--    <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>-->
+
+    <string name="admob_full_reward" translatable="false">ca-app-pub-3940256099942544/5354046379</string>
     <string name="email_feedback" translatable="false">glorymobile88@gmail.com</string>
     <string name="scan_tip_1">Select the file type you want to recover. Please be patient and wait until the app scans all folders and files</string>
     <string name="scan_tip_2">Search for the file you want to recover. Select the file and press the restore button.</string>

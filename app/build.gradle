@@ -9,8 +9,8 @@ android {
         applicationId "com.jm.filerecovery.videorecovery.photorecovery"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 120
-        versionName "1.2.0"
+        versionCode 122
+        versionName "1.2.2"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -25,7 +25,21 @@ android {
     viewBinding {
         enabled = true
     }
+    bundle{
 
+        language {
+            // This property is set to true by default.
+            // You can specify `false` to turn off
+            // generating configuration APKs for language resources.
+            // These resources are instead packaged with each base and
+            // feature APK.
+            // Continue reading below to learn about situations when an app
+            // might change setting to `false`, otherwise consider leaving
+            // the default on for more optimized downloads.
+            enableSplit = false
+        }
+
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -92,7 +106,7 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
 //    implementation 'com.github.AperoVN:AperoModuleAds:5.2.2'
-    implementation 'com.github.trongluan99:ITGModuleAds:1.0.8'
+    implementation 'com.github.trongluan99:ITGModuleAds:1.0.12_alpha'
     implementation 'com.facebook.android:facebook-android-sdk:16.0.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

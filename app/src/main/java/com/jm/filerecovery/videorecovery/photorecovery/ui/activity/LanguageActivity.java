@@ -82,18 +82,20 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
             Log.e("exception", e.toString());
         }
     }
+
     boolean populateNativeAdView = false;
     FrameLayout frameLayout;
     ShimmerFrameLayout shimmerFrameLayout;
+
     private void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage!=null) {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
 //            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
             populateNativeAdView = true;
-            AperoAd.getInstance().populateNativeAdView(this,nativeAdViewLanguage,frameLayout,shimmerFrameLayout);
+            AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
         } else {
-            Log.d("TuanPA38", "LanguageActivity initAds nativeAdViewLanguage = "+nativeAdViewLanguage );
+            Log.d("TuanPA38", "LanguageActivity initAds nativeAdViewLanguage = " + nativeAdViewLanguage);
         }
     }
 
@@ -117,8 +119,20 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
         lists.add(new LanguageModel("Russian", "ru", false, R.drawable.img_language_ru));
         lists.add(new LanguageModel("Turkish", "tr", false, R.drawable.img_langguages_turkish));
 
-        Log.e("TAG", "setLanguageDefault: " + MyApplication.getInstance().getLanguage());
-        if (MyApplication.getInstance().getLanguage() != null && !lists.contains(MyApplication.getInstance().getLanguage())) {
+
+        boolean contains = false;
+        if (MyApplication.getInstance().getLanguage() != null) {
+            Log.e("TuanPA38", "setLanguageDefault: " + MyApplication.getInstance().getLanguage().getId());
+            Log.e("TuanPA38", "setLanguageDefault: " + lists.contains(MyApplication.getInstance().getLanguage()));
+            for (int i = 0; i < lists.size(); i++) {
+                if (lists.get(i).getId().equals(MyApplication.getInstance().getLanguage().getId())) {
+                    contains = true;
+                }
+            }
+        }
+
+        if (MyApplication.getInstance().getLanguage() != null && !contains) {
+            Log.e("TuanPA38", "setLanguageDefault: 33333333");
             lists.remove(lists.get(lists.size() - 1));
             lists.add(0, MyApplication.getInstance().getLanguage());
         }
@@ -140,18 +154,41 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
         if (!model.getName().equals("")) {
             SystemUtil.setPreLanguage(this, model.getId());
             SystemUtil.setLocale(this);
-            SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
+
             SharePreferenceUtils.getInstance(this).setSaveLanguage(model.getId());
             SharePreferenceUtils.getInstance(this).setSaveNameLanguage(model.getName());
-            startMainOrTur();
+            startMainOrTur(model.getId());
+
+            SharePreferenceUtils.getInstance(this).setSelectedLanguage(true);
+
             finish();
         } else {
             Toast.makeText(this, getString(R.string.please_select_language), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void startMainOrTur() {
-        boolean showIntro = !SharePreferenceUtils.getInstance(this).getSelectedLanguage();
+    private void startMainOrTur(String lang) {
+        Locale myLocale;
+        if (lang.equals("zh_CN")) {
+            myLocale = new Locale("zh", "CN");
+        } else if (lang.equals("zh_TW")) {
+            myLocale = new Locale("zh", "TW");
+        } else {
+            myLocale = new Locale(lang);
+        }
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+
+        boolean showIntro = false;
+        if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
+            showIntro = true;
+        } else {
+            showIntro = false;
+        }
+        Log.d("TuanPA38", " showIntro = " + showIntro);
         Intent intent;
         if (showIntro) {
             intent = new Intent(this, IntroduceActivity.class);
@@ -172,18 +209,18 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
     @Override
     public void onLoadNativeLanguageSuccess() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess" );
-        if(!populateNativeAdView){
-            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage!=null) {
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
+        if (!populateNativeAdView) {
+            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
                 populateNativeAdView = true;
-                AperoAd.getInstance().populateNativeAdView(this,nativeAdViewLanguage,frameLayout,shimmerFrameLayout);
+                AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
             }
         }
     }
 
     @Override
     public void onLoadNativeLanguageFail() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageFail" );
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageFail");
     }
 
     @Override

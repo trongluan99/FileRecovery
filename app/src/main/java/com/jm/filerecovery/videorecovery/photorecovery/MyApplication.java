@@ -1,6 +1,7 @@
 package com.jm.filerecovery.videorecovery.photorecovery;
 import android.content.res.Resources;
 import android.os.Build;
+import android.util.Log;
 
 import com.ads.control.admob.Admob;
 import com.ads.control.ads.AperoAd;
@@ -63,14 +64,12 @@ public class MyApplication extends AdsMultiDexApplication {
         } else {
             lang = Resources.getSystem().getConfiguration().locale.getLanguage();
         }
-
         String key = "";
         if (!SystemUtil.getLanguageApp().contains(lang)) {
             key = "";
         } else {
             key = lang;
         }
-
         for (LanguageModel model : getListLanguageApp()) {
             if (key.equals(model.getId())) {
                 languageModel = model;

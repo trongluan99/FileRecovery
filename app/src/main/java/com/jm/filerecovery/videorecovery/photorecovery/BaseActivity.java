@@ -19,6 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected static ApInterstitialAd mInterstitialAdClickHome = null;
     protected static ApNativeAd nativeAdViewLanguage = null;
     protected static ApNativeAd nativeAdViewHome = null;
+    protected static ApNativeAd nativeAdViewTutorial = null;
     protected static PreLoadNativeListener preLoadNativeListener = null;
     protected static boolean loadNativeLanguageSuccess = false;
 //    protected static ApInterstitialAd mInterstitialAdItem = null;
@@ -101,6 +102,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void loadNativeTutorial(){
+        Log.d("TuanPA38","BaseActivity loadNativeHome");
+        if(nativeAdViewTutorial == null){
+            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")) {
+                AperoAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_tutorial),R.layout.custom_native_no_media_purple, new AperoAdCallback(){
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewTutorial = nativeAd;
+                        if(preLoadNativeListener != null)   preLoadNativeListener.onLoadNativeTutorial();
+                        Log.d("TuanPA38","BaseActivity onNativeAdLoaded nativeAdViewTutorial = "+nativeAdViewTutorial);
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        Log.d("TuanPA38","BaseActivity nativeAdViewTutorial onAdFailedToLoad");
+                    }
+                });
+            }
+        }
+    }
+
     public static PreLoadNativeListener getPreLoadNativeListener() {
         return preLoadNativeListener;
     }
@@ -115,6 +139,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         void onLoadNativeHomeSuccess();
         void onLoadNativeHomeFail();
+
+        void onLoadNativeTutorial();
     }
 
 }

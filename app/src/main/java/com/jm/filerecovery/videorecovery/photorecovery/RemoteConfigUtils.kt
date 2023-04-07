@@ -14,6 +14,7 @@ object RemoteConfigUtils {
     private const val ON_BANNER_PERSONAL = "on_banner_personal"
     private const val ON_NATIVE_LANGUAGE = "on_native_language"
     private const val ON_NATIVE_HOME = "on_native_home"
+    private const val ON_NATIVE_TUTORIAL = "on_native_tutorial"
     private const val ON_NATIVE_RESULT = "on_native_result_activity"
     private const val ON_INTER_LUNCH = "on_inter_lunch"
     private const val ON_INTER_LUNCH_HIGH = "on_inter_lunch_high"
@@ -29,6 +30,7 @@ object RemoteConfigUtils {
         hashMapOf(
             ON_BANNER_HOME to "on",
             ON_NATIVE_HOME to "on",
+            ON_NATIVE_TUTORIAL to "on",
             ON_OPEN_HIGH_SPLASH_2_ID to "on",
             ON_OPEN_HIGH_SPLASH_3_ID to "on",
             ON_BANNER_TOOL to "on",
@@ -81,6 +83,19 @@ object RemoteConfigUtils {
                 "off"
             } else {
                 remoteConfig.getString(ON_NATIVE_HOME)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
+    fun getOnNativeTutorial(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_TUTORIAL)
             }
         } catch (e: Exception) {
 

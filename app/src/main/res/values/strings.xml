@@ -62,6 +62,7 @@
     //Info id admob id publish
 <!--    <string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string>-->
 <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
+<!--    <string name="admob_native_tutorial" translatable="false">ca-app-pub-6691965685689933/5421086097</string>-->
 <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
 <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->
 <!--    <string name="admob_inter_splash_new" translatable="false">ca-app-pub-6691965685689933/5497205774</string>-->
@@ -83,6 +84,7 @@
     //Info id admob id test
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string> // id test
     <string name="admob_native_language" translatable="false">/6499/example/native</string>
+    <string name="admob_native_tutorial" translatable="false">/6499/example/native</string>
     <string name="admob_native_home" translatable="false">/6499/example/native</string>
     <string name="admob_inter_splash" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_inter_splash_new" translatable="false">ca-app-pub-3940256099942544/1033173712</string>

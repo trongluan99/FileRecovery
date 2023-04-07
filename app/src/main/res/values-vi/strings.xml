@@ -68,7 +68,7 @@
     <string name="language_title">Ngôn ngữ</string>
     <string name="text_title_thank">Cảm ơn!</string>
     <string name="text_des_thank">Cảm ơn bạn đã sử dụng ứng dụng của chúng tôi. Bạn có thể đăng đánh giá của bạn trên cửa hàng. Điều này sẽ giúp và thúc đẩy chúng tôi rất nhiều. Hẹn sớm gặp lại!</string>
-    <string name="start">Băt đầu</string>
+    <string name="start">Bắt đầu</string>
     <string name="preview">Xem trước</string>
     <string name="please_select_language">Vui lòng chọn ngôn ngữ!</string>
 </resources>

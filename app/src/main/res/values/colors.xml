@@ -28,4 +28,7 @@
     <color name="stocke_card">#5E58595A</color>
 
     <color name="blackAlpha20">#33000000</color>
+    <color name="color_main">#364AFB</color>
+    <color name="color_txt">#151515</color>
+    <color name="color_intro">#f9f9ff</color>
 </resources>

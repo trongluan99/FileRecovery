@@ -56,7 +56,6 @@ public class IntroduceActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduce);
         title_step = findViewById(R.id.title_step);
-        txt_Start = findViewById(R.id.txt_Start);
         txt_intro = findViewById(R.id.txt_intro);
         txt_intro_1 = findViewById(R.id.txt_intro_1);
         txt_intro_2 = findViewById(R.id.txt_intro_2);
@@ -123,7 +122,6 @@ public class IntroduceActivity extends BaseActivity {
             txt_intro_note.setVisibility(View.INVISIBLE);
             step = 2;
             title_step.setText(getResources().getString(R.string.step2));
-            txt_Start.setText(getResources().getString(R.string.next));
         } else if(step==2){
             txt_intro.setVisibility(View.INVISIBLE);
             txt_intro_1.setVisibility(View.INVISIBLE);

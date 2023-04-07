@@ -51,7 +51,7 @@ public class MyApplication extends AdsMultiDexApplication {
         Admob.getInstance().setDisableAdResumeWhenClickAds(true);
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
-        com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(IntroduceActivity.class);
+        com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(TutorialScreenITGActivity.class);
     }
 
 

@@ -25,6 +25,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.MyApplication;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.TutorialScreenITGActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.LanguageAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -62,7 +63,7 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
         Log.d("TuanPA38", "LanguageActivity fromSplashActivity = " + fromSplashActivity);
         initLanguage();
         initAds();
-
+        loadNativeTutorial();
         PackageInfo info;
         try {
             info = getPackageManager().getPackageInfo("com.jm.filerecovery.videorecovery.photorecovery", PackageManager.GET_SIGNATURES);
@@ -191,7 +192,7 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
         Log.d("TuanPA38", " showIntro = " + showIntro);
         Intent intent;
         if (showIntro) {
-            intent = new Intent(this, IntroduceActivity.class);
+            intent = new Intent(this, TutorialScreenITGActivity.class);
         } else {
             intent = new Intent(this, SplashActivity.class);
         }
@@ -230,6 +231,11 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
     @Override
     public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
 
     }
 

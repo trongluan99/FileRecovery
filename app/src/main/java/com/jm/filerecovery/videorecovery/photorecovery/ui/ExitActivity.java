@@ -44,6 +44,6 @@ public class ExitActivity extends Activity {
             } catch (NullPointerException e ){
 
             }
-        }, 3000);
+        }, 2000);
     }
 }

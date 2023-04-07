@@ -31,6 +31,7 @@ import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.TutorialScreenITGActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
 

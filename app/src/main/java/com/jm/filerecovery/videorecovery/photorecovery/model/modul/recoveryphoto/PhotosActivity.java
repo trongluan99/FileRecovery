@@ -4,15 +4,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -22,25 +13,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemPhotoSelectAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.FilePhotoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.task.RecoverPhotosAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 
 import java.io.File;
 import java.util.ArrayList;
 
 
-public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnClickItem{
+public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnClickItem, BaseActivity.PreLoadNativeListener {
     int int_position;
     RecyclerView recyclerView;
     FilePhotoAdapter filePhotoAdapter;
@@ -56,6 +57,10 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
 
     ArrayList<PhotoEntity> tempList = new ArrayList<>();
 
+    private boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +74,74 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
     }
 
     private void initAds() {
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {
@@ -117,7 +187,7 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -145,12 +215,21 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                             Log.d("TuanPA38", " onAdFailedToLoad ");
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+                    }
 
                 }
             }
@@ -163,7 +242,7 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                 if (tempList.size() == 0) {
                     Toast.makeText(PhotosActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -191,20 +270,31 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                             Log.d("TuanPA38", " onAdFailedToLoad ");
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+                    }
 
                 }
             }
         });
     }
+
     boolean restore = true;
+
     private void restoreFile() {
-        if(!restore) return;
+        if (!restore) return;
         tempList = filePhotoAdapter.getSelectedItem();
         mRecoverPhotosAsyncTask = new RecoverPhotosAsyncTask(PhotosActivity.this, filePhotoAdapter.getSelectedItem(), new RecoverPhotosAsyncTask.OnRestoreListener() {
             @Override
@@ -274,8 +364,8 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
     @Override
     public void onClick() {
         tempList = filePhotoAdapter.getSelectedItem();
-        Log.d("Duongdx", "szee: "+tempList.size());
-        if(tempList.size()>0){
+        Log.d("Duongdx", "szee: " + tempList.size());
+        if (tempList.size() > 0) {
             txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
             imagePickedArea.setVisibility(View.VISIBLE);
         } else {

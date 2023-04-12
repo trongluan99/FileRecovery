@@ -11,16 +11,17 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
-import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
+import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.Model.PhotoEntity;
+import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdap
         holder.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AperoAdCallback adCallback = new AperoAdCallback() {
+                ITGAdCallback adCallback = new ITGAdCallback() {
                     @Override
                     public void onNextAction() {
                         super.onNextAction();
@@ -80,12 +81,23 @@ public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdap
                         mContext.startActivity(intent);
                     }
                 };
-                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                    @Override
-                    public void initAdSuccess() {
-                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+
+                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                } else {
+                    if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                            }
+                        });
+                    } else {
+                        Intent intent = new Intent(mContext, PhotosActivity.class);
+                        intent.putExtra("value", postion);
+                        mContext.startActivity(intent);
                     }
-                });
+                }
 
             }
         });

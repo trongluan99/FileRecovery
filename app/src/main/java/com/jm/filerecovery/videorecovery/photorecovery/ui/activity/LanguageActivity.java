@@ -1,6 +1,5 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -20,7 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.ITGAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.MyApplication;
@@ -28,7 +27,6 @@ import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.TutorialScreenITGActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.LanguageAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
-import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.IClickLanguage;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
@@ -91,13 +89,28 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
     private void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
+        /*if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
 //            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
             populateNativeAdView = true;
             AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
         } else {
             Log.d("TuanPA38", "LanguageActivity initAds nativeAdViewLanguage = " + nativeAdViewLanguage);
+        }*/
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewLanguageHighFloor != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHighFloor, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewLanguage != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
         }
+
+        // End
     }
 
     private void initLanguage() {
@@ -210,13 +223,30 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
     @Override
     public void onLoadNativeLanguageSuccess() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
+        /*Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
         if (!populateNativeAdView) {
             if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
                 populateNativeAdView = true;
                 AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
             }
+        }*/
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewLanguageHighFloor != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHighFloor, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewLanguage != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
         }
+
+        // End
     }
 
     @Override
@@ -236,6 +266,16 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
     @Override
     public void onLoadNativeTutorial() {
+
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeFail() {
 
     }
 

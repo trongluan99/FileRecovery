@@ -1,5 +1,6 @@
 package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -12,17 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.os.EnvironmentCompat;
 
-
-import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.ITGAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
@@ -48,7 +46,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ScanFilesActivity extends BaseActivity {
+public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreLoadNativeListener {
 
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
@@ -56,6 +54,11 @@ public class ScanFilesActivity extends BaseActivity {
     private ScanAsyncTask mScanAsyncTask;
     int typeScan = 0;
     private ActivityScanningBinding binding;
+
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+    boolean populateNativeAdView = false;
+
 
     public static void start(Context context, int type) {
         Intent intent = new Intent(context, ScanFilesActivity.class);
@@ -81,11 +84,30 @@ public class ScanFilesActivity extends BaseActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         intView();
     }
+
     private void intView() {
-        Log.d("TuanPA38","ScanFilesActivity intView");
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        Log.d("TuanPA38", "ScanFilesActivity intView");
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+
+//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewScanHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewScan != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+
+        // End
+
+
         int type = getIntent().getIntExtra("type", 0);
         scanType(type);
         binding.buttonScanNext.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +145,55 @@ public class ScanFilesActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewScanHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewScan != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     @Override
@@ -181,6 +252,7 @@ public class ScanFilesActivity extends BaseActivity {
             binding.imgDone.cancelAnimation();
         }
 
+        @SuppressLint("StringFormatInvalid")
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);

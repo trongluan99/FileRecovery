@@ -10,12 +10,12 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
@@ -28,14 +28,15 @@ public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdap
     private Context mContext;
     int size;
     int postion;
+
     public FileAudioGridAdapter(Context context, ArrayList<AudioEntity> itemsList, int mPostion) {
         this.itemsList = itemsList;
         this.mContext = context;
         postion = mPostion;
-        if(itemsList.size()>=5){
-            size=5;
-        }else{
-            size =itemsList.size();
+        if (itemsList.size() >= 5) {
+            size = 5;
+        } else {
+            size = itemsList.size();
         }
     }
 
@@ -54,21 +55,32 @@ public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdap
         holder.album_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AperoAdCallback adCallback = new AperoAdCallback() {
+                ITGAdCallback adCallback = new ITGAdCallback() {
                     @Override
                     public void onNextAction() {
                         super.onNextAction();
                         Intent intent = new Intent(mContext, AudioActivity.class);
-                        intent.putExtra("value",postion);
+                        intent.putExtra("value", postion);
                         mContext.startActivity(intent);
                     }
                 };
-                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                    @Override
-                    public void initAdSuccess() {
-                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                } else {
+                    if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                            }
+                        });
+                    } else {
+                        Intent intent = new Intent(mContext, AudioActivity.class);
+                        intent.putExtra("value", postion);
+                        mContext.startActivity(intent);
                     }
-                });
+
+                }
             }
         });
     }
@@ -81,16 +93,15 @@ public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdap
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
 
 
-
         CardView album_card;
         TextView tvTitle;
 
         public SingleItemRowHolder(View view) {
             super(view);
 
-            album_card = (CardView)view.findViewById(R.id.album_card);
+            album_card = (CardView) view.findViewById(R.id.album_card);
 
-            tvTitle = (TextView)view.findViewById(R.id.tvTitle);
+            tvTitle = (TextView) view.findViewById(R.id.tvTitle);
 
         }
 

@@ -1,5 +1,7 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo;
 
+import static java.security.AccessController.getContext;
+
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,31 +21,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.ITGAd;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverOneVideosAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.text.DateFormat;
 
-
-
-import static java.security.AccessController.getContext;
-
-public class FileInfoActivity extends AppCompatActivity implements View.OnClickListener {
+public class FileInfoActivity extends BaseActivity implements View.OnClickListener, BaseActivity.PreLoadNativeListener {
 
     Button btnOpen, btnShare, btnRestore;
     TextView tvDate, tvSize, tvType;
@@ -51,6 +50,10 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
     Toolbar toolbar;
     RecoverOneVideosAsyncTask mRecoverOneVideosAsyncTask;
     SharedPreferences sharedPreferences;
+
+    private boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +70,26 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         intData();
         intEvent();
 
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_full_size, frameLayout, shimmerFrameLayout);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+
+//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_full_size, frameLayout, shimmerFrameLayout);
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
 
         try {
             View decorView = getWindow().getDecorView();
@@ -79,6 +99,55 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         } catch (Exception e) {
 
         }
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {
@@ -100,8 +169,8 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
 
     public void intData() {
         Intent i = getIntent();
-        videoEntity = (VideoEntity)i.getSerializableExtra("ojectVideo");
-        tvDate.setText(DateFormat.getDateInstance().format(videoEntity.getLastModified())+"  "+ videoEntity.getTimeDuration());
+        videoEntity = (VideoEntity) i.getSerializableExtra("ojectVideo");
+        tvDate.setText(DateFormat.getDateInstance().format(videoEntity.getLastModified()) + "  " + videoEntity.getTimeDuration());
         tvSize.setText(Utils.formatSize(videoEntity.getSizePhoto()));
         tvType.setText(videoEntity.getTypeFile());
 
@@ -135,7 +204,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
                 shareVideo(videoEntity.getPathPhoto());
                 break;
             case R.id.btnRestore:
-              //  showDalogConfirmRestore();
+                //  showDalogConfirmRestore();
                 mRecoverOneVideosAsyncTask = new RecoverOneVideosAsyncTask(FileInfoActivity.this, videoEntity, new RecoverOneVideosAsyncTask.OnRestoreListener() {
                     @Override
                     public void onComplete() {
@@ -163,6 +232,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         }
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -170,6 +240,7 @@ public class FileInfoActivity extends AppCompatActivity implements View.OnClickL
         }
         return super.onOptionsItemSelected(item);
     }
+
     public boolean SDCardCheck() {
         File[] storages = ContextCompat.getExternalFilesDirs(this, null);
         if (storages.length <= 1 || storages[0] == null || storages[1] == null) {

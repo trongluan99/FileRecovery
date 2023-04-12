@@ -1,40 +1,31 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AlbumAudioActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.GroupVideoHorizontalAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
 public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
 //
-//        AperoAdCallback adCallback = new AperoAdCallback() {
+//        ITGAdCallback adCallback = new ITGAdCallback() {
 //            @Override
 //            public void onNextAction() {
 //                super.onNextAction();
@@ -43,10 +34,10 @@ public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizo
 //                startActivity(intent);
 //            }
 //        };
-//        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+//        ITGAd.getInstance().setInitCallback(new AperoInitCallback() {
 //            @Override
 //            public void initAdSuccess() {
-//                AperoAd.getInstance().loadSplashInterstitialAds(AlbumVideoActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+//                ITGAd.getInstance().loadSplashInterstitialAds(AlbumVideoActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
 //            }
 //        });
     }
@@ -74,7 +65,7 @@ public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizo
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
     }
 
     public void intView() {

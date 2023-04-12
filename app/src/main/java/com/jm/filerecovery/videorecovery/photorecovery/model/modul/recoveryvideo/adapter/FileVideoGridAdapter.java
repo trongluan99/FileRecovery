@@ -9,15 +9,16 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.AlbumVideoActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity;
 
@@ -29,14 +30,15 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
     private Context mContext;
     int size;
     int postion;
+
     public FileVideoGridAdapter(Context context, ArrayList<VideoEntity> itemsList, int mPostion) {
         this.itemsList = itemsList;
         this.mContext = context;
         postion = mPostion;
-        if(itemsList.size()>=5){
-            size=5;
-        }else{
-            size =itemsList.size();
+        if (itemsList.size() >= 5) {
+            size = 5;
+        } else {
+            size = itemsList.size();
         }
     }
 
@@ -61,30 +63,40 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
                     .centerCrop()
                     .error(R.drawable.ic_error)
                     .into(holder.itemImage);
-        } catch (Exception e){
+        } catch (Exception e) {
             //do nothing
-            Toast.makeText(mContext, "Exception: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         holder.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                AperoAdCallback adCallback = new AperoAdCallback() {
+                ITGAdCallback adCallback = new ITGAdCallback() {
                     @Override
                     public void onNextAction() {
                         super.onNextAction();
 
                         Intent intent = new Intent(mContext, VideoActivity.class);
-                        intent.putExtra("value",postion);
+                        intent.putExtra("value", postion);
                         mContext.startActivity(intent);
                     }
                 };
-                AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                    @Override
-                    public void initAdSuccess() {
-                        AperoAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                } else {
+                    if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                            }
+                        });
+                    } else {
+                        Intent intent = new Intent(mContext, VideoActivity.class);
+                        intent.putExtra("value", postion);
+                        mContext.startActivity(intent);
                     }
-                });
+                }
 
             }
         });
@@ -98,7 +110,6 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
 
 
-
         protected SquareImageView itemImage;
 
 
@@ -106,7 +117,6 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
             super(view);
 
             this.itemImage = (SquareImageView) view.findViewById(R.id.ivImage);
-
 
 
         }

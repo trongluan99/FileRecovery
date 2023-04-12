@@ -26,11 +26,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
@@ -63,6 +62,7 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
     ShimmerFrameLayout shimmerFrameLayout;
     View layout_native;
     ActivityResultLauncher<Intent> mGetPermission;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,18 +84,28 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         });
 
     }
+
     public void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
         layout_native = findViewById(R.id.layout_native);
-        if (RemoteConfigUtils.INSTANCE.getOnNativeTutorial().equals("on") && nativeAdViewTutorial!=null) {
+        /*if (RemoteConfigUtils.INSTANCE.getOnNativeTutorial().equals("on") && nativeAdViewTutorial != null) {
             layout_native.setVisibility(View.VISIBLE);
             populateNativeAdView = true;
-            AperoAd.getInstance().populateNativeAdView(this,nativeAdViewTutorial,frameLayout,shimmerFrameLayout);
+            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
         } else {
             layout_native.setVisibility(View.GONE);
+        }*/
+
+        // Begin: Add Ads
+        if (nativeAdViewTutorial != null) {
+            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+            populateNativeAdView = true;
         }
+
+        // End
     }
+
     public int getIdLayout() {
         return R.layout.activity_screen_intro;
     }
@@ -209,48 +219,73 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
 
     private void openNextStep() {
         try {
-            if (RemoteConfigUtils.INSTANCE.getOnInterIntroduce().equals("on")) {
-                Log.d("TuanPA38", " checkRemoteConfigResult getOnInterIntroduce == on");
-                if(mInterstitialAdTutorial!=null){
+            Log.d("TuanPA38", " checkRemoteConfigResult getOnInterIntroduce == on");
+            if (AdsConfig.mInterstitialAdAllHigh != null) {
+                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            Log.i("TuanPA38", "onNextAction: start content and finish main");
+                            if (activity) {
+                                startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
+                                finish();
+                                activity = false;
+                            }
+                        }
+
+                        @Override
+                        public void onAdFailedToShow(@Nullable ApAdError adError) {
+                            super.onAdFailedToShow(adError);
+                            Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
+                            if (activity) {
+                                startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
+                                finish();
+                                activity = false;
+                            }
+                        }
+
+                    }, true);
+                } else if (mInterstitialAdTutorial != null) {
                     if (mInterstitialAdTutorial.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new AperoAdCallback() {
+                        ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new ITGAdCallback() {
                             @Override
                             public void onNextAction() {
-                                Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                if (activity){
+                                super.onNextAction();
+                                if (activity) {
                                     startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
                                     finish();
                                     activity = false;
                                 }
                             }
-
-                            @Override
-                            public void onAdFailedToShow(@Nullable ApAdError adError) {
-                                super.onAdFailedToShow(adError);
-                                Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                if (activity){
-                                    startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
-                                    finish();
-                                    activity = false;
-                                }
-                            }
-
-                        }, true);
+                        });
                     } else {
-                        if (activity){
+                        if (activity) {
                             startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
                             finish();
                             activity = false;
                         }
                     }
+                }
+            } else if (mInterstitialAdTutorial != null) {
+                if (mInterstitialAdTutorial.isReady()) {
+                    ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new ITGAdCallback() {
+                        @Override
+                        public void onNextAction() {
+                            super.onNextAction();
+                            if (activity) {
+                                startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
+                                finish();
+                                activity = false;
+                            }
+                        }
+                    });
                 } else {
-                    if (activity){
+                    if (activity) {
                         startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
                         finish();
                         activity = false;
                     }
                 }
-
             } else {
                 if (activity) {
                     startActivity(new Intent(TutorialScreenITGActivity.this, MainActivity.class));
@@ -286,12 +321,30 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
     @Override
     public void onLoadNativeTutorial() {
         Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
-        if (!populateNativeAdView) {
+        /*if (!populateNativeAdView) {
             if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewTutorial != null) {
                 populateNativeAdView = true;
-                AperoAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
             }
+        }*/
+
+        // Begin: Add Ads
+        if (nativeAdViewTutorial != null) {
+            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+            populateNativeAdView = true;
         }
+
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+
     }
 
     @Override

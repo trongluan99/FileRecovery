@@ -28,20 +28,20 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.BuildConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.databinding.ActivityMainBinding;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.PhotoRestoredAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.ExitActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.FileUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.utils.Rate;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.TotalMemoryStorageTaskUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
@@ -57,8 +57,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private PhotoRestoredAdapter photoRestoredAdapter;
     private ActivityMainBinding binding;
-//    private ApInterstitialAd mInterstitialAd = null;
+    //    private ApInterstitialAd mInterstitialAd = null;
     private boolean activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,19 +71,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
         intEvent();
         initAds();
-        activity= true;
+        activity = true;
+
+        // Begin: Load ads
+        AdsConfig.loadInterAllHigh(this);
+        loadInterClickHome();
+        loadNativeScan();
+        loadNativeRecovery();
+        // End
     }
 
     boolean populateNativeAdView = false;
     FrameLayout frameLayout;
     ShimmerFrameLayout shimmerFrameLayout;
+
     public void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome!=null) {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome != null) {
             binding.layoutNative.setVisibility(View.VISIBLE);
             populateNativeAdView = true;
-            AperoAd.getInstance().populateNativeAdView(this,nativeAdViewHome,frameLayout,shimmerFrameLayout);
+            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
         } else {
             binding.layoutNative.setVisibility(View.GONE);
         }
@@ -91,7 +100,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onResume() {
         super.onResume();
-        activity=true;
+        activity = true;
         try {
             intDataImage();
             initMemoryData();
@@ -103,13 +112,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onStop() {
         super.onStop();
-        activity=false;
+        activity = false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        activity=false;
+        activity = false;
     }
 
     private void initMemoryData() {
@@ -181,14 +190,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_more:
-
-                if(mInterstitialAdClickHome!=null){
-                    if (mInterstitialAdClickHome.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                if (AdsConfig.mInterstitialAdAllHigh != null) {
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
                             @Override
                             public void onNextAction() {
                                 Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                if (activity){
+                                if (activity) {
                                     com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                     Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                                     startActivity(intent);
@@ -200,7 +208,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                             public void onAdFailedToShow(@Nullable ApAdError adError) {
                                 super.onAdFailedToShow(adError);
                                 Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                if (activity){
+                                if (activity) {
                                     com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
 
                                     Intent intent = new Intent(MainActivity.this, SettingActivity.class);
@@ -210,8 +218,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                             }
 
                         }, true);
+                    } else if (mInterstitialAdClickHome != null) {
+                        if (mInterstitialAdClickHome.isReady()) {
+                            ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                @Override
+                                public void onNextAction() {
+                                    super.onNextAction();
+                                    if (activity) {
+                                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                                        startActivity(intent);
+                                        activity = false;
+                                    }
+                                }
+                            });
+                        } else {
+                            if (activity) {
+                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                                startActivity(intent);
+                                activity = false;
+                            }
+                        }
+                    }
+                } else if (mInterstitialAdClickHome != null) {
+                    if (mInterstitialAdClickHome.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                super.onNextAction();
+                                if (activity) {
+                                    com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                                    startActivity(intent);
+                                    activity = false;
+                                }
+                            }
+                        });
                     } else {
-                        if (activity){
+                        if (activity) {
                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                             startActivity(intent);
@@ -219,7 +264,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         }
                     }
                 } else {
-                    if (activity){
+                    if (activity) {
                         com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                         Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                         startActivity(intent);
@@ -229,13 +274,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
                 break;
             case R.id.iv_his_click:
-                if(mInterstitialAdClickHome!=null){
-                    if (mInterstitialAdClickHome.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                if (AdsConfig.mInterstitialAdAllHigh != null) {
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
                             @Override
                             public void onNextAction() {
                                 Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                if (activity){
+                                if (activity) {
                                     startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
                                     activity = false;
                                 }
@@ -245,21 +290,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                             public void onAdFailedToShow(@Nullable ApAdError adError) {
                                 super.onAdFailedToShow(adError);
                                 Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                if (activity){
+                                if (activity) {
                                     startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
                                     activity = false;
                                 }
                             }
 
                         }, true);
+                    } else if (mInterstitialAdClickHome != null) {
+                        if (mInterstitialAdClickHome.isReady()) {
+                            ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                @Override
+                                public void onNextAction() {
+                                    super.onNextAction();
+                                    if (activity) {
+                                        startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                                        activity = false;
+                                    }
+                                }
+                            });
+                        } else {
+                            if (activity) {
+                                startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                                activity = false;
+                            }
+                        }
+                    }
+                } else if (mInterstitialAdClickHome != null) {
+                    if (mInterstitialAdClickHome.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                            @Override
+                            public void onNextAction() {
+                                super.onNextAction();
+                                if (activity) {
+                                    startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
+                                    activity = false;
+                                }
+                            }
+                        });
                     } else {
-                        if (activity){
+                        if (activity) {
                             startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
                             activity = false;
                         }
                     }
                 } else {
-                    if (activity){
+                    if (activity) {
                         startActivity(new Intent(MainActivity.this, FileRecoveredActivity.class));
                         activity = false;
                     }
@@ -269,13 +345,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_image_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAdClickHome!=null){
-                            if (mInterstitialAdClickHome.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                        if (AdsConfig.mInterstitialAdAllHigh != null) {
+                            if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 0);
                                             activity = false;
@@ -286,7 +362,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     public void onAdFailedToShow(@Nullable ApAdError adError) {
                                         super.onAdFailedToShow(adError);
                                         Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 0);
                                             activity = false;
@@ -294,15 +370,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     }
 
                                 }, true);
+                            } else if (mInterstitialAdClickHome != null) {
+                                if (mInterstitialAdClickHome.isReady()) {
+                                    ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                        @Override
+                                        public void onNextAction() {
+                                            super.onNextAction();
+                                            if (activity) {
+                                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                                ScanFilesActivity.start(MainActivity.this, 0);
+                                                activity = false;
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    if (activity) {
+                                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                        ScanFilesActivity.start(MainActivity.this, 0);
+                                        activity = false;
+                                    }
+                                }
+                            }
+                        } else if (mInterstitialAdClickHome != null) {
+                            if (mInterstitialAdClickHome.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        super.onNextAction();
+                                        if (activity) {
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 0);
+                                            activity = false;
+                                        }
+                                    }
+                                });
                             } else {
-                                if (activity){
+                                if (activity) {
                                     com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                     ScanFilesActivity.start(MainActivity.this, 0);
                                     activity = false;
                                 }
                             }
                         } else {
-                            if (activity){
+                            if (activity) {
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 0);
                                 activity = false;
@@ -318,13 +428,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_audio_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAdClickHome!=null){
-                            if (mInterstitialAdClickHome.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                        if (AdsConfig.mInterstitialAdAllHigh != null) {
+                            if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 2);
                                             activity = false;
@@ -335,7 +445,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     public void onAdFailedToShow(@Nullable ApAdError adError) {
                                         super.onAdFailedToShow(adError);
                                         Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 2);
                                             activity = false;
@@ -343,15 +453,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     }
 
                                 }, true);
+                            } else if (mInterstitialAdClickHome != null) {
+                                if (mInterstitialAdClickHome.isReady()) {
+                                    ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                        @Override
+                                        public void onNextAction() {
+                                            super.onNextAction();
+                                            if (activity) {
+                                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                                ScanFilesActivity.start(MainActivity.this, 2);
+                                                activity = false;
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    if (activity) {
+                                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                        ScanFilesActivity.start(MainActivity.this, 2);
+                                        activity = false;
+                                    }
+                                }
+                            }
+                        } else if (mInterstitialAdClickHome != null) {
+                            if (mInterstitialAdClickHome.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        super.onNextAction();
+                                        if (activity) {
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 2);
+                                            activity = false;
+                                        }
+                                    }
+                                });
                             } else {
-                                if (activity){
+                                if (activity) {
                                     com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                     ScanFilesActivity.start(MainActivity.this, 2);
                                     activity = false;
                                 }
                             }
                         } else {
-                            if (activity){
+                            if (activity) {
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 2);
                                 activity = false;
@@ -366,13 +510,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.iv_video_click:
                 try {
                     requestPermissionAll(() -> {
-                        if(mInterstitialAdClickHome!=null){
-                            if (mInterstitialAdClickHome.isReady()) {
-                                AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new AperoAdCallback() {
+                        if (AdsConfig.mInterstitialAdAllHigh != null) {
+                            if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, AdsConfig.mInterstitialAdAllHigh, new ITGAdCallback() {
                                     @Override
                                     public void onNextAction() {
                                         Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 1);
                                             activity = false;
@@ -383,7 +527,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     public void onAdFailedToShow(@Nullable ApAdError adError) {
                                         super.onAdFailedToShow(adError);
                                         Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                        if (activity){
+                                        if (activity) {
                                             com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                             ScanFilesActivity.start(MainActivity.this, 1);
                                             activity = false;
@@ -391,15 +535,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                                     }
 
                                 }, true);
+                            } else if (mInterstitialAdClickHome != null) {
+                                if (mInterstitialAdClickHome.isReady()) {
+                                    ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                        @Override
+                                        public void onNextAction() {
+                                            super.onNextAction();
+                                            if (activity) {
+                                                com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                                ScanFilesActivity.start(MainActivity.this, 1);
+                                                activity = false;
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    if (activity) {
+                                        com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                        ScanFilesActivity.start(MainActivity.this, 1);
+                                        activity = false;
+                                    }
+                                }
+                            }
+                        } else if (mInterstitialAdClickHome != null) {
+                            if (mInterstitialAdClickHome.isReady()) {
+                                ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdClickHome, new ITGAdCallback() {
+                                    @Override
+                                    public void onNextAction() {
+                                        super.onNextAction();
+                                        if (activity) {
+                                            com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
+                                            ScanFilesActivity.start(MainActivity.this, 1);
+                                            activity = false;
+                                        }
+                                    }
+                                });
                             } else {
-                                if (activity){
+                                if (activity) {
                                     com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                     ScanFilesActivity.start(MainActivity.this, 1);
                                     activity = false;
                                 }
                             }
                         } else {
-                            if (activity){
+                            if (activity) {
                                 com.ads.control.admob.AppOpenManager.getInstance().enableAppResume();
                                 ScanFilesActivity.start(MainActivity.this, 1);
                                 activity = false;
@@ -518,10 +696,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                AdmobUtils.getInstance().showInterstitialAd(MainActivity.this, new AdmobUtils.AdCloseListener() {
 //                    @Override
 //                    public void onAdClosed() {
-                        Intent intent = new Intent(MainActivity.this, ExitActivity.class);
-                        MainActivity.this.finish();
-                        MainActivity.this.finishAffinity();
-                        startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, ExitActivity.class);
+                MainActivity.this.finish();
+                MainActivity.this.finishAffinity();
+                startActivity(intent);
 //                    }
 //                });
             }
@@ -540,11 +718,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onLoadNativeHomeSuccess() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess" );
-        if(!populateNativeAdView){
-            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewHome!=null) {
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
+        if (!populateNativeAdView) {
+            if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome != null) {
                 populateNativeAdView = true;
-                AperoAd.getInstance().populateNativeAdView(this,nativeAdViewHome,frameLayout,shimmerFrameLayout);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
             }
         }
     }
@@ -556,6 +734,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onLoadNativeTutorial() {
+
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeFail() {
 
     }
 }

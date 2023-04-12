@@ -11,11 +11,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-
+import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
@@ -24,7 +23,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.utils.UtilsApp;
 import java.util.Locale;
 
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
+public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
     Toolbar toolbar;
     TextView tvDir, tvLanguage;
@@ -85,7 +84,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.rlLanguage:
                 openLanguagesAct();
-
+                loadNativeLanguage();
                 break;
             case R.id.rlRate:
                 UtilsApp.RateApp(this);

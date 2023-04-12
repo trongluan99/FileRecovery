@@ -1,33 +1,24 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.GroupAudioHorizontalAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.AlbumPhotoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.PhotosActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
 public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizontalAdapter.OnClickItemListener {
@@ -53,13 +44,15 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
 //        Utils.setStatusBarHomeTransparent(this);
         intView();
         intData();
-       initAds();
+        initAds();
     }
+
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
     }
+
     public void intView() {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.audio_recovery));

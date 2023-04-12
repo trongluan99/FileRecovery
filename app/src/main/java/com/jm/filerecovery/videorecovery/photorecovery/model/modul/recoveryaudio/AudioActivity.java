@@ -3,7 +3,6 @@ package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudi
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -16,35 +15,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemAudioSelectAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemVideoSelectAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.VideoActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.InviteWatchAdsActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.Model.AudioEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.adapter.FileAudioAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.task.RecoverAudioAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.ButtonRestore;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -54,7 +46,7 @@ import java.util.ArrayList;
  * Created by deepshikha on 20/3/17.
  */
 
-public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnClickItem{
+public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnClickItem, BaseActivity.PreLoadNativeListener {
     int int_position;
     RecyclerView recyclerView;
     FileAudioAdapter fileAudioAdapter;
@@ -70,6 +62,10 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     ImageView imgNext;
     ConstraintLayout imagePickedArea;
 
+    private boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +79,72 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     }
 
     private void initAds() {
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {
@@ -133,7 +192,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                     Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
 
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -157,12 +216,21 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                             restoreFile();
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+                    }
 
                 }
 
@@ -177,7 +245,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                     Toast.makeText(AudioActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
 
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -201,12 +269,21 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
                             restoreFile();
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+
+                    }
 
                 }
 
@@ -215,8 +292,9 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     }
 
     boolean restore = true;
+
     private void restoreFile() {
-        if(!restore) return;
+        if (!restore) return;
         tempList = fileAudioAdapter.getSelectedItem();
         mRecoverPhotosAsyncTask = new RecoverAudioAsyncTask(AudioActivity.this, fileAudioAdapter.getSelectedItem(), new RecoverAudioAsyncTask.OnRestoreListener() {
             @Override
@@ -238,6 +316,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
         mRecoverPhotosAsyncTask.execute();
         restore = false;
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -286,7 +365,7 @@ public class AudioActivity extends BaseActivity implements  FileAudioAdapter.OnC
     @Override
     public void onClick() {
         tempList = fileAudioAdapter.getSelectedItem();
-        if(tempList.size()>0){
+        if (tempList.size() > 0) {
             txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
             imagePickedArea.setVisibility(View.VISIBLE);
         } else {

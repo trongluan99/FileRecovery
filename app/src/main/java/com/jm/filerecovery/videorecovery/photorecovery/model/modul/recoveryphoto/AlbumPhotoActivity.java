@@ -1,16 +1,7 @@
 package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -18,23 +9,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.ads.control.ads.ITGAd;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryphoto.adapter.GroupPhotoHorizontalAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.MainActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
-import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
 public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizontalAdapter.OnClickItemListener {
     @Override
     public void onClickItem(int position) {
-        Log.d("TuanPA38"," AlbumPhotoActivity onClickItem1");
-//        AperoAdCallback adCallback = new AperoAdCallback() {
+        Log.d("TuanPA38", " AlbumPhotoActivity onClickItem1");
+//        ITGAdCallback adCallback = new ITGAdCallback() {
 //            @Override
 //            public void onNextAction() {
 //                super.onNextAction();
@@ -43,13 +35,14 @@ public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizo
 //                startActivity(intent);
 //            }
 //        };
-//        AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
+//        ITGAd.getInstance().setInitCallback(new AperoInitCallback() {
 //            @Override
 //            public void initAdSuccess() {
-//                AperoAd.getInstance().loadSplashInterstitialAds(AlbumPhotoActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+//                ITGAd.getInstance().loadSplashInterstitialAds(AlbumPhotoActivity.this, getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
 //            }
 //        });
     }
+
     RecyclerView recyclerView;
     GroupPhotoHorizontalAdapter groupPhotoHorizontalAdapter;
     Toolbar toolbar;
@@ -73,7 +66,7 @@ public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizo
     private void initAds() {
         FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
         ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
     }
 
     public void intView() {

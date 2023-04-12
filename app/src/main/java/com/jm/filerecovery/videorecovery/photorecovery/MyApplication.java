@@ -1,15 +1,14 @@
 package com.jm.filerecovery.videorecovery.photorecovery;
+
 import android.content.res.Resources;
 import android.os.Build;
-import android.util.Log;
 
 import com.ads.control.admob.Admob;
-import com.ads.control.ads.AperoAd;
+import com.ads.control.ads.ITGAd;
 import com.ads.control.application.AdsMultiDexApplication;
 import com.ads.control.config.AdjustConfig;
-import com.ads.control.config.AperoAdConfig;
+import com.ads.control.config.ITGAdConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.IntroduceActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
 
@@ -24,7 +23,9 @@ public class MyApplication extends AdsMultiDexApplication {
     public static MyApplication getInstance() {
         return instance;
     }
+
     public String ADJUST_TOKEN = "isb4bnoaf18g";
+
     public static void setInstance(MyApplication instance) {
         MyApplication.instance = instance;
     }
@@ -38,22 +39,21 @@ public class MyApplication extends AdsMultiDexApplication {
     }
 
     private void configAds() {
-        aperoAdConfig.setMediationProvider(AperoAdConfig.PROVIDER_ADMOB);
-        aperoAdConfig.setVariant(BuildConfig.build_debug);
-        aperoAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app_resume));
+        itgAdConfig.setMediationProvider(ITGAdConfig.PROVIDER_ADMOB);
+        itgAdConfig.setVariant(BuildConfig.build_debug);
+        itgAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app_resume));
         listTestDevice.add("33BE2250B43518CCDA7DE426D04EE231");
-        aperoAdConfig.setListDeviceTest(listTestDevice);
+        itgAdConfig.setListDeviceTest(listTestDevice);
 
         AdjustConfig adjustConfig = new AdjustConfig(true, ADJUST_TOKEN);
-        aperoAdConfig.setAdjustConfig(adjustConfig);
-        aperoAdConfig.setFacebookClientToken(getResources().getString(R.string.facebook_client_token));
-        AperoAd.getInstance().init(this, aperoAdConfig, false);
+        itgAdConfig.setAdjustConfig(adjustConfig);
+        itgAdConfig.setFacebookClientToken(getResources().getString(R.string.facebook_client_token));
+        ITGAd.getInstance().init(this, itgAdConfig, false);
         Admob.getInstance().setDisableAdResumeWhenClickAds(true);
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(TutorialScreenITGActivity.class);
     }
-
 
 
     public LanguageModel getLanguage() {

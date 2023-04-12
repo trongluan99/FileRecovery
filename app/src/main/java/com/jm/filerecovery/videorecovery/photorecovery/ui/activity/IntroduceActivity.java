@@ -18,16 +18,12 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.ads.control.admob.Admob;
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.wrapper.ApAdError;
-import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -50,7 +46,8 @@ public class IntroduceActivity extends BaseActivity {
     TextView txt_intro_2;
     TextView txt_intro_note;
     private boolean activity;
-//    private ApInterstitialAd mInterstitialAd = null;
+
+    //    private ApInterstitialAd mInterstitialAd = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,13 +70,14 @@ public class IntroduceActivity extends BaseActivity {
                 }
             }
         });
-        activity= true;
+        activity = true;
         loadInterClickHome();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        activity=true;
+        activity = true;
     }
 
     @Override
@@ -107,7 +105,7 @@ public class IntroduceActivity extends BaseActivity {
     }
 
     private void showStep() {
-        if(step==0){
+        if (step == 0) {
             txt_intro.setVisibility(View.INVISIBLE);
             txt_intro_1.setVisibility(View.VISIBLE);
             txt_intro_2.setVisibility(View.INVISIBLE);
@@ -115,14 +113,14 @@ public class IntroduceActivity extends BaseActivity {
             step = 1;
             title_step.setText(getResources().getString(R.string.step1));
             txt_Start.setText(getResources().getString(R.string.next));
-        } else if(step==1){
+        } else if (step == 1) {
             txt_intro.setVisibility(View.INVISIBLE);
             txt_intro_1.setVisibility(View.INVISIBLE);
             txt_intro_2.setVisibility(View.VISIBLE);
             txt_intro_note.setVisibility(View.INVISIBLE);
             step = 2;
             title_step.setText(getResources().getString(R.string.step2));
-        } else if(step==2){
+        } else if (step == 2) {
             txt_intro.setVisibility(View.INVISIBLE);
             txt_intro_1.setVisibility(View.INVISIBLE);
             txt_intro_2.setVisibility(View.INVISIBLE);
@@ -130,16 +128,16 @@ public class IntroduceActivity extends BaseActivity {
             step = 3;
             title_step.setText(getResources().getString(R.string.step_note));
             txt_Start.setText(getResources().getString(R.string.let_start));
-        } else if(step==3){
+        } else if (step == 3) {
             if (RemoteConfigUtils.INSTANCE.getOnInterIntroduce().equals("on")) {
                 Log.d("TuanPA38", " checkRemoteConfigResult getOnInterIntroduce == on");
-                if(mInterstitialAdTutorial!=null){
+                if (mInterstitialAdTutorial != null) {
                     if (mInterstitialAdTutorial.isReady()) {
-                        AperoAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new AperoAdCallback() {
+                        ITGAd.getInstance().forceShowInterstitial(this, mInterstitialAdTutorial, new ITGAdCallback() {
                             @Override
                             public void onNextAction() {
                                 Log.i("TuanPA38", "onNextAction: start content and finish main");
-                                if (activity){
+                                if (activity) {
                                     startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                                     finish();
                                     activity = false;
@@ -150,7 +148,7 @@ public class IntroduceActivity extends BaseActivity {
                             public void onAdFailedToShow(@Nullable ApAdError adError) {
                                 super.onAdFailedToShow(adError);
                                 Log.i("TuanPA38", "onAdFailedToShow:" + adError.getMessage());
-                                if (activity){
+                                if (activity) {
                                     startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                                     finish();
                                     activity = false;
@@ -159,14 +157,14 @@ public class IntroduceActivity extends BaseActivity {
 
                         }, true);
                     } else {
-                        if (activity){
+                        if (activity) {
                             startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                             finish();
                             activity = false;
                         }
                     }
                 } else {
-                    if (activity){
+                    if (activity) {
                         startActivity(new Intent(IntroduceActivity.this, MainActivity.class));
                         finish();
                         activity = false;

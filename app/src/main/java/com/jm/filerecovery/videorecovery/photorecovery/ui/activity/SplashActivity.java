@@ -9,29 +9,15 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import com.facebook.FacebookSdk;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-
-import com.ads.control.admob.Admob;
 import com.ads.control.admob.AppOpenManager;
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
-import com.ads.control.ads.wrapper.ApAdError;
 import com.ads.control.ads.wrapper.ApInterstitialAd;
 import com.ads.control.funtion.AdCallback;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
-import com.jm.filerecovery.videorecovery.photorecovery.TutorialScreenITGActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
 
@@ -92,6 +78,7 @@ public class SplashActivity extends BaseActivity {
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             // show tutorial only one
             loadInterTutorial();
+            AdsConfig.loadInterAllHigh(this);
         }
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             loadNativeLanguage();
@@ -100,7 +87,7 @@ public class SplashActivity extends BaseActivity {
             // load native home only
             loadNativeHome();
         }
-        AppOpenManager.getInstance().loadSplashOpenAndInter(SplashActivity.class,SplashActivity.this,getResources().getString(R.string.open_lunch_high),getResources().getString(R.string.admob_inter_splash),25000,new AdCallback(){
+        AppOpenManager.getInstance().loadSplashOpenAndInter(SplashActivity.class, SplashActivity.this, getResources().getString(R.string.open_lunch_high), getResources().getString(R.string.admob_inter_splash), 25000, new AdCallback() {
             @Override
             public void onNextAction() {
                 super.onNextAction();
@@ -146,6 +133,7 @@ public class SplashActivity extends BaseActivity {
                 if (Environment.isExternalStorageManager()) {
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
+                    AdsConfig.loadInterAllHigh(this);
                 } else {
                     Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);
                     startActivity(intent);
@@ -153,6 +141,7 @@ public class SplashActivity extends BaseActivity {
             } else {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
+                AdsConfig.loadInterAllHigh(this);
             }
         }
         finish();

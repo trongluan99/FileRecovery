@@ -22,20 +22,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.ads.control.ads.AperoAd;
-import com.ads.control.ads.AperoAdCallback;
-import com.ads.control.ads.AperoInitCallback;
+import com.ads.control.ads.ITGAd;
+import com.ads.control.ads.ITGAdCallback;
+import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
-import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemPhotoSelectAdapter;
+import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.adapter.ItemVideoSelectAdapter;
-import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.Model.VideoEntity;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.adapter.FileVideoAdapter;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo.task.RecoverVideoAsyncTask;
+import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.RestoreResultActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ import java.util.ArrayList;
  * Created by deepshikha on 20/3/17.
  */
 
-public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnClickItem {
+public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnClickItem, BaseActivity.PreLoadNativeListener {
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
@@ -59,6 +59,11 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
     ItemVideoSelectAdapter itemSelectAdapter;
     ImageView imgNext;
     ConstraintLayout imagePickedArea;
+
+    private boolean populateNativeAdView = false;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +77,74 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
     }
 
     private void initAds() {
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+                if (nativeAdViewRecoveryItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {
@@ -116,7 +186,7 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -141,12 +211,20 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
                             restoreFile();
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+                    }
 
                 }
 
@@ -160,7 +238,7 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
                 if (tempList.size() == 0) {
                     Toast.makeText(VideoActivity.this, "Cannot restore, all items are unchecked!", Toast.LENGTH_LONG).show();
                 } else {
-                    AperoAdCallback adCallback = new AperoAdCallback() {
+                    ITGAdCallback adCallback = new ITGAdCallback() {
                         @Override
                         public void onNextAction() {
                             super.onNextAction();
@@ -185,12 +263,21 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
                             restoreFile();
                         }
                     };
-                    AperoAd.getInstance().setInitCallback(new AperoInitCallback() {
-                        @Override
-                        public void initAdSuccess() {
-                            AperoAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+
+                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                        ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    } else {
+                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                                @Override
+                                public void initAdSuccess() {
+                                    ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                                }
+                            });
+                        } else {
+                            restoreFile();
                         }
-                    });
+                    }
 
                 }
 
@@ -199,8 +286,9 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
     }
 
     boolean restore = true;
+
     private void restoreFile() {
-        if(!restore) return;
+        if (!restore) return;
         tempList = fileVideoAdapter.getSelectedItem();
         mRecoverVideoAsyncTask = new RecoverVideoAsyncTask(VideoActivity.this, fileVideoAdapter.getSelectedItem(), new RecoverVideoAsyncTask.OnRestoreListener() {
             @Override
@@ -221,6 +309,7 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
         mRecoverVideoAsyncTask.execute();
         restore = false;
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -256,7 +345,7 @@ public class VideoActivity extends BaseActivity implements  FileVideoAdapter.OnC
     @Override
     public void onClick() {
         tempList = fileVideoAdapter.getSelectedItem();
-        if(tempList.size()>0){
+        if (tempList.size() > 0) {
             txt_recovery_now.setBackground(getResources().getDrawable(R.drawable.bg_result));
             imagePickedArea.setVisibility(View.VISIBLE);
         } else {

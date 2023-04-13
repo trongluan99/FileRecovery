@@ -56,19 +56,19 @@ object RemoteConfigUtils {
             ON_INTER_TUTORIAL to "on",
 
             ON_NATIVE_LANGUAGE to "on",
-            ON_NATIVE_LANGUAGE_HIGH to "on",
+            ON_NATIVE_LANGUAGE_HIGH to "off",
 
             ON_INTER_CLICK_HOME to "on",
             ON_INTER_CLICK_ITEM to "on",
 
             ON_INTER_RECOVERY to "on",
-            ON_INTER_ALL_HIGH_FLOOR to "on",
+            ON_INTER_ALL_HIGH_FLOOR to "off",
 
             ON_NATIVE_RECOVERY_ITEM to "on",
-            ON_NATIVE_RECOVERY_ITEM_HIGH to "on",
+            ON_NATIVE_RECOVERY_ITEM_HIGH to "off",
 
             ON_NATIVE_SCAN to "on",
-            ON_NATIVE_SCAN_HIGH to "on",
+            ON_NATIVE_SCAN_HIGH to "off",
 
             ON_OPEN_HIGH_SPLASH_2_ID to "on",
             ON_OPEN_HIGH_SPLASH_3_ID to "on",

@@ -18,6 +18,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
+import com.jm.filerecovery.videorecovery.photorecovery.TutorialScreenITGActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SharePreferenceUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
 
@@ -135,7 +136,8 @@ public class SplashActivity extends BaseActivity {
                     startActivity(intent);
                     AdsConfig.loadInterAllHigh(this);
                 } else {
-                    Intent intent = new Intent(SplashActivity.this, IntroduceActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, TutorialScreenITGActivity.class);
+                    loadNativeTutorial();
                     startActivity(intent);
                 }
             } else {

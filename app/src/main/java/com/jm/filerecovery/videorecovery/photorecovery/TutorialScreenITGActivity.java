@@ -69,6 +69,7 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         setContentView(getIdLayout());
         initView();
         initData();
+        setPreLoadNativeListener(this);
         activity = true;
         loadInterClickHome();
         initAds();
@@ -98,7 +99,8 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         }*/
 
         // Begin: Add Ads
-        if (nativeAdViewTutorial != null) {
+        if (nativeAdViewTutorial != null && !populateNativeAdView) {
+            Log.d("TuanPA38", " initAds onLoadNativeTutorial == 11111111");
             ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
             populateNativeAdView = true;
         }
@@ -320,16 +322,16 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void onLoadNativeTutorial() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
+        Log.d("TuanPA38", "Tutorial onLoadNativeTutorialSuccess");
         /*if (!populateNativeAdView) {
             if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewTutorial != null) {
                 populateNativeAdView = true;
                 ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
             }
         }*/
-
+        Log.d("TuanPA38", " initAds onLoadNativeTutorial == 222222");
         // Begin: Add Ads
-        if (nativeAdViewTutorial != null) {
+        if (nativeAdViewTutorial != null && !populateNativeAdView) {
             ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
             populateNativeAdView = true;
         }

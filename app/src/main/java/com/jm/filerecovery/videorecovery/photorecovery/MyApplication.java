@@ -39,8 +39,13 @@ public class MyApplication extends AdsMultiDexApplication {
     }
 
     private void configAds() {
-        itgAdConfig.setMediationProvider(ITGAdConfig.PROVIDER_ADMOB);
-        itgAdConfig.setVariant(BuildConfig.build_debug);
+        String environment = ITGAdConfig.ENVIRONMENT_DEVELOP;
+        if(BuildConfig.build_debug){
+            environment = ITGAdConfig.ENVIRONMENT_DEVELOP;
+        } else {
+            environment = ITGAdConfig.ENVIRONMENT_PRODUCTION;
+        }
+        itgAdConfig = new ITGAdConfig(this, ITGAdConfig.PROVIDER_ADMOB, environment);
         itgAdConfig.setIdAdResume(getResources().getString(R.string.admob_open_app_resume));
         listTestDevice.add("33BE2250B43518CCDA7DE426D04EE231");
         itgAdConfig.setListDeviceTest(listTestDevice);
@@ -53,6 +58,11 @@ public class MyApplication extends AdsMultiDexApplication {
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(TutorialScreenITGActivity.class);
+
+        Admob.getInstance().setAppLovin(true);
+        Admob.getInstance().setColony(true);
+        Admob.getInstance().setFan(true);
+        Admob.getInstance().setVungle(true);
     }
 
 

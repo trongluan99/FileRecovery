@@ -88,13 +88,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome != null) {
-            binding.layoutNative.setVisibility(View.VISIBLE);
-            populateNativeAdView = true;
-            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
-        } else {
+
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewHomeHigh != null) {
+                binding.layoutNative.setVisibility(View.VISIBLE);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHomeHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewHome != null) {
+                    binding.layoutNative.setVisibility(View.VISIBLE);
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }else{
             binding.layoutNative.setVisibility(View.GONE);
         }
+
+        // End
     }
 
     @Override
@@ -718,12 +730,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onLoadNativeHomeSuccess() {
-        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
+        // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on") && nativeAdViewHome != null) {
+            if (nativeAdViewHomeHigh != null) {
+                binding.layoutNative.setVisibility(View.VISIBLE);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHomeHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+            } else {
+                if (nativeAdViewHome != null) {
+                    binding.layoutNative.setVisibility(View.VISIBLE);
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
+        }else{
+            binding.layoutNative.setVisibility(View.GONE);
         }
     }
 

@@ -16,8 +16,10 @@ object RemoteConfigUtils {
     private const val ON_NATIVE_LANGUAGE_HIGH = "on_native_language_high"
 
     private const val ON_NATIVE_HOME = "on_native_home"
+    private const val ON_NATIVE_HOME_HIGH = "on_native_home_high"
 
     private const val ON_NATIVE_TUTORIAL = "on_native_tutorial"
+    private const val ON_NATIVE_TUTORIAL_HIGH = "on_native_tutorial_high"
 
     private const val ON_INTER_TUTORIAL = "on_inter_tutorial"
 
@@ -31,6 +33,9 @@ object RemoteConfigUtils {
 
     private const val ON_NATIVE_RECOVERY_ITEM = "on_native_recovery_item"
     private const val ON_NATIVE_RECOVERY_ITEM_HIGH = "on_native_recovery_item_high"
+
+    private const val ON_NATIVE_LIST_ITEM = "on_native_list_item"
+    private const val ON_NATIVE_LIST_ITEM_HIGH = "on_native_list_item_high"
 
     private const val ON_NATIVE_SCAN = "on_native_scan"
     private const val ON_NATIVE_SCAN_HIGH = "on_native_scan_high"
@@ -51,8 +56,11 @@ object RemoteConfigUtils {
             ON_BANNER_HOME to "on",
 
             ON_NATIVE_HOME to "on",
+            ON_NATIVE_HOME_HIGH to "on",
 
             ON_NATIVE_TUTORIAL to "on",
+            ON_NATIVE_TUTORIAL_HIGH to "on",
+
             ON_INTER_TUTORIAL to "on",
 
             ON_NATIVE_LANGUAGE to "on",
@@ -66,6 +74,9 @@ object RemoteConfigUtils {
 
             ON_NATIVE_RECOVERY_ITEM to "on",
             ON_NATIVE_RECOVERY_ITEM_HIGH to "off",
+
+            ON_NATIVE_LIST_ITEM to "on",
+            ON_NATIVE_LIST_ITEM_HIGH to "on",
 
             ON_NATIVE_SCAN to "on",
             ON_NATIVE_SCAN_HIGH to "off",
@@ -128,12 +139,39 @@ object RemoteConfigUtils {
         return "off"
     }
 
+    fun getOnNativeHomeHigh(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_HOME_HIGH)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
     fun getOnNativeTutorial(): String {
         try {
             return if (!completed) {
                 "off"
             } else {
                 remoteConfig.getString(ON_NATIVE_TUTORIAL)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
+
+    fun getOnNativeTutorialHigh(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_TUTORIAL_HIGH)
             }
         } catch (e: Exception) {
 
@@ -382,6 +420,32 @@ object RemoteConfigUtils {
                 "off"
             } else {
                 remoteConfig.getString(ON_INTER_INTRODUCE)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
+    fun getOnNativeListItem(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_LIST_ITEM)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
+    fun getOnNativeListItemHigh(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_LIST_ITEM_HIGH)
             }
         } catch (e: Exception) {
 

@@ -90,19 +90,18 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
         layout_native = findViewById(R.id.layout_native);
-        /*if (RemoteConfigUtils.INSTANCE.getOnNativeTutorial().equals("on") && nativeAdViewTutorial != null) {
-            layout_native.setVisibility(View.VISIBLE);
-            populateNativeAdView = true;
-            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
-        } else {
-            layout_native.setVisibility(View.GONE);
-        }*/
 
         // Begin: Add Ads
-        if (nativeAdViewTutorial != null && !populateNativeAdView) {
-            Log.d("TuanPA38", " initAds onLoadNativeTutorial == 11111111");
-            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
-            populateNativeAdView = true;
+        if(!populateNativeAdView){
+            if (nativeAdViewTutorialHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorialHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            }else{
+                if (nativeAdViewTutorial != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
         }
 
         // End
@@ -322,20 +321,19 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void onLoadNativeTutorial() {
-        Log.d("TuanPA38", "Tutorial onLoadNativeTutorialSuccess");
-        /*if (!populateNativeAdView) {
-            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewTutorial != null) {
-                populateNativeAdView = true;
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
-            }
-        }*/
-        Log.d("TuanPA38", " initAds onLoadNativeTutorial == 222222");
+        Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
         // Begin: Add Ads
-        if (nativeAdViewTutorial != null && !populateNativeAdView) {
-            ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
-            populateNativeAdView = true;
+        if(!populateNativeAdView){
+            if (nativeAdViewTutorialHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorialHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            }else{
+                if (nativeAdViewTutorial != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
         }
-
         // End
     }
 

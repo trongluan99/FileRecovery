@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-
-
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
@@ -69,5 +67,6 @@ public class NoFileActiviy extends AppCompatActivity implements View.OnClickList
     @Override
     public void onBackPressed() {
 //        AdmobUtils.getInstance().showInterstitialAd(this, () -> finish());
+        super.onBackPressed();
     }
 }

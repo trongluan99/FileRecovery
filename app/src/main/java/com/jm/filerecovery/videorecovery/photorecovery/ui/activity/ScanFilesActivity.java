@@ -90,8 +90,6 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
 
-//        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
-
         // Begin: Add Ads
         if (!populateNativeAdView) {
             if (nativeAdViewScanHigh != null) {
@@ -105,6 +103,7 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
             }
         }
 
+        loadNativeListItem();
         // End
 
 

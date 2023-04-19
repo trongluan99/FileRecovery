@@ -21,7 +21,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryvideo
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActivity;
 
 
-public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizontalAdapter.OnClickItemListener {
+public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizontalAdapter.OnClickItemListener, BaseActivity.PreLoadNativeListener {
     @Override
     public void onClickItem(int position) {
 //
@@ -45,6 +45,9 @@ public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizo
     RecyclerView recyclerView;
     GroupVideoHorizontalAdapter groupVideoHorizontalAdapter;
     Toolbar toolbar;
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+    boolean populateNativeAdView = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,68 @@ public class AlbumVideoActivity extends BaseActivity implements GroupVideoHorizo
     }
 
     private void initAds() {
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewListItemHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewListItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewListItemHigh != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewListItem != null) {
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {

@@ -10,9 +10,13 @@
 
     //Info id admob id publish
     <!--    <string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string>-->
+    <!--    <string name="admob_inter_all_high_floor" translatable="false">ca-app-pub-6691965685689933/8689422854</string>-->
     <!--    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/4110433185</string>-->
+    <!--    <string name="admob_native_language_high_floor" translatable="false">ca-app-pub-6691965685689933/6610054423</string>-->
     <!--    <string name="admob_native_tutorial" translatable="false">ca-app-pub-6691965685689933/5421086097</string>-->
+    <!--    <string name="admob_native_tutorial_high" translatable="false">ca-app-pub-6691965685689933/2093376293</string>-->
     <!--    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/4490046449</string>-->
+    <!--    <string name="admob_native_home_high" translatable="false">ca-app-pub-6691965685689933/3421897692</string>-->
     <!--    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/2127267672</string>-->
     <!--    <string name="admob_inter_splash_new" translatable="false">ca-app-pub-6691965685689933/5497205774</string>-->
     <!--    <string name="admob_inter_splash_high" translatable="false">ca-app-pub-6691965685689933/4760186675</string>-->
@@ -21,8 +25,11 @@
     <!--    <string name="admob_inter_click_item" translatable="false">ca-app-pub-6691965685689933/7100392754</string>-->
     <!--    <string name="admob_inter_recovery" translatable="false">ca-app-pub-6691965685689933/3080298837</string>-->
     <!--    <string name="admob_native_scan" translatable="false">ca-app-pub-6691965685689933/3176964776</string>-->
+    <!--    <string name="admob_native_scan_high" translatable="false">ca-app-pub-6691965685689933/3354207831</string>-->
     <!--    <string name="admob_native_list_item" translatable="false">ca-app-pub-6691965685689933/2039637760</string>-->
+    <!--    <string name="admob_native_list_item_high" translatable="false">ca-app-pub-6691965685689933/2039637760</string>-->
     <!--    <string name="admob_native_recovery_item" translatable="false">ca-app-pub-6691965685689933/4302344182</string>-->
+    <!--    <string name="admob_native_recovery_item_high" translatable="false">ca-app-pub-6691965685689933/1359427868</string>-->
     <!--    <string name="admob_native_finish" translatable="false">ca-app-pub-6691965685689933/7188022660</string>-->
     <!--    <string name="open_lunch_high" translatable="false">ca-app-pub-6691965685689933/8138556884</string>-->
     <!--    <string name="open_lunch_high_new" translatable="false">ca-app-pub-6691965685689933/2056654217</string>-->
@@ -39,8 +46,10 @@
     <string name="admob_native_language_high_floor" translatable="false">/6499/example/native</string>
 
     <string name="admob_native_tutorial" translatable="false">/6499/example/native</string>
+    <string name="admob_native_tutorial_high" translatable="false">/6499/example/native</string>
 
     <string name="admob_native_home" translatable="false">/6499/example/native</string>
+    <string name="admob_native_home_high" translatable="false">/6499/example/native</string>
 
     <string name="admob_inter_tutorial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
@@ -59,6 +68,8 @@
     <string name="admob_native_recovery_item_high" translatable="false">/6499/example/native</string>
 
     <string name="admob_native_list_item" translatable="false">/6499/example/native</string>
+    <string name="admob_native_list_item_high" translatable="false">/6499/example/native</string>
+
     <string name="admob_native_finish" translatable="false">/6499/example/native</string>
 
     <string name="open_lunch_high" translatable="false">ca-app-pub-3940256099942544/3419835294</string>

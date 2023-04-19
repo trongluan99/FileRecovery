@@ -69,6 +69,7 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         setContentView(getIdLayout());
         initView();
         initData();
+        setPreLoadNativeListener(this);
         activity = true;
         loadInterClickHome();
         initAds();

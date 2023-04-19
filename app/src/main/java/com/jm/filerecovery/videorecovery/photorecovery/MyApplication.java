@@ -11,6 +11,9 @@ import com.ads.control.config.ITGAdConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.model.LanguageModel;
 import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.SplashActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.SystemUtil;
+import com.mbridge.msdk.MBridgeConstans;
+import com.mbridge.msdk.MBridgeSDK;
+import com.mbridge.msdk.out.MBridgeSDKFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +61,9 @@ public class MyApplication extends AdsMultiDexApplication {
         Admob.getInstance().setOpenActivityAfterShowInterAds(true);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity.class);
         com.ads.control.admob.AppOpenManager.getInstance().disableAppResumeWithActivity(TutorialScreenITGActivity.class);
+
+        MBridgeSDK sdk = MBridgeSDKFactory.getMBridgeSDK();
+        sdk.setConsentStatus(this, MBridgeConstans.IS_SWITCH_ON);
 
         Admob.getInstance().setAppLovin(true);
         Admob.getInstance().setColony(true);

@@ -9,8 +9,8 @@ android {
         applicationId "com.jm.filerecovery.videorecovery.photorecovery"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 126
-        versionName "1.2.6"
+        versionCode 127
+        versionName "1.2.7"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -105,8 +105,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     implementation 'androidx.multidex:multidex:2.0.1'
-//    implementation 'com.github.AperoVN:AperoModuleAds:5.2.2'
-    implementation 'com.github.trongluan99:ITGModuleAds:1.0.16_alpha'
+    implementation 'com.github.trongluan99:ITGModuleAds:1.0.17'
     implementation 'com.facebook.android:facebook-android-sdk:16.0.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
@@ -120,4 +119,6 @@ dependencies {
     implementation 'com.unity3d.ads:unity-ads:4.6.0'
     implementation 'com.google.ads.mediation:unity:4.6.1.0'
     implementation 'com.google.ads.mediation:vungle:6.12.1.0'
+
+    implementation 'com.google.ads.mediation:mintegral:16.4.21.0'
 }

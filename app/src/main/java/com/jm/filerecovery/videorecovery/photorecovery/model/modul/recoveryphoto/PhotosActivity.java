@@ -216,7 +216,7 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
@@ -271,7 +271,7 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {

@@ -81,7 +81,7 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
                         mContext.startActivity(intent);
                     }
                 };
-                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                     ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
                 } else {
                     if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {

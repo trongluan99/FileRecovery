@@ -217,7 +217,7 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
@@ -269,7 +269,7 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
                             restoreFile();
                         }
                     };
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {

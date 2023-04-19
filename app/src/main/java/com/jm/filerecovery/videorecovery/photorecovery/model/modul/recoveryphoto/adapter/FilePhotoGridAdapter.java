@@ -82,7 +82,7 @@ public class FilePhotoGridAdapter extends RecyclerView.Adapter<FilePhotoGridAdap
                     }
                 };
 
-                if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                     ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
                 } else {
                     if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {

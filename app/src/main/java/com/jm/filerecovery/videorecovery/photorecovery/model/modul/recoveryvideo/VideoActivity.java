@@ -211,7 +211,7 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
                             restoreFile();
                         }
                     };
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
@@ -264,7 +264,7 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh.isReady()) {
+                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
                         ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
                     } else {
                         if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {

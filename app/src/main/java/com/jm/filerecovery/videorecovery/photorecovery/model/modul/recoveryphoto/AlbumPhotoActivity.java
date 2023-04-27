@@ -71,14 +71,9 @@ public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizo
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItemHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewListItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -88,14 +83,9 @@ public class AlbumPhotoActivity extends BaseActivity implements GroupPhotoHorizo
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItemHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewListItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End

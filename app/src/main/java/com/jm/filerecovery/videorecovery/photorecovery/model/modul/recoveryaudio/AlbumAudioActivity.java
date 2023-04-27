@@ -57,14 +57,9 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItemHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewListItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -74,14 +69,9 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItemHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewListItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
     }

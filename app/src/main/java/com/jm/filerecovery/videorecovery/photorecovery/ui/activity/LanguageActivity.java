@@ -99,14 +99,9 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewLanguageHighFloor != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHighFloor, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewLanguage != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewLanguage != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
 
@@ -233,16 +228,10 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewLanguageHighFloor != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHighFloor, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewLanguage != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewLanguage != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
 

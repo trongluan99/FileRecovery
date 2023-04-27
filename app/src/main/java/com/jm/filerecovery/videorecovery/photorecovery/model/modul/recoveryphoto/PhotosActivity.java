@@ -26,7 +26,6 @@ import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -80,16 +79,10 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -99,16 +92,10 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -216,19 +203,15 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
                     } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
+                        restoreFile();
                     }
 
                 }
@@ -271,19 +254,15 @@ public class PhotosActivity extends BaseActivity implements FilePhotoAdapter.OnC
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(PhotosActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
                     } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(PhotosActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
+                        restoreFile();
                     }
 
                 }

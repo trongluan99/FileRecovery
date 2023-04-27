@@ -27,7 +27,6 @@ import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -83,16 +82,10 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -102,16 +95,10 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -211,21 +198,17 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
                             restoreFile();
                         }
                     };
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
-                    } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
-                    }
 
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
+                    } else {
+                        restoreFile();
+                    }
                 }
 
             }
@@ -264,21 +247,16 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(VideoActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
                     } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(VideoActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
+                        restoreFile();
                     }
-
                 }
 
             }

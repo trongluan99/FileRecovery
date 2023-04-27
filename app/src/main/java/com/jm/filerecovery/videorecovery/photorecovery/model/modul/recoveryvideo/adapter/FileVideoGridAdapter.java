@@ -15,7 +15,6 @@ import com.ads.control.ads.ITGInitCallback;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.model.SquareImageView;
@@ -81,23 +80,18 @@ public class FileVideoGridAdapter extends RecyclerView.Adapter<FileVideoGridAdap
                         mContext.startActivity(intent);
                     }
                 };
-                if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                    ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
+                    ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                        }
+                    });
                 } else {
-                    if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
-                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                            @Override
-                            public void initAdSuccess() {
-                                ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
-                            }
-                        });
-                    } else {
-                        Intent intent = new Intent(mContext, VideoActivity.class);
-                        intent.putExtra("value", postion);
-                        mContext.startActivity(intent);
-                    }
+                    Intent intent = new Intent(mContext, VideoActivity.class);
+                    intent.putExtra("value", postion);
+                    mContext.startActivity(intent);
                 }
-
             }
         });
     }

@@ -27,7 +27,6 @@ import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.ITGInitCallback;
 import com.ads.control.ads.wrapper.ApAdError;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.BaseActivity;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
@@ -85,16 +84,10 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -103,16 +96,10 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
     @Override
     public void onLoadNativeSuccess() {
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
     }
@@ -217,19 +204,15 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
                         }
                     };
 
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
                     } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
+                        restoreFile();
                     }
 
                 }
@@ -269,20 +252,15 @@ public class AudioActivity extends BaseActivity implements FileAudioAdapter.OnCl
                             restoreFile();
                         }
                     };
-                    if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                        ITGAd.getInstance().forceShowInterstitial(AudioActivity.this, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                    if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
+                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                            @Override
+                            public void initAdSuccess() {
+                                ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
+                            }
+                        });
                     } else {
-                        if (RemoteConfigUtils.INSTANCE.getOnInterRecovery().equals("on")) {
-                            ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                                @Override
-                                public void initAdSuccess() {
-                                    ITGAd.getInstance().loadSplashInterstitialAds(AudioActivity.this, getResources().getString(R.string.admob_inter_recovery), 5000, 0, true, adCallback);
-                                }
-                            });
-                        } else {
-                            restoreFile();
-                        }
-
+                        restoreFile();
                     }
 
                 }

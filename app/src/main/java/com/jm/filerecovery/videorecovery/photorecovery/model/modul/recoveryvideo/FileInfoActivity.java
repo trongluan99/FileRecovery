@@ -77,16 +77,10 @@ public class FileInfoActivity extends BaseActivity implements View.OnClickListen
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End
@@ -105,16 +99,10 @@ public class FileInfoActivity extends BaseActivity implements View.OnClickListen
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewRecoveryItemHigh != null) {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 1");
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
+            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
+            if (nativeAdViewRecoveryItem != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-                if (nativeAdViewRecoveryItem != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
         // End

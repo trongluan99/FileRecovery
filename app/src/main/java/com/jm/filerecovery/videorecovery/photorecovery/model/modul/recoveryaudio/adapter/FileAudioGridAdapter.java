@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ads.control.ads.ITGAd;
 import com.ads.control.ads.ITGAdCallback;
 import com.ads.control.ads.ITGInitCallback;
-import com.jm.filerecovery.videorecovery.photorecovery.AdsConfig;
 import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.RemoteConfigUtils;
 import com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudio.AudioActivity;
@@ -64,22 +63,17 @@ public class FileAudioGridAdapter extends RecyclerView.Adapter<FileAudioGridAdap
                         mContext.startActivity(intent);
                     }
                 };
-                if (AdsConfig.mInterstitialAdAllHigh!=null && AdsConfig.mInterstitialAdAllHigh.isReady()) {
-                    ITGAd.getInstance().forceShowInterstitial(mContext, AdsConfig.mInterstitialAdAllHigh, adCallback);
+                if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
+                    ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
+                        @Override
+                        public void initAdSuccess() {
+                            ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
+                        }
+                    });
                 } else {
-                    if (RemoteConfigUtils.INSTANCE.getOnInterClickItem().equals("on")) {
-                        ITGAd.getInstance().setInitCallback(new ITGInitCallback() {
-                            @Override
-                            public void initAdSuccess() {
-                                ITGAd.getInstance().loadSplashInterstitialAds(mContext, mContext.getResources().getString(R.string.admob_inter_click_item), 5000, 0, true, adCallback);
-                            }
-                        });
-                    } else {
-                        Intent intent = new Intent(mContext, AudioActivity.class);
-                        intent.putExtra("value", postion);
-                        mContext.startActivity(intent);
-                    }
-
+                    Intent intent = new Intent(mContext, AudioActivity.class);
+                    intent.putExtra("value", postion);
+                    mContext.startActivity(intent);
                 }
             }
         });

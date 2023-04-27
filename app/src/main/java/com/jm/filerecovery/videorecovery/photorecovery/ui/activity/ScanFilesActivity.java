@@ -92,14 +92,9 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewScanHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewScan != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewScan != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
 
@@ -150,14 +145,9 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewScanHigh != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewScan != null) {
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
-            } else {
-                if (nativeAdViewScan != null) {
-                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
-                    populateNativeAdView = true;
-                }
             }
         }
 

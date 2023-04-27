@@ -79,7 +79,6 @@ public class SplashActivity extends BaseActivity {
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             // show tutorial only one
             loadInterTutorial();
-            AdsConfig.loadInterAllHigh(this);
         }
         if (!SharePreferenceUtils.getInstance(this).getSelectedLanguage()) {
             loadNativeLanguage();
@@ -134,7 +133,6 @@ public class SplashActivity extends BaseActivity {
                 if (Environment.isExternalStorageManager()) {
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
-                    AdsConfig.loadInterAllHigh(this);
                 } else {
                     Intent intent = new Intent(SplashActivity.this, TutorialScreenITGActivity.class);
                     loadNativeTutorial();
@@ -143,7 +141,6 @@ public class SplashActivity extends BaseActivity {
             } else {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
-                AdsConfig.loadInterAllHigh(this);
             }
         }
         finish();

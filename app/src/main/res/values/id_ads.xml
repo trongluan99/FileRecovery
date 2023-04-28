@@ -9,21 +9,21 @@
 
 
     //Info id admob id publish
-    <!--<string name="admob_app_id" translatable="false">ca-app-pub-6691965685689933~6787029656</string>
-    <string name="open_lunch_high" translatable="false">ca-app-pub-6691965685689933/8833397669</string>
-    <string name="admob_inter_splash" translatable="false">ca-app-pub-6691965685689933/5674264745</string>
-    <string name="admob_open_app_resume" translatable="false">ca-app-pub-6691965685689933/2194184736</string>
-    <string name="admob_native_language" translatable="false">ca-app-pub-6691965685689933/3581070986</string>
-    <string name="admob_native_home" translatable="false">ca-app-pub-6691965685689933/2002613045</string>
-    <string name="admob_inter_click_home" translatable="false">ca-app-pub-6691965685689933/9689531379</string>
-    <string name="admob_native_scan" translatable="false">ca-app-pub-6691965685689933/6871796343</string>
-    <string name="admob_native_list_item" translatable="false">ca-app-pub-6691965685689933/8362624373</string>
-    <string name="admob_inter_click_item" translatable="false">ca-app-pub-6691965685689933/5736461031</string>
-    <string name="admob_native_recovery_item" translatable="false">ca-app-pub-6691965685689933/2374928388</string>
-    <string name="admob_native_finish" translatable="false">ca-app-pub-6691965685689933/2856529716</string>
-    <string name="admob_inter_recovery" translatable="false">ca-app-pub-6691965685689933/2870624542</string>
-    <string name="admob_native_tutorial" translatable="false">ca-app-pub-6691965685689933/4913461818</string>
-    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-6691965685689933/2392074408</string>-->
+    <!--<string name="admob_app_id" translatable="false">ca-app-pub-7208941695689653~1946487319</string>
+    <string name="open_lunch_high" translatable="false">ca-app-pub-7208941695689653/1152280392</string>
+    <string name="admob_inter_splash" translatable="false">ca-app-pub-7208941695689653/4913268293</string>
+    <string name="admob_open_app_resume" translatable="false">ca-app-pub-7208941695689653/2287104952</string>
+    <string name="admob_native_language" translatable="false">ca-app-pub-7208941695689653/8152803013</string>
+    <string name="admob_native_home" translatable="false">ca-app-pub-7208941695689653/9127845479</string>
+    <string name="admob_inter_click_home" translatable="false">ca-app-pub-7208941695689653/5829892007</string>
+    <string name="admob_native_scan" translatable="false">ca-app-pub-7208941695689653/7605227851</string>
+    <string name="admob_native_list_item" translatable="false">ca-app-pub-7208941695689653/4021986318</string>
+    <string name="admob_inter_click_item" translatable="false">ca-app-pub-7208941695689653/2708904640</string>
+    <string name="admob_native_recovery_item" translatable="false">ca-app-pub-7208941695689653/6811020939</string>
+    <string name="admob_native_finish" translatable="false">ca-app-pub-7208941695689653/3875518798</string>
+    <string name="admob_inter_recovery" translatable="false">ca-app-pub-7208941695689653/1890646990</string>
+    <string name="admob_native_tutorial" translatable="false">ca-app-pub-7208941695689653/5638320319</string>
+    <string name="admob_inter_tutorial" translatable="false">ca-app-pub-7208941695689653/5683424484</string>-->
 
 
     //Info id admob id test

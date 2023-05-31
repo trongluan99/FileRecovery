@@ -2,6 +2,7 @@ package com.jm.filerecovery.videorecovery.photorecovery.ui.activity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -16,12 +17,15 @@ import com.jm.filerecovery.videorecovery.photorecovery.R;
 import com.jm.filerecovery.videorecovery.photorecovery.utils.Utils;
 
 
-public class RestoreResultActivity extends BaseActivity {
-
+public class RestoreResultActivity extends BaseActivity implements BaseActivity.PreLoadNativeListener {
+    private static final String TAG = "RestoreResultActivity";
     Toolbar toolbar;
     int type = 0;
     String mName = "";
     String path = "";
+    FrameLayout frameLayout;
+    ShimmerFrameLayout shimmerFrameLayout;
+    private boolean populateNativeAdView = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +40,81 @@ public class RestoreResultActivity extends BaseActivity {
         }
         Utils.setStatusBarHomeTransparent(this);
 
+        frameLayout = findViewById(R.id.fl_adplaceholder);
+        shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
+
         intView();
         intData();
         initAds();
     }
 
     private void initAds() {
-        FrameLayout frameLayout = findViewById(R.id.fl_adplaceholder);
-        ShimmerFrameLayout shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_finish), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
+        setPreLoadNativeListener(this);
+        loadNativeFinish();
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewFinishHigh != null) {
+                Log.d(TAG, "nativeAdViewFinishHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewFinishHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewFinish != null) {
+                    Log.d(TAG, "nativeAdViewFinish: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewFinish, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeSuccess() {
+        // Begin: Add Ads
+        if (!populateNativeAdView) {
+            if (nativeAdViewFinishHigh != null) {
+                Log.d(TAG, "populateNativeAdView: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewFinishHigh, frameLayout, shimmerFrameLayout);
+                populateNativeAdView = true;
+            } else {
+                if (nativeAdViewFinish != null) {
+                    Log.d(TAG, "nativeAdViewFinish: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewFinish, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
+            }
+        }
+        // End
+    }
+
+    @Override
+    public void onLoadNativeFail() {
+        frameLayout.removeAllViews();
+    }
+
+    @Override
+    public void onLoadNativeLanguageSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeLanguageFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNativeHomeFail() {
+
+    }
+
+    @Override
+    public void onLoadNativeTutorial() {
+
     }
 
     public void intView() {

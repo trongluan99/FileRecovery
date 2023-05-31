@@ -15,6 +15,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,7 @@ import java.util.concurrent.Callable;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, BaseActivity.PreLoadNativeListener {
+    private static final String TAG = "MainActivity";
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1234;
     private List<Callable<Void>> callables = new ArrayList<>();
 
@@ -86,15 +88,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewHome != null) {
+            if (nativeAdViewHomeHigh != null) {
+                Log.d(TAG, "nativeAdViewHomeHigh: ");
                 binding.layoutNative.setVisibility(View.VISIBLE);
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHomeHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewHome != null) {
+                    Log.d(TAG, "nativeAdViewHome: ");
+                    binding.layoutNative.setVisibility(View.VISIBLE);
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
-        } else {
-            binding.layoutNative.setVisibility(View.GONE);
         }
-
         // End
     }
 
@@ -389,15 +396,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         Rate.Show(this, new Rate.OnResult() {
             @Override
             public void callActionAfter() {
-//                AdmobUtils.getInstance().showInterstitialAd(MainActivity.this, new AdmobUtils.AdCloseListener() {
-//                    @Override
-//                    public void onAdClosed() {
                 Intent intent = new Intent(MainActivity.this, ExitActivity.class);
                 MainActivity.this.finish();
                 MainActivity.this.finishAffinity();
                 startActivity(intent);
-//                    }
-//                });
             }
         });
     }
@@ -416,14 +418,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onLoadNativeHomeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewHome != null) {
+            if (nativeAdViewHomeHigh != null) {
+                Log.d(TAG, "nativeAdViewHomeHigh: ");
                 binding.layoutNative.setVisibility(View.VISIBLE);
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHomeHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            }else{
+                if (nativeAdViewHome != null) {
+                    Log.d(TAG, "nativeAdViewHome: ");
+                    binding.layoutNative.setVisibility(View.VISIBLE);
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewHome, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
-        } else {
-            binding.layoutNative.setVisibility(View.GONE);
         }
+        // End
     }
 
     @Override

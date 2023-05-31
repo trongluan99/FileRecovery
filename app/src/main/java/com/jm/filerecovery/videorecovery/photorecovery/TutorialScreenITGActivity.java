@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 public class TutorialScreenITGActivity extends BaseActivity implements View.OnClickListener, BaseActivity.PreLoadNativeListener {
+    private static final String TAG = "TutorialScreenITGActivi";
     private DotsIndicator dots_indicator;
     private ArrayList<ImageView> imgSelect = new ArrayList<>();
     private ArrayList<ImageView> imgTabs = new ArrayList<>();
@@ -92,12 +93,18 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewTutorial != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewTutorialHigh != null) {
+                Log.d(TAG, "nativeAdViewTutorialHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorialHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            }else{
+                if (nativeAdViewTutorial != null) {
+                    Log.d(TAG, "nativeAdViewTutorial: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
-
         // End
     }
 
@@ -272,9 +279,16 @@ public class TutorialScreenITGActivity extends BaseActivity implements View.OnCl
         Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewTutorial != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewTutorialHigh != null) {
+                Log.d(TAG, "nativeAdViewTutorialHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorialHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            }else{
+                if (nativeAdViewTutorial != null) {
+                    Log.d(TAG, "nativeAdViewTutorial: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewTutorial, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
         // End

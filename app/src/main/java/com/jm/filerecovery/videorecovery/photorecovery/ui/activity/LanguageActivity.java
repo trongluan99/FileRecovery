@@ -42,6 +42,7 @@ import butterknife.ButterKnife;
 
 
 public class LanguageActivity extends BaseActivity implements BaseActivity.PreLoadNativeListener, IClickLanguage {
+    private static final String TAG = "LanguageActivity";
     RecyclerView recyclerLanguage;
     ImageView imgSaveLanguage;
     LanguageAdapter languageAdapter;
@@ -89,22 +90,21 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
     private void initAds() {
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
-        /*if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
-//            AperoAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size);
-            populateNativeAdView = true;
-            AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
-        } else {
-            Log.d("TuanPA38", "LanguageActivity initAds nativeAdViewLanguage = " + nativeAdViewLanguage);
-        }*/
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewLanguage != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewLanguageHigh != null) {
+                Log.d(TAG, "nativeAdViewLanguageHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewLanguage != null) {
+                    Log.d(TAG, "nativeAdViewLanguage: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
-
         // End
     }
 
@@ -218,23 +218,20 @@ public class LanguageActivity extends BaseActivity implements BaseActivity.PreLo
 
     @Override
     public void onLoadNativeLanguageSuccess() {
-        /*Log.d("TuanPA38", "LanguageActivity onLoadNativeLanguageSuccess");
-        if (!populateNativeAdView) {
-            if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on") && nativeAdViewLanguage != null) {
-                populateNativeAdView = true;
-                AperoAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
-            }
-        }*/
-
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-            if (nativeAdViewLanguage != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewLanguageHigh != null) {
+                Log.d(TAG, "nativeAdViewLanguageHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguageHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewLanguage != null) {
+                    Log.d(TAG, "nativeAdViewLanguage: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewLanguage, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
-
         // End
     }
 

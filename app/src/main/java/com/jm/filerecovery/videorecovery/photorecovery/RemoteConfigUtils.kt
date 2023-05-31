@@ -41,6 +41,8 @@ object RemoteConfigUtils {
     private const val ON_NATIVE_SCAN_HIGH = "on_native_scan_high"
 
     private const val ON_NATIVE_RESULT = "on_native_result_activity"
+    private const val ON_NATIVE_FINISH_HIGH = "on_native_finish_high"
+
     private const val ON_INTER_LUNCH = "on_inter_lunch"
     private const val ON_INTER_LUNCH_HIGH = "on_inter_lunch_high"
     private const val ON_APP_OPEN_LUNCH = "on_app_open_lunch"
@@ -85,7 +87,10 @@ object RemoteConfigUtils {
             ON_OPEN_HIGH_SPLASH_3_ID to "on",
             ON_BANNER_TOOL to "on",
             ON_BANNER_PERSONAL to "on",
+
             ON_NATIVE_RESULT to "on",
+            ON_NATIVE_FINISH_HIGH to "on",
+
             ON_INTER_LUNCH to "on",
             ON_INTER_LUNCH_HIGH to "off",
             ON_APP_OPEN_LUNCH to "on",
@@ -446,6 +451,19 @@ object RemoteConfigUtils {
                 "off"
             } else {
                 remoteConfig.getString(ON_NATIVE_LIST_ITEM_HIGH)
+            }
+        } catch (e: Exception) {
+
+        }
+        return "off"
+    }
+
+    fun getOnNativeFinishHigh(): String {
+        try {
+            return if (!completed) {
+                "off"
+            } else {
+                remoteConfig.getString(ON_NATIVE_FINISH_HIGH)
             }
         } catch (e: Exception) {
 

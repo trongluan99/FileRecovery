@@ -25,6 +25,14 @@
     <string name="admob_native_tutorial" translatable="false">ca-app-pub-7208941695689653/5638320319</string>
     <string name="admob_inter_tutorial" translatable="false">ca-app-pub-7208941695689653/5683424484</string>-->
 
+    <!--<string name="native_language_high" translatable="false">ca-app-pub-7208941695689653/5120518368</string>
+    <string name="native_tutorial_high" translatable="false">ca-app-pub-7208941695689653/5536323471</string>
+    <string name="native_scan_high" translatable="false">ca-app-pub-7208941695689653/3691886627</string>
+    <string name="native_recovery_item_high" translatable="false">ca-app-pub-7208941695689653/6126478275</string>
+    <string name="native_home_high" translatable="false">ca-app-pub-7208941695689653/4813396603</string>
+    <string name="native_list_item_high" translatable="false">ca-app-pub-7208941695689653/8984629804</string>
+    <string name="native_finish_high" translatable="false">ca-app-pub-7208941695689653/5045384796</string>-->
+
 
     //Info id admob id test
     <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
@@ -55,5 +63,13 @@
 
     <string name="open_lunch_high" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_open_app_resume" translatable="false">ca-app-pub-3940256099942544/3419835294</string>
+
+    <string name="native_language_high" translatable="false">/6499/example/native</string>
+    <string name="native_tutorial_high" translatable="false">/6499/example/native</string>
+    <string name="native_scan_high" translatable="false">/6499/example/native</string>
+    <string name="native_recovery_item_high" translatable="false">/6499/example/native</string>
+    <string name="native_home_high" translatable="false">/6499/example/native</string>
+    <string name="native_list_item_high" translatable="false">/6499/example/native</string>
+    <string name="native_finish_high" translatable="false">/6499/example/native</string>
 
 </resources>

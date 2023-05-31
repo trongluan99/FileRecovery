@@ -19,16 +19,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected static ApInterstitialAd mInterstitialAdClickHome = null;
 
     protected static ApNativeAd nativeAdViewLanguage = null;
+    protected static ApNativeAd nativeAdViewLanguageHigh = null;
 
     protected static ApNativeAd nativeAdViewHome = null;
+    protected static ApNativeAd nativeAdViewHomeHigh = null;
 
     protected static ApNativeAd nativeAdViewTutorial = null;
+    protected static ApNativeAd nativeAdViewTutorialHigh = null;
 
     protected static ApNativeAd nativeAdViewListItem = null;
+    protected static ApNativeAd nativeAdViewListItemHigh = null;
 
     protected static ApNativeAd nativeAdViewScan = null;
+    protected static ApNativeAd nativeAdViewScanHigh = null;
 
     protected static ApNativeAd nativeAdViewRecoveryItem = null;
+    protected static ApNativeAd nativeAdViewRecoveryItemHigh = null;
+
+    protected static ApNativeAd nativeAdViewFinish = null;
+    protected static ApNativeAd nativeAdViewFinishHigh = null;
 
     protected static PreLoadNativeListener preLoadNativeListener = null;
 
@@ -36,7 +45,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TuanPA38", "BaseActivity onCreate");
         try {
             View decorView = getWindow().getDecorView();
             int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -48,7 +56,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadInterTutorial() {
-        Log.d("TuanPA38", "BaseActivity loadInterTutorial");
         if (RemoteConfigUtils.INSTANCE.getOnInterTutorial().equals("on")) {
             if (mInterstitialAdTutorial == null) {
                 mInterstitialAdTutorial = ITGAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_tutorial));
@@ -57,7 +64,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadInterClickHome() {
-        Log.d("TuanPA38", "BaseActivity loadInterClickHome");
         if (RemoteConfigUtils.INSTANCE.getOnInterClickHome().equals("on")) {
             if (mInterstitialAdClickHome == null) {
                 mInterstitialAdClickHome = ITGAd.getInstance().getInterstitialAds(this, getResources().getString(R.string.admob_inter_click_home));
@@ -66,33 +72,70 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadNativeLanguage() {
-        Log.d("TuanPA38", "BaseActivity loadNativeLanguage");
-        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")) {
-                if (nativeAdViewLanguage == null) {
-                    ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size, new ITGAdCallback() {
-                        @Override
-                        public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
-                            super.onNativeAdLoaded(nativeAd);
-                            nativeAdViewLanguage = nativeAd;
-                            if (preLoadNativeListener != null)
-                                preLoadNativeListener.onLoadNativeLanguageSuccess();
-                            Log.d("TuanPA38", "BaseActivity onNativeAdLoaded nativeAdViewLanguage = " + nativeAdViewLanguage);
-                        }
+        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguageHigh().equals("on")) {
+            if (nativeAdViewLanguageHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_language_high), R.layout.custom_native_full_size, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewLanguageHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                    }
 
-                        @Override
-                        public void onAdFailedToLoad(@Nullable ApAdError adError) {
-                            super.onAdFailedToLoad(adError);
-                            Log.d("TuanPA38", "BaseActivity loadNativeLanguage onAdFailedToLoad");
-                            if (preLoadNativeListener != null)
-                                preLoadNativeListener.onLoadNativeLanguageFail();
-                        }
-                    });
-                }
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageFail();
+                    }
+                });
+            }
+        }
+        if (RemoteConfigUtils.INSTANCE.getOnNativeLanguage().equals("on")) {
+            if (nativeAdViewLanguage == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_language), R.layout.custom_native_full_size, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewLanguage = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageFail();
+                    }
+                });
+            }
         }
     }
 
     protected void loadNativeScan() {
-        Log.d("TuanPA38", "BaseActivity loadNativeLanguage");
+        if (RemoteConfigUtils.INSTANCE.getOnNativeScanHigh().equals("on")) {
+            if (nativeAdViewScanHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_scan_high), R.layout.custom_native_full_size, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewScanHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageFail();
+                    }
+                });
+            }
+        }
+
         if (RemoteConfigUtils.INSTANCE.getOnNativeScan().equals("on")) {
             if (nativeAdViewScan == null) {
                 ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_scan), R.layout.custom_native_full_size, new ITGAdCallback() {
@@ -102,13 +145,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                         nativeAdViewScan = nativeAd;
                         if (preLoadNativeListener != null)
                             preLoadNativeListener.onLoadNativeLanguageSuccess();
-                        Log.d("TuanPA38", "BaseActivity onNativeAdLoaded nativeAdViewLanguage = " + nativeAdViewScan);
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
-                        Log.d("TuanPA38", "BaseActivity loadNativeLanguage onAdFailedToLoad");
                         if (preLoadNativeListener != null)
                             preLoadNativeListener.onLoadNativeLanguageFail();
                     }
@@ -118,33 +159,69 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadNativeRecovery() {
-        Log.d("TuanPA38", "BaseActivity loadNativeLanguage");
-        if (RemoteConfigUtils.INSTANCE.getOnNativeRecoveryItem().equals("on")) {
-                if (nativeAdViewRecoveryItem == null) {
-                    ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_full_size, new ITGAdCallback() {
-                        @Override
-                        public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
-                            super.onNativeAdLoaded(nativeAd);
-                            nativeAdViewRecoveryItem = nativeAd;
-                            if (preLoadNativeListener != null)
-                                preLoadNativeListener.onLoadNativeLanguageSuccess();
-                            Log.d("TuanPA38", "BaseActivity onNativeAdLoaded nativeAdViewLanguage = " + nativeAdViewRecoveryItem);
-                        }
+        if (RemoteConfigUtils.INSTANCE.getOnNativeRecoveryItemHigh().equals("on")) {
+            if (nativeAdViewRecoveryItemHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_recovery_item_high), R.layout.custom_native_full_size, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewRecoveryItemHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                    }
 
-                        @Override
-                        public void onAdFailedToLoad(@Nullable ApAdError adError) {
-                            super.onAdFailedToLoad(adError);
-                            Log.d("TuanPA38", "BaseActivity loadNativeLanguage onAdFailedToLoad");
-                            if (preLoadNativeListener != null)
-                                preLoadNativeListener.onLoadNativeLanguageFail();
-                        }
-                    });
-                }
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageFail();
+                    }
+                });
+            }
+        }
+        if (RemoteConfigUtils.INSTANCE.getOnNativeRecoveryItem().equals("on")) {
+            if (nativeAdViewRecoveryItem == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_full_size, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewRecoveryItem = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeLanguageFail();
+                    }
+                });
+            }
         }
     }
 
     protected void loadNativeHome() {
-        Log.d("TuanPA38", "BaseActivity loadNativeHome");
+        if (RemoteConfigUtils.INSTANCE.getOnNativeHomeHigh().equals("on")) {
+            if (nativeAdViewHomeHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_home_high), R.layout.custom_native_no_media, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewHomeHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeHomeSuccess();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeHomeFail();
+                    }
+                });
+            }
+        }
         if (RemoteConfigUtils.INSTANCE.getOnNativeHome().equals("on")) {
             if (nativeAdViewHome == null) {
                 ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_home), R.layout.custom_native_no_media, new ITGAdCallback() {
@@ -154,13 +231,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                         nativeAdViewHome = nativeAd;
                         if (preLoadNativeListener != null)
                             preLoadNativeListener.onLoadNativeHomeSuccess();
-                        Log.d("TuanPA38", "BaseActivity onNativeAdLoaded nativeAdViewHome = " + nativeAdViewHome);
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
-                        Log.d("TuanPA38", "BaseActivity loadNativeHome onAdFailedToLoad");
                         if (preLoadNativeListener != null)
                             preLoadNativeListener.onLoadNativeHomeFail();
                     }
@@ -170,6 +245,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadNativeTutorial() {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeTutorialHigh().equals("on")) {
+            if (nativeAdViewTutorialHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_tutorial_high), R.layout.custom_native_no_media_purple, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewTutorialHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeTutorial();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                    }
+                });
+            }
+        }
         if (RemoteConfigUtils.INSTANCE.getOnNativeTutorial().equals("on")) {
             if (nativeAdViewTutorial == null) {
                 ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_tutorial), R.layout.custom_native_no_media_purple, new ITGAdCallback() {
@@ -191,6 +284,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void loadNativeListItem() {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeListItemHigh().equals("on")) {
+            if (nativeAdViewListItemHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_list_item_high), R.layout.custom_native_no_media, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewListItemHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeTutorial();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                    }
+                });
+            }
+        }
+
         if (RemoteConfigUtils.INSTANCE.getOnNativeListItem().equals("on")) {
             if (nativeAdViewListItem == null) {
                 ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_list_item), R.layout.custom_native_no_media, new ITGAdCallback() {
@@ -200,6 +312,46 @@ public abstract class BaseActivity extends AppCompatActivity {
                         nativeAdViewListItem = nativeAd;
                         if (preLoadNativeListener != null)
                             preLoadNativeListener.onLoadNativeTutorial();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                    }
+                });
+            }
+        }
+    }
+
+    protected void loadNativeFinish() {
+        if (RemoteConfigUtils.INSTANCE.getOnNativeFinishHigh().equals("on")) {
+            if (nativeAdViewFinishHigh == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.native_finish_high), R.layout.custom_native_no_media, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewFinishHigh = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeSuccess();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@Nullable ApAdError adError) {
+                        super.onAdFailedToLoad(adError);
+                    }
+                });
+            }
+        }
+
+        if (RemoteConfigUtils.INSTANCE.getOnNativeResultActivity().equals("on")) {
+            if (nativeAdViewFinish == null) {
+                ITGAd.getInstance().loadNativeAdResultCallback(this, getResources().getString(R.string.admob_native_finish), R.layout.custom_native_no_media, new ITGAdCallback() {
+                    @Override
+                    public void onNativeAdLoaded(@NonNull ApNativeAd nativeAd) {
+                        super.onNativeAdLoaded(nativeAd);
+                        nativeAdViewFinish = nativeAd;
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override

@@ -47,7 +47,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreLoadNativeListener {
-
+    private static final String TAG = "ScanFilesActivity";
     public static ArrayList<AlbumAudio> mAlbumAudio = new ArrayList<>();
     public static ArrayList<AlbumVideo> mAlbumVideo = new ArrayList<>();
     public static ArrayList<AlbumPhoto> mAlbumPhoto = new ArrayList<>();
@@ -92,12 +92,18 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewScan != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewScanHigh != null) {
+                Log.d(TAG, "nativeAdViewScanHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewScan != null) {
+                    Log.d(TAG, "nativeAdViewScan: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
-
         loadNativeListItem();
         // End
 
@@ -145,12 +151,18 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewScan != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewScanHigh != null) {
+                Log.d(TAG, "nativeAdViewScanHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScanHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewScan != null) {
+                    Log.d(TAG, "nativeAdViewScan: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewScan, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
-
         // End
     }
 

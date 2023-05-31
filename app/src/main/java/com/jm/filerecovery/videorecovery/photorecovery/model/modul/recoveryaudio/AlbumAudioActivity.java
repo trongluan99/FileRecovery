@@ -3,6 +3,7 @@ package com.jm.filerecovery.videorecovery.photorecovery.model.modul.recoveryaudi
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.jm.filerecovery.videorecovery.photorecovery.ui.activity.ScanFilesActi
 
 
 public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizontalAdapter.OnClickItemListener, BaseActivity.PreLoadNativeListener {
+    private static final String TAG = "AlbumAudioActivity";
     @Override
     public void onClickItem(int position) {
 
@@ -57,9 +59,16 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItem != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItemHigh != null) {
+                Log.d(TAG, "nativeAdViewListItemHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            }else{
+                if (nativeAdViewListItem != null) {
+                    Log.d(TAG, "nativeAdViewListItem: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
         // End
@@ -69,9 +78,16 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            if (nativeAdViewListItem != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewListItemHigh != null) {
+                Log.d(TAG, "nativeAdViewListItemHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItemHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            }else{
+                if (nativeAdViewListItem != null) {
+                    Log.d(TAG, "nativeAdViewListItem: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewListItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
     }

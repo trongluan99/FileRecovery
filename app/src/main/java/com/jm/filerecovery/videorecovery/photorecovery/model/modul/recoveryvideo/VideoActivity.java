@@ -45,6 +45,7 @@ import java.util.ArrayList;
  */
 
 public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnClickItem, BaseActivity.PreLoadNativeListener {
+    private static final String TAG = "VideoActivity";
     int int_position;
     RecyclerView recyclerView;
     FileVideoAdapter fileVideoAdapter;
@@ -82,10 +83,16 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
 
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-            if (nativeAdViewRecoveryItem != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.d(TAG, "nativeAdViewRecoveryItemHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewRecoveryItem != null) {
+                    Log.d(TAG, "nativeAdViewRecoveryItem: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
         // End
@@ -95,10 +102,16 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
     public void onLoadNativeSuccess() {
         // Begin: Add Ads
         if (!populateNativeAdView) {
-            Log.e("XXXXXX", "onLoadNativeSuccess: vao 2");
-            if (nativeAdViewRecoveryItem != null) {
-                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+            if (nativeAdViewRecoveryItemHigh != null) {
+                Log.d(TAG, "nativeAdViewRecoveryItemHigh: ");
+                ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItemHigh, frameLayout, shimmerFrameLayout);
                 populateNativeAdView = true;
+            } else {
+                if (nativeAdViewRecoveryItem != null) {
+                    Log.d(TAG, "nativeAdViewRecoveryItem: ");
+                    ITGAd.getInstance().populateNativeAdView(this, nativeAdViewRecoveryItem, frameLayout, shimmerFrameLayout);
+                    populateNativeAdView = true;
+                }
             }
         }
         // End

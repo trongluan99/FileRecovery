@@ -166,14 +166,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewRecoveryItemHigh = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageFail();
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }
@@ -186,14 +186,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewRecoveryItem = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageFail();
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }

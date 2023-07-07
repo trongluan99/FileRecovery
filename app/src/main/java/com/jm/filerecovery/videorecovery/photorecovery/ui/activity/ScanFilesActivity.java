@@ -91,6 +91,7 @@ public class ScanFilesActivity extends BaseActivity implements BaseActivity.PreL
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
 
         // Begin: Add Ads
+        setPreLoadNativeListener(this);
         if (!populateNativeAdView) {
             if (nativeAdViewScanHigh != null) {
                 Log.d(TAG, "nativeAdViewScanHigh: ");

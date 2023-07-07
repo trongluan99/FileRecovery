@@ -76,6 +76,7 @@ public class FileInfoActivity extends BaseActivity implements View.OnClickListen
 //        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_full_size, frameLayout, shimmerFrameLayout);
 
         // Begin: Add Ads
+        setPreLoadNativeListener(this);
         if (!populateNativeAdView) {
             if (nativeAdViewRecoveryItemHigh != null) {
                 Log.d(TAG, "nativeAdViewRecoveryItemHigh: ");

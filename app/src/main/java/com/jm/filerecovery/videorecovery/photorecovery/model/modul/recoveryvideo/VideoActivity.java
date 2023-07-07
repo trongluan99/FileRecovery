@@ -82,6 +82,7 @@ public class VideoActivity extends BaseActivity implements FileVideoAdapter.OnCl
 //        ITGAd.getInstance().loadNativeAd(this, getResources().getString(R.string.admob_native_recovery_item), R.layout.custom_native_no_media, frameLayout, shimmerFrameLayout);
 
         // Begin: Add Ads
+        setPreLoadNativeListener(this);
         if (!populateNativeAdView) {
             if (nativeAdViewRecoveryItemHigh != null) {
                 Log.d(TAG, "nativeAdViewRecoveryItemHigh: ");

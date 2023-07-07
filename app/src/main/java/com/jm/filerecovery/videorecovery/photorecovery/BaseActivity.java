@@ -1,7 +1,6 @@
 package com.jm.filerecovery.videorecovery.photorecovery;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -123,14 +122,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewScanHigh = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageFail();
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }
@@ -144,14 +143,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewScan = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageSuccess();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeLanguageFail();
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }
@@ -259,6 +258,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
+
                     }
                 });
             }
@@ -292,12 +292,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewListItemHigh = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeTutorial();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }
@@ -311,12 +313,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         super.onNativeAdLoaded(nativeAd);
                         nativeAdViewListItem = nativeAd;
                         if (preLoadNativeListener != null)
-                            preLoadNativeListener.onLoadNativeTutorial();
+                            preLoadNativeListener.onLoadNativeSuccess();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@Nullable ApAdError adError) {
                         super.onAdFailedToLoad(adError);
+                        if (preLoadNativeListener != null)
+                            preLoadNativeListener.onLoadNativeFail();
                     }
                 });
             }

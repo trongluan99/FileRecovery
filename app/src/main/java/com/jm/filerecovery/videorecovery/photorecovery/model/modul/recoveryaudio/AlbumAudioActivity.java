@@ -57,6 +57,7 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
         frameLayout = findViewById(R.id.fl_adplaceholder);
         shimmerFrameLayout = findViewById(R.id.shimmer_container_native);
 
+        setPreLoadNativeListener(this);
         // Begin: Add Ads
         if (!populateNativeAdView) {
             if (nativeAdViewListItemHigh != null) {
@@ -71,6 +72,7 @@ public class AlbumAudioActivity extends BaseActivity implements GroupAudioHorizo
                 }
             }
         }
+
         // End
     }
 
